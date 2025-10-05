@@ -24,18 +24,21 @@ export default function ProductList() {
   return (
     <section className="w-full">
       {/* Category Selector */}
-      <div className="flex overflow-x-auto gap-3 mb-8 scrollbar-hide w-full justify-center align-middle items-center flex-row">
+      <div className="flex overflow-x-auto mb-8 scrollbar-hide w-full justify-center items-center">
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`flex-shrink-0 px-4 py-2 rounded-full border transition 
-              ${selectedCategory === cat ? "bg-blue-700 text-white" : "bg-white border-gray-300 hover:bg-blue-50"}`}
+            className={`px-6 py-2 text-sm font-medium transition-colors duration-200 border border-[#1E1E1E]
+              ${selectedCategory === cat 
+                ? "bg-[#F4B75E] text-white" 
+                : "bg-transparent text-gray-400 hover:text-gray-200"}`}
           >
             {cat}
           </button>
         ))}
       </div>
+
 
       {/* Product Grid */}
       <motion.div
