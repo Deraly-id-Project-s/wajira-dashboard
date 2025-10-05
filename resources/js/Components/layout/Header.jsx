@@ -147,7 +147,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
       }}
       animate={{
         background: isScrolled
-          ? "rgba(255, 255, 255, 0.8)"
+          ? "#B0160D"
           // : "linear-gradient(to bottom, rgba(0, 0, 0, 0.48) 0%, rgba(255, 255, 255, 0) 100%)",
           :  activeCategory == '/product/expedition' ? 'white' : "linear-gradient(to bottom, rgba(0, 0, 0, 0.48) 0%, rgba(255, 255, 255, 0) 100%)",
         backdropFilter: isScrolled ? "blur(8px)" : "blur(0px)",
@@ -157,7 +157,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
       }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
       className={`fixed top-0 left-0 right-0 z-50 duration-100 ${
-        isScrolled ? "bg-white/80 backdrop-blur-sm border-b border-gray-200" : "border-transparent"
+        isScrolled ? "bg-[#B0160D] backdrop-blur-sm" : "border-transparent"
       } py-4 max-sm:py-1 px-6 mx-auto w-full`}
     >
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 max-w-full mx-[64px]">
@@ -187,7 +187,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
               <button
                 onClick={() => handleMenuClick(item)}
                 className={`flex items-center text-[24px] gap-1 px-3 py-2 rounded-md duration-150 ${
-                  isScrolled ? 'text-black hover:bg-gray-100' : 'text-white hover:bg-white/10'
+                  isScrolled ? 'text-white hover:bg-gray-100' : 'text-white hover:bg-white/10'
                 } transition-colors`}
               >
                 {item.label}
