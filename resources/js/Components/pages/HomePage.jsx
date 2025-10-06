@@ -13,6 +13,7 @@ import ProductList from '@/Components/ProductList';
 import ReasonChoose from "@/Components/ReasonChoose";
 import HelperButton from "@/Components/HelperButton";
 import SponsorList from "@/Components/SponsorList";
+import GetInTouch from "@/Components/GetInTouch";
 import UserAnalytics from "@/Components/UserAnalytics";
 
 const HomePage = () => {
@@ -61,6 +62,7 @@ const HomePage = () => {
 
       <ReasonChoose />
 
+      <GetInTouch />
       {/* <UserAnalytics /> */}
 
       <Footer />

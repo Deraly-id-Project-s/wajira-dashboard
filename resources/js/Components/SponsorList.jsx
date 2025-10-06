@@ -2,14 +2,14 @@ import { ArrowRight } from "lucide-react";
 
 export default function SponsorList() {
   const brands = [
-    { name: "Honda", image: "/assets/brands/honda.png" },
-    { name: "Yamaha", image: "/assets/brands/yamaha.png" },
-    { name: "Suzuki", image: "/assets/brands/suzuki.png" },
-    { name: "Kawasaki", image: "/assets/brands/kawasaki.png" },
-    { name: "Yadea", image: "/assets/brands/yadea.png" },
-    { name: "WMoto", image: "/assets/brands/wmoto.png" },
-    { name: "SM Sport", image: "/assets/brands/sm_sport.png" },
-    { name: "HTM", image: "/assets/brands/htm.png" },
+    { name: "Honda", image: "/assets/brands/honda.png", size: "42" },
+    { name: "Yamaha", image: "/assets/brands/yamaha.png", size: "86" },
+    { name: "Suzuki", image: "/assets/brands/suzuki.png", size: "32" },
+    { name: "Kawasaki", image: "/assets/brands/kawasaki.png", size: "32" },
+    { name: "Yadea", image: "/assets/brands/yadea.png", size: "32" },
+    { name: "WMoto", image: "/assets/brands/wmoto.png", size: "36" },
+    { name: "SM Sport", image: "/assets/brands/sm_sport.png", size: "42" },
+    { name: "HTM", image: "/assets/brands/htm.png", size: "32" },
   ];
 
   return (
@@ -40,7 +40,7 @@ export default function SponsorList() {
             <img
               src={brand.image}
               alt={brand.name}
-              className="object-contain w-20 h-20"
+              className={`object-contain w-${brand.size} h-${brand.size}`}
             />
           </div>
         ))}

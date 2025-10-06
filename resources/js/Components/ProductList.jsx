@@ -24,21 +24,24 @@ export default function ProductList() {
   return (
     <section className="w-full">
       {/* Category Selector */}
-      <div className="flex overflow-x-auto mb-8 scrollbar-hide w-full justify-center items-center">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
-            className={`px-6 py-2 text-sm font-medium transition-colors duration-200 border border-[#1E1E1E]
-              ${selectedCategory === cat 
-                ? "bg-[#F4B75E] text-white" 
-                : "bg-transparent text-gray-400 hover:text-gray-200"}`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
+      <div className="flex justify-center">
+          <div className="bg-[#1E3A5F] p-3 rounded-md inline-flex mb-10">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-6 py-2 text-sm font-medium transition-colors duration-200 
+                  ${
+                    selectedCategory === cat
+                      ? "bg-[#F4B75E] text-[#1E3A5F] rounded-md"
+                      : "bg-transparent text-gray-300 hover:text-white"
+                  }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
 
       {/* Product Grid */}
       <motion.div
