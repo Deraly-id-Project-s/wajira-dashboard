@@ -15,6 +15,32 @@ const Header = ({ activeCategory, onCategoryChange }) => {
   const headerRef = useRef(null);
   const submenuRef = useRef(null);
 
+  const languages = [
+    { code: 'id', name: 'Indonesian', flag: '🇮🇩' },
+    { code: 'en', name: 'English', flag: '🇬🇧' },
+    { code: 'fr', name: 'French', flag: '🇫🇷' },
+    { code: 'de', name: 'German', flag: '🇩🇪' },
+    { code: 'es', name: 'Spanish', flag: '🇪🇸' },
+    { code: 'ja', name: 'Japanese', flag: '🇯🇵' },
+    { code: 'ko', name: 'Korean', flag: '🇰🇷' },
+    { code: 'zh-CN', name: 'Chinese', flag: '🇨🇳' },
+    { code: 'ar', name: 'Arabic', flag: '🇸🇦' },
+    { code: 'ru', name: 'Russian', flag: '🇷🇺' },
+  ];
+
+  const [selectedLang, setSelectedLang] = useState('en');
+  const [showLangDropdown, setShowLangDropdown] = useState(false);
+
+  const handleLanguageChange = (langCode) => {
+    const select = document.querySelector('.goog-te-combo');
+    if (select) {
+      select.value = langCode;
+      select.dispatchEvent(new Event('change'));
+    }
+    setSelectedLang(langCode);
+    setShowLangDropdown(false);
+  };
+
   // Menu data
   const menuItems = [
     {
@@ -232,10 +258,55 @@ const Header = ({ activeCategory, onCategoryChange }) => {
 
         {/* Desktop buttons */}
         <div className="hidden md:flex items-center duration-150">
-          <div>
-            <ArrowBigDown />
+          <div id="language-selector">
+            {/* <ArrowBigDown /> */}
+            <div className="hidden md:flex items-center gap-4">
+              {/* Language Selector */}
+              <div className="relative" id="language-selector">
+                <button
+                  onClick={() => setShowLangDropdown(!showLangDropdown)}
+                  className="flex items-center gap-2 bg-white/20 hover:bg-white/30 border-white px-3 border py-1 text-white transition-all"
+                >
+                  <span className="text-xl">{languages.find(l => l.code === selectedLang)?.flag}</span>
+                  <span className="uppercase text-sm font-medium">{selectedLang}</span>
+                  <ChevronDown className="h-4 w-4" />
+                </button>
+
+                {showLangDropdown && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg z-50"
+                  >
+                    {languages.map(lang => (
+                      <button
+                        key={lang.code}
+                        onClick={() => handleLanguageChange(lang.code)}
+                        className={`flex items-center gap-3 px-4 py-2 w-full text-left hover:bg-gray-100 transition ${
+                          selectedLang === lang.code ? 'bg-gray-100' : ''
+                        }`}
+                      >
+                        <span className="text-lg">{lang.flag}</span>
+                        <span className="text-gray-800 font-medium uppercase">{lang.code}</span>
+                        <span className="text-gray-500 text-sm">{lang.name}</span>
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </div>
+
+              {/* Hidden Google Translate Widget */}
+              <div id="google_translate_element" className="hidden"></div>
+
+              {/* Search Input */}
+              <input
+                type="text"
+                placeholder="Search Here"
+                className="bg-white text-slate-500 px-3 py-2 outline-none"
+              />
+            </div>
           </div>
-          <input type="text" placeholder="Search Here" />
         </div>
 
         {/* Mobile menu */}
