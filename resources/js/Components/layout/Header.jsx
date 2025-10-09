@@ -186,7 +186,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
         isScrolled ? "bg-[#B0160D] backdrop-blur-sm" : "border-transparent"
       } py-4 max-sm:py-1 px-6 mx-auto w-full`}
     >
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 max-w-full mx-[64px]">
+      <div className="relative flex flex-col md:flex-row items-center justify-between max-w-full mx-[64px]">
         <div className="flex justify-between w-full md:w-auto items-center">
           <div>
             <img className="w-[43px]" src="/assets/logo.png" alt="" />
@@ -207,7 +207,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
         </div>
 
         {/* Desktop menu */}
-        <nav className="hidden md:flex items-center gap-[89px] relative">
+        <nav className="hidden md:flex items-center gap-[89px] absolute left-1/2 -translate-x-1/2">
           {menuItems.map((item) => (
             <div key={item.id} className="relative">
               <button
