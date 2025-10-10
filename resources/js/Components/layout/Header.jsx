@@ -45,7 +45,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
   const menuItems = [
     { id: "home", label: "Home", href: "/" },
     { id: "product", label: "Product" },
-    { id: "gallery", label: "Gallery" },
+    { id: "gallery", label: "Gallery", href: '/gallery' },
     { id: "about-us", label: "About Us", href: "/about-us" },
   ];
 
