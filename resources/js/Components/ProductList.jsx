@@ -31,35 +31,37 @@ export default function ProductList() {
 
   return (
     <section className="w-full">
-      <div className="flex justify-center">
-        <div className="bg-[#1E3A5F] p-3 rounded-md inline-flex mb-10">
-          {categories
-            .filter((cat) => cat !== "All")
-            .map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-6 py-2 text-sm font-medium transition-colors duration-200 
-                ${selectedCategory === cat
-                    ? "bg-[#F4B75E] text-[#1E3A5F] rounded-md"
-                    : "bg-transparent text-gray-300 hover:text-white"
-                  }`}
-              >
-                {cat}
-              </button>
-            ))}
+      <div className="flex justify-center px-2">
+        <div className="bg-[#1E3A5F] p-2 sm:p-3 rounded-md mb-10 w-full sm:w-auto overflow-x-auto">
+          <div className="flex flex-wrap sm:inline-flex justify-center gap-2 sm:gap-0 min-w-max">
+            {categories
+              .filter((cat) => cat !== "All")
+              .map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3 sm:px-6 py-2 text-xs sm:text-sm font-medium transition-colors duration-200 whitespace-nowrap
+              ${selectedCategory === cat
+                      ? "bg-[#F4B75E] text-[#1E3A5F] rounded-md"
+                      : "bg-transparent text-gray-300 hover:text-white"
+                    }`}
+                >
+                  {cat}
+                </button>
+              ))}
+          </div>
         </div>
       </div>
 
       {/* Conditional View */}
       {selectedCategory === "Vehicle Document" ? (
-          <VehicleDocumentCard key="vehicle-document" />
-        ) : selectedCategory === "Expedition" ? (
-          <ExpeditionCard key="expedition" />
-        ) : (
+        <VehicleDocumentCard key="vehicle-document" />
+      ) : selectedCategory === "Expedition" ? (
+        <ExpeditionCard key="expedition" />
+      ) : (
         <AnimatePresence mode="wait">
           <motion.div
-            key={selectedCategory} // 🔥 kunci utama agar konten lama terhapus
+            key={selectedCategory}
             layout
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
