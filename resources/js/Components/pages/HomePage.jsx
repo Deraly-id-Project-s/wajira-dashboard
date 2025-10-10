@@ -71,7 +71,7 @@ const HomePage = () => {
       <HelperButton />
 
        <div className="flex max-w-7xl mx-auto flex-col justify-center align-middle items-center">
-        <h2 className="text-[57px] p-[10px] font-bold mb-2 text-center">
+        <h2 className="text-[57px] p-[100px] font-bold mb-2 text-center">
           Featured Listing
         </h2>
         <ProductList />

@@ -7,7 +7,7 @@ export default function SponsorList() {
     { name: "Yadea", image: "/assets/brands/yadea.png", size: "32" },
     { name: "WMoto", image: "/assets/brands/wmoto.png", size: "36" },
     { name: "SM Sport", image: "/assets/brands/sm_sport.png", size: "42" },
-    { name: "HTM", image: "/assets/brands/htm.png", size: "32" },
+    { name: "HTM", image: "/assets/brands/htm.png", size: "28" },
   ];
 
   return (
