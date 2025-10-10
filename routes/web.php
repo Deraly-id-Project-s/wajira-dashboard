@@ -8,6 +8,9 @@ Route::get('/', [App\Http\Controllers\Public\HomeController::class, 'index'])->n
 // Motorcycle
 Route::resource('/products/motorcycles', App\Http\Controllers\Public\MotorcycleController::class);
 
+// Commodity
+Route::get('commodity', [App\Http\Controllers\Public\CommodityController::class, 'index'])->name('commodity');
+
 // Abous Us
 Route::get('/about-us', [App\Http\Controllers\Public\AboutUsController::class, 'index'])->name('about-us');
 

@@ -14,9 +14,7 @@ import SponsorList from "@/Components/SponsorList";
 import GetInTouch from "@/Components/GetInTouch";
 import UserAnalytics from "@/Components/UserAnalytics";
 
-const HomePage = () => {
-  // State for the currently selected motorcycle model and color
-  // State for the currently selected category
+const AboutUsPage = () => {
   const [activeCategory, setActiveCategory] = useState("/");
 
   // Function to handle category change
@@ -55,4 +53,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default AboutUsPage;
