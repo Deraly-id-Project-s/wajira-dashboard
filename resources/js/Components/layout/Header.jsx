@@ -46,12 +46,12 @@ const Header = ({ activeCategory, onCategoryChange }) => {
     { id: "home", label: "Home", href: "/" },
     { id: "product", label: "Product" },
     { id: "gallery", label: "Gallery" },
-    { id: "about-us", label: "About Us" },
+    { id: "about-us", label: "About Us", href: "/about-us" },
   ];
 
   // 🔹 Deteksi route — jika bukan "/", set scrolled true secara default
   useEffect(() => {
-    if (url !== "/") {
+    if (url !== "/" && url !== "/about-us") {
       setIsScrolled(true);
     } else {
       setIsScrolled(window.scrollY > window.innerHeight * 0.5);
@@ -64,7 +64,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
       const currentScrollY = window.scrollY;
 
       // Jika bukan halaman utama, abaikan logika scroll
-      if (url !== "/") return;
+      if (url !== "/" && url !== "/about-us") return;
 
       // Tutup menu saat scroll
       if (isMenuOpen) {
@@ -196,13 +196,16 @@ const Header = ({ activeCategory, onCategoryChange }) => {
           {menuItems.map((item) => (
             <div key={item.id} className="relative">
               <button
-                onClick={() => handleMenuClick(item)}
-                className={`flex items-center text-[24px] gap-1 px-3 py-2 rounded-md duration-150 ${
-                  isScrolled
-                    ? "text-white hover:bg-gray-100"
-                    : "text-white hover:bg-white/10"
-                } transition-colors`}
-              >
+                  onClick={() => handleMenuClick(item)}
+                  className={`flex items-center text-[24px] gap-1 px-3 py-2 rounded-md duration-150 transition-colors
+                    ${
+                      url === "/" || url === "/about-us"
+                        ? isScrolled
+                          ? "text-white hover:bg-white/20"  // ⬅️ perbaikan di sini
+                          : "text-white hover:bg-white/10"
+                        : "text-white" // di luar route "/" tetap tanpa hover effect
+                    }`}
+                >
                 {item.label}
                 {item.submenu && (
                   <ChevronDown
