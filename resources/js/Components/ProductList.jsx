@@ -5,12 +5,18 @@ import { motion, AnimatePresence } from "framer-motion";
 const categories = ["All", "Motorcycle", "Expedition", "Commodity", "Vehicle Document"];
 
 const products = [
-  { id: 1, name: "Yamaha Aerox Alpha", category: "Motorcycle", image: "/assets/products/aerox1.png" },
-  { id: 2, name: "Yamaha Aerox Alpha Turbo", category: "Motorcycle", image: "/assets/products/aerox2.png" },
-  { id: 3, name: "Honda ADV 160", category: "Motorcycle", image: "/assets/products/adv.png" },
-  { id: 4, name: "HTM GAJAH", category: "Expedition", image: "/assets/products/htm.png" },
-  { id: 5, name: "Yamaha Mio", category: "Motorcycle", image: "/assets/products/mio.png" },
-  { id: 6, name: "Yamaha Aerox Cybercity", category: "Motorcycle", image: "/assets/products/aerox3.png" },
+  { id: 1, name: "Yamaha Aerox Alpha", category: "Motorcycle", image: "/assets/products/motorcycles/aerox1.png" },
+  { id: 2, name: "Yamaha Aerox Alpha Turbo", category: "Motorcycle", image: "/assets/products/motorcycles/aerox2.png" },
+  { id: 3, name: "Honda ADV 160", category: "Motorcycle", image: "/assets/products/motorcycles/adv.png" },
+  { id: 4, name: "HTM GAJAH", category: "Expedition", image: "/assets/products/motorcycles/htm.png" },
+  { id: 5, name: "Yamaha Mio", category: "Motorcycle", image: "/assets/products/motorcycles/mio.png" },
+  { id: 6, name: "Yamaha Aerox Cybercity", category: "Motorcycle", image: "/assets/products/motorcycles/aerox3.png" },
+  { id: 7, name: "Batik", category: "Commodity", image: "/assets/products/commodities/batik.png"},
+  { id: 7, name: "Briquette", category: "Commodity", image: "/assets/products/commodities/briquette.png"},
+  { id: 7, name: "Tobacco", category: "Commodity", image: "/assets/products/commodities/tobacco.png"},
+  { id: 7, name: "Duppalo", category: "Commodity", image: "/assets/products/commodities/duppalo.png"},
+  { id: 7, name: "Handcraft", category: "Commodity", image: "/assets/products/commodities/handcraft.png"},
+  { id: 7, name: "Woodcraft", category: "Commodity", image: "/assets/products/commodities/woodcraft.png"}
 ];
 
 export default function ProductList() {
