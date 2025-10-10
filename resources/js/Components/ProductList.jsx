@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
-import VehicleDocument from "@/Components/VehicleDocument";
+import VehicleDocumentCard from "@/Components/VehicleDocumentCard";
+import ExpeditionCard from "@/Components/ExpeditionCard";
 import { motion, AnimatePresence } from "framer-motion";
 
 const categories = ["Motorcycle", "Expedition", "Commodity", "Vehicle Document"];
@@ -9,7 +10,7 @@ const products = [
   { id: 1, name: "Yamaha Aerox Alpha", category: "Motorcycle", image: "/assets/products/motorcycles/aerox1.png" },
   { id: 2, name: "Yamaha Aerox Alpha Turbo", category: "Motorcycle", image: "/assets/products/motorcycles/aerox2.png" },
   { id: 3, name: "Honda ADV 160", category: "Motorcycle", image: "/assets/products/motorcycles/adv.png" },
-  { id: 4, name: "HTM GAJAH", category: "Expedition", image: "/assets/products/motorcycles/htm.png" },
+  { id: 4, name: "HTM GAJAH", category: "Motorcycle", image: "/assets/products/motorcycles/htm.png" },
   { id: 5, name: "Yamaha Mio", category: "Motorcycle", image: "/assets/products/motorcycles/mio.png" },
   { id: 6, name: "Yamaha Aerox Cybercity", category: "Motorcycle", image: "/assets/products/motorcycles/aerox3.png" },
   { id: 7, name: "Batik", category: "Commodity", image: "/assets/products/commodities/batik.png" },
@@ -52,8 +53,10 @@ export default function ProductList() {
 
       {/* Conditional View */}
       {selectedCategory === "Vehicle Document" ? (
-        <VehicleDocument key="vehicle-document" />
-      ) : (
+          <VehicleDocumentCard key="vehicle-document" />
+        ) : selectedCategory === "Expedition" ? (
+          <ExpeditionCard key="expedition" />
+        ) : (
         <AnimatePresence mode="wait">
           <motion.div
             key={selectedCategory} // 🔥 kunci utama agar konten lama terhapus
