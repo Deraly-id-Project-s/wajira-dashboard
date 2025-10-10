@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Header from "@/Components/layout/Header";
 import Footer from "@/Components/layout/Footer";
+import { ArrowRight } from "lucide-react";
 import HeroSection from "@/Components/HeroSection";
 // import CategoryCarousel from "@/Components/CategoryCarousel";
 import NewsPaper from "@/Components/NewsPaper";
@@ -49,7 +50,23 @@ const HomePage = () => {
         <ProductAndService />
       </div>
 
-      <SponsorList />
+      <section className="max-w-7xl mx-auto px-4 py-16">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-14">
+          <div>
+            <h2 className="text-[32px] md:text-3xl font-bold text-gray-800">
+              Search by Brands
+            </h2>
+            <p className="text-gray-500 text-[14px] mt-2">
+              This is text field, you could write everything you want to talk
+            </p>
+          </div>
+
+          <button className="mt-4 md:mt-0 flex items-center bg-[#A6160A] text-white px-5 py-4 rounded text-sm hover:bg-[#8f1208] transition-all">
+            More Brands <ArrowRight size={16} className="ml-2" />
+          </button>
+        </div>
+        <SponsorList />
+      </section>
 
       <HelperButton />
 
