@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "@inertiajs/react";
 
 export default function ProductAndService() {
   const items = [
@@ -8,6 +9,7 @@ export default function ProductAndService() {
       color: "bg-[#A6160A]", // merah
       font_color: "text-white",
       image: "/assets/product_and_service/motor.png",
+      route: "/products/motorcycles",
     },
     {
       title: "Expedition",
@@ -16,6 +18,7 @@ export default function ProductAndService() {
       color: "bg-[#E3A73F]", // kuning
       font_color: "text-black",
       image: "/assets/product_and_service/expedition.png",
+      route: "/products/expeditions",
     },
     {
       title: "Commodity",
@@ -23,6 +26,7 @@ export default function ProductAndService() {
       color: "bg-[#E3A73F]", // kuning
       font_color: "text-black",
       image: "/assets/product_and_service/comodity.png",
+      route: "/products/commodities",
     },
     {
       title: "Vehicle Documentation",
@@ -31,6 +35,7 @@ export default function ProductAndService() {
       color: "bg-[#A6160A]", // merah
       font_color: "text-white",
       image: "/assets/product_and_service/document.png",
+      route: "/products/vehicle-documents",
     },
   ];
 
@@ -48,9 +53,12 @@ export default function ProductAndService() {
               <p className="text-[14px] md:text-base leading-relaxed">
                 {item.description}
               </p>
-              <button className="mt-3 flex items-center bg-white text-gray-800 px-4 py-2 text-sm rounded hover:bg-gray-100 transition-all">
+              <Link
+                href={item.route}
+                className="mt-3 inline-flex items-center bg-white text-gray-800 px-4 py-2 text-sm rounded hover:bg-gray-100 transition-all"
+              >
                 Learn More <ArrowRight size={16} className="ml-2" />
-              </button>
+              </Link>
             </div>
 
             {/* Image Section */}

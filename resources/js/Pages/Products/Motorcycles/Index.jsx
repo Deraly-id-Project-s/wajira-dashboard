@@ -14,7 +14,7 @@ const ProductsPage = () => {
     const breadcrumbItems = [
         { name: 'Home', href: '/' },
         { name: 'Products', href: '/products' },
-        // { name: 'Motorcycles', href: '/products/motorcycles' },
+        { name: 'Motorcycles', href: '/products/motorcycles' },
         // { name: 'Detail', href: null },
     ];
 
