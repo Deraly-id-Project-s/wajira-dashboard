@@ -41,37 +41,41 @@ export default function ProductAndService() {
 
   return (
     <section className="max-w-7xl mx-auto py-16 px-4 sm:px-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* 
+      grid-cols-2 untuk mobile (2 kolom)
+      md:grid-cols-2 biar tetap 2 di desktop
+    */}
+      <div className="grid grid-cols-2 md:grid-cols-2 gap-6">
         {items.map((item, index) => (
           <div
             key={index}
             className={`${item.color} w-full h-auto flex flex-col md:flex-row justify-between items-center overflow-hidden shadow-lg`}
           >
             {/* Text Section */}
-            <div className={`p-6 sm:p-10 space-y-3 flex-1 ${item.font_color}`}>
-              <h2 className="text-2xl sm:text-[32px] font-semibold sm:font-light text-center md:text-left">
+            <div className={`p-4 sm:p-10 space-y-3 flex-1 ${item.font_color}`}>
+              <h2 className="text-lg sm:text-[32px] font-semibold sm:font-light text-center md:text-left">
                 {item.title}
               </h2>
-              <p className="text-sm sm:text-base leading-relaxed text-center md:text-left">
+              <p className="text-xs sm:text-base leading-relaxed text-center md:text-left">
                 {item.description}
               </p>
               <div className="flex justify-center md:justify-start">
                 <Link
                   href={item.route}
-                  className="mt-3 inline-flex items-center bg-white text-gray-800 px-4 py-2 text-sm rounded hover:bg-gray-100 transition-all"
+                  className="mt-3 inline-flex items-center bg-white text-gray-800 px-3 py-1.5 text-xs sm:text-sm rounded hover:bg-gray-100 transition-all"
                 >
-                  Learn More <ArrowRight size={16} className="ml-2" />
+                  Learn More <ArrowRight size={14} className="ml-2" />
                 </Link>
               </div>
             </div>
 
             {/* Image Section */}
             <div className="md:w-1/3 flex justify-center items-center p-4">
-              <div className="bg-white/10 rounded-full overflow-hidden w-[150px] sm:w-[195px] aspect-square flex items-center justify-center">
+              <div className="bg-white/10 rounded-full overflow-hidden w-[100px] sm:w-[195px] aspect-square flex items-center justify-center">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="object-cover w-[130px] sm:w-[183px] aspect-square rounded-full"
+                  className="object-cover w-[90px] sm:w-[183px] aspect-square rounded-full"
                 />
               </div>
             </div>
