@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Mail, MessageCircle, Music2 } from "lucide-react";
+import RippleButton from "@/Components/ui/rippleButton";
 
 export default function Footer() {
   return (
@@ -13,9 +14,9 @@ export default function Footer() {
               placeholder="Email address"
               className="flex-1 px-4 py-2 rounded-l bg-white text-gray-800 focus:outline-none"
             />
-            <button className="bg-red-600 px-4 rounded-r hover:bg-red-700 transition-colors flex items-center justify-center">
+            <RippleButton className="bg-red-600 px-4 rounded-r hover:bg-red-700 transition-colors flex items-center justify-center">
               <Mail size={18} />
-            </button>
+            </RippleButton>
           </div>
         </div>
 

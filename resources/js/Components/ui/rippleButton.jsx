@@ -32,7 +32,7 @@ export default function RippleButton({ children, className, onClick }) {
   return (
     <button
       onClick={handleClick}
-      className={`relative overflow-hidden px-6 py-3 rounded-md ${className}`}
+      className={`relative overflow-hidden px-6 py-3 ${className}`}
     >
       {ripples.map((ripple) => (
         <motion.span

@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import VehicleDocumentCard from "@/Components/VehicleDocumentCard";
 import ExpeditionCard from "@/Components/ExpeditionCard";
 import { motion, AnimatePresence } from "framer-motion";
+import RippleButton from "@/Components/ui/rippleButton";
 
 const categories = ["Motorcycle", "Expedition", "Commodity", "Vehicle Document"];
 
@@ -37,7 +38,7 @@ export default function ProductList() {
             {categories
               .filter((cat) => cat !== "All")
               .map((cat) => (
-                <button
+                <RippleButton
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-3 sm:px-6 py-2 text-xs sm:text-sm font-medium transition-colors duration-200 whitespace-nowrap
@@ -47,7 +48,7 @@ export default function ProductList() {
                     }`}
                 >
                   {cat}
-                </button>
+                </RippleButton>
               ))}
           </div>
         </div>
@@ -99,9 +100,9 @@ export default function ProductList() {
       )}
 
       <div className="w-full justify-center align-middle items-center flex flex-row p-[16px] my-[32px]">
-        <div className="flex px-[16px] py-[15px] w-[134px] gap-[8px] text-white bg-[#B0160D] font-light text-[14px] cursor-pointer">
+        <RippleButton className="flex px-[16px] py-[15px] w-[134px] gap-[8px] text-white bg-[#B0160D] font-light text-[14px] cursor-pointer">
           View More <ArrowRight />
-        </div>
+        </RippleButton>
       </div>
     </section>
   );

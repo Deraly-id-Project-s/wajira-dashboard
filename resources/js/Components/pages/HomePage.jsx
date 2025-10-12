@@ -6,7 +6,7 @@ import Footer from "@/Components/layout/Footer";
 import { ArrowRight } from "lucide-react";
 import HeroSection from "@/Components/HeroSection";
 // import CategoryCarousel from "@/Components/CategoryCarousel";
-import NewsPaper from "@/Components/NewsPaper";
+import RippleButton from "@/Components/ui/rippleButton";
 // import BusinessFlow from '@/Components/BusinessFlow';
 import ProductAndService from '@/Components/ProductAndService';
 import ProductList from '@/Components/ProductList';
@@ -61,9 +61,9 @@ const HomePage = () => {
             </p>
           </div>
 
-          <button className="mt-4 md:mt-0 flex items-center bg-[#A6160A] text-white px-5 py-4 rounded text-sm hover:bg-[#8f1208] transition-all">
+          <RippleButton className="mt-4 md:mt-0 flex items-center bg-[#A6160A] text-white px-5 py-4 text-sm hover:bg-[#8f1208] transition-all">
             More Brands <ArrowRight size={16} className="ml-2" />
-          </button>
+          </RippleButton>
         </div>
         <SponsorList />
       </section>
