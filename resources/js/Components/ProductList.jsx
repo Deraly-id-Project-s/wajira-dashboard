@@ -7,18 +7,18 @@ import { motion, AnimatePresence } from "framer-motion";
 const categories = ["Motorcycle", "Expedition", "Commodity", "Vehicle Document"];
 
 const products = [
-  { id: 1, name: "Yamaha Aerox Alpha", category: "Motorcycle", image: "/assets/products/motorcycles/aerox1.png" },
-  { id: 2, name: "Yamaha Aerox Alpha Turbo", category: "Motorcycle", image: "/assets/products/motorcycles/aerox2.png" },
-  { id: 3, name: "Honda ADV 160", category: "Motorcycle", image: "/assets/products/motorcycles/adv.png" },
-  { id: 4, name: "HTM GAJAH", category: "Motorcycle", image: "/assets/products/motorcycles/htm.png" },
-  { id: 5, name: "Yamaha Mio", category: "Motorcycle", image: "/assets/products/motorcycles/mio.png" },
-  { id: 6, name: "Yamaha Aerox Cybercity", category: "Motorcycle", image: "/assets/products/motorcycles/aerox3.png" },
-  { id: 7, name: "Batik", category: "Commodity", image: "/assets/products/commodities/batik.png" },
-  { id: 7, name: "Briquette", category: "Commodity", image: "/assets/products/commodities/briquette.png" },
-  { id: 7, name: "Tobacco", category: "Commodity", image: "/assets/products/commodities/tobacco.png" },
-  { id: 7, name: "Duppalo", category: "Commodity", image: "/assets/products/commodities/duppalo.png" },
-  { id: 7, name: "Handcraft", category: "Commodity", image: "/assets/products/commodities/handcraft.png" },
-  { id: 7, name: "Woodcraft", category: "Commodity", image: "/assets/products/commodities/woodcraft.png" }
+  { id: 1, slug: "yamaha-aerox-alpha", name: "Yamaha Aerox Alpha", category: "Motorcycle", image: "/assets/products/motorcycles/aerox1.png" },
+  { id: 2, slug: "yamaha-aerox-alpha-turbo", name: "Yamaha Aerox Alpha Turbo", category: "Motorcycle", image: "/assets/products/motorcycles/aerox2.png" },
+  { id: 3, slug: "honda-adv", name: "Honda ADV 160", category: "Motorcycle", image: "/assets/products/motorcycles/adv.png" },
+  { id: 4, slug: "htm-gajah", name: "HTM GAJAH", category: "Motorcycle", image: "/assets/products/motorcycles/htm.png" },
+  { id: 5, slug: "yamaha-mio", name: "Yamaha Mio", category: "Motorcycle", image: "/assets/products/motorcycles/mio.png" },
+  { id: 6, slug: "yamaha-aerox-cybercity", name: "Yamaha Aerox Cybercity", category: "Motorcycle", image: "/assets/products/motorcycles/aerox3.png" },
+  { id: 7, slug: "batik", name: "Batik", category: "Commodity", image: "/assets/products/commodities/batik.png" },
+  { id: 7, slug: "briquette", name: "Briquette", category: "Commodity", image: "/assets/products/commodities/briquette.png" },
+  { id: 7, slug: "tobacco", name: "Tobacco", category: "Commodity", image: "/assets/products/commodities/tobacco.png" },
+  { id: 7, slug: "duppalo", name: "Duppalo", category: "Commodity", image: "/assets/products/commodities/duppalo.png" },
+  { id: 7, slug: "handcraft", name: "Handcraft", category: "Commodity", image: "/assets/products/commodities/handcraft.png" },
+  { id: 7, slug: "woodcraft", name: "Woodcraft", category: "Commodity", image: "/assets/products/commodities/woodcraft.png" }
 ];
 
 export default function ProductList() {
@@ -88,9 +88,9 @@ export default function ProductList() {
                   <h3 className="text-gray-800 text-[22px] font-medium mb-3">
                     {product.name}
                   </h3>
-                  <button className="flex items-center gap-2 text-white bg-blue-900 w-full py-2 hover:bg-blue-800 transition align-middle justify-center">
+                  <a href={`/products/motorcycles/${product.slug}`} className="flex items-center gap-2 text-white bg-blue-900 w-full py-2 hover:bg-blue-800 transition align-middle justify-center">
                     Details <ArrowRight />
-                  </button>
+                  </a>
                 </div>
               </motion.div>
             ))}
