@@ -1,6 +1,9 @@
+import { ArrowRight } from "lucide-react";
 import Header from "@/Components/layout/Header";
+import Footer from "@/Components/layout/Footer";
 import BreadCrumbs from "@/Components/BreadCrumbs";
 import HelperButton from "@/Components/HelperButton";
+import RecomendationProductList from "@/Components/RecomendationProductList";
 import MotorcycleDescriptionContainer from "@/Components/MotorcycleDescriptionContainer";
 
 const MotocyclesDetail = () => {
@@ -20,19 +23,30 @@ const MotocyclesDetail = () => {
                     <BreadCrumbs items={breadcrumbItems} />
                 </div>
             </section>
-            
+
             <section id="page_title" className="max-w-7xl mx-auto p-4 md:p-8 mt-32 flex justify-center align-middle items-center">
                 <h3 className="text-[32px]">Vehicle Spesification</h3>
             </section>
 
             <MotorcycleDescriptionContainer />
 
-            <HelperButton />    
+            <HelperButton />
 
-
-            <div id="view_more_button" className="max-w-7xl mx-auto p-4 md:p-8 mt-32 flex justify-center align-middle items-center">
-                <a href="/products/motorcycles" className="bg-[#B0160D] text-white py-[15px] px-[16px] w-[123px]">View More</a>
+            <div className="flex max-w-7xl mx-auto flex-col justify-center align-middle items-center">
+                <h2 className="text-[32px] p-[100px] mb-2 text-center">
+                    Our Recommendation
+                </h2>
+                <RecomendationProductList />
             </div>        
+
+            <div className="md:max-w-7xl max-w-full mx-auto px-0 py-16 justify-center align-middle items-center flex">
+                <a href="/products/motorcycles" className="flex flex-row justify-center align-middle items-center w-[143px] h-[48px] gap-2 p-5 bg-[#B0160D] text-white text-[14px]">
+                    View More
+                    <ArrowRight />
+                </a>
+            </div>
+
+            <Footer />
         </section>
     );
 }
