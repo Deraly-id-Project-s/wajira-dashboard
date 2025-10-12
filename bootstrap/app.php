@@ -28,4 +28,18 @@ return Application::configure(basePath: dirname(__DIR__))
                 'message' => 'Halaman yang kamu cari tidak ditemukan.',
             ])->toResponse($request)->setStatusCode(404);
         });
+        
+        $exceptions->render(function (HttpExceptionInterface $e, $request) {
+            $status = $e->getStatusCode();
+            $message = match ($status) {
+                403 => 'Akses ditolak.',
+                500 => 'Terjadi kesalahan pada server.',
+                default => 'Terjadi kesalahan tidak diketahui.',
+            };
+
+            return Inertia::render('Errors/404', [
+                'code' => $status,
+                'message' => $message,
+            ])->toResponse($request)->setStatusCode($status);
+        });
     })->create();
