@@ -35,7 +35,7 @@ const Commodities = () => {
     ];
 
     return (
-        <section className="max-w-7xl mx-auto flex flex-col items-center justify-center py-12 space-y-16">
+        <section className="max-w-7xl mx-auto flex flex-col items-center justify-center py-12 space-y-16 px-[16px] md:px-0">
             {commodities.map((commodity, index) => (
                 <div
                     key={index}

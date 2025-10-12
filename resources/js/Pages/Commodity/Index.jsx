@@ -34,13 +34,13 @@ const CommodityPage = () => {
                 onCategoryChange={handleCategoryChange}
             />
 
-            <section id="breadcrumbs" className="max-w-7xl mx-auto pt-16 pb-8 mt-12">
+            <section id="breadcrumbs" className="max-w-7xl md:mx-auto pt-16 pb-8 mt-12 mx-[16px]">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
                     <BreadCrumbs items={breadcrumbItems} />
                 </div>
             </section>
 
-            <section id="header-title" className="max-w-7xl mx-auto justify-start py-10">
+            <section id="header-title" className="max-w-7xl mx-auto justify-start py-10 px-[16px] md:px-0">
                 <span className="text-[14px]">Operated by</span>
                 <h3 className="text-[32px]">PT Wajira Jagratara Inter Nasional</h3>
                 <p className="text-[16px]">Expansion of international business network including overseas cooperation and global market development</p>
