@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import Header from "@/Components/layout/Header";
 import Footer from "@/Components/layout/Footer";
@@ -9,6 +10,13 @@ import RecomendationProductList from "@/Components/RecomendationProductList";
 import MotorcycleDescriptionContainer from "@/Components/MotorcycleDescriptionContainer";
 
 const MotocyclesDetail = (slug) => {
+    const [activeCategory, setActiveCategory] = useState("/");
+
+    // Function to handle category change
+    const handleCategoryChange = (category) => {
+        setActiveCategory(category);
+    };
+
     const breadcrumbItems = [
         { name: 'Home', href: '/' },
         { name: 'Products', href: '/products' },
@@ -18,7 +26,7 @@ const MotocyclesDetail = (slug) => {
 
     return (
         <section id="motocycle-detail" className="min-h-screen bg-white max-sm:overflow-x-hidden">
-            <Header />
+            <Header activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
 
             <section className="max-w-7xl mx-auto px-4 pt-16 pb-8 mt-12">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
