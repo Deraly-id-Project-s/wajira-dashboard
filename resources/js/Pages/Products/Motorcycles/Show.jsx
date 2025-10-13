@@ -27,16 +27,13 @@ const MotocyclesDetail = (slug) => {
             </section>
 
             <section id="color-selector" className="max-w-7xl mx-auto flex flex-col">
-                <h2 className="text-[32px] py-[20px] md:px-0 px-4 mb-2">
+                <h2 className="text-[32px] py-[20px] md:px-0 px-4 mb-12">
                     Color Variant Yamaha Aerox Alpha
                 </h2>
                 <MotorcycleColor />
             </section>
 
             <section id="360-viewer" className="max-w-7xl mx-auto flex flex-col mt-32">
-                <h2 className="text-[32px] py-[20px] md:px-0 px-4 mb-2">
-                    360 View Yamaha Aerox Alpha
-                </h2>
                 <MotorcycleViewer modelId="aerox-alpha" initialColor="black" />
             </section>
 
