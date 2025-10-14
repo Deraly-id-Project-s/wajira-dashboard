@@ -22,11 +22,11 @@ export default function AboutUs() {
       </div>
 
       {/* Right Section - Logo */}
-      <div className="md:w-1/5 flex justify-center">
+      <div className="md:w-1/4 flex justify-center">
         <img
           src="/assets/logo.png"
           alt="Wajira Logo"
-          className="w-[254px] aspect-square drop-shadow-lg"
+          className="w-[294px] aspect-square drop-shadow-lg"
         />
       </div>
     </section>
