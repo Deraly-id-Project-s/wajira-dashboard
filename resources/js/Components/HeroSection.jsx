@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, MoveDownRight, Phone, X } from "lucide-react";
 import Image from "@/Components/ui/image";
-import RippleButton from "./ui/rippleButton";
+import RippleButton from "@/Components/ui/rippleButton";
+import WhatsAppIcon from "@/Components/ui/WhatsAppIcon";
 import Modal from 'react-modal';
 
 const HeroSection = ({
@@ -162,7 +163,9 @@ const HeroSection = ({
                 onClick={openModal}
                 className="bg-[#198038] text-white font-light px-6 py-3 rounded-lg shadow-md hover:brightness-95 transition flex items-center gap-2"
               >
-                WhatsApp <Phone size={18} />
+                <span className="flex flex-row gap-3 justify-center align-middle items-center">
+                  WhatsApp <WhatsAppIcon className="w-4 h-4 text-white" />
+                </span>
               </RippleButton>
             </motion.div>
           </div>

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 export default function RippleButton({ children, className, onClick }) {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [ripples, setRipples] = useState([]);
-  
+
   const handleClick = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -51,7 +51,10 @@ export default function RippleButton({ children, className, onClick }) {
           }}
         />
       ))}
-      {children}
+
+      <span className="relative z-10 flex items-center justify-center">
+        {children}
+      </span>
     </button>
   );
 }

@@ -1,5 +1,9 @@
-import { Facebook, Instagram, Mail, MessageCircle, Music2 } from "lucide-react";
+import { Mail } from "lucide-react";
 import RippleButton from "@/Components/ui/rippleButton";
+import WhatsAppIcon from "@/Components/ui/WhatsAppIcon";
+import FacebookIcon from "@/Components/ui/FacebookIcon";
+import InstagramIcon from "@/Components/ui/InstagramIcon";
+import TiktokIcon from "@/Components/ui/TiktokIcon";
 
 export default function Footer() {
   return (
@@ -58,10 +62,10 @@ export default function Footer() {
           </div>
 
           <div className="flex space-x-4 text-white font-semibold">
-            <MessageCircle className="w-5 h-5 hover:text-green-400 cursor-pointer" />
-            <Facebook className="w-5 h-5 hover:text-blue-500 cursor-pointer" />
-            <Instagram className="w-5 h-5 hover:text-pink-500 cursor-pointer" />
-            <Music2 className="w-5 h-5 hover:text-white cursor-pointer" /> {/* TikTok */}
+            <WhatsAppIcon className="w-6 h-6 text-white" />
+            <FacebookIcon className="w-6 h-6 text-white" />
+            <InstagramIcon className="w-6 h-6 text-white" />
+            <TiktokIcon className="w-6 h-6 text-white" />
           </div>
         </div>
       </div>
