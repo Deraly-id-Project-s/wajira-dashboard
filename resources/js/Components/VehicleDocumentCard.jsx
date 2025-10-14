@@ -2,7 +2,7 @@ import { Check } from "lucide-react";
 
 const VehicleDocumentCard = () => {
   return (
-    <section className="max-w-7xl mx-auto flex flex-col md:flex-row gap-10 md:gap-16 py-12">
+    <section className="max-w-7xl mx-auto flex flex-col md:flex-row gap-10 md:gap-16 py-12 md:px-0 px-[10px]">
       {/* Left - Image */}
       <div className="relative w-full md:w-1/2 h-[300px] md:h-[400px] overflow-hidden rounded-2xl shadow-lg">
         <img
