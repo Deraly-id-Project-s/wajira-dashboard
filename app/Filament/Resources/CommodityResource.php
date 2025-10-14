@@ -2,16 +2,19 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CommodityResource\Pages;
-use App\Filament\Resources\CommodityResource\RelationManagers;
-use App\Models\Commodity;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
+use App\Models\Commodity;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\CommodityResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\CommodityResource\RelationManagers;
 
 class CommodityResource extends Resource
 {
@@ -25,19 +28,47 @@ class CommodityResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('brand_id')
-                    ->numeric(),
-                Forms\Components\TextInput::make('slug')
+                Select::make('brand_id')
+                    ->placeholder('Brand')
+                    ->relationship('brand', 'name')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('name')
+                    ->native(false),
+                TextInput::make('name')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('price')
+                    ->maxLength(255)
+                    ->placeholder('Motorcycle Name')
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        $baseSlug = Str::slug($state);
+                
+                        $count = Commodity::where('slug', 'LIKE', "{$baseSlug}%")->count();
+                
+                        $slug = $count > 0 ? "{$baseSlug}-{$count}" : $baseSlug;
+                
+                        $set('slug', $slug);
+                    }),
+                TextInput::make('slug')
+                    ->required()
+                    ->disabled()
+                    ->dehydrated()
+                    ->maxLength(255)
+                    ->placeholder('Motorcycle Slug')
+                    ->hintIcon('heroicon-o-information-circle', tooltip: 'Slug will be used for URL'),
+                TextInput::make('price')
+                    ->label('Price')
                     ->required()
                     ->numeric()
                     ->default(0)
-                    ->prefix('$'),
+                    ->prefix('Rp')
+                    ->reactive()
+                    ->afterStateHydrated(function (TextInput $component, $state) {
+                        $component->state(number_format($state, 0, ',', '.'));
+                    })
+                    ->dehydrateStateUsing(function ($state) {
+                        return (int) str_replace(['.', 'Rp', ' '], '', $state);
+                    })
+                    ->suffix(',-')
+                    ->extraInputAttributes(['class' => 'text-right'])
             ]);
     }
 

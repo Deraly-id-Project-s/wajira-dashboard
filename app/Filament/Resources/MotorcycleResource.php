@@ -4,16 +4,28 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
+use Filament\Forms\Set;
 use Filament\Forms\Form;
 use App\Models\Motorcycle;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Split;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Repeater;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Filters\TrashedFilter;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\MotorcycleResource\Pages;
 use App\Filament\Resources\MotorcycleResource\RelationManagers;
+use Filament\Forms\Components\ColorPicker;
 
 class MotorcycleResource extends Resource
 {
@@ -28,208 +40,366 @@ class MotorcycleResource extends Resource
         return $form
             ->schema([
                 Section::make('General Information')
-                ->schema([
-                    Forms\Components\TextInput::make('brand_id')
-                        ->numeric(),
-                    Forms\Components\TextInput::make('slug')
-                        ->required()
-                        ->maxLength(255),
-                    Forms\Components\TextInput::make('name')
-                        ->required()
-                        ->maxLength(255),
-                ])->collapsible(true),
+                    ->schema([
+                        FileUpload::make('product_image')
+                            ->label('Product Image')
+                            ->required()
+                            ->imageEditor()
+                            ->image(),
+                        Select::make('brand_id')
+                            ->placeholder('Brand')
+                            ->relationship('brand', 'name')
+                            ->required()
+                            ->native(false),
+                        TextInput::make('name')
+                            ->required()
+                            ->maxLength(255)
+                            ->placeholder('Motorcycle Name')
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function ($state, callable $set) {
+                                $baseSlug = Str::slug($state);
+                        
+                                $count = Motorcycle::where('slug', 'LIKE', "{$baseSlug}%")->count();
+                        
+                                $slug = $count > 0 ? "{$baseSlug}-{$count}" : $baseSlug;
+                        
+                                $set('slug', $slug);
+                            }),
+                        TextInput::make('slug')
+                            ->required()
+                            ->disabled()
+                            ->dehydrated()
+                            ->maxLength(255)
+                            ->placeholder('Motorcycle Slug')
+                            ->hintIcon('heroicon-o-information-circle', tooltip: 'Slug will be used for URL')
+                    ])->collapsible(true),
                 Section::make('Engine Information')
                     ->schema([
-                        Forms\Components\FileUpload::make('product_image')
-                        ->image(),
-                        Forms\Components\TextInput::make('engine_type')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('engine_size')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('displacement')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('compression_ratio')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('max_power')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('max_torque')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('clutch')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('starter')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('spark_plug')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('fuel_system')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('ignition_system')
+                        TextInput::make('engine_type')
                             ->maxLength(255)
+                            ->required(false)
+                            ->placeholder('Engine Type'),
+                        TextInput::make('engine_size')
+                            ->maxLength(255)
+                            ->required(false)
+                            ->placeholder('Engine Size'),
+                        TextInput::make('displacement')
+                            ->maxLength(255)
+                            ->required(false)
+                            ->placeholder('Displacement'),
+                        TextInput::make('compression_ratio')
+                            ->maxLength(255)
+                            ->required(false)
+                            ->placeholder('Compression Ratio'),
+                        TextInput::make('max_power')
+                            ->required(false)
+                            ->maxLength(255)
+                            ->placeholder('Max Power'),
+                        TextInput::make('max_torque')
+                            ->required(false)
+                            ->maxLength(255)
+                            ->placeholder('Max Torque'),
+                        TextInput::make('clutch')
+                            ->required(false)
+                            ->maxLength(255)
+                            ->placeholder('Clutch'),
+                        TextInput::make('starter')
+                            ->required(false)
+                            ->maxLength(255)
+                            ->placeholder('Starter'),
+                        TextInput::make('spark_plug')
+                            ->required(false)
+                            ->maxLength(255)
+                            ->placeholder('Spark Plug'),
+                        TextInput::make('fuel_system')
+                            ->required(false)
+                            ->maxLength(255)
+                            ->placeholder('Fuel System'),
+                        TextInput::make('ignition_system')
+                            ->required(false)
+                            ->maxLength(255)
+                            ->placeholder('Ignition System')
                     ])->collapsible(true),
                 Split::make([
                     Section::make('Frame Information')
-                    ->schema([
-                        Forms\Components\TextInput::make('frame_type'),
-                        Forms\Components\TextInput::make('front_suspension')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('rear_suspension')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('tire_type'),
-                        Forms\Components\TextInput::make('front_tire')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('rear_tire')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('front_brake')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('lubrication_system')
-                            ->maxLength(255),
-                    ])->collapsible(true),
+                        ->schema([
+                            Select::make('frame_type')
+                                ->options([
+                                    'underbone',
+                                    'backbone',
+                                    'trellis',
+                                    'double_cradle',
+                                    'perimeter',
+                                    'diamond',
+                                    'monocoque',
+                                    'esaf'
+                                ])
+                                ->native(false)
+                                ->required(true),
+                            TextInput::make('front_suspension')
+                                ->maxLength(255)
+                                ->required(false)
+                                ->placeholder('Front Suspension'),
+                            TextInput::make('rear_suspension')
+                                ->maxLength(255)
+                                ->required(false)
+                                ->placeholder('Rear Suspension'),
+                            Select::make('tire_type')
+                                ->options([
+                                    'tubeless',
+                                    'tube',
+                                    'radial',
+                                    'bias'
+                                ])
+                                ->native(false),
+                            TextInput::make('front_tire')
+                                ->maxLength(255)
+                                ->required(false)
+                                ->placeholder('Front Tire'),
+                            TextInput::make('rear_tire')
+                                ->maxLength(255)
+                                ->required(false)
+                                ->placeholder('Rear Tire'),
+                            TextInput::make('front_brake')
+                                ->maxLength(255)
+                                ->required(false)
+                                ->placeholder('Front Brake'),
+                            TextInput::make('lubrication_system')
+                                ->maxLength(255)
+                                ->required(false)
+                                ->placeholder('Lubrication System'),
+                        ])->collapsible(true),
                     Section::make('Dimensions & Weight')
-                    ->schema([
-                        Forms\Components\TextInput::make('overall_length')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('overall_width')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('overall_height')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('wheelbase')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('ground_clearance')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('seat_height')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('curb_weight')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('tank_capacity')
-                            ->maxLength(255),
-                    ])->collapsible(true)
+                        ->schema([
+                            TextInput::make('overall_length')
+                                ->required(false)
+                                ->maxLength(255)
+                                ->placeholder('Overall Length'),
+                            TextInput::make('overall_width')
+                                ->required(false)
+                                ->maxLength(255)
+                                ->placeholder('Overall Width'),
+                            TextInput::make('overall_height')
+                                ->required(false)
+                                ->maxLength(255)
+                                ->placeholder('Overall Height'),
+                            TextInput::make('wheelbase')
+                                ->required(false)
+                                ->maxLength(255)
+                                ->placeholder('Wheelbase'),
+                            TextInput::make('ground_clearance')
+                                ->required(false)
+                                ->maxLength(255)
+                                ->placeholder('Ground Clearance'),
+                            TextInput::make('seat_height')
+                                ->required(false)
+                                ->maxLength(255)
+                                ->placeholder('Seat Height'),
+                            TextInput::make('curb_weight')
+                                ->required(false)
+                                ->maxLength(255)
+                                ->placeholder('Curb Weight'),
+                            TextInput::make('tank_capacity')
+                                ->required(false)
+                                ->maxLength(255)
+                                ->placeholder('Tank Capacity'),
+                        ])->collapsible(true)
                 ])->columnSpanFull(),
                 Section::make('Electryc Information')
-                ->schema([
-                    Forms\Components\TextInput::make('battery')
-                        ->maxLength(255),
-                    Forms\Components\TextInput::make('headlight')
-                        ->maxLength(255),
-                    Forms\Components\TextInput::make('taillight')
-                        ->maxLength(255),
-                    Forms\Components\TextInput::make('turn_signal')
-                        ->maxLength(255),
-                    Forms\Components\Toggle::make('charging_port'),
-                ])->collapsible(true),
-                Forms\Components\TextInput::make('price')
+                    ->schema([
+                        TextInput::make('battery')
+                            ->required(false)
+                            ->maxLength(255)
+                            ->placeholder('Battery'),
+                        TextInput::make('headlight')
+                            ->required(false)
+                            ->maxLength(255)
+                            ->placeholder('Headlight'),
+                        TextInput::make('taillight')
+                            ->required(false)
+                            ->maxLength(255)
+                            ->placeholder('Taillight'),
+                        TextInput::make('turn_signal')
+                            ->required(false)
+                            ->maxLength(255)
+                            ->placeholder('Turn Signal'),
+                        Toggle::make('charging_port')
+                            ->required(false)
+                    ])->collapsible(true),
+                Section::make('Motorcycle Colors')
+                    ->schema([
+                        Repeater::make('colors')
+                            ->relationship('colors')
+                            ->orderable('order')
+                            ->defaultItems(0)
+                            ->collapsible()
+                            ->cloneable()
+                            ->reorderableWithButtons()
+                            ->schema([
+                                FileUpload::make('image')
+                                    ->image()
+                                    ->directory(function (callable $get) {
+                                        $slug = Str::slug($get('name') ?? 'unnamed');
+                                        
+                                        return "assets/images/products/motorcycles/{$slug}/colors";
+                                    })
+                                    ->maxSize(2048)
+                                    ->required(true)
+                                    ->label('Foto Warna')
+                                    ->columnSpanFull(),
+
+                                TextInput::make('color_name')
+                                    ->required(true)
+                                    ->placeholder('Motorcycle Color Name'),
+
+                                ColorPicker::make('color_code')
+                                    ->label('Motorcycle Color')
+                                    ->required(true)
+                                    ->placeholder('Motorcycle Color')
+                                    ->helperText('Example: #ff0000'),
+
+                                TextInput::make('stock')
+                                    ->required(true)
+                                    ->numeric()
+                                    ->default(1)
+                                    ->minValue(1)
+                                    ->placeholder('Stock'),
+                            ])
+                            ->columns(3)
+                            ->addActionLabel('Add New Color')
+                            ->reorderableWithDragAndDrop(false)
+                            ->reorderableWithButtons(true)
+                    ])
+                    ->collapsible(true),
+                Section::make('360° Product Images')
+                    ->schema([
+                        Forms\Components\FileUpload::make('image_360')
+                            ->label('Upload 360° Images')
+                            ->multiple()
+                            ->reorderable()
+                            ->image()
+                            ->panelLayout('compact') 
+                            ->imageEditor()
+                            ->preserveFilenames()
+                            ->panelLayout('grid')
+                            ->directory(function (callable $get) {
+                                $slug = Str::slug($get('name') ?? 'unnamed');
+                                return "assets/images/products/motorcycles/{$slug}/360";
+                            })
+                            ->columns(2)
+                            ->helperText('Upload semua frame gambar untuk efek 360°. Drag untuk mengatur urutan.'),
+                    ])
+                    ->collapsible(true),
+                TextInput::make('price')
+                    ->label('Price')
                     ->required()
                     ->numeric()
                     ->default(0)
-                    ->prefix('Rp'),
-            ]);
+                    ->prefix('Rp')
+                    ->reactive()
+                    ->afterStateHydrated(function (TextInput $component, $state) {
+                        $component->state(number_format($state, 0, ',', '.'));
+                    })
+                    ->dehydrateStateUsing(function ($state) {
+                        return (int) str_replace(['.', 'Rp', ' '], '', $state);
+                    })
+                    ->suffix(',-')
+                    ->extraInputAttributes(['class' => 'text-right'])
+                ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('brand_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\ImageColumn::make('product_image'),
-                Tables\Columns\TextColumn::make('product_color')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('product_360')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('engine_type')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('engine_size')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('displacement')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('compression_ratio')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('max_power')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('max_torque')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('clutch')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('starter')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('spark_plug')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('fuel_system')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('ignition_system')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('frame_type'),
-                Tables\Columns\TextColumn::make('front_suspension')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('rear_suspension')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('tire_type'),
-                Tables\Columns\TextColumn::make('front_tire')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('rear_tire')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('front_brake')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('lubrication_system')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('overall_length')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('overall_width')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('overall_height')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('wheelbase')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('ground_clearance')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('seat_height')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('curb_weight')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('tank_capacity')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('battery')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('headlight')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('taillight')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('turn_signal')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('charging_port')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('price')
-                    ->money()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('deleted_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                Tables\Filters\TrashedFilter::make(),
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                    Tables\Actions\ForceDeleteBulkAction::make(),
-                    Tables\Actions\RestoreBulkAction::make(),
-                ]),
-            ]);
+        ->columns([
+            Tables\Columns\TextColumn::make('id')
+                ->label('ID')
+                ->sortable(),
+
+            Tables\Columns\TextColumn::make('slug')
+                ->label('Slug')
+                ->searchable()
+                ->sortable(),
+
+            Tables\Columns\TextColumn::make('name')
+                ->label('Name')
+                ->searchable()
+                ->sortable(),
+
+            Tables\Columns\TextColumn::make('price')
+                ->label('Price')
+                ->money('IDR', true)
+                ->sortable(),
+
+            Tables\Columns\TextColumn::make('created_at')
+                ->label('Created')
+                ->dateTime('d M Y H:i')
+                ->sortable(),
+
+            // Kolom tambahan, default-nya hidden (toggleable)
+            Tables\Columns\TextColumn::make('engine_type')
+                ->searchable()
+                ->toggleable(isToggledHiddenByDefault: true),
+
+            Tables\Columns\TextColumn::make('engine_size')
+                ->searchable()
+                ->toggleable(isToggledHiddenByDefault: true),
+
+            Tables\Columns\TextColumn::make('max_power')
+                ->searchable()
+                ->toggleable(isToggledHiddenByDefault: true),
+
+            Tables\Columns\TextColumn::make('max_torque')
+                ->searchable()
+                ->toggleable(isToggledHiddenByDefault: true),
+
+            Tables\Columns\TextColumn::make('fuel_system')
+                ->searchable()
+                ->toggleable(isToggledHiddenByDefault: true),
+
+            Tables\Columns\TextColumn::make('overall_length')
+                ->searchable()
+                ->toggleable(isToggledHiddenByDefault: true),
+
+            Tables\Columns\TextColumn::make('overall_width')
+                ->searchable()
+                ->toggleable(isToggledHiddenByDefault: true),
+
+            Tables\Columns\TextColumn::make('overall_height')
+                ->searchable()
+                ->toggleable(isToggledHiddenByDefault: true),
+
+            Tables\Columns\TextColumn::make('battery')
+                ->searchable()
+                ->toggleable(isToggledHiddenByDefault: true),
+
+            Tables\Columns\IconColumn::make('charging_port')
+                ->boolean()
+                ->toggleable(isToggledHiddenByDefault: true),
+
+            Tables\Columns\TextColumn::make('updated_at')
+                ->dateTime()
+                ->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
+
+            Tables\Columns\TextColumn::make('deleted_at')
+                ->dateTime()
+                ->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
+        ])
+        ->filters([
+            Tables\Filters\TrashedFilter::make(),
+        ])
+        ->actions([
+            Tables\Actions\EditAction::make(),
+        ])
+        ->bulkActions([
+            Tables\Actions\BulkActionGroup::make([
+                Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\ForceDeleteBulkAction::make(),
+                Tables\Actions\RestoreBulkAction::make(),
+            ]),
+        ]);    
     }
 
     public static function getRelations(): array

@@ -16,8 +16,7 @@ class Motorcycle extends Model
         'slug',
         'name',
         'product_image',
-        'product_color',
-        'product_360',
+        'image_360',
         'engine_type',
         'engine_size',
         'displacement',
@@ -49,14 +48,23 @@ class Motorcycle extends Model
         'headlight',
         'taillight',
         'turn_signal',
-        'charge_port',
+        'charging_port',
         'price',
         'deleted_at',
+    ];
+
+    protected $casts = [
+        'image_360' => 'array',
     ];
 
     // Relationships
     public function brand()
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    public function colors()
+    {
+        return $this->hasMany(MotorcycleColor::class);
     }
 }

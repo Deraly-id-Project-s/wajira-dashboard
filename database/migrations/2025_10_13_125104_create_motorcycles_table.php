@@ -20,8 +20,7 @@ return new class extends Migration
             $table->string('slug')->unique()->nullable(false);
             $table->string('name')->nullable(false);
             $table->string('product_image')->nullable(true);
-            $table->string('product_color')->nullable(true);
-            $table->string('product_360')->nullable(true);
+            $table->json('image_360')->nullable(true);
             // Engine
             $table->string('engine_type')->nullable(true);
             $table->string('engine_size')->nullable(true);

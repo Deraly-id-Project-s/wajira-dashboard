@@ -1,0 +1,11 @@
+.file-upload-grid .fi-fo-file-upload-file {
+  display: inline-block !important;
+  width: auto !important;
+  margin-right: 0.5rem;
+}
+
+.file-upload-grid .fi-fo-file-upload-files {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.5rem;
+}
