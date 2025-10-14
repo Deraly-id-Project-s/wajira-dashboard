@@ -1,66 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown, MoveDownRight, Phone, X } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import Image from "@/Components/ui/image";
 import RippleButton from "@/Components/ui/rippleButton";
 import WhatsAppIcon from "@/Components/ui/WhatsAppIcon";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 
-const HeroSection = ({
-  activeCategory,
-  onScrollDown,
-}) => {
+const HeroSection = ({ onScrollDown }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    formMessage: ''
-  });
+  const [currentBanner, setCurrentBanner] = useState(0);
 
   const heroBanners = [
-    {
-      prefix: '/',
-      image: '/assets/main_banner.jpg',
-    }, 
-    {
-      prefix: '/product/otomotif',
-      image: 'https://images.unsplash.com/photo-1496165493909-5494251d69f7?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-    },
-    {
-      prefix: '/corporate',
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    }
+    "/assets/banners/1.jpg",
+    "/assets/banners/2.png",
+    "/assets/banners/3.png",
+    "/assets/banners/4.png",
+    "/assets/banners/5.png",
   ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBanner((prev) => (prev + 1) % heroBanners.length);
+    }, 10000); // 30 s
+    return () => clearInterval(interval);
+  }, [heroBanners.length]);
+
+  // Form state
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    formMessage: "",
+  });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const { firstName, lastName, email, phone, formMessage } = formData;
     const fullName = `${firstName} ${lastName}`;
-    const waNumber = "6287883531313"; 
+    const waNumber = "6287883531313";
     const message = `Halo, saya ${fullName}%0AEmail: ${email}%0APhone: ${phone}%0A${formMessage}`;
 
     const waUrl = `https://api.whatsapp.com/send?phone=${waNumber}&text=${message}`;
-    
-    window.open(waUrl, '_blank');
-    setIsModalOpen(false);
-  };
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
+    window.open(waUrl, "_blank");
     setIsModalOpen(false);
   };
 
@@ -75,61 +66,56 @@ const HeroSection = ({
     }
   };
 
-  // Modal styles
   const customStyles = {
     content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      maxWidth: '500px',
-      width: '90%',
-      borderRadius: '12px',
-      padding: '0',
-      border: 'none',
-      overflow: 'hidden',
-      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.2)'
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      maxWidth: "500px",
+      width: "90%",
+      borderRadius: "12px",
+      padding: "0",
+      border: "none",
+      overflow: "hidden",
+      boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)",
     },
     overlay: {
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
       zIndex: 1000,
-      backdropFilter: 'blur(5px)'
-    }
+      backdropFilter: "blur(5px)",
+    },
   };
-
-  const bannerImage = heroBanners.find(banner => banner.prefix === activeCategory)?.image || heroBanners[0].image;
 
   return (
     <section id="hero_section" className="relative w-full h-screen bg-white overflow-hidden">
-      {/* Hero Image */}
+      {/* Hero Background */}
       <motion.div
+        key={currentBanner}
         className="absolute inset-0 w-full h-full"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}
       >
         <Image
-          src={bannerImage}
-          alt={`${activeCategory?.toUpperCase()} Motorcycle`}
+          src={heroBanners[currentBanner]}
+          alt={`Banner ${currentBanner + 1}`}
           className="w-full h-full object-cover"
           fill
           priority
         />
-        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-30" />
       </motion.div>
 
       {/* Hero Content */}
-      <div className="relative z-10 min-h-screen w-full flex items-center justify-center px-6 md:px-16">
+      <div className="relative z-10 min-h-screen flex items-center justify-center px-6 md:px-16">
         <div className="flex flex-row gap-10 items-center w-full max-w-7xl">
-          {/* Konten Teks */}
           <div className="flex flex-col justify-center">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-[45px] md:text-5xl max-w-[678px] min-w-[262px] font-light text-white mt-2"
+              className="text-[45px] md:text-5xl max-w-[678px] font-light text-white mt-2"
             >
               SMART TRADE, SHIPPING & EXPORT SERVICES
             </motion.h1>
@@ -142,7 +128,7 @@ const HeroSection = ({
             >
               Wajira Jagrata Corps delivers smart solutions in exports, logistics, and vehicle services.
             </motion.p>
-            
+
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -152,18 +138,17 @@ const HeroSection = ({
               From motorcycles to key commodities, we connect Indonesia to global markets with trusted shipping and end-to-end support.
             </motion.p>
 
-            {/* Tombol */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2 }}
               className="mt-8 flex gap-4"
             >
-              <RippleButton 
-                onClick={openModal}
+              <RippleButton
+                onClick={() => setIsModalOpen(true)}
                 className="bg-[#198038] text-white font-light px-6 py-3 rounded-lg shadow-md hover:brightness-95 transition flex items-center gap-2"
               >
-                <span className="flex flex-row gap-3 justify-center align-middle items-center">
+                <span className="flex flex-row gap-3 justify-center items-center">
                   WhatsApp <WhatsAppIcon className="w-4 h-4 text-white" />
                 </span>
               </RippleButton>
@@ -174,7 +159,7 @@ const HeroSection = ({
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-10 left-1/2 transform translate-x-1/3 max-sm:-translate-x-10 max-sm:mr-2 cursor-pointer"
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -191,23 +176,18 @@ const HeroSection = ({
       {/* Contact Modal */}
       <Modal
         isOpen={isModalOpen}
-        onRequestClose={closeModal}
+        onRequestClose={() => setIsModalOpen(false)}
         style={customStyles}
         contentLabel="Contact Form Modal"
       >
         <div className="bg-white">
-          {/* Modal Header */}
           <div className="flex justify-between items-center p-6 border-b">
             <h2 className="text-2xl font-bold text-gray-800">Contact Us</h2>
-            <button 
-              onClick={closeModal}
-              className="text-gray-500 hover:text-gray-700 transition"
-            >
+            <button onClick={() => setIsModalOpen(false)} className="text-gray-500 hover:text-gray-700 transition">
               <X size={24} />
             </button>
           </div>
-          
-          {/* Modal Body */}
+
           <div className="p-6">
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -240,7 +220,7 @@ const HeroSection = ({
                   />
                 </div>
               </div>
-              
+
               <div className="mb-4">
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                   Email
@@ -255,7 +235,7 @@ const HeroSection = ({
                   required
                 />
               </div>
-              
+
               <div className="mb-6">
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
                   Phone Number
@@ -270,6 +250,7 @@ const HeroSection = ({
                   required
                 />
               </div>
+
               <div className="mb-6">
                 <label htmlFor="formMessage" className="block text-sm font-medium text-gray-700 mb-1">
                   Message
@@ -278,11 +259,12 @@ const HeroSection = ({
                   id="formMessage"
                   name="formMessage"
                   value={formData.formMessage}
-                  onChange={(e) => setFormData({ ...formData, formMessage: e.target.value })}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
                   required
                 />
               </div>
+
               <button
                 type="submit"
                 className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-4 rounded-lg transition duration-200"
