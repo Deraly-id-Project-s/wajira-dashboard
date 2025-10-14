@@ -2,16 +2,18 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\MotorcycleResource\Pages;
-use App\Filament\Resources\MotorcycleResource\RelationManagers;
-use App\Models\Motorcycle;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
+use App\Models\Motorcycle;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Split;
+use Filament\Forms\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\MotorcycleResource\Pages;
+use App\Filament\Resources\MotorcycleResource\RelationManagers;
 
 class MotorcycleResource extends Resource
 {
@@ -25,86 +27,99 @@ class MotorcycleResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('brand_id')
-                    ->numeric(),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\FileUpload::make('product_image')
-                    ->image(),
-                Forms\Components\TextInput::make('product_color')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('product_360')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('engine_type')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('engine_size')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('displacement')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('compression_ratio')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('max_power')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('max_torque')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('clutch')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('starter')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('spark_plug')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('fuel_system')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('ignition_system')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('frame_type'),
-                Forms\Components\TextInput::make('front_suspension')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('rear_suspension')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('tire_type'),
-                Forms\Components\TextInput::make('front_tire')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('rear_tire')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('front_brake')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('lubrication_system')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('overall_length')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('overall_width')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('overall_height')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('wheelbase')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('ground_clearance')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('seat_height')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('curb_weight')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('tank_capacity')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('battery')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('headlight')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('taillight')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('turn_signal')
-                    ->maxLength(255),
-                Forms\Components\Toggle::make('charging_port'),
+                Section::make('General Information')
+                ->schema([
+                    Forms\Components\TextInput::make('brand_id')
+                        ->numeric(),
+                    Forms\Components\TextInput::make('slug')
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('name')
+                        ->required()
+                        ->maxLength(255),
+                ])->collapsible(true),
+                Section::make('Engine Information')
+                    ->schema([
+                        Forms\Components\FileUpload::make('product_image')
+                        ->image(),
+                        Forms\Components\TextInput::make('engine_type')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('engine_size')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('displacement')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('compression_ratio')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('max_power')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('max_torque')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('clutch')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('starter')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('spark_plug')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('fuel_system')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('ignition_system')
+                            ->maxLength(255)
+                    ])->collapsible(true),
+                Split::make([
+                    Section::make('Frame Information')
+                    ->schema([
+                        Forms\Components\TextInput::make('frame_type'),
+                        Forms\Components\TextInput::make('front_suspension')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('rear_suspension')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('tire_type'),
+                        Forms\Components\TextInput::make('front_tire')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('rear_tire')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('front_brake')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('lubrication_system')
+                            ->maxLength(255),
+                    ])->collapsible(true),
+                    Section::make('Dimensions & Weight')
+                    ->schema([
+                        Forms\Components\TextInput::make('overall_length')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('overall_width')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('overall_height')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('wheelbase')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('ground_clearance')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('seat_height')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('curb_weight')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('tank_capacity')
+                            ->maxLength(255),
+                    ])->collapsible(true)
+                ])->columnSpanFull(),
+                Section::make('Electryc Information')
+                ->schema([
+                    Forms\Components\TextInput::make('battery')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('headlight')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('taillight')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('turn_signal')
+                        ->maxLength(255),
+                    Forms\Components\Toggle::make('charging_port'),
+                ])->collapsible(true),
                 Forms\Components\TextInput::make('price')
                     ->required()
                     ->numeric()
                     ->default(0)
-                    ->prefix('$'),
+                    ->prefix('Rp'),
             ]);
     }
 
