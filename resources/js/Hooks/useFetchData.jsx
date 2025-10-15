@@ -12,6 +12,10 @@ export default function useFetchData(url, options = {}) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  if (error) {
+    console.error(`Err XHR: ${url}:`, error);
+  }
+
   useEffect(() => {
     if (!url) return;
 

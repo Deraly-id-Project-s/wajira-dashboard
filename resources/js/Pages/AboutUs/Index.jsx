@@ -2,20 +2,15 @@ import React, { useState } from "react";
 import Header from "@/Components/layout/Header";
 import Footer from "@/Components/layout/Footer";
 import HeroSection from "@/Components/HeroSection";
-// import CategoryCarousel from "@/Components/CategoryCarousel";
 import AboutUs from "@/Components/AboutUs";
-// import BusinessFlow from '@/Components/BusinessFlow';
 import VisionMission from '@/Components/VisionMission';
-import ProductList from '@/Components/ProductList';
-// import VisionMission from "@/Components/VisionMission";
-import ReasonChoose from "@/Components/ReasonChoose";
-import HelperButton from "@/Components/HelperButton";
-import SponsorList from "@/Components/SponsorList";
 import GetInTouch from "@/Components/GetInTouch";
-import UserAnalytics from "@/Components/UserAnalytics";
+
+import useFetchData from "@/Hooks/useFetchData";
 
 const AboutUsPage = () => {
   const [activeCategory, setActiveCategory] = useState("/");
+  const { data, loading, error } = useFetchData("/api/public");
 
   // Function to handle category change
   const handleCategoryChange = (category) => {
@@ -41,14 +36,18 @@ const AboutUsPage = () => {
       {/* Hero Section */}
       <HeroSection activeCategory={activeCategory} onScrollDown={scrollToViewer} />
 
-      <AboutUs />
+      <section id="about-us">
+        <AboutUs />
+      </section>
 
-      <VisionMission />
+      <section id="visiton-mission">
+        <VisionMission />
+      </section>
 
       <GetInTouch />
       {/* <UserAnalytics /> */}
 
-      <Footer />
+      <Footer data={data?.data?.links} />
     </div>
   );
 };

@@ -17,7 +17,6 @@ const WajiraGallery = () => {
   };
 
   return (
-    <section className="max-w-6xl mx-auto p-4 md:p-8">
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="flex gap-4"
@@ -36,7 +35,6 @@ const WajiraGallery = () => {
           </div>
         ))}
       </Masonry>
-    </section>
   );
 };
 

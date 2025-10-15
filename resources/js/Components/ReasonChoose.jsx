@@ -23,7 +23,7 @@ export default function ReasonChoose() {
   ];
 
   return (
-    <section className="w-full bg-white py-20 px-6">
+    <div className="w-full bg-white py-20 px-6">
       {/* Heading */}
       <div className="text-center max-w-3xl mx-auto mb-16 text-[32px]">
         <h2 className="text-black font-semibold mb-2">
@@ -66,6 +66,6 @@ export default function ReasonChoose() {
           </motion.div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }

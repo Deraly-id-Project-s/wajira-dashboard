@@ -134,6 +134,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
 
   return (
     <motion.header
+      id="header"
       ref={headerRef}
       initial={{
         backgroundColor: "rgba(255, 255, 255, 0)",

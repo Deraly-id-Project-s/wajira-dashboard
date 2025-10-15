@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import Header from "@/Components/layout/Header";
 import Footer from "@/Components/layout/Footer";
 import ExportMethod from "@/Components/ExportMethod";
-import ProductAndService from '@/Components/ProductAndService';
 import ProductList from '@/Components/ProductList';
-import ReasonChoose from "@/Components/ReasonChoose";
 import HelperButton from "@/Components/HelperButton";
 import SponsorList from "@/Components/SponsorList";
 import BreadCrumbs from "@/Components/BreadCrumbs";
 
+import useFetchData from "@/Hooks/useFetchData";
+
 const ProductsPage = () => {
     const [activeCategory, setActiveCategory] = useState("/");
+    const { data, loading, error } = useFetchData("/api/public");
+
     const breadcrumbItems = [
         { name: 'Home', href: '/' },
         { name: 'Products', href: '/products' },
@@ -36,27 +38,31 @@ const ProductsPage = () => {
             {/* Navigation Bar */}
             <Header activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
 
-            <section className="max-w-7xl mx-auto px-4 pt-16 pb-8 mt-12">
+            <section id="breadcrumbs" className="max-w-7xl mx-auto px-4 pt-16 pb-8 mt-12">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
                     <BreadCrumbs items={breadcrumbItems} />
                 </div>
             </section>
 
-            <ExportMethod />
+            <section id="export-method">
+                <ExportMethod />
+            </section>
 
-            <section className="max-w-7xl mx-auto px-4 py-16">
+            <section id="sponsor-list" className="max-w-7xl mx-auto px-4 py-16">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-14">
-                    <SponsorList />
+                    <SponsorList data={data?.data?.brands} />
                 </div>
             </section>
 
-            <div className="flex max-w-7xl mx-auto flex-col justify-center align-middle items-center">
+            <section id="product-list" className="flex max-w-7xl mx-auto flex-col justify-center align-middle items-center">
                 <ProductList />
-            </div>
+            </section>
 
-            <HelperButton />
+            <section id="helper-button" className="md:max-w-7xl max-w-full mx-auto px-0 py-16">
+                <HelperButton />
+            </section>
 
-            <Footer />
+            <Footer data={data?.data?.links} />
         </div>
     );
 };

@@ -1,6 +1,6 @@
 export default function AboutUs() {
   return (
-    <section className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between p-6 md:p-12">
+    <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between p-6 md:p-12">
       <div className="md:w-4/5 text-[#1A1A1A]">
         <h2 className="text-[32px] font-semibold mb-4">About Us</h2>
         <p className="text-[16px] leading-relaxed mb-4 opacity-90">
@@ -29,6 +29,6 @@ export default function AboutUs() {
           className="w-[294px] aspect-square drop-shadow-lg"
         />
       </div>
-    </section>
+    </div>
   );
 }

@@ -19,7 +19,7 @@ export default function ExportMethod() {
   ];
 
   return (
-    <section className="flex flex-col items-center gap-6 p-6 max-w-7xl mx-auto">
+    <div className="flex flex-col items-center gap-6 p-6 max-w-7xl mx-auto">
       {methods.map((item, index) => (
         <div
           key={index}
@@ -36,6 +36,6 @@ export default function ExportMethod() {
           </div>
         </div>
       ))}
-    </section>
+    </div>
   );
 }

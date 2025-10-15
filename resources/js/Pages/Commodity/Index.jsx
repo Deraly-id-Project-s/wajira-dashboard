@@ -5,8 +5,12 @@ import BreadCrumbs from "@/Components/BreadCrumbs";
 import Commodities from "@/Components/Commodities";
 import HelperButton from "@/Components/HelperButton";
 
+import useFetchData from "@/Hooks/useFetchData";
+
 const CommodityPage = () => {
     const [activeCategory, setActiveCategory] = useState("/commodity");
+    const { data, loading, error } = useFetchData("/api/public");
+
     const breadcrumbItems = [
         { name: 'Home', href: '/' },
         { name: 'Commodity', href: '/commodity' },
@@ -16,14 +20,6 @@ const CommodityPage = () => {
 
     const handleCategoryChange = (category) => {
         setActiveCategory(category);
-    };
-
-
-    const scrollToViewer = () => {
-        const viewerSection = document.getElementById("viewer-section");
-        if (viewerSection) {
-        viewerSection.scrollIntoView({ behavior: "smooth" });
-        }
     };
 
     return (
@@ -54,9 +50,11 @@ const CommodityPage = () => {
                 </span>
             </section>
     
-            <HelperButton />
+            <section id="helper-button" className="md:max-w-7xl max-w-full mx-auto px-0 py-16">
+                <HelperButton />
+            </section>
             
-            <Footer />
+            <Footer data={data?.data?.links} />
         </div>
     );
 }

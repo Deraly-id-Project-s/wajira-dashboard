@@ -87,7 +87,7 @@ const HeroSection = ({ onScrollDown }) => {
   };
 
   return (
-    <section id="hero_section" className="relative w-full h-screen bg-white overflow-hidden">
+    <div className="relative w-full h-screen bg-white overflow-hidden">
       {/* Hero Background */}
       <motion.div
         key={currentBanner}
@@ -275,7 +275,7 @@ const HeroSection = ({ onScrollDown }) => {
           </div>
         </div>
       </Modal>
-    </section>
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
 export default function VisionMission() {
   return (
-    <section className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between p-6 md:p-12 gap-8">
+    <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between p-6 md:p-12 gap-8">
       {/* Left - Image */}
       <div className="md:w-1/5 w-full flex justify-center">
         <img
@@ -26,6 +26,6 @@ export default function VisionMission() {
           especially in Yogyakarta and Indonesia in general.
         </p>
       </div>
-    </section>
+    </div>
   );
 }

@@ -15,14 +15,13 @@ import ReasonChoose from "@/Components/ReasonChoose";
 import HelperButton from "@/Components/HelperButton";
 import SponsorList from "@/Components/SponsorList";
 import GetInTouch from "@/Components/GetInTouch";
-import UserAnalytics from "@/Components/UserAnalytics";
+
+import useFetchData from "@/Hooks/useFetchData";
 
 const HomePage = () => {
-  // State for the currently selected motorcycle model and color
-  // State for the currently selected category
   const [activeCategory, setActiveCategory] = useState("/");
+  const { data, loading, error } = useFetchData("/api/public");
 
-  // Function to handle category change
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
   };
@@ -36,7 +35,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white max-sm:overflow-x-hidden">
+    <div id="page-content" className="min-h-screen bg-white max-sm:overflow-x-hidden">
       {/* Navigation Bar */}
       <Header
         activeCategory={activeCategory}
@@ -44,13 +43,15 @@ const HomePage = () => {
       />
 
       {/* Hero Section */}
-      <HeroSection activeCategory={activeCategory} onScrollDown={scrollToViewer} />
+      <section id="hero_section">
+        <HeroSection activeCategory={activeCategory} onScrollDown={scrollToViewer} />
+      </section>
 
-      <div className="flex flex-col justify-center align-middle items-center py-16 px-1 mx-auto">
+      <section id="product-and-service" className="flex flex-col justify-center align-middle items-center py-16 px-1 mx-auto">
         <ProductAndService />
-      </div>
+      </section>
 
-      <section className="max-w-7xl mx-auto px-4 py-16">
+      <section id="sponsor-list" className="max-w-7xl mx-auto px-4 py-16">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-14">
           <div>
             <h2 className="text-[32px] md:text-3xl font-bold text-gray-800">
@@ -65,24 +66,28 @@ const HomePage = () => {
             More Brands <ArrowRight size={16} className="ml-2" />
           </RippleButton>
         </div>
-        <SponsorList />
+        <SponsorList data={data?.data?.brands} />
       </section>
 
-      <HelperButton />
+      <section id="helper-button" className="md:max-w-7xl max-w-full mx-auto px-0 py-16">
+        <HelperButton />
+      </section>
 
-      <div className="flex max-w-7xl mx-auto flex-col justify-center align-middle items-center">
+      <section id="product-list" className="flex max-w-7xl mx-auto flex-col justify-center align-middle items-center">
         <h2 className="text-[57px] p-[100px] font-bold mb-2 text-center">
           Featured Listing
         </h2>
         <ProductList />
-      </div>
+      </section>
 
-      <ReasonChoose />
+      <section id="reason-choose">
+        <ReasonChoose />
+      </section>
 
       <GetInTouch />
       {/* <UserAnalytics /> */}
 
-      <Footer />
+      <Footer data={data?.data?.links} />
     </div>
   );
 };
