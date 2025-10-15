@@ -17,4 +17,9 @@ Route::get('/about-us', [App\Http\Controllers\Public\AboutUsController::class, '
 // Gallery
 Route::get('/gallery', [App\Http\Controllers\Public\GalleryController::class, 'index'])->name('gallery');
 
+// General API Resource
+Route::group(['prefix' => 'api'], function () {
+    Route::get('/links', [App\Http\Controllers\Public\LinkController::class, 'index'])->name('links');
+});
+
 require __DIR__.'/auth.php';
