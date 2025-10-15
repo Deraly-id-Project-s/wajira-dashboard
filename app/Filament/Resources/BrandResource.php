@@ -28,6 +28,8 @@ class BrandResource extends Resource
 
     protected static ?string $navigationGroup = 'Brands';
 
+    protected static ?int $navigationSort = 1;
+
     public static function form(Form $form): Form
     {
         return $form
@@ -60,6 +62,7 @@ class BrandResource extends Resource
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255)
+                            ->disabled()
                             ->placeholder('Brand name')
                             ->live(onBlur: true)
                             ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
