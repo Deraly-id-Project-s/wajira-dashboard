@@ -62,10 +62,17 @@ class BrandResource extends Resource
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255)
-                            ->disabled()
                             ->placeholder('Brand name')
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
+                            ->afterStateUpdated(function ($state, callable $set) {
+                                $baseSlug = Str::slug($state);
+                        
+                                $count = Brand::where('slug', 'LIKE', "{$baseSlug}%")->count();
+                        
+                                $slug = $count > 0 ? "{$baseSlug}-{$count}" : $baseSlug;
+                        
+                                $set('slug', $slug);
+                            }),
                         Forms\Components\TextInput::make('slug')
                             ->required()
                             ->maxLength(255)
@@ -88,13 +95,8 @@ class BrandResource extends Resource
                 ImageColumn::make('logo')
                     ->label('Brand Logo')
                     ->circular(),
-                TextColumn::make('slug')
-                    ->searchable(),
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('description')
-                    ->searchable()
-                    ->separator('-'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
