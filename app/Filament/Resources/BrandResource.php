@@ -39,6 +39,11 @@ class BrandResource extends Resource
                     ->schema([
                         FileUpload::make('logo')
                             ->image()
+                            ->disk('public')
+                            ->directory('brands')
+                            ->getUploadedFileNameForStorageUsing(function ($file) {
+                                return md5($file->getClientOriginalName() . microtime()) . '.' . $file->getClientOriginalExtension();
+                            })
                             ->label('Brand Logo')
                             ->required()
                             ->maxSize(1024)
@@ -50,6 +55,11 @@ class BrandResource extends Resource
                             ->hintIcon('heroicon-o-information-circle', tooltip: 'Maximum image size is 1MB with extensions jpg, png, jpeg'),
                         FileUpload::make('brand_banner')
                             ->image()
+                            ->disk('public')
+                            ->directory('brand_banners')
+                            ->getUploadedFileNameForStorageUsing(function ($file) {
+                                return md5($file->getClientOriginalName() . microtime()) . '.' . $file->getClientOriginalExtension();
+                            })
                             ->label('Brand Banner')
                             ->maxSize(1024)
                             ->imageResizeTargetHeight(512)
