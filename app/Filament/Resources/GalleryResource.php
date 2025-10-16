@@ -2,22 +2,22 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
 use App\Models\Gallery;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
+use Filament\Support\Enums\FontWeight;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ColorColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
-use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Columns\Layout\Panel;
+use Filament\Tables\Columns\Layout\Split;
+use Filament\Tables\Columns\Layout\Stack;
 use App\Filament\Resources\GalleryResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\GalleryResource\RelationManagers;
 
 class GalleryResource extends Resource
 {
@@ -32,102 +32,95 @@ class GalleryResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-        ->schema([
-            Section::make('Gallery Image')
-                ->description('Upload image and provide alternative text for accessibility.')
-                ->icon('heroicon-o-photo')
-                ->schema([
-                    FileUpload::make('image')
-                        ->image()
-                        ->label('Upload Image')
-                        ->required()
-                        ->maxSize(2048)
-                        ->imageEditor()
-                        ->imageResizeMode('contain')
-                        ->imageCropAspectRatio('16:9')
-                        ->hint('Maximum size: 2MB (jpg, png, jpeg)')
-                        ->columnSpanFull(),
+            ->schema([
+                Section::make('Gallery Image')
+                    ->description('Upload image and provide alternative text for accessibility.')
+                    ->icon('heroicon-o-photo')
+                    ->schema([
+                        FileUpload::make('image')
+                            ->disk('public')
+                            ->directory('galleries')
+                            ->getUploadedFileNameForStorageUsing(function ($file) {
+                                return md5($file->getClientOriginalName() . microtime()) . '.' . $file->getClientOriginalExtension();
+                            })
+                            ->image()
+                            ->imageEditor()
+                            ->required()
+                            ->maxSize(2048)
+                            ->hint('Maximum size: 2MB (jpg, png, jpeg)')
+                            ->columnSpanFull(),
 
-                    TextInput::make('title')
-                        ->label('Title')
-                        ->placeholder('Enter image title')
-                        ->required()
-                        ->maxLength(255),
+                        TextInput::make('title')
+                            ->label('Title')
+                            ->placeholder('Enter image title')
+                            ->required()
+                            ->maxLength(255),
 
-                    TextInput::make('alt')
-                        ->label('Alt Text')
-                        ->placeholder('Describe the image for accessibility')
-                        ->required()
-                        ->maxLength(255),
+                        TextInput::make('alt')
+                            ->label('Alt Text')
+                            ->placeholder('Describe the image for accessibility')
+                            ->required()
+                            ->maxLength(255),
 
-                    Textarea::make('description')
-                        ->label('Description')
-                        ->placeholder('Optional description of this image...')
-                        ->rows(3)
-                        ->autosize()
-                        ->maxLength(500)
-                        ->columnSpanFull(),
-                ])
-                ->columns(2)
-                ->collapsible(),
-        ]);
+                        Textarea::make('description')
+                            ->label('Description')
+                            ->placeholder('Optional description of this image...')
+                            ->rows(3)
+                            ->autosize()
+                            ->maxLength(500)
+                            ->columnSpanFull(),
+                    ])
+                    ->columns(2)
+                    ->collapsible(),
+            ]);
     }
 
     public static function table(Table $table): Table
-{
-    return $table
-        ->columns([
-            Tables\Columns\Layout\Grid::make(3) // 3 cards per row
-                ->schema([
-                    Card::make()
-                        ->schema([
-                            Tables\Columns\ImageColumn::make('image')
-                                ->label('Banner')
-                                ->height('200px')
-                                ->width('100%')
-                                ->extraImgAttributes(['class' => 'rounded-xl object-cover'])
-                                ->grow(),
-
-                            Tables\Columns\TextColumn::make('title')
-                                ->label('Title')
-                                ->weight('bold')
-                                ->alignCenter()
-                                ->wrap()
-                                ->limit(40),
-
-                            Tables\Columns\TextColumn::make('alt')
-                                ->label('Alt Text')
-                                ->color('gray')
-                                ->alignCenter()
-                                ->limit(40)
-                                ->tooltip(fn ($record) => $record->alt),
-
-                            Tables\Columns\TextColumn::make('description')
-                                ->label('Description')
-                                ->size('sm')
-                                ->wrap()
-                                ->color('gray')
-                                ->limit(60)
-                                ->placeholder('-'),
+    {
+        return $table
+            ->columns([
+                Stack::make([
+                    ImageColumn::make('image')
+                        ->disk('public')
+                        ->extraImgAttributes([
+                            'style' => 'width:100%; height:auto; object-fit:cover; border-radius:10px;'
                         ])
-                        ->footerActions([
-                            Tables\Actions\EditAction::make()
-                                ->label('Edit')
-                                ->button()
-                                ->size('sm')
-                                ->icon('heroicon-m-pencil-square'),
-                        ]),
-                ]),
-        ])
-        ->defaultSort('created_at', 'desc')
-        ->contentGrid([
-            'md' => 2,
-            'xl' => 3,
-        ])
-        ->filters([])
-        ->actions([])
-        ->bulkActions([]);
-}
+                        ->label('Banner Image'),
+                    Stack::make([
+                        TextColumn::make('title')
+                            ->weight(FontWeight::Bold),
+                        TextColumn::make('url')
+                            ->formatStateUsing(fn(string $state): string => str($state)->after('://')->ltrim('www.')->trim('/'))
+                            ->color('gray')
+                            ->lineClamp(1),
+                    ]),
+                ])
+                ->space(3),
+                Panel::make([
+                    Split::make([
+                        ColorColumn::make('color')
+                            ->grow(false),
+                        TextColumn::make('description')
+                            ->color('gray')
+                    ]),
+                ])
+                ->collapsible(true)
+                ->collapsed(false),
+            ])
+            ->filters([
+                //
+            ])
+            ->contentGrid([
+                'md' => 2,
+                'xl' => 3,
+            ])
+            ->paginated([
+                18,
+                36,
+                72,
+                'all',
+            ]);
+    }
 
 
     public static function getRelations(): array

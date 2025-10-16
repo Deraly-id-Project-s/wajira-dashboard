@@ -6,26 +6,37 @@ import RippleButton from "@/Components/ui/rippleButton";
 import WhatsAppIcon from "@/Components/ui/WhatsAppIcon";
 import Modal from "react-modal";
 
-const HeroSection = ({ onScrollDown }) => {
+const HeroSection = ({ onScrollDown, data }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentBanner, setCurrentBanner] = useState(0);
 
-  const heroBanners = [
-    "/assets/banners/1.jpg",
-    "/assets/banners/2.png",
-    "/assets/banners/3.png",
-    "/assets/banners/4.png",
-    "/assets/banners/5.png",
-  ];
+  console.log("Banner Data:", data);
 
+  const heroBanners = Array.isArray(data)
+    ? data
+        .filter((item) => item.is_show === 1)
+        .sort((a, b) => a.order - b.order)
+        .map((item) => {
+          return `/storage/${item.image}`;
+        })
+    : [];
+
+  // ✅ fallback kalau data kosong
+  const displayedBanners =
+    heroBanners.length > 0
+      ? heroBanners
+      : ["/assets/banners/1.jpg", "/assets/banners/2.png"];
+
+  // ✅ auto ganti banner tiap 10 detik
   useEffect(() => {
+    if (displayedBanners.length === 0) return;
     const interval = setInterval(() => {
-      setCurrentBanner((prev) => (prev + 1) % heroBanners.length);
-    }, 10000); // 30 s
+      setCurrentBanner((prev) => (prev + 1) % displayedBanners.length);
+    }, 10000);
     return () => clearInterval(interval);
-  }, [heroBanners.length]);
+  }, [displayedBanners.length]);
 
-  // Form state
+  // ✅ form modal state
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -44,12 +55,10 @@ const HeroSection = ({ onScrollDown }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const { firstName, lastName, email, phone, formMessage } = formData;
     const fullName = `${firstName} ${lastName}`;
     const waNumber = "6287883531313";
     const message = `Halo, saya ${fullName}%0AEmail: ${email}%0APhone: ${phone}%0A${formMessage}`;
-
     const waUrl = `https://api.whatsapp.com/send?phone=${waNumber}&text=${message}`;
     window.open(waUrl, "_blank");
     setIsModalOpen(false);
@@ -88,7 +97,7 @@ const HeroSection = ({ onScrollDown }) => {
 
   return (
     <div className="relative w-full h-screen bg-white overflow-hidden">
-      {/* Hero Background */}
+      {/* 🖼️ Hero Background */}
       <motion.div
         key={currentBanner}
         className="absolute inset-0 w-full h-full"
@@ -98,7 +107,7 @@ const HeroSection = ({ onScrollDown }) => {
         transition={{ duration: 1 }}
       >
         <Image
-          src={heroBanners[currentBanner]}
+          src={displayedBanners[currentBanner]}
           alt={`Banner ${currentBanner + 1}`}
           className="w-full h-full object-cover"
           fill
@@ -107,7 +116,7 @@ const HeroSection = ({ onScrollDown }) => {
         <div className="absolute inset-0 bg-black bg-opacity-30" />
       </motion.div>
 
-      {/* Hero Content */}
+      {/* 🧱 Hero Content */}
       <div className="relative z-10 min-h-screen flex items-center justify-center px-6 md:px-16">
         <div className="flex flex-row gap-10 items-center w-full max-w-7xl">
           <div className="flex flex-col justify-center">
@@ -126,7 +135,8 @@ const HeroSection = ({ onScrollDown }) => {
               transition={{ duration: 1 }}
               className="mt-4 text-white max-w-[700px] text-[22px] max-sm:text-lg"
             >
-              Wajira Jagrata Corps delivers smart solutions in exports, logistics, and vehicle services.
+              Wajira Jagrata Corps delivers smart solutions in exports,
+              logistics, and vehicle services.
             </motion.p>
 
             <motion.p
@@ -135,7 +145,8 @@ const HeroSection = ({ onScrollDown }) => {
               transition={{ duration: 1 }}
               className="text-white max-w-[700px] text-[22px] max-sm:text-lg"
             >
-              From motorcycles to key commodities, we connect Indonesia to global markets with trusted shipping and end-to-end support.
+              From motorcycles to key commodities, we connect Indonesia to
+              global markets with trusted shipping and end-to-end support.
             </motion.p>
 
             <motion.div
@@ -173,7 +184,7 @@ const HeroSection = ({ onScrollDown }) => {
         <ChevronDown className="w-10 h-10 text-white" />
       </motion.div>
 
-      {/* Contact Modal */}
+      {/* Modal Contact Form */}
       <Modal
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
@@ -183,7 +194,10 @@ const HeroSection = ({ onScrollDown }) => {
         <div className="bg-white">
           <div className="flex justify-between items-center p-6 border-b">
             <h2 className="text-2xl font-bold text-gray-800">Contact Us</h2>
-            <button onClick={() => setIsModalOpen(false)} className="text-gray-500 hover:text-gray-700 transition">
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="text-gray-500 hover:text-gray-700 transition"
+            >
               <X size={24} />
             </button>
           </div>
@@ -192,12 +206,11 @@ const HeroSection = ({ onScrollDown }) => {
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     First Name
                   </label>
                   <input
                     type="text"
-                    id="firstName"
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleInputChange}
@@ -206,12 +219,11 @@ const HeroSection = ({ onScrollDown }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Last Name
                   </label>
                   <input
                     type="text"
-                    id="lastName"
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleInputChange}
@@ -222,12 +234,11 @@ const HeroSection = ({ onScrollDown }) => {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Email
                 </label>
                 <input
                   type="email"
-                  id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
@@ -236,13 +247,12 @@ const HeroSection = ({ onScrollDown }) => {
                 />
               </div>
 
-              <div className="mb-6">
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Phone Number
                 </label>
                 <input
                   type="tel"
-                  id="phone"
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
@@ -252,11 +262,10 @@ const HeroSection = ({ onScrollDown }) => {
               </div>
 
               <div className="mb-6">
-                <label htmlFor="formMessage" className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Message
                 </label>
                 <textarea
-                  id="formMessage"
                   name="formMessage"
                   value={formData.formMessage}
                   onChange={handleInputChange}

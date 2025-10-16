@@ -44,7 +44,7 @@ const HomePage = () => {
 
       {/* Hero Section */}
       <section id="hero_section">
-        <HeroSection activeCategory={activeCategory} onScrollDown={scrollToViewer} />
+        <HeroSection activeCategory={activeCategory} onScrollDown={scrollToViewer} data={data?.data?.banners} />
       </section>
 
       <section id="product-and-service" className="flex flex-col justify-center align-middle items-center py-16 px-1 mx-auto">
