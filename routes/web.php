@@ -20,6 +20,7 @@ Route::get('/gallery', [App\Http\Controllers\Public\GalleryController::class, 'i
 // General API Resource
 Route::group(['prefix' => 'api'], function () {
     Route::get('/public', [App\Http\Controllers\Public\PublicController::class, 'index'])->name('public');
+    Route::get('/commodities', [App\Http\Controllers\Public\PublicController::class, 'commodity'])->name('public.commodity');
 });
 
 require __DIR__.'/auth.php';

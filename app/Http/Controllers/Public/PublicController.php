@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Link;
 use App\Models\Brand;
 use App\Models\Banner;
+use App\Models\Commodity;
 use App\Models\Gallery;
 
 class PublicController extends Controller
@@ -23,6 +24,13 @@ class PublicController extends Controller
         $data['banners'] = Banner::whereNot('is_show', 0)->get();
         $data['links'] = Link::whereNot('is_show', 0)->get();
         $data['galleries'] = Gallery::orderBy('order', 'asc')->get();
+
+        return $this->responseSuccess($data, 'success');
+    }
+
+    public function commodity()
+    {
+        $data['commodities'] = Commodity::all();
 
         return $this->responseSuccess($data, 'success');
     }
