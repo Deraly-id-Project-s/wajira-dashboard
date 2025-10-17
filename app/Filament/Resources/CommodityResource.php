@@ -10,11 +10,15 @@ use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\CommodityResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CommodityResource\RelationManagers;
+use Filament\Tables\Columns\ImageColumn;
 
 class CommodityResource extends Resource
 {
@@ -30,6 +34,19 @@ class CommodityResource extends Resource
     {
         return $form
             ->schema([
+                FileUpload::make('image')
+                    ->disk('public')
+                    ->directory('commodities')
+                    ->getUploadedFileNameForStorageUsing(function ($file) {
+                        return md5($file->getClientOriginalName() . microtime()) . '.' . $file->getClientOriginalExtension();
+                    })
+                    ->image()
+                    ->imageEditor(2)
+                    ->required()
+                    ->maxSize(2048)
+                    ->imagePreviewHeight(500)
+                    ->hint('Maximum size: 2MB (jpg, png, jpeg)')
+                    ->columnSpanFull(),
                 Select::make('brand_id')
                     ->placeholder('Brand')
                     ->relationship('brand', 'name')
@@ -38,7 +55,7 @@ class CommodityResource extends Resource
                 TextInput::make('name')
                     ->required()
                     ->maxLength(255)
-                    ->placeholder('Motorcycle Name')
+                    ->placeholder('Commodity Name')
                     ->live(onBlur: true)
                     ->afterStateUpdated(function ($state, callable $set) {
                         $baseSlug = Str::slug($state);
@@ -54,7 +71,7 @@ class CommodityResource extends Resource
                     ->disabled()
                     ->dehydrated()
                     ->maxLength(255)
-                    ->placeholder('Motorcycle Slug')
+                    ->placeholder('Commodity Slug')
                     ->hintIcon('heroicon-o-information-circle', tooltip: 'Slug will be used for URL'),
                 TextInput::make('price')
                     ->label('Price')
@@ -70,7 +87,8 @@ class CommodityResource extends Resource
                         return (int) str_replace(['.', 'Rp', ' '], '', $state);
                     })
                     ->suffix(',-')
-                    ->extraInputAttributes(['class' => 'text-right'])
+                    ->extraInputAttributes(['class' => 'text-right']),
+                RichEditor::make('content')->columnSpanFull()
             ]);
     }
 
@@ -78,25 +96,25 @@ class CommodityResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('brand_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('slug')
+                ImageColumn::make('image')
+                    ->width(300)
+                    ->height(180),
+                TextColumn::make('brand.name')
+                    ->sortable()
+                    ->badge(),
+                TextColumn::make('slug')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('price')
-                    ->money()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('deleted_at')
+                TextColumn::make('deleted_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+                TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

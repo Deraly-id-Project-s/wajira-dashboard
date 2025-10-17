@@ -12,6 +12,8 @@ class Commodity extends Model
     protected $table = 'commodities';
 
     protected $fillable = [
+        'image',
+        'content',
         'brand_id',
         'slug',
         'name',

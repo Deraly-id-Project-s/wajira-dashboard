@@ -29,7 +29,6 @@ export default function ProductList() {
     (p) => p.category === selectedCategory
   );
 
-
   return (
     <div className="w-full">
       <div className="flex justify-center px-2">
