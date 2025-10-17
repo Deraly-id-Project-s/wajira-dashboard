@@ -53,6 +53,8 @@ class Motorcycle extends Model
         // save product count
         'save_product_count',
         'click_count',
+        // is_recomended
+        'is_recomended',
         'deleted_at',
     ];
 
