@@ -10,8 +10,6 @@ const HeroSection = ({ onScrollDown, data }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentBanner, setCurrentBanner] = useState(0);
 
-  console.log("Banner Data:", data);
-
   const heroBanners = Array.isArray(data)
     ? data
         .filter((item) => item.is_show === 1)

@@ -60,7 +60,8 @@ class GalleryResource extends Resource
                             ->label('Alt Text')
                             ->placeholder('Describe the image for accessibility')
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->hintIcon('heroicon-o-information-circle', tooltip: 'Alt text used for accessibility'),
 
                         Textarea::make('description')
                             ->label('Description')
@@ -69,6 +70,12 @@ class GalleryResource extends Resource
                             ->autosize()
                             ->maxLength(500)
                             ->columnSpanFull(),
+
+                        TextInput::make('order')
+                            ->label('Image Order')
+                            ->placeholder('Enter image order')
+                            ->numeric()
+                            ->minValue(1)
                     ])
                     ->columns(2)
                     ->collapsible(),

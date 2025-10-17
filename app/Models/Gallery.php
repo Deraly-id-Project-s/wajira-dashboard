@@ -12,6 +12,7 @@ class Gallery extends Model
         'image',
         'title',
         'alt',
-        'description'
+        'description',
+        'order'
     ];
 }

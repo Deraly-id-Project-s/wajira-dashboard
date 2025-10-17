@@ -12,9 +12,7 @@ const GalleryPage = () => {
 
     const breadcrumbItems = [
         { name: 'Home', href: '/' },
-        { name: 'Products', href: '/products' },
-        // { name: 'Motorcycles', href: '/products/motorcycles' },
-        // { name: 'Detail', href: null },
+        { name: 'Products', href: '/prod    ucts' },
     ];
 
     // Function to handle category change
@@ -40,7 +38,7 @@ const GalleryPage = () => {
             </section>
 
             <section id="wajira-gallery" className="max-w-7xl mx-auto p-4 md:p-8">
-                <WajiraGallery />
+                <WajiraGallery data={data?.data?.galleries} />
             </section>
 
             <GetInTouch />
