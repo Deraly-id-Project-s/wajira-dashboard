@@ -7,7 +7,7 @@ import useFetchData from "@/Hooks/useFetchData";
 const Commodities = () => {
     const appUrl = import.meta.env.VITE_APP_URL;
     const { data, loading, error } = useFetchData("/api/commodities");
-    const commodities =  data?.data?.commodities;
+    const commodities =  data?.data;
 
     if (loading) {
         return (

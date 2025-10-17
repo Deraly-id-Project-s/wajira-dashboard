@@ -21,7 +21,9 @@ Route::get('/gallery', [App\Http\Controllers\Public\GalleryController::class, 'i
 Route::group(['prefix' => 'api'], function () {
     Route::get('/public', [App\Http\Controllers\Public\PublicController::class, 'index'])->name('public');
     Route::get('/commodities', [App\Http\Controllers\Public\PublicController::class, 'commodity'])->name('public.commodity');
+    Route::get('/all-commodities', [App\Http\Controllers\Public\PublicController::class, 'allCommodity'])->name('public.all-commodity');
     Route::get('/motorcycles', [App\Http\Controllers\Public\PublicController::class, 'motorcycle'])->name('public.motorcycle');
+    Route::get('/all-motorcycles', [App\Http\Controllers\Public\PublicController::class, 'allMotorcycle'])->name('public.all-motorcycle');
 });
 
 require __DIR__.'/auth.php';

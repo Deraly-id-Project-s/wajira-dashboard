@@ -16,6 +16,9 @@ class PublicController extends Controller
 {
     use ResponseTrait;
 
+    protected $motorcycleSimpleColumn = ['id', 'brand_id', 'slug', 'name', 'product_image', 'is_recomended'];
+    protected $commoditySimpleColumn = ['id', 'brand_id', 'slug', 'name', 'image', 'content'];
+
     /**
      * Display a listing of the resource.
      */
@@ -31,21 +34,28 @@ class PublicController extends Controller
 
     public function commodity()
     {
-        $data['commodities'] = Commodity::all();
+        $data = Commodity::select($this->commoditySimpleColumn)->latest()->limit(6)->get();
 
         return $this->responseSuccess($data, 'success');
     }
 
     public function motorcycle()
     {
-        $data['motorcycles'] = Motorcycle::limit(6)->get();
+        $data = Motorcycle::select($this->motorcycleSimpleColumn)->latest()->limit(6)->get();
+
+        return $this->responseSuccess($data, 'success');
+    }
+
+    public function allCommodity()
+    {
+        $data = Motorcycle::select($this->commoditySimpleColumn)->all();
 
         return $this->responseSuccess($data, 'success');
     }
 
     public function allMotorcycle()
     {
-        $data['motorcycles'] = Motorcycle::all();
+        $data = Motorcycle::select($this->motorcycleSimpleColumn)->all();
 
         return $this->responseSuccess($data, 'success');
     }

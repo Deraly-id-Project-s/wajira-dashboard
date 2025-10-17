@@ -4,11 +4,14 @@ import VehicleDocumentCard from "@/Components/VehicleDocumentCard";
 import ExpeditionCard from "@/Components/ExpeditionCard";
 import { motion, AnimatePresence } from "framer-motion";
 import RippleButton from "@/Components/ui/rippleButton";
+import MainLoading from "@/Components/ui/MainLoading";
+
+import useFetchData from "@/Hooks/useFetchData";
 
 const categories = ["Motorcycle", "Expedition", "Commodity", "Vehicle Document"];
 
 const products = [
-  { id: 1, slug: "yamaha-aerox-alpha", name: "Yamaha Aerox Alpha", category: "Motorcycle", image: "/assets/products/motorcycles/aerox1.png" },
+  { id: 1, slug: "aerox-alpha", name: "Yamaha Aerox Alpha", category: "Motorcycle", image: "/assets/products/motorcycles/aerox1.png" },
   { id: 2, slug: "yamaha-aerox-alpha-turbo", name: "Yamaha Aerox Alpha Turbo", category: "Motorcycle", image: "/assets/products/motorcycles/aerox2.png" },
   { id: 3, slug: "honda-adv", name: "Honda ADV 160", category: "Motorcycle", image: "/assets/products/motorcycles/adv.png" },
   { id: 4, slug: "htm-gajah", name: "HTM GAJAH", category: "Motorcycle", image: "/assets/products/motorcycles/htm.png" },
@@ -23,7 +26,18 @@ const products = [
 ];
 
 export default function ProductList() {
+  const { data, loading, error } = useFetchData("/api/motorcycles");
+  const { commodityData, loading2, error2 } = useFetchData("/api/commodities");
+
+  console.log(data);
+
   const [selectedCategory, setSelectedCategory] = useState("Motorcycle");
+
+  if (loading || loading2) return (
+    <div className="flex justify-center items-center py-12">
+      <MainLoading text="Load Products Data..." />
+    </div>
+  );
 
   const filteredProducts = products.filter(
     (p) => p.category === selectedCategory
