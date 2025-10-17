@@ -7,7 +7,7 @@ const MotorcycleDescriptionContainer = ({ motorcycle }) => {
   if (!motorcycle || motorcycle.length === 0) {
     return (
       <div className="flex justify-center items-center py-12">
-        <MainLoading />
+        <MainLoading text="Load Motorcycle Data..." />
       </div>
     );
   }

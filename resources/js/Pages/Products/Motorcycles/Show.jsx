@@ -42,7 +42,7 @@ const MotocyclesDetail = (slug) => {
 
             {!motorcycle?.colors ? (
                 <div className="flex justify-center items-center py-12">
-                    <MainLoading />
+                    <MainLoading text="Load Motorcycle Colors Data..." />
                 </div>
             ) : (
                 <section id="color-selector" className="max-w-7xl mx-auto flex flex-col">
@@ -55,7 +55,7 @@ const MotocyclesDetail = (slug) => {
 
             {!motorcycle?.image_360 ? (
                 <div className="flex justify-center items-center py-12">
-                    <MainLoading />
+                    <MainLoading text="Load Motorcycle 360 Data..." />
                 </div>
             ) : (
                 <section id="360-viewer" className="max-w-7xl mx-auto flex flex-col mt-32">

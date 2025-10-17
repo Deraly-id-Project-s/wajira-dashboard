@@ -10,6 +10,7 @@ use App\Models\Brand;
 use App\Models\Banner;
 use App\Models\Commodity;
 use App\Models\Gallery;
+use App\Models\Motorcycle;
 
 class PublicController extends Controller
 {
@@ -33,5 +34,24 @@ class PublicController extends Controller
         $data['commodities'] = Commodity::all();
 
         return $this->responseSuccess($data, 'success');
+    }
+
+    public function motorcycle()
+    {
+        $data['motorcycles'] = Motorcycle::limit(6)->get();
+
+        return $this->responseSuccess($data, 'success');
+    }
+
+    public function allMotorcycle()
+    {
+        $data['motorcycles'] = Motorcycle::all();
+
+        return $this->responseSuccess($data, 'success');
+    }
+
+    public function motorcycleRecomendation()
+    {
+        $data['motorcycles'] = Motorcycle::where('is_recomended', 1)->get();
     }
 }
