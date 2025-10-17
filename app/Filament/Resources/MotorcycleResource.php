@@ -21,11 +21,11 @@ use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\ColorPicker;
 use Filament\Tables\Filters\TrashedFilter;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\MotorcycleResource\Pages;
 use App\Filament\Resources\MotorcycleResource\RelationManagers;
-use Filament\Forms\Components\ColorPicker;
 
 class MotorcycleResource extends Resource
 {
@@ -127,14 +127,14 @@ class MotorcycleResource extends Resource
                         ->schema([
                             Select::make('frame_type')
                                 ->options([
-                                    'underbone',
-                                    'backbone',
-                                    'trellis',
-                                    'double_cradle',
-                                    'perimeter',
-                                    'diamond',
-                                    'monocoque',
-                                    'esaf'
+                                    'underbone' => __('Underbone'), 
+                                    'backbone' => __('Backbone'), 
+                                    'trellis' => __('Trellis'), 
+                                    'double_cradle' => __('Double Cradle'), 
+                                    'perimeter' => __('Perimeter'), 
+                                    'diamond' => __('Diamond'), 
+                                    'monocoque' => __('Monocoque'), 
+                                    'esaf' => __('ESAF'), 
                                 ])
                                 ->native(false)
                                 ->required(true),
@@ -148,10 +148,10 @@ class MotorcycleResource extends Resource
                                 ->placeholder('Rear Suspension'),
                             Select::make('tire_type')
                                 ->options([
-                                    'tubeless',
-                                    'tube',
-                                    'radial',
-                                    'bias'
+                                    'tubeless' => 'Tubeless',
+                                    'tube' => 'Tube',
+                                    'radial' => 'Radial',
+                                    'bias' => 'Bias'
                                 ])
                                 ->native(false),
                             TextInput::make('front_tire')
@@ -240,14 +240,17 @@ class MotorcycleResource extends Resource
                             ->schema([
                                 FileUpload::make('image')
                                     ->image()
-                                    ->directory(function (callable $get) {
-                                        $slug = Str::slug($get('name') ?? 'unnamed');
-                                        
-                                        return "assets/images/products/motorcycles/{$slug}/colors";
+                                    ->disk('public')
+                                    ->directory(function (callable $get, $record) {
+                                        $slug = $record->slug
+                                            ?? Str::slug($get('name') ?? 'unnamed');
+
+                                        return "motorcycles/{$slug}/colors";
                                     })
+                                    ->imageEditor(2)
                                     ->maxSize(2048)
                                     ->required(true)
-                                    ->label('Foto Warna')
+                                    ->label('Motorcycle Color Image')
                                     ->columnSpanFull(),
 
                                 TextInput::make('color_name')
@@ -284,13 +287,17 @@ class MotorcycleResource extends Resource
                             ->imageEditor()
                             ->preserveFilenames()
                             ->panelLayout('grid')
-                            ->directory(function (callable $get) {
-                                $slug = Str::slug($get('name') ?? 'unnamed');
-                                return "assets/images/products/motorcycles/{$slug}/360";
+                            ->disk('public')
+                            ->directory(function (callable $get, $record) {
+                                $slug = $record->slug
+                                    ?? Str::slug($get('name') ?? 'unnamed');
+
+                                return "motorcycles/{$slug}/360";
                             })
                             ->columns(2)
                             ->helperText('Upload semua frame gambar untuk efek 360°. Drag untuk mengatur urutan.'),
                     ])
+                    // ->helperText('Gambar dapat di-reorder untuk mendapatkan efek 360° yang sesuai dengan keinginan Anda.')
                     ->collapsible(true),
                 TextInput::make('price')
                     ->label('Price')
@@ -300,10 +307,10 @@ class MotorcycleResource extends Resource
                     ->prefix('Rp')
                     ->reactive()
                     ->afterStateHydrated(function (TextInput $component, $state) {
-                        $component->state(number_format($state, 0, ',', '.'));
+                        $component->state(number_format((int) $state, 0, ',', '.'));
                     })
                     ->dehydrateStateUsing(function ($state) {
-                        return (int) str_replace(['.', 'Rp', ' '], '', $state);
+                        return (int) preg_replace('/[^0-9]/', '', $state);
                     })
                     ->suffix(',-')
                     ->extraInputAttributes(['class' => 'text-right'])

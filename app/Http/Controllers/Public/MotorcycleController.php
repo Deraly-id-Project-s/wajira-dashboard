@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Public;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Motorcycle;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MotorcycleController extends Controller
 {
@@ -19,8 +20,17 @@ class MotorcycleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        return Inertia::render('Products/Motorcycles/Show');
+        $motorcycle = Motorcycle::with('colors')->where('slug', $slug)->first();
+
+        if ($motorcycle) {
+            $motorcycle->click_count = $motorcycle->click_count + 1;
+            $motorcycle->save();
+        }
+        
+        return Inertia::render('Products/Motorcycles/Show')->with([
+            'data' => $motorcycle
+        ]);
     }
 }

@@ -50,6 +50,9 @@ class Motorcycle extends Model
         'turn_signal',
         'charging_port',
         'price',
+        // save product count
+        'save_product_count',
+        'click_count',
         'deleted_at',
     ];
 
