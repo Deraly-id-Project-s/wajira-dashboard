@@ -1,49 +1,57 @@
 import { useState } from "react";
+import MainLoading from "@/Components/ui/MainLoading";
 
-const MotorcycleDescriptionContainer = () => {
+const MotorcycleDescriptionContainer = ({ motorcycle }) => {
   const [activeTab, setActiveTab] = useState("Engine");
+
+  if (!motorcycle || motorcycle.length === 0) {
+    return (
+      <div className="flex justify-center items-center py-12">
+        <MainLoading />
+      </div>
+    );
+  }
 
   const specs = {
     Engine: [
-      { label: "Engine Type", value: "4-Stroke, SOHC, eSP" },
-      { label: "Bore x Stroke", value: "47.0 x 63.1 mm" },
-      { label: "Displacement", value: "109.5 cc" },
-      { label: "Compression Ratio", value: "10.0 : 1" },
-      { label: "Maximum Power", value: "6.6 kW (9.0 PS) / 7,500 rpm" },
-      { label: "Maximum Torque", value: "9.2 N.m (0.94 kgf.m) / 6,000 rpm" },
-      { label: "Clutch", value: "Automatic, Centrifugal, Dry Type" },
-      { label: "Starter", value: "Electric and Kick Starter (CBS Type)" },
-      { label: "Spark Plug", value: "NGK MR9C-9N" },
-      { label: "Fuel System", value: "Injection (PGM-FI)" },
-      { label: "Transmission", value: "Automatic, V-Matic" },
-      { label: "Ignition System", value: "Full Transistorized" },
+      { label: "Engine Type", value: motorcycle?.engine_type || "-" },
+      { label: "Bore x Stroke", value: motorcycle?.engine_size || "-" },
+      { label: "Displacement", value: motorcycle?.displacement || "-" },
+      { label: "Compression Ratio", value: motorcycle?.compression_ratio || "-" },
+      { label: "Maximum Power", value: motorcycle?.max_power || "-" },
+      { label: "Maximum Torque", value: motorcycle?.max_torque || "-" },
+      { label: "Clutch", value: motorcycle?.clutch || "-" },
+      { label: "Starter", value: motorcycle?.starter || "-" },
+      { label: "Spark Plug", value: motorcycle?.spark_plug || "-" },
+      { label: "Fuel System", value: motorcycle?.fuel_system || "-" },
+      { label: "Ignition System", value: motorcycle?.ignition_system || "-" },
     ],
     Frame: [
-      { label: "Frame Type", value: "Underbone" },
-      { label: "Front Suspension", value: "Telescopic with 30mm Inner Tubes" },
-      { label: "Rear Suspension", value: "Unit Swing" },
-      { label: "Tire Type", value: "Tubeless" },
-      { label: "Front Tire", value: "110/80-14/C 53P" },
-      { label: "Rear Tire", value: "140/70-14/C 62P" },
-      { label: "Front Brake", value: "Disc Brake" },
-      { label: "Lubrication System", value: "Disc Brake" },
+      { label: "Frame Type", value: motorcycle?.frame_type || "-" },
+      { label: "Front Suspension", value: motorcycle?.front_suspension || "-" },
+      { label: "Rear Suspension", value: motorcycle?.rear_suspension || "-" },
+      { label: "Tire Type", value: motorcycle?.tire_type || "-" },
+      { label: "Front Tire", value: motorcycle?.front_tire || "-" },
+      { label: "Rear Tire", value: motorcycle?.rear_tire || "-" },
+      { label: "Front Brake", value: motorcycle?.front_brake || "-" },
+      { label: "Lubrication System", value: motorcycle?.lubrication_system || "-" },
     ],
     "Dimension & Weight": [
-      { label: "Overall Length", value: "1,920 mm" },
-      { label: "Overall Width", value: "685 mm" },
-      { label: "Overall Height", value: "1,115 mm" },
-      { label: "Wheelbase", value: "1,275 mm" },
-      { label: "Ground Clearance", value: "132 mm" },
-      { label: "Seat Height", value: "769 mm" },
-      { label: "Curb Weight", value: "96 kg" },
-      { label: "Fuel Tank Capacity", value: "4.2 L" },
+      { label: "Overall Length", value: motorcycle?.overall_length || "-" },
+      { label: "Overall Width", value: motorcycle?.overall_width || "-" },
+      { label: "Overall Height", value: motorcycle?.overall_height || "-" },
+      { label: "Wheelbase", value: motorcycle?.wheelbase || "-" },
+      { label: "Ground Clearance", value: motorcycle?.ground_clearance || "-" },
+      { label: "Seat Height", value: motorcycle?.seat_height || "-" },
+      { label: "Curb Weight", value: motorcycle?.curb_weight || "-" },
+      { label: "Fuel Tank Capacity", value: motorcycle?.fuel_tank_capacity || "-" },
     ],
     Electricity: [
-      { label: "Battery", value: "12V - 3.5 Ah" },
-      { label: "Headlight", value: "LED" },
-      { label: "Taillight", value: "LED" },
-      { label: "Turn Signal", value: "LED" },
-      { label: "Charging Port", value: "Yes" },
+      { label: "Battery", value: motorcycle?.battery || "-" },
+      { label: "Headlight", value: motorcycle?.headlight || "-" },
+      { label: "Taillight", value: motorcycle?.taillight || "-" },
+      { label: "Turn Signal", value: motorcycle?.turn_signal || "-" },
+      { label: "Charging Port", value: motorcycle?.charging_port ? "Yes" : "No" },
     ],
   };
 

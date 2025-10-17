@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import MainLoading from "@/Components/ui/MainLoading";
 import { ArrowRight } from "lucide-react";
 import Header from "@/Components/layout/Header";
 import Footer from "@/Components/layout/Footer";
+import { Head, usePage } from '@inertiajs/react';
 import BreadCrumbs from "@/Components/BreadCrumbs";
 import HelperButton from "@/Components/HelperButton";
 import MotorcycleColor from "@/Components/MotorcycleColor";
@@ -9,8 +11,12 @@ import MotorcycleViewer from "@/Components/MotorcycleViewer";
 import RecomendationProductList from "@/Components/RecomendationProductList";
 import MotorcycleDescriptionContainer from "@/Components/MotorcycleDescriptionContainer";
 
+import useFetchData from "@/Hooks/useFetchData";
+
 const MotocyclesDetail = (slug) => {
     const [activeCategory, setActiveCategory] = useState("/");
+    const { data, loading, error } = useFetchData("/api/public");
+    const { motorcycle } = usePage().props;
 
     // Function to handle category change
     const handleCategoryChange = (category) => {
@@ -34,24 +40,38 @@ const MotocyclesDetail = (slug) => {
                 </div>
             </section>
 
-            <section id="color-selector" className="max-w-7xl mx-auto flex flex-col">
-                <h2 className="text-[32px] py-[20px] md:px-0 px-4 mb-12">
-                    Color Variant Yamaha Aerox Alpha
-                </h2>
-                <MotorcycleColor />
-            </section>
+            {!motorcycle?.colors ? (
+                <div className="flex justify-center items-center py-12">
+                    <MainLoading />
+                </div>
+            ) : (
+                <section id="color-selector" className="max-w-7xl mx-auto flex flex-col">
+                    <h2 className="text-[32px] py-[20px] md:px-0 px-4 mb-12">
+                        Color Variant Yamaha Aerox Alpha
+                    </h2>
+                    <MotorcycleColor />
+                </section>
+            )}
 
-            <section id="360-viewer" className="max-w-7xl mx-auto flex flex-col mt-32">
-                <MotorcycleViewer modelId="aerox-alpha" initialColor="black" />
-            </section>
+            {!motorcycle?.image_360 ? (
+                <div className="flex justify-center items-center py-12">
+                    <MainLoading />
+                </div>
+            ) : (
+                <section id="360-viewer" className="max-w-7xl mx-auto flex flex-col mt-32">
+                    <MotorcycleViewer modelId="aerox-alpha" initialColor="black" />
+                </section>
+            )}
 
             <section id="page_title" className="max-w-7xl mx-auto p-4 md:p-8 mt-32 flex justify-center align-middle items-center">
                 <h3 className="text-[32px]">Vehicle Spesification</h3>
             </section>
 
-            <MotorcycleDescriptionContainer />
+            <MotorcycleDescriptionContainer motorcycle={motorcycle} />
 
-            <HelperButton />
+            <section id="helper-button" className="md:max-w-7xl max-w-full mx-auto px-0 py-16">
+                <HelperButton />
+            </section>
 
             <div className="flex max-w-7xl mx-auto flex-col justify-center align-middle items-center">
                 <h2 className="text-[32px] p-[100px] mb-2 text-center">
@@ -67,7 +87,7 @@ const MotocyclesDetail = (slug) => {
                 </a>
             </div>
 
-            <Footer />
+            <Footer data={data?.data?.links} />
         </section>
     );
 }

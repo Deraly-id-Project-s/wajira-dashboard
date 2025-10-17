@@ -23,7 +23,7 @@ class PublicController extends Controller
         $data['banners'] = Banner::whereNot('is_show', 0)->get();
         $data['links'] = Link::whereNot('is_show', 0)->get();
         $data['galleries'] = Gallery::orderBy('order', 'asc')->get();
-        
+
         return $this->responseSuccess($data, 'success');
     }
 }

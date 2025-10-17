@@ -30,7 +30,7 @@ class MotorcycleController extends Controller
         }
         
         return Inertia::render('Products/Motorcycles/Show')->with([
-            'data' => $motorcycle
+            'motorcycle' => $motorcycle
         ]);
     }
 }
