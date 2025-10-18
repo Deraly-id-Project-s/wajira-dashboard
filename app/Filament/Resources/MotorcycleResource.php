@@ -20,6 +20,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Tables\Filters\TrashedFilter;
@@ -45,8 +46,16 @@ class MotorcycleResource extends Resource
                     ->schema([
                         FileUpload::make('product_image')
                             ->label('Product Image')
+                            ->disk('public')
+                            ->directory('motorcycles')
+                            ->getUploadedFileNameForStorageUsing(function ($file) {
+                                return md5($file->getClientOriginalName() . microtime()) . '.' . $file->getClientOriginalExtension();
+                            })
                             ->required()
                             ->imageEditor()
+                            ->maxSize(2048)
+                            ->imagePreviewHeight(500)
+                            ->hint('Maximum size: 2MB (jpg, png, jpeg)')
                             ->image(),
                         Select::make('brand_id')
                             ->placeholder('Brand')
@@ -73,7 +82,11 @@ class MotorcycleResource extends Resource
                             ->dehydrated()
                             ->maxLength(255)
                             ->placeholder('Motorcycle Slug')
-                            ->hintIcon('heroicon-o-information-circle', tooltip: 'Slug will be used for URL')
+                            ->hintIcon('heroicon-o-information-circle', tooltip: 'Slug will be used for URL'),
+                        Toggle::make('is_recomended')
+                            ->label('Recomend this Product')
+                            ->default(false)
+                            ->required(false)
                     ])->collapsible(true),
                 Section::make('Engine Information')
                     ->schema([
@@ -344,6 +357,10 @@ class MotorcycleResource extends Resource
                 ->label('Created')
                 ->dateTime('d M Y H:i')
                 ->sortable(),
+            
+            ToggleColumn::make('is_recomended')
+                ->label('Recomended')
+                ->grow(false),
 
             // Kolom tambahan, default-nya hidden (toggleable)
             Tables\Columns\TextColumn::make('engine_type')

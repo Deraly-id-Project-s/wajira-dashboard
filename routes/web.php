@@ -24,6 +24,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('/all-commodities', [App\Http\Controllers\Public\PublicController::class, 'allCommodity'])->name('public.all-commodity');
     Route::get('/motorcycles', [App\Http\Controllers\Public\PublicController::class, 'motorcycle'])->name('public.motorcycle');
     Route::get('/all-motorcycles', [App\Http\Controllers\Public\PublicController::class, 'allMotorcycle'])->name('public.all-motorcycle');
+
+    Route::get('/motorcycle-recomendation', [App\Http\Controllers\Public\PublicController::class, 'motorcycleRecomendation'])->name('public.motorcycle-recomendation');
 });
 
 require __DIR__.'/auth.php';

@@ -3,6 +3,7 @@ import Header from "@/Components/layout/Header";
 import Footer from "@/Components/layout/Footer";
 import WajiraGallery from "@/Components/WajiraGallery";
 import GetInTouch from "@/Components/GetInTouch";
+import MainLoading from "@/Components/ui/MainLoading";
 
 import useFetchData from "@/Hooks/useFetchData";
 
@@ -15,12 +16,19 @@ const GalleryPage = () => {
         { name: 'Products', href: '/prod    ucts' },
     ];
 
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center py-12">
+                <MainLoading text="Load Gallery Data..." />
+            </div>
+        )
+    }
+
     // Function to handle category change
     const handleCategoryChange = (category) => {
         setActiveCategory(category);
     };
 
-    // Function to scroll to the viewer section
     const scrollToViewer = () => {
         const viewerSection = document.getElementById("viewer-section");
         if (viewerSection) {

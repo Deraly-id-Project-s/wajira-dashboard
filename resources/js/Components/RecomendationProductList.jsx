@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
-import VehicleDocumentCard from "@/Components/VehicleDocumentCard";
-import ExpeditionCard from "@/Components/ExpeditionCard";
 import { motion, AnimatePresence } from "framer-motion";
+import MainLoading from "@/Components/ui/MainLoading";
+import EmptyState from "@/Components/ui/EmptyState";
+
+import useFetchData from "@/Hooks/useFetchData";
 
 const categories = ["Motorcycle", "Expedition", "Commodity", "Vehicle Document"];
 
@@ -14,11 +16,19 @@ const products = [
 
 const RecomendationProductList = () => {
   const [selectedCategory, setSelectedCategory] = useState("Motorcycle");
+  const { data, loading, error } = useFetchData("/api/motorcycle-recomendation");
+
+  if (loading) {
+      return (
+          <div className="flex justify-center items-center py-12">
+              <MainLoading text="Load Gallery Data..." />
+          </div>
+      )
+  }
 
   const filteredProducts = products.filter(
     (p) => p.category === selectedCategory
   );
-
 
   return (
     <section className="w-full">
@@ -32,7 +42,7 @@ const RecomendationProductList = () => {
             transition={{ duration: 0.3 }}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-            {filteredProducts.map((product) => (
+            {data?.data.length > 0 ? data?.data.map((product) => (
                 <motion.div
                 key={product.id}
                 layout
@@ -43,7 +53,7 @@ const RecomendationProductList = () => {
                 className="bg-white overflow-hidden"
                 >
                 <img
-                    src={product.image}
+                    src={`/storage/${product.product_image}`}
                     alt={product.name}
                     className="w-full h-48 object-contain"
                 />
@@ -56,7 +66,9 @@ const RecomendationProductList = () => {
                     </a>
                 </div>
                 </motion.div>
-            ))}
+            )) : (
+              <EmptyState />
+            )}
             </motion.div>
         </AnimatePresence>
     </section>

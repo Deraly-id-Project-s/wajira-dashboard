@@ -1,15 +1,10 @@
 import Masonry from "react-masonry-css";
+import EmptyState from "@/Components/ui/EmptyState";
 
 const WajiraGallery = ({ data }) => {
   const appUrl = import.meta.env.VITE_APP_URL;
 
-  if (!data || data.length === 0) {
-    return (
-      <div className="text-center py-10 text-gray-400">
-        No gallery data available.
-      </div>
-    );
-  }
+  if (!data || data.length === 0) return <EmptyState />;
 
   const breakpointColumnsObj = {
     default: 2,

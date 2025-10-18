@@ -62,6 +62,8 @@ class PublicController extends Controller
 
     public function motorcycleRecomendation()
     {
-        $data['motorcycles'] = Motorcycle::where('is_recomended', 1)->get();
+        $data = Motorcycle::select($this->motorcycleSimpleColumn)->where('is_recomended', 1)->get();
+
+        return $this->responseSuccess($data, 'success');
     }
 }
