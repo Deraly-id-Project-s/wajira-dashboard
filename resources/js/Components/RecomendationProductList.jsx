@@ -67,7 +67,9 @@ const RecomendationProductList = () => {
                 </div>
                 </motion.div>
             )) : (
-              <EmptyState />
+              <div className="col-span-full flex flex-col items-center justify-center">
+                <EmptyState />
+              </div>
             )}
             </motion.div>
         </AnimatePresence>

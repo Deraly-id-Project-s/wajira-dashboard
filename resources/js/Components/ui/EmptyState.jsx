@@ -8,7 +8,7 @@ const EmptyState = ({
   onAction 
 }) => {
   return (
-    <div className="flex flex-col items-center justify-center text-center py-20 px-4">
+    <div className="flex mx-auto flex-col items-center justify-center text-center py-20 px-4">
       <img
         src={image}
         alt="Empty State"

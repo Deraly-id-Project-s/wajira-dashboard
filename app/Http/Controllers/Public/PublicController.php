@@ -66,4 +66,11 @@ class PublicController extends Controller
 
         return $this->responseSuccess($data, 'success');
     }
+    
+    public function getMotorcyleAsset($slug)
+    {
+        $data = Motorcycle::where('slug', $slug)->with('colors')->select('image')->get();
+        
+        return $this->responseSuccess($data, 'success');
+    }
 }

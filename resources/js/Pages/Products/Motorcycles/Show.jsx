@@ -18,6 +18,14 @@ const MotocyclesDetail = (slug) => {
     const { data, loading, error } = useFetchData("/api/public");
     const { motorcycle } = usePage().props;
 
+    if (loading) {
+        return (
+            <div className="h-screen flex justify-center items-center py-12">
+                <MainLoading text="Load Gallery Data..." />
+            </div>
+        )
+    }
+
     // Function to handle category change
     const handleCategoryChange = (category) => {
         setActiveCategory(category);
@@ -49,7 +57,7 @@ const MotocyclesDetail = (slug) => {
                     <h2 className="text-[32px] py-[20px] md:px-0 px-4 mb-12">
                         Color Variant Yamaha Aerox Alpha
                     </h2>
-                    <MotorcycleColor />
+                    <MotorcycleColor data={slug?.motorcycle?.colors}/>
                 </section>
             )}
 
@@ -59,7 +67,7 @@ const MotocyclesDetail = (slug) => {
                 </div>
             ) : (
                 <section id="360-viewer" className="max-w-7xl mx-auto flex flex-col mt-32">
-                    <MotorcycleViewer modelId="aerox-alpha" initialColor="black" />
+                    <MotorcycleViewer data={slug?.motorcycle?.image_360} modelId="aerox-alpha" initialColor="black" />
                 </section>
             )}
 
