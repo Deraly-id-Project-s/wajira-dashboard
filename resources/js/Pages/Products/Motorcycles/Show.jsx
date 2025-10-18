@@ -41,7 +41,7 @@ const MotocyclesDetail = (slug) => {
             </section>
 
             {!motorcycle?.colors ? (
-                <div className="flex justify-center items-center py-12">
+                <div className="flex h-screen justify-center items-center py-12">
                     <MainLoading text="Load Motorcycle Colors Data..." />
                 </div>
             ) : (
@@ -54,7 +54,7 @@ const MotocyclesDetail = (slug) => {
             )}
 
             {!motorcycle?.image_360 ? (
-                <div className="flex justify-center items-center py-12">
+                <div className="flex h-screen justify-center items-center py-12">
                     <MainLoading text="Load Motorcycle 360 Data..." />
                 </div>
             ) : (

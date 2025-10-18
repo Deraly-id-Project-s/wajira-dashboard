@@ -18,7 +18,7 @@ const GalleryPage = () => {
 
     if (loading) {
         return (
-            <div className="flex justify-center items-center py-12">
+            <div className="h-screen flex justify-center items-center py-12">
                 <MainLoading text="Load Gallery Data..." />
             </div>
         )

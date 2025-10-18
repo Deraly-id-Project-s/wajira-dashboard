@@ -20,7 +20,7 @@ export default function ProductList() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center py-12">
+      <div className="flex h-screen justify-center items-center py-12">
         <MainLoading text="Load Products Data..." />
       </div>
     );

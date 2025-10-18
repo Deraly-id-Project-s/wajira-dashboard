@@ -12,7 +12,7 @@ const Commodities = () => {
 
     if (loading) {
         return (
-            <div className="flex justify-center items-center py-12">
+            <div className="flex h-screen justify-center items-center py-12">
                 <MainLoading />
             </div>
         )
