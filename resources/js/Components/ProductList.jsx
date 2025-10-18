@@ -100,7 +100,7 @@ export default function ProductList() {
                   className="overflow-hidden"
                 >
                   <img
-                    src={`/storage/${product.product_image}`}
+                    src={`/storage/${product.product_image ?? product.image}`}
                     alt={product.name}
                     className="w-full h-48 object-contain"
                   />
