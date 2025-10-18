@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import RippleButton from "@/Components/ui/rippleButton";
 import MainLoading from "@/Components/ui/MainLoading";
+import EmptyState from "@/Components/ui/EmptyState";
 
 import useFetchData from "@/Hooks/useFetchData";
 
@@ -19,7 +20,7 @@ const Commodities = () => {
 
     return (
         <section className="max-w-7xl mx-auto flex flex-col items-center justify-center py-12 space-y-16 px-[16px] md:px-0">
-            {commodities.map((commodity, index) => (
+            {commodities.length > 0 ? commodities.map((commodity, index) => (
                 <div
                     key={index}
                     className="flex flex-col md:flex-row items-start gap-8 w-full"
@@ -57,7 +58,9 @@ const Commodities = () => {
                         </RippleButton>
                     </div>
                 </div>
-            ))}
+            )) : (
+                <EmptyState />
+            )}
         </section>
     );
 };
