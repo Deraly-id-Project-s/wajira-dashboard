@@ -1,6 +1,5 @@
 <?php
 
-use Exception;
 use App\Models\PageClick;
 
 if (!function_exists('pageClickTracker')) {
@@ -12,7 +11,7 @@ if (!function_exists('pageClickTracker')) {
             $page->save();
 
             return true;
-        } catch (Exception $err) {
+        } catch (\Exception $err) {
             return false;   
         }
     }
