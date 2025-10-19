@@ -105,8 +105,6 @@ class CommodityResource extends Resource
                 TextColumn::make('brand.name')
                     ->sortable()
                     ->badge(),
-                TextColumn::make('slug')
-                    ->searchable(),
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('deleted_at')

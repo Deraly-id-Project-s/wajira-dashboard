@@ -337,10 +337,6 @@ class MotorcycleResource extends Resource
     {
         return $table
         ->columns([
-            Tables\Columns\TextColumn::make('id')
-                ->label('ID')
-                ->sortable(),
-
             Tables\Columns\TextColumn::make('slug')
                 ->label('Slug')
                 ->searchable()
@@ -350,6 +346,10 @@ class MotorcycleResource extends Resource
                 ->label('Name')
                 ->searchable()
                 ->sortable(),
+
+            TextColumn::make('brand.name')
+                ->sortable()
+                ->badge(),
 
             Tables\Columns\TextColumn::make('price')
                 ->label('Price')

@@ -34,6 +34,12 @@ class BrandResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withCount('motorcycles');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -111,6 +117,9 @@ class BrandResource extends Resource
                     ->circular(),
                 TextColumn::make('name')
                     ->searchable(),
+                TextColumn::make('motorcycles_count')
+                    ->label('Total Motorcycle')
+                    ->badge(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
