@@ -11,6 +11,7 @@ use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Split;
+use Illuminate\Support\Facades\Gate;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
@@ -31,6 +32,8 @@ use App\Filament\Resources\MotorcycleResource\RelationManagers;
 class MotorcycleResource extends Resource
 {
     protected static ?string $model = Motorcycle::class;
+
+    protected static string $name = 'product';
 
     protected static ?string $navigationIcon = 'heroicon-o-squares-2x2';
 
@@ -450,5 +453,41 @@ class MotorcycleResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+    }
+
+    // Spattie Permission
+    public static function canViewAny(): bool
+    {
+        return Gate::allows(self::$name . ':list');
+    }
+
+    public static function canView($record): bool
+    {
+        return Gate::allows(self::$name . ':list');
+    }
+
+    public static function canCreate(): bool
+    {
+        return Gate::allows(self::$name . ':create');
+    }
+
+    public static function canEdit($record): bool
+    {
+        return Gate::allows(self::$name . ':edit');
+    }
+
+    public static function canDelete($record): bool
+    {
+        return Gate::allows(self::$name . ':delete');
+    }
+
+    public static function canForceDelete($record): bool
+    {
+        return Gate::allows(self::$name . ':delete');
+    }
+
+    public static function canRestore($record): bool
+    {
+        return Gate::allows(self::$name . ':delete');
     }
 }

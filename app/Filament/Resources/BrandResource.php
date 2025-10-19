@@ -11,6 +11,8 @@ use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Split;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Filament\Forms\Components\Section;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
@@ -25,6 +27,8 @@ class BrandResource extends Resource
     protected static ?string $model = Brand::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-cube';
+    
+    protected static string $name = 'brand';
 
     protected static ?string $navigationGroup = 'Brands';
 
@@ -143,5 +147,41 @@ class BrandResource extends Resource
             'create' => Pages\CreateBrand::route('/create'),
             'edit' => Pages\EditBrand::route('/{record}/edit'),
         ];
+    }
+
+    // Spattie Permission
+    public static function canViewAny(): bool
+    {
+        return Gate::allows(self::$name . ':list');
+    }
+
+    public static function canView($record): bool
+    {
+        return Gate::allows(self::$name . ':list');
+    }
+
+    public static function canCreate(): bool
+    {
+        return Gate::allows(self::$name . ':create');
+    }
+
+    public static function canEdit($record): bool
+    {
+        return Gate::allows(self::$name . ':edit');
+    }
+
+    public static function canDelete($record): bool
+    {
+        return Gate::allows(self::$name . ':delete');
+    }
+
+    public static function canForceDelete($record): bool
+    {
+        return Gate::allows(self::$name . ':delete');
+    }
+
+    public static function canRestore($record): bool
+    {
+        return Gate::allows(self::$name . ':delete');
     }
 }

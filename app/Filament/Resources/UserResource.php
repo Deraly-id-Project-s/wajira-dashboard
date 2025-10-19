@@ -2,28 +2,31 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
 use App\Models\User;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Split;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Split;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Section;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
-use Filament\Tables\Table;
-use Illuminate\Support\Facades\Hash;
+use App\Filament\Resources\UserResource\Pages;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
+
+    protected static string $name = 'users';
 
     // navigation naming
     protected static ?string $pluralLabel = 'Users';
@@ -164,5 +167,41 @@ class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
+    }
+
+    // Spattie Permission
+    public static function canViewAny(): bool
+    {
+        return Gate::allows(self::$name . ':list');
+    }
+
+    public static function canView($record): bool
+    {
+        return Gate::allows(self::$name . ':list');
+    }
+
+    public static function canCreate(): bool
+    {
+        return Gate::allows(self::$name . ':create');
+    }
+
+    public static function canEdit($record): bool
+    {
+        return Gate::allows(self::$name . ':edit');
+    }
+
+    public static function canDelete($record): bool
+    {
+        return Gate::allows(self::$name . ':delete');
+    }
+
+    public static function canForceDelete($record): bool
+    {
+        return Gate::allows(self::$name . ':delete');
+    }
+
+    public static function canRestore($record): bool
+    {
+        return Gate::allows(self::$name . ':delete');
     }
 }

@@ -9,6 +9,7 @@ use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Gate;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
@@ -18,6 +19,8 @@ use App\Filament\Resources\RoleResource\Pages;
 class RoleResource extends Resource
 {
     protected static ?string $model = Role::class;
+
+    protected static string $name = 'users';
 
     protected static ?string $navigationIcon = 'heroicon-o-shield-check';
 
@@ -101,5 +104,41 @@ class RoleResource extends Resource
             'create' => Pages\CreateRole::route('/create'),
             'edit' => Pages\EditRole::route('/{record}/edit'),
         ];
+    }
+
+    // Spattie Permission
+    public static function canViewAny(): bool
+    {
+        return Gate::allows(self::$name . ':list');
+    }
+
+    public static function canView($record): bool
+    {
+        return Gate::allows(self::$name . ':list');
+    }
+
+    public static function canCreate(): bool
+    {
+        return Gate::allows(self::$name . ':create');
+    }
+
+    public static function canEdit($record): bool
+    {
+        return Gate::allows(self::$name . ':edit');
+    }
+
+    public static function canDelete($record): bool
+    {
+        return Gate::allows(self::$name . ':delete');
+    }
+
+    public static function canForceDelete($record): bool
+    {
+        return Gate::allows(self::$name . ':delete');
+    }
+
+    public static function canRestore($record): bool
+    {
+        return Gate::allows(self::$name . ':delete');
     }
 }
