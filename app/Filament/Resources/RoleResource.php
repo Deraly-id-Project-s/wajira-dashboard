@@ -62,26 +62,38 @@ class RoleResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
-                ->label('Role Name')
-                ->getStateUsing(fn (Role $record): string => Str::upper($record->name))
-                ->sortable(),
-                
+                    ->label('Role Name')
+                    ->searchable()
+                    ->getStateUsing(fn(Role $record): string => Str::upper($record->name))
+                    ->sortable(),
+
                 TextColumn::make('created_at')
-                ->label('Created At')
-                ->getStateUsing(fn (Role $record): string => $record->created_at->diffForHumans()),
+                    ->label('Created At')
+                    ->getStateUsing(fn(Role $record): string => $record->created_at->diffForHumans()),
 
                 TextColumn::make('permissions_count')
-                ->label('Total Permissions')
-                ->badge()
+                    ->label('Total Permissions')
+                    ->badge(),
+
+                TextColumn::make('users.name')
+                    ->label('Users')
+                    ->getStateUsing(fn(Role $record) => $record->users->pluck('name')->toArray())
+                    ->formatStateUsing(function ($state) {
+                        return collect($state)->map(fn($name) => "👤 {$name}")->join(', ');
+                    })
+                    ->badge()
+                    ->wrap()
+                    ->searchable()
+                    ->limitList(5)
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                ->label('Edit')
-                ->button()
-                ->outlined(),
+                    ->label('Edit')
+                    ->button()
+                    ->outlined(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
