@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
 use App\Models\Commodity;
@@ -11,6 +10,7 @@ use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\Gate;
 use Filament\Forms\Components\Select;
+use Illuminate\Support\Facades\Cache;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
@@ -19,7 +19,6 @@ use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\CommodityResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\CommodityResource\RelationManagers;
 
 class CommodityResource extends Resource
 {
@@ -32,6 +31,13 @@ class CommodityResource extends Resource
     protected static ?string $navigationGroup = 'Products';
 
     protected static ?int $navigationSort = 3;
+    
+    public static function clearCache()
+    {
+        Cache::forget('public_commodity');
+        Cache::forget('public_all_commodity');
+    }
+
 
     public static function form(Form $form): Form
     {
@@ -124,13 +130,13 @@ class CommodityResource extends Resource
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->after(fn () => static::clearCache()),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                    Tables\Actions\ForceDeleteBulkAction::make(),
-                    Tables\Actions\RestoreBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()->after(fn () => static::clearCache()),
+                    Tables\Actions\ForceDeleteBulkAction::make()->after(fn () => static::clearCache()),
+                    Tables\Actions\RestoreBulkAction::make()->after(fn () => static::clearCache()),
                 ]),
             ]);
     }

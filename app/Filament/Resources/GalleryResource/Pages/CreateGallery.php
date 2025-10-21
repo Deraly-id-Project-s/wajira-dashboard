@@ -20,4 +20,9 @@ class CreateGallery extends CreateRecord
 
         return $data;
     }
+
+    protected function afterCreate(): void
+    {
+        GalleryResource::clearCache();
+    }
 }

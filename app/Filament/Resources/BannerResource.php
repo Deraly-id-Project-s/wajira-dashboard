@@ -8,13 +8,12 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\Gate;
 use Filament\Forms\Components\Toggle;
+use Illuminate\Support\Facades\Cache;
 use Filament\Forms\Components\Section;
 use Filament\Support\Enums\FontWeight;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
-use Filament\Tables\Columns\ColorColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\Layout\Panel;
@@ -22,8 +21,6 @@ use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\ToggleColumn;
 use App\Filament\Resources\BannerResource\Pages;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 class BannerResource extends Resource
 {
@@ -34,6 +31,12 @@ class BannerResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-photo';
     protected static ?string $navigationGroup = 'Media';
     protected static ?int $navigationSort = 5;
+
+    public static function clearCache()
+    {
+        Cache::forget('public_banners');
+        Cache::forget('public_banners');
+    }
 
     public static function form(Form $form): Form
     {

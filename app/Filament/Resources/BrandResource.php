@@ -5,13 +5,12 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Brand;
-use Filament\Forms\Set;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Split;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Filament\Forms\Components\Section;
 use Filament\Tables\Columns\TextColumn;
@@ -19,8 +18,6 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\BrandResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\BrandResource\RelationManagers;
 
 class BrandResource extends Resource
 {
@@ -33,6 +30,12 @@ class BrandResource extends Resource
     protected static ?string $navigationGroup = 'Brands';
 
     protected static ?int $navigationSort = 1;
+    
+    public static function clearCache()
+    {
+        Cache::forget('public_brands');
+        Cache::forget('public_brands');
+    }
 
     public static function getEloquentQuery(): Builder
     {
@@ -133,11 +136,11 @@ class BrandResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->after(fn () => static::clearCache()),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()->after(fn () => static::clearCache()),
                 ]),
             ]);
     }

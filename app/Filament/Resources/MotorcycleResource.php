@@ -14,6 +14,7 @@ use Filament\Forms\Components\Split;
 use Illuminate\Support\Facades\Gate;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
+use Illuminate\Support\Facades\Cache;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Repeater;
 use Filament\Tables\Columns\IconColumn;
@@ -40,6 +41,13 @@ class MotorcycleResource extends Resource
     protected static ?string $navigationGroup = 'Products';
 
     protected static ?int $navigationSort = 2;
+
+    public static function clearCache()
+    {
+        Cache::forget('public_motorcycle');
+        Cache::forget('public_all_motorcycle');
+        Cache::forget('public_motorcycle_recommendation');
+    }
 
     public static function form(Form $form): Form
     {
@@ -420,13 +428,13 @@ class MotorcycleResource extends Resource
             Tables\Filters\TrashedFilter::make(),
         ])
         ->actions([
-            Tables\Actions\EditAction::make(),
+            Tables\Actions\EditAction::make()->after(fn () => static::clearCache()),
         ])
         ->bulkActions([
             Tables\Actions\BulkActionGroup::make([
-                Tables\Actions\DeleteBulkAction::make(),
-                Tables\Actions\ForceDeleteBulkAction::make(),
-                Tables\Actions\RestoreBulkAction::make(),
+                Tables\Actions\DeleteBulkAction::make()->after(fn () => static::clearCache()),
+                Tables\Actions\ForceDeleteBulkAction::make()->after(fn () => static::clearCache()),
+                Tables\Actions\RestoreBulkAction::make()->after(fn () => static::clearCache()),
             ]),
         ]);    
     }

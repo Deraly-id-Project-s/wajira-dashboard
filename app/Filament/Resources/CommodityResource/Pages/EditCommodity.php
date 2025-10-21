@@ -13,9 +13,9 @@ class EditCommodity extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
-            Actions\ForceDeleteAction::make(),
-            Actions\RestoreAction::make(),
+            Actions\DeleteAction::make()->after(fn () => CommodityResource::clearCache()),
+            Actions\ForceDeleteAction::make()->after(fn () => CommodityResource::clearCache()),
+            Actions\RestoreAction::make()->after(fn () => CommodityResource::clearCache()),
         ];
     }
 }

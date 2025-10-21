@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
 use App\Models\Link;
 use Filament\Tables;
 use Filament\Forms\Form;
@@ -10,14 +9,12 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\Gate;
 use Filament\Forms\Components\Toggle;
+use Illuminate\Support\Facades\Cache;
 use Filament\Forms\Components\Section;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\BadgeColumn;
-use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\LinkResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\LinkResource\RelationManagers;
 
 class LinkResource extends Resource
 {
@@ -30,6 +27,11 @@ class LinkResource extends Resource
     protected static ?string $navigationGroup = 'Other';
 
     protected static ?int $navigationSort = 6;
+
+    public static function clearCache()
+    {
+        Cache::forget('public_links');
+    }
 
     public static function form(Form $form): Form
     {
@@ -86,7 +88,7 @@ class LinkResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->after(fn () => LinkResource::clearCache()),
             ])
             ->bulkActions([
                 // Tables\Actions\BulkActionGroup::make([

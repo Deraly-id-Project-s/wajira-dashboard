@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateCommodity extends CreateRecord
 {
     protected static string $resource = CommodityResource::class;
+
+    protected function afterCreate(): void
+    {
+        CommodityResource::clearCache();
+    }
 }

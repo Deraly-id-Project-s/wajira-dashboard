@@ -84,7 +84,7 @@ const HomePage = () => {
         <ReasonChoose />
       </section>
 
-      <GetInTouch />
+      <GetInTouch data={data?.data?.links} />
       {/* <UserAnalytics /> */}
 
       <Footer data={data?.data?.links} />

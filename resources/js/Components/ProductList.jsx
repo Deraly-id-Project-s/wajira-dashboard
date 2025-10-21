@@ -45,7 +45,7 @@ export default function ProductList() {
 
   return (
     <div className="w-full">
-      {/* 🔘 Category Tabs */}
+      {/* Category Tabs */}
       <div className="flex justify-center px-2">
         <div className="bg-[#1E3A5F] p-2 sm:p-3 rounded-md mb-10 w-full sm:w-auto overflow-x-auto">
           <div className="flex flex-wrap sm:inline-flex justify-center gap-2 sm:gap-0 min-w-max">

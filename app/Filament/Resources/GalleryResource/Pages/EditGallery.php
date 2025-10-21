@@ -13,7 +13,7 @@ class EditGallery extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()->after(fn () => GalleryResource::clearCache()),
         ];
     }
 }

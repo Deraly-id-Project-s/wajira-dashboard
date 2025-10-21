@@ -49,7 +49,7 @@ const GalleryPage = () => {
                 <WajiraGallery data={data?.data?.galleries} />
             </section>
 
-            <GetInTouch />
+            <GetInTouch data={data?.data?.links} />
 
             <Footer data={data?.data?.links} />
         </div>

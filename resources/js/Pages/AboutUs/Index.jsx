@@ -44,7 +44,7 @@ const AboutUsPage = () => {
         <VisionMission />
       </section>
 
-      <GetInTouch />
+      <GetInTouch data={data?.data?.links} />
       {/* <UserAnalytics /> */}
 
       <Footer data={data?.data?.links} />

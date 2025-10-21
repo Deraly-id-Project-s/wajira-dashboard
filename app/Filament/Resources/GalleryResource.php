@@ -7,6 +7,7 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Cache;
 use Filament\Forms\Components\Section;
 use Filament\Support\Enums\FontWeight;
 use Filament\Forms\Components\Textarea;
@@ -17,8 +18,8 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\Layout\Panel;
 use Filament\Tables\Columns\Layout\Split;
-use Filament\Tables\Columns\Layout\Stack;
 
+use Filament\Tables\Columns\Layout\Stack;
 use App\Filament\Resources\GalleryResource\Pages;
 
 class GalleryResource extends Resource
@@ -32,6 +33,11 @@ class GalleryResource extends Resource
     protected static ?string $navigationGroup = 'Media';
 
     protected static ?int $navigationSort = 6;
+
+    public static function clearCache()
+    {
+        Cache::forget('public_galleries');
+    }
 
     public static function form(Form $form): Form
     {

@@ -13,9 +13,9 @@ class EditMotorcycle extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
-            Actions\ForceDeleteAction::make(),
-            Actions\RestoreAction::make(),
+            Actions\DeleteAction::make()->after(fn () => MotorcycleResource::clearCache()),
+            Actions\ForceDeleteAction::make()->after(fn () => MotorcycleResource::clearCache()),
+            Actions\RestoreAction::make()->after(fn () => MotorcycleResource::clearCache()),
         ];
     }
 }
