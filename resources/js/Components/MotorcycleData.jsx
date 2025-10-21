@@ -67,8 +67,8 @@ const MotorcycleData = () => {
 
   return (
     <div className="w-full">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-[64px] mb-8 px-4">
-        <div className="flex flex-col text-sm text-gray-600 bg-[#F7F7F7] py-[13px] px-3 w-[288px] border-b border-[#A7A8AE] mb-[64px]">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-0 md:gap-[64px] mb-8 px-7 md:px-4">
+        <div className="flex flex-col text-sm text-gray-600 bg-[#F7F7F7] py-[13px] px-3 w-full md:w-[288px] border-b border-[#A7A8AE] mb-4 md:mb-[64px]">
           <span className="text-[12px] px-3">Sort by</span>
           <select
             value={sortBy}
@@ -84,7 +84,7 @@ const MotorcycleData = () => {
           </select>
         </div>
 
-        <div className="flex items-center py-[13px] bg-[#F7F7F7] px-3 w-[288px] mb-[64px] border-b border-[#A7A8AE]">
+        <div className="flex items-center py-[13px] bg-[#F7F7F7] px-3 w-full md:w-[288px] mb-[64px] border-b border-[#A7A8AE]">
           <Search size={16} className="text-gray-400 mr-2" />
           <input
             type="text"
