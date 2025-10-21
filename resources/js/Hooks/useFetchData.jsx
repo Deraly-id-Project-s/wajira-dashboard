@@ -1,40 +1,32 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 
 /**
- * Custom hook using Axios.
+ * Custom hook universal untuk fetch data (support params, deps, dan error-safe)
  *
- * @param {string} url - API endpoint (ex: "/api/links")
- * @param {object} [options] - optional Axios config (params, headers, dsb)
+ * @param {string} url - endpoint API
+ * @param {object} [options={}] - fetch config opsional
+ * @param {Array} [dependencies=[]] - dependency array untuk refetch
  */
-export default function useFetchData(url, options = {}) {
+export default function useFetchData(url, options = {}, dependencies = []) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  if (error) {
-    console.error(`Err XHR: ${url}:`, error);
-  }
 
   useEffect(() => {
     if (!url) return;
 
     let isMounted = true;
-
     setLoading(true);
-    axios
-      .get(url, options)
-      .then((res) => {
-        if (isMounted) {
-          setData(res.data);
-          setError(null);
-        }
+    setError(null);
+
+    fetch(url, options)
+      .then(async (res) => {
+        if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
+        const json = await res.json();
+        if (isMounted) setData(json);
       })
       .catch((err) => {
-        if (isMounted) {
-          console.error(`Error fetching ${url}:`, err);
-          setError(err);
-        }
+        if (isMounted) setError(err);
       })
       .finally(() => {
         if (isMounted) setLoading(false);
@@ -43,7 +35,7 @@ export default function useFetchData(url, options = {}) {
     return () => {
       isMounted = false;
     };
-  }, [url]);
+  }, [url, ...dependencies]);
 
   return { data, loading, error };
 }

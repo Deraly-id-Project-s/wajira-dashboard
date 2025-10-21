@@ -7,15 +7,18 @@ import EmptyState from "@/Components/ui/EmptyState";
 import useFetchData from "@/Hooks/useFetchData";
 
 const MotorcycleData = () => {
-  const { data: motorcycleData, loading } = useFetchData("/api/motorcycles");
-
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("popular");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const itemsPerPage = 6;
+  const { data: motorcycleData, loading, error } = useFetchData(
+    `/api/motorcycles?search=${encodeURIComponent(searchQuery)}&sort=${sortBy}&page=${currentPage}`,
+    {},
+    [searchQuery, sortBy, currentPage]
+  );
 
   const motorcycles = motorcycleData?.data ?? [];
+  const itemsPerPage = 6;
 
   const filteredData = useMemo(() => {
     const q = (searchQuery || "").trim().toLowerCase();
@@ -38,9 +41,6 @@ const MotorcycleData = () => {
   }, [motorcycles, searchQuery, sortBy]);
 
   const totalPages = Math.max(1, Math.ceil(filteredData.length / itemsPerPage));
-  if (currentPage > totalPages) {
-    setCurrentPage(totalPages);
-  }
   const paginatedData = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage

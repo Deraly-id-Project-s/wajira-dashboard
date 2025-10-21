@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Public;
 use App\Models\Link;
 use App\Models\Brand;
 use App\Models\Banner;
-use App\Models\Commodity;
 use App\Models\Gallery;
+use App\Models\Commodity;
 use App\Models\Motorcycle;
 use App\Traits\ResponseTrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Request;
 
 class PublicController extends Controller
 {
@@ -70,14 +71,32 @@ class PublicController extends Controller
         return $this->responseSuccess($data, 'success');
     }
 
-    public function allMotorcycle()
+    public function allMotorcycle(Request $request)
     {
-        $data = Cache::remember('public_all_motorcycle', now()->addHours(6), function () {
-            return Motorcycle::select($this->motorcycleSimpleColumn)->get();
-        });
+        $query = Motorcycle::select($this->motorcycleSimpleColumn);
+
+        if ($request->has('search') && !empty($request->search)) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        switch ($request->get('sort')) {
+            case 'latest':
+                $query->orderBy('created_at', 'desc');
+                break;
+            case 'az':
+                $query->orderBy('name', 'asc');
+                break;
+            default:
+                $query->orderBy('click_count', 'asc');
+                break;
+        }
+
+        $perPage = $request->get('per_page', 6);
+        $data = $query->paginate($perPage);
 
         return $this->responseSuccess($data, 'success');
     }
+
 
     public function motorcycleRecomendation()
     {
