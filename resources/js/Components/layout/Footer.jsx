@@ -55,16 +55,26 @@ export default function Footer({ data }) {
         <div>
           <h4 className="font-semibold mb-4 text-[#EFBF63]">Services</h4>
           <ul className="space-y-2">
-            <li className="hover:underline cursor-pointer">Motorcycle</li>
+            <li className="hover:underline cursor-pointer">
+              <a href="/products/motorcycles">
+                Motorcycle
+              </a>
+            </li>
             <li className="hover:underline cursor-pointer">Expedition</li>
-            <li className="hover:underline cursor-pointer">Commodity</li>
+            <li className="hover:underline cursor-pointer">
+              <a href="/commodity">
+                Commodity
+              </a>
+            </li>
             <li className="hover:underline cursor-pointer">Vehicle Documentation</li>
           </ul>
         </div>
 
         {/* About */}
         <div>
-          <h4 className="font-semibold mb-4 text-[#EFBF63]">About</h4>
+          <h4 className="font-semibold mb-4 text-[#EFBF63]">
+            <a href="/about-us">About</a>
+          </h4>
           <ul className="space-y-2">
             <li className="hover:underline cursor-pointer">Our Story</li>
             <li>
