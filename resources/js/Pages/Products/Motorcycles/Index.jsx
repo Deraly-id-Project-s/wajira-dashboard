@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "@/Components/layout/Header";
 import Footer from "@/Components/layout/Footer";
 import ExportMethod from "@/Components/ExportMethod";
-import ProductList from '@/Components/ProductList';
+import MotorcycleData from '@/Components/MotorcycleData';
 import HelperButton from "@/Components/HelperButton";
 import SponsorList from "@/Components/SponsorList";
 import BreadCrumbs from "@/Components/BreadCrumbs";
@@ -55,7 +55,7 @@ const ProductsPage = () => {
             </section>
 
             <section id="product-list" className="flex max-w-7xl mx-auto flex-col justify-center align-middle items-center">
-                <ProductList />
+                <MotorcycleData />
             </section>
 
             <section id="helper-button" className="md:max-w-7xl max-w-full mx-auto px-0 py-16">
