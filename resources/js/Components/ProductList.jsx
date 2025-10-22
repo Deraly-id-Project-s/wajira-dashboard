@@ -28,15 +28,18 @@ export default function ProductList() {
 
   let filteredData = [];
   let basePath = "";
+  let actionUrl = "";
 
   switch (selectedCategory) {
     case "Motorcycle":
       filteredData = motorcycleData?.data || [];
       basePath = "/products/motorcycles/";
+      actionUrl = "/products/motorcycles";
       break;
     case "Commodity":
       filteredData = commodityData?.data || [];
       basePath = "/products/commodities/";
+      actionUrl = "/commodity";
       break;
     default:
       filteredData = [];
@@ -45,7 +48,6 @@ export default function ProductList() {
 
   return (
     <div className="w-full">
-      {/* Category Tabs */}
       <div className="flex justify-center px-2">
         <div className="bg-[#1E3A5F] p-2 sm:p-3 rounded-md mb-10 w-full sm:w-auto overflow-x-auto">
           <div className="flex flex-wrap sm:inline-flex justify-center gap-2 sm:gap-0 min-w-max">
@@ -66,7 +68,6 @@ export default function ProductList() {
         </div>
       </div>
 
-      {/* 🧱 Dynamic Content per Kategori */}
       <AnimatePresence mode="wait">
         <motion.div
           key={selectedCategory}
@@ -121,11 +122,12 @@ export default function ProductList() {
         </motion.div>
       </AnimatePresence>
 
-      {/* 🔽 View More Button */}
       <div className="w-full justify-center items-center flex py-[32px]">
-        <RippleButton className="flex px-[16px] py-[15px] w-[134px] gap-[8px] text-white bg-[#B0160D] font-light text-[14px] cursor-pointer">
-          View More <ArrowRight />
-        </RippleButton>
+        <a href={actionUrl}>
+          <RippleButton className="flex px-[16px] py-[15px] w-[134px] gap-[8px] text-white bg-[#B0160D] font-light text-[14px] cursor-pointer">
+            View More <ArrowRight />
+          </RippleButton>
+        </a>  
       </div>
     </div>
   );
