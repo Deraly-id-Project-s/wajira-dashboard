@@ -13,7 +13,7 @@ const VehicleDocumentCard = () => {
         <div className="absolute bottom-6 left-6">
           <p className="text-white text-sm">Operated by</p>
           <h2 className="text-xl md:text-2xl font-semibold text-white">
-            PT. WAJIRA JAGRATARA YANOTAMA
+            PT. WAJIRA JAGRATARA TRANSINDO
           </h2>
         </div>
       </div>

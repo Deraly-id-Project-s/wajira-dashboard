@@ -9,7 +9,7 @@ export default function ExportMethod() {
       shadow: "shadow-[0_8px_20px_rgba(0,0,0,0.3)]",
     },
     {
-      title: "PT Wajira Jagratara Motorindo (Local)",
+      title: "PT Wajira Jagratara Morindo (Local)",
       label: "For Local",
       desc: "Distribution and trading of motorcycles and spare parts for automotive products",
       bg: "bg-[#EAF0FA]",
