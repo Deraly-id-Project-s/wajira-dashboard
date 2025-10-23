@@ -59,10 +59,6 @@ class PermissionResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->formatStateUsing(fn(string $state): string => Str::headline($state)),
-                TextColumn::make('roles_count')
-                    ->label('Total Roles')
-                    ->badge()
-                    ->sortable(),
                 TextColumn::make('guard_name')
                     ->label('Guard')
                     ->badge()
