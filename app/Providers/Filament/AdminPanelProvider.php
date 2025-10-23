@@ -28,6 +28,9 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->authGuard('web')
+            ->brandLogo(asset('assets/logo.png'))
+            ->brandLogoHeight('4rem')
+            ->brandName('')
             ->colors([
                 'primary' => Color::Red,
             ])
