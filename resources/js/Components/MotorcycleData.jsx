@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { ArrowRight, Search } from "lucide-react";
 import { motion } from "framer-motion";
 import RippleButton from "@/Components/ui/rippleButton";
@@ -8,20 +8,33 @@ import useFetchData from "@/Hooks/useFetchData";
 
 const MotorcycleData = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState(""); // untuk debounce
   const [sortBy, setSortBy] = useState("popular");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { data: motorcycleData, loading, error } = useFetchData(
-    `/api/motorcycles?search=${encodeURIComponent(searchQuery)}&sort=${sortBy}&page=${currentPage}`,
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 500);
+    return () => clearTimeout(handler);
+  }, [searchQuery]);
+
+  // 🔹 Ambil data dari API
+  const {
+    data: motorcycleData,
+    loading,
+    error,
+  } = useFetchData(
+    `/api/motorcycles?search=${encodeURIComponent(debouncedSearch)}&sort=${sortBy}&page=${currentPage}`,
     {},
-    [searchQuery, sortBy, currentPage]
+    [debouncedSearch, sortBy, currentPage]
   );
 
   const motorcycles = motorcycleData?.data ?? [];
   const itemsPerPage = 6;
 
   const filteredData = useMemo(() => {
-    const q = (searchQuery || "").trim().toLowerCase();
+    const q = (debouncedSearch || "").trim().toLowerCase();
 
     let list = motorcycles.filter((item) => {
       if (!item) return false;
@@ -38,32 +51,13 @@ const MotorcycleData = () => {
     }
 
     return list;
-  }, [motorcycles, searchQuery, sortBy]);
+  }, [motorcycles, debouncedSearch, sortBy]);
 
   const totalPages = Math.max(1, Math.ceil(filteredData.length / itemsPerPage));
   const paginatedData = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
-
-  if (loading) {
-    return (
-      <div className="flex h-screen justify-center items-center py-12">
-        <MainLoading text="Load Motorcycle Data..." />
-      </div>
-    );
-  }
-
-  if (!loading && filteredData.length === 0) {
-    return (
-      <div className="py-20">
-        <EmptyState
-          title="No Motorcycles Found"
-          description="Try adjusting your search or filters."
-        />
-      </div>
-    );
-  }
 
   return (
     <div className="w-full">
@@ -101,84 +95,98 @@ const MotorcycleData = () => {
 
       <motion.div
         layout
-        className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4"
+        className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 min-h-[300px]"
       >
-        {paginatedData.map((product) => (
-          <motion.div
-            key={product.id}
-            layout
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <img
-              src={`/storage/${product.product_image ?? product.image}`}
-              alt={product.name}
-              className="w-full h-48 object-contain"
+        {loading ? (
+          <div className="col-span-full flex justify-center py-10">
+            <MainLoading text="Loading..." />
+          </div>
+        ) : filteredData.length === 0 ? (
+          <div className="col-span-full">
+            <EmptyState
+              title="No Motorcycles Found"
+              description="Try adjusting your search or filters."
             />
-            <div className="p-4">
-              <h3 className="text-gray-800 text-[20px] font-medium mb-3">
-                {product.name}
-              </h3>
-              <a href={`/products/motorcycles/${product.slug}`}>
-                <RippleButton className="flex items-center gap-2 text-white bg-blue-900 w-full py-2 hover:bg-blue-800 transition justify-center">
-                  Details <ArrowRight size={18} />
-                </RippleButton>
-              </a>
-            </div>
-          </motion.div>
-        ))}
+          </div>
+        ) : (
+          paginatedData.map((product) => (
+            <motion.div
+              key={product.id}
+              layout
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <img
+                src={`/storage/${product.product_image ?? product.image}`}
+                alt={product.name}
+                className="w-full h-48 object-contain"
+              />
+              <div className="p-4">
+                <h3 className="text-gray-800 text-[20px] font-medium mb-3">
+                  {product.name}
+                </h3>
+                <a href={`/products/motorcycles/${product.slug}`}>
+                  <RippleButton className="flex items-center gap-2 text-white bg-blue-900 w-full py-2 hover:bg-blue-800 transition justify-center">
+                    Details <ArrowRight size={18} />
+                  </RippleButton>
+                </a>
+              </div>
+            </motion.div>
+          ))
+        )}
       </motion.div>
 
-      <div className="flex justify-center items-center mt-10 space-x-2">
-        <button
-          onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-          className="px-3 py-1 rounded-md border text-sm bg-white hover:bg-gray-100 text-gray-700"
-          disabled={currentPage === 1}
-        >
-          Prev
-        </button>
+      {filteredData.length > 0 && (
+        <div className="flex justify-center items-center mt-10 space-x-2">
+          <button
+            onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+            className="px-3 py-1 rounded-md border text-sm bg-white hover:bg-gray-100 text-gray-700"
+            disabled={currentPage === 1}
+          >
+            Prev
+          </button>
 
-        <div className="flex items-center space-x-1">
-          {Array.from({ length: totalPages }).map((_, i) => {
-            const page = i + 1;
-            // Optionally show only nearby pages for big page counts
-            const showAll = totalPages <= 7;
-            const inWindow =
-              page === 1 ||
-              page === totalPages ||
-              (page >= currentPage - 1 && page <= currentPage + 1);
+          <div className="flex items-center space-x-1">
+            {Array.from({ length: totalPages }).map((_, i) => {
+              const page = i + 1;
+              const showAll = totalPages <= 7;
+              const inWindow =
+                page === 1 ||
+                page === totalPages ||
+                (page >= currentPage - 1 && page <= currentPage + 1);
 
-            if (!showAll && !inWindow) {
-              return null;
-            }
+              if (!showAll && !inWindow) {
+                return null;
+              }
 
-            return (
-              <button
-                key={page}
-                onClick={() => setCurrentPage(page)}
-                className={`px-3 py-1 rounded-md border text-sm ${
-                  currentPage === page
-                    ? "bg-[#B0160D] text-white"
-                    : "bg-white hover:bg-gray-100 text-gray-700"
-                }`}
-              >
-                {page}
-              </button>
-            );
-          })}
-          {totalPages > 7 && <span className="px-2">…</span>}
+              return (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`px-3 py-1 rounded-md border text-sm ${
+                    currentPage === page
+                      ? "bg-[#B0160D] text-white"
+                      : "bg-white hover:bg-gray-100 text-gray-700"
+                  }`}
+                >
+                  {page}
+                </button>
+              );
+            })}
+            {totalPages > 7 && <span className="px-2">…</span>}
+          </div>
+
+          <button
+            onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+            className="px-3 py-1 rounded-md border text-sm bg-white hover:bg-gray-100 text-gray-700"
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
         </div>
-
-        <button
-          onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-          className="px-3 py-1 rounded-md border text-sm bg-white hover:bg-gray-100 text-gray-700"
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </button>
-      </div>
+      )}
     </div>
   );
 };

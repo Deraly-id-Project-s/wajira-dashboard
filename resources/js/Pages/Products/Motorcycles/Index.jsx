@@ -49,9 +49,7 @@ const ProductsPage = () => {
             </section>
 
             <section id="sponsor-list" className="max-w-7xl mx-auto px-4 py-16">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-14">
-                    <SponsorList data={data?.data?.brands} />
-                </div>
+                <SponsorList data={data?.data?.brands} />
             </section>
 
             <section id="product-list" className="flex max-w-7xl mx-auto flex-col justify-center align-middle items-center">

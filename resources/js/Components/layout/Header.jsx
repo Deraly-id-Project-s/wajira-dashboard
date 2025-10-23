@@ -43,15 +43,13 @@ const Header = ({ activeCategory, onCategoryChange }) => {
     setShowLangDropdown(false);
   };
 
-  // Menu data
   const menuItems = [
     { id: "home", label: "Home", href: "/" },
-    { id: "product", label: "Product" },
+    { id: "product", label: "Product", href: "/#product-list" },
     { id: "gallery", label: "Gallery", href: '/gallery' },
     { id: "about-us", label: "About Us", href: "/about-us" },
   ];
 
-  // 🔹 Deteksi route — jika bukan "/", set scrolled true secara default
   useEffect(() => {
     if (url !== "/" && url !== "/about-us") {
       setIsScrolled(true);
@@ -60,7 +58,6 @@ const Header = ({ activeCategory, onCategoryChange }) => {
     }
   }, [url]);
 
-  // Handle scroll behavior
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -116,6 +113,25 @@ const Header = ({ activeCategory, onCategoryChange }) => {
   };
 
   const handleMenuClick = (item) => {
+    if (item.href === "/#product-list") {
+      if (url === "/") {
+        const target = document.getElementById("product-list");
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        router.visit("/", {
+          onSuccess: () => {
+            window.location.hash = "product-list";
+          },
+        });
+
+      }
+      setIsMenuOpen(false);
+      return;
+    }
+
+    // Default behavior untuk menu lain
     if (item.href) {
       onCategoryChange(item.href);
       router.visit(item.href);
@@ -124,6 +140,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
       toggleSubmenu(item.id);
     }
   };
+
 
   const handleSubmenuClick = (href) => {
     onCategoryChange(href);

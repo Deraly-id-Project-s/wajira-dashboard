@@ -26,7 +26,7 @@ export default function ProductAndService() {
       color: "bg-[#E3A73F]",
       font_color: "text-black",
       image: "/assets/product_and_service/comodity.png",
-      route: "/products/commodities",
+      route: "/commodity",
     },
     {
       title: "Vehicle Documentation",

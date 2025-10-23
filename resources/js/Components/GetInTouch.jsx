@@ -10,9 +10,7 @@ const GetInTouch = ({ data }) => {
         );
     }
 
-    // cari data WhatsApp
     const whatsappData = data.find(item => item.platform_name === "WhatsApp");
-    // format nomor (hapus 0 di depan dan tambahkan kode negara Indonesia)
     const whatsappNumber = whatsappData ? whatsappData.url.replace(/^0/, "62") : "";
     const whatsappLink = `https://wa.me/${whatsappNumber}`;
     return (
