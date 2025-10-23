@@ -3,7 +3,7 @@ import MainLoading from "@/Components/ui/MainLoading";
 import { ArrowRight } from "lucide-react";
 import Header from "@/Components/layout/Header";
 import Footer from "@/Components/layout/Footer";
-import { Head, usePage } from '@inertiajs/react';
+import { Head, usePage } from "@inertiajs/react";
 import BreadCrumbs from "@/Components/BreadCrumbs";
 import HelperButton from "@/Components/HelperButton";
 import MotorcycleColor from "@/Components/MotorcycleColor";
@@ -23,23 +23,25 @@ const MotocyclesDetail = (slug) => {
             <div className="h-screen flex justify-center items-center py-12">
                 <MainLoading text="Load Gallery Data..." />
             </div>
-        )
+        );
     }
 
-    // Function to handle category change
     const handleCategoryChange = (category) => {
         setActiveCategory(category);
     };
 
     const breadcrumbItems = [
-        { name: 'Home', href: '/' },
-        { name: 'Products', href: '/products' },
-        { name: 'Motorcycles', href: '/products/motorcycles' },
-        { name: 'Detail', href: null },
+        { name: "Home", href: "/" },
+        { name: "Products", href: "/products" },
+        { name: "Motorcycles", href: "/products/motorcycles" },
+        { name: "Detail", href: null },
     ];
 
     return (
-        <section id="motocycle-detail" className="min-h-screen bg-white max-sm:overflow-x-hidden">
+        <section
+            id="motocycle-detail"
+            className="min-h-screen bg-white max-sm:overflow-x-hidden"
+        >
             <Header activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
 
             <section className="max-w-7xl mx-auto px-4 pt-16 pb-8 mt-12">
@@ -48,36 +50,40 @@ const MotocyclesDetail = (slug) => {
                 </div>
             </section>
 
-            {!motorcycle?.colors ? (
-                <div className="flex h-screen justify-center items-center py-12">
-                    <MainLoading text="Load Motorcycle Colors Data..." />
-                </div>
-            ) : (
+            {/* === Motorcycle Colors Section === */}
+            {motorcycle?.colors && motorcycle.colors.length > 0 && (
                 <section id="color-selector" className="max-w-7xl mx-auto flex flex-col">
                     <h2 className="text-[32px] py-[20px] md:px-0 px-4 mb-12">
                         Color Variant Yamaha Aerox Alpha
                     </h2>
-                    <MotorcycleColor data={slug?.motorcycle?.colors}/>
+                    <MotorcycleColor data={motorcycle.colors} />
                 </section>
             )}
 
-            {!motorcycle?.image_360 ? (
-                <div className="flex h-screen justify-center items-center py-12">
-                    <MainLoading text="Load Motorcycle 360 Data..." />
-                </div>
-            ) : (
+            {/* === 360 Viewer Section === */}
+            {motorcycle?.image_360 && motorcycle.image_360.length > 0 && (
                 <section id="360-viewer" className="max-w-7xl mx-auto flex flex-col mt-32">
-                    <MotorcycleViewer data={slug?.motorcycle?.image_360} modelId="aerox-alpha" initialColor="black" />
+                    <MotorcycleViewer
+                        data={motorcycle.image_360}
+                        modelId="aerox-alpha"
+                        initialColor="black"
+                    />
                 </section>
             )}
 
-            <section id="page_title" className="max-w-7xl mx-auto p-4 md:p-8 mt-32 flex justify-center align-middle items-center">
+            <section
+                id="page_title"
+                className="max-w-7xl mx-auto p-4 md:p-8 mt-32 flex justify-center align-middle items-center"
+            >
                 <h3 className="text-[32px]">Vehicle Spesification</h3>
             </section>
 
             <MotorcycleDescriptionContainer motorcycle={motorcycle} />
 
-            <section id="helper-button" className="md:max-w-7xl max-w-full mx-auto px-0 py-16">
+            <section
+                id="helper-button"
+                className="md:max-w-7xl max-w-full mx-auto px-0 py-16"
+            >
                 <HelperButton data={data?.data?.links} />
             </section>
 
@@ -89,7 +95,10 @@ const MotocyclesDetail = (slug) => {
             </div>
 
             <div className="md:max-w-7xl max-w-full mx-auto px-0 py-16 justify-center align-middle items-center flex">
-                <a href="/products/motorcycles" className="flex flex-row justify-center align-middle items-center w-[143px] h-[48px] gap-2 p-5 bg-[#B0160D] text-white text-[14px]">
+                <a
+                    href="/products/motorcycles"
+                    className="flex flex-row justify-center align-middle items-center w-[143px] h-[48px] gap-2 p-5 bg-[#B0160D] text-white text-[14px]"
+                >
                     View More
                     <ArrowRight />
                 </a>
@@ -98,6 +107,6 @@ const MotocyclesDetail = (slug) => {
             <Footer data={data?.data?.links} />
         </section>
     );
-}
+};
 
 export default MotocyclesDetail;

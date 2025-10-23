@@ -371,9 +371,9 @@ class MotorcycleResource extends Resource
             
             ToggleColumn::make('is_recomended')
                 ->label('Recomended')
-                ->grow(false),
+                ->grow(false)
+                ->afterStateUpdated(fn () => static::clearCache()),
 
-            // Kolom tambahan, default-nya hidden (toggleable)
             Tables\Columns\TextColumn::make('engine_type')
                 ->searchable()
                 ->toggleable(isToggledHiddenByDefault: true),
