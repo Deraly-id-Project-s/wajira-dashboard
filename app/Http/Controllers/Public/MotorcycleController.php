@@ -14,9 +14,6 @@ class MotorcycleController extends Controller
      */
     public function index()
     {
-        // click tracker
-        pageClickTracker('/products/motorcycles');
-
         return Inertia::render('Products/Motorcycles/Index');
     }
 
@@ -25,9 +22,6 @@ class MotorcycleController extends Controller
      */
     public function show(string $slug)
     {
-        // click tracker
-        pageClickTracker('/products/motorcycles/detail');
-
         $motorcycle = Motorcycle::with('colors')->where('slug', $slug)->first();
 
         if ($motorcycle) {

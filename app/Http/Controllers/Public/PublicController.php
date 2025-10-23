@@ -11,7 +11,9 @@ use App\Models\Motorcycle;
 use App\Traits\ResponseTrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Request;
+// use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
+
 
 class PublicController extends Controller
 {
@@ -114,5 +116,22 @@ class PublicController extends Controller
         $data = Motorcycle::where('slug', $slug)->with('colors')->select('image')->get();
 
         return $this->responseSuccess($data, 'success');
+    }
+
+    public function pageVisitor(Request $request)
+    {
+        $session_id      = $request->input('session_id');
+        $ip_address      = $request->input('ip_address');
+        $user_agent      = $request->userAgent();
+        $platform        = php_uname('s');
+        $url_visited     = $request->input('url_visited', url()->current());
+        $referrer        = $request->input('referrer');
+        $country         = $request->input('country') ?? 'Unknown';
+
+        if (function_exists('pageVisitor')) {
+            return pageVisitor($session_id, $ip_address, $user_agent, $platform, $url_visited, $referrer, $country);
+        }
+
+        return false;
     }
 }

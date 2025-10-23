@@ -12,9 +12,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // click tracker
-        pageClickTracker('/');
-
         return Inertia::render('Main');
     }
 }
