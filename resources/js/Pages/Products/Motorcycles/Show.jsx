@@ -32,7 +32,7 @@ const MotocyclesDetail = (slug) => {
 
     const breadcrumbItems = [
         { name: "Home", href: "/" },
-        { name: "Products", href: "/products" },
+        { name: "Products", href: "/#product-list" },
         { name: "Motorcycles", href: "/products/motorcycles" },
         { name: "Detail", href: null },
     ];
