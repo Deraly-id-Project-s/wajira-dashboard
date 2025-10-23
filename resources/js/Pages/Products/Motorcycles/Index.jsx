@@ -57,7 +57,7 @@ const ProductsPage = () => {
             </section>
 
             <section id="helper-button" className="md:max-w-7xl max-w-full mx-auto px-0 py-16">
-                <HelperButton />
+                <HelperButton data={data?.data?.links} />
             </section>
 
             <Footer data={data?.data?.links} />

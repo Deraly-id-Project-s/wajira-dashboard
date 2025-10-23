@@ -78,7 +78,7 @@ const MotocyclesDetail = (slug) => {
             <MotorcycleDescriptionContainer motorcycle={motorcycle} />
 
             <section id="helper-button" className="md:max-w-7xl max-w-full mx-auto px-0 py-16">
-                <HelperButton />
+                <HelperButton data={data?.data?.links} />
             </section>
 
             <div className="flex max-w-7xl mx-auto flex-col justify-center align-middle items-center">
