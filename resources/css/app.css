@@ -7,3 +7,10 @@
     max-width: 768px;
   }
 }
+
+@font-face {
+  font-family: 'Arima';
+  src: url('../fonts/Arima/Arima-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
