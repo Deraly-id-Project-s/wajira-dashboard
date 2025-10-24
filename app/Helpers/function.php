@@ -19,8 +19,8 @@ if (!function_exists('pageClickTracker')) {
     }
 }
 
-if (!function_exists('pageVisitor')) {
-    function pageVisitor(
+if (!function_exists('storePageVisitor')) {
+    function storePageVisitor(
         string $session_id,
         string $ip_address,
         string $user_agent,
@@ -45,6 +45,7 @@ if (!function_exists('pageVisitor')) {
             $visitor_data->save();
         } catch (\Exception $err) {
             Log::info('Page Visitor Error: ' . $err->getMessage());
+            return false;
         }
 
         return true;

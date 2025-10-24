@@ -8,11 +8,12 @@ use App\Models\Banner;
 use App\Models\Gallery;
 use App\Models\Commodity;
 use App\Models\Motorcycle;
+use Illuminate\Http\Request;
 use App\Traits\ResponseTrait;
+use Illuminate\Support\Facades\Log;
+// use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
-// use Illuminate\Support\Facades\Request;
-use Illuminate\Http\Request;
 
 
 class PublicController extends Controller
@@ -120,18 +121,23 @@ class PublicController extends Controller
 
     public function pageVisitor(Request $request)
     {
-        $session_id      = $request->input('session_id');
-        $ip_address      = $request->input('ip_address');
-        $user_agent      = $request->userAgent();
-        $platform        = php_uname('s');
-        $url_visited     = $request->input('url_visited', url()->current());
-        $referrer        = $request->input('referrer');
-        $country         = $request->input('country') ?? 'Unknown';
+        try {
+            $session_id      = $request->input('session_id');
+            $ip_address      = $request->input('ip_address');
+            $user_agent      = $request->userAgent();
+            $platform        = php_uname('s') ?? 'kontol';
+            $url_visited     = $request->input('url_visited', url()->current());
+            $referrer        = $request->input('referrer');
+            $country         = $request->input('country') ?? 'Unknown';
+            
+            if (function_exists('pageVisitor')) {
+                storePageVisitor($session_id, $ip_address, $user_agent, $platform, $country, $url_visited, $referrer);
+            }
 
-        if (function_exists('pageVisitor')) {
-            return pageVisitor($session_id, $ip_address, $user_agent, $platform, $url_visited, $referrer, $country);
+            return response()->json(['message' => 'Page Visitor Data Saved Successfully'], 200);
+        } catch (\Exception $err) {
+            Log::info('Page Visitor Error: ' . $err->getMessage());
+            return response()->json(['message' => $err->getMessage()], 500);
         }
-
-        return false;
     }
 }
