@@ -38,7 +38,7 @@ export default function ProductList() {
       break;
     case "Commodity":
       filteredData = commodityData?.data || [];
-      basePath = "/products/commodities/";
+      basePath = "/commodity/";
       actionUrl = "/commodity";
       break;
     default:

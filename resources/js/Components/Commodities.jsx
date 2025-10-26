@@ -5,10 +5,22 @@ import EmptyState from "@/Components/ui/EmptyState";
 
 import useFetchData from "@/Hooks/useFetchData";
 
-const Commodities = () => {
+const Commodities = ({ links }) => {
     const appUrl = import.meta.env.VITE_APP_URL;
     const { data, loading, error } = useFetchData("/api/commodities");
-    const commodities =  data?.data;
+    const commodities = data?.data;
+
+    if (!links || links.length === 0) {
+        return (
+            <div className="text-center py-10 text-gray-400">
+                No social link data available.
+            </div>
+        );
+    }
+
+    const whatsappData = links.find(item => item.platform_name === "WhatsApp");
+    const whatsappNumber = whatsappData ? whatsappData.url.replace(/^0/, "62") : "";
+    const whatsappLink = `https://wa.me/${whatsappNumber}`;
 
     if (loading) {
         return (
@@ -51,11 +63,19 @@ const Commodities = () => {
                             className="text-[16px] md:text-base leading-relaxed opacity-90 mb-6 text-justify"
                             dangerouslySetInnerHTML={{ __html: commodity.content }}
                         />
+                        {whatsappData && (
+                            <a
+                                href={whatsappLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
 
-                        <RippleButton className="text-[14px] w-[150px] items-center gap-2 bg-[#1D3B56] text-white px-5 py-2.5 hover:bg-[#284c6e] flex justify-between transition-all shadow-md">
-                            Contact Us
-                            <ArrowRight size={18} />
-                        </RippleButton>
+                                <RippleButton className="text-[14px] w-[150px] items-center gap-2 bg-[#1D3B56] text-white px-5 py-2.5 hover:bg-[#284c6e] flex justify-between transition-all shadow-md">
+                                    Contact Us
+                                    <ArrowRight size={18} />
+                                </RippleButton>
+                            </a>
+                        )}
                     </div>
                 </div>
             )) : (

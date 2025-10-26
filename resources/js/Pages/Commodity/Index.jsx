@@ -42,7 +42,7 @@ const CommodityPage = () => {
                 <p className="text-[16px]">Expansion of international business network including overseas cooperation and global market development</p>
             </section>
 
-            <Commodities />
+            <Commodities links={data?.data?.links} />
 
             <section id="word" className="max-w-7xl mx-auto flex flex-col items-center justify-center px-[168px] py-[96px] space-y-16">
                 <span className="font-times" style={{ fontFamily: "Times New Roman" }}>

@@ -10,6 +10,7 @@ Route::resource('/products/motorcycles', App\Http\Controllers\Public\MotorcycleC
 
 // Commodity
 Route::get('/commodity', [App\Http\Controllers\Public\CommodityController::class, 'index'])->name('commodity');
+Route::get('/commodity/{slug}', [App\Http\Controllers\Public\CommodityController::class, 'index'])->name('commodity.with-slug');
 
 // Abous Us
 Route::get('/about-us', [App\Http\Controllers\Public\AboutUsController::class, 'index'])->name('about-us');
