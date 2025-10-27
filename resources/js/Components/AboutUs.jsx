@@ -16,7 +16,7 @@ export default function AboutUs() {
         <ul className="list-disc ml-5 space-y-1 text-[16px] opacity-90">
           <li>PT. WAJIRA JAGRATARA YANOTAMA</li>
           <li>PT. WAJIRA JAGRATARA TRANSINDO</li>
-          <li>PT. WAJIRA JAGRATARA MOTORINDO</li>
+          <li>PT. WAJIRA JAGRATARA MORINDO</li>
           <li>PT. WAJIRA INTERNASIONAL</li>
         </ul>
       </div>
