@@ -10,7 +10,6 @@ import MotorcycleColor from "@/Components/MotorcycleColor";
 import MotorcycleViewer from "@/Components/MotorcycleViewer";
 import RecomendationProductList from "@/Components/RecomendationProductList";
 import MotorcycleDescriptionContainer from "@/Components/MotorcycleDescriptionContainer";
-import { usePage } from '@inertiajs/react';
 
 import useFetchData from "@/Hooks/useFetchData";
 
@@ -39,10 +38,10 @@ const MotocyclesDetail = (slug) => {
     };
 
     const breadcrumbItems = [
-        { name: "Home", href: "/" },
-        { name: "Products", href: "/#product-list" },
-        { name: "Motorcycles", href: "/products/motorcycles" },
-        { name: "Detail", href: null },
+        { name: langData?.[16]?.lang?.[currentLang]?.home ?? "Home", href: "/" },
+        { name: langData?.[16]?.lang?.[currentLang]?.product ?? "Products", href: "/#product-list" },
+        { name: langData?.[16]?.lang?.[currentLang]?.motorcycle ?? "Motorcycles", href: "/products/motorcycles" },
+        { name: langData?.[16]?.lang?.[currentLang]?.detail ?? "Detail", href: null },
     ];
 
     return (
@@ -62,7 +61,7 @@ const MotocyclesDetail = (slug) => {
             {motorcycle?.colors && motorcycle.colors.length > 0 && (
                 <section id="color-selector" className="max-w-7xl mx-auto flex flex-col">
                     <h2 className="text-[32px] py-[20px] md:px-0 px-4 mb-12">
-                        Color Variant Yamaha Aerox Alpha
+                        {(langData?.[15]?.lang?.[currentLang]?.label?.[0]) ?? "Color Variant"} {motorcycle.name}
                     </h2>
                     <MotorcycleColor data={motorcycle.colors} />
                 </section>
@@ -83,23 +82,23 @@ const MotocyclesDetail = (slug) => {
                 id="page_title"
                 className="max-w-7xl mx-auto p-4 md:p-8 mt-32 flex justify-center align-middle items-center"
             >
-                <h3 className="text-[32px]">Vehicle Spesification</h3>
+                <h3 className="text-[32px]">{(langData?.[15]?.lang?.[currentLang]?.label?.[5]) ?? "Vehicle Spesification"}</h3>
             </section>
 
-            <MotorcycleDescriptionContainer motorcycle={motorcycle} />
+            <MotorcycleDescriptionContainer motorcycle={motorcycle} lang={langData?.[15]?.lang?.[currentLang]} />
 
             <section
                 id="helper-button"
                 className="md:max-w-7xl max-w-full mx-auto px-0 py-16"
             >
-                <HelperButton data={data?.data?.links} />
+                <HelperButton data={data?.data?.links} lang={langData?.[6]?.lang?.[currentLang] || []} />
             </section>
 
             <div className="flex max-w-7xl mx-auto flex-col justify-center align-middle items-center">
                 <h2 className="text-[32px] p-[100px] mb-2 text-center">
-                    Our Recommendation
+                    {(langData?.[15]?.lang?.[currentLang]?.label?.[2]) ?? "Our Recommendation" }
                 </h2>
-                <RecomendationProductList />
+                <RecomendationProductList lang={(langData?.[15]?.lang?.[currentLang])} />
             </div>
 
             <div className="md:max-w-7xl max-w-full mx-auto px-0 py-16 justify-center align-middle items-center flex">
@@ -107,7 +106,7 @@ const MotocyclesDetail = (slug) => {
                     href="/products/motorcycles"
                     className="flex flex-row justify-center align-middle items-center w-[143px] h-[48px] gap-2 p-5 bg-[#B0160D] text-white text-[14px]"
                 >
-                    View More
+                    {(langData?.[15]?.lang?.[currentLang]?.label?.[4]) ?? "View More"} 
                     <ArrowRight />
                 </a>
             </div>

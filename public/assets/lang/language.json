@@ -1335,5 +1335,170 @@
                 "btn": "संपर्क करें"
             }
         }
+    },
+    {
+        "name": "motorcycle-detail",
+        "lang": {
+            "en": {
+                "label": [
+                    "Color Variant",
+                    "Stock",
+                    "Our Recommendation",
+                    "Details",
+                    "View More",
+                    "Vehicle Specification"
+                ],
+                "menu": [
+                    "Engine",
+                    "Frame",
+                    "Dimension & Weight",
+                    "Electricity"
+                ]
+            },
+            "id": {
+                "label": [
+                    "Varian Warna",
+                    "Stok",
+                    "Rekomendasi Kami",
+                    "Detail",
+                    "Lihat Selengkapnya",
+                    "Spesifikasi Kendaraan"
+                ],
+                "menu": [
+                    "Mesin",
+                    "Rangka",
+                    "Dimensi & Berat",
+                    "Kelistrikan"
+                ]
+            },
+            "fr": {
+                "label": [
+                    "Variante de couleur",
+                    "Stock",
+                    "Notre recommandation",
+                    "Détails",
+                    "Voir plus",
+                    "Spécifications du véhicule"
+                ],
+                "menu": [
+                    "Moteur",
+                    "Châssis",
+                    "Dimensions et poids",
+                    "Électricité"
+                ]
+            },
+            "ar": {
+                "label": [
+                    "متغير اللون",
+                    "المخزون",
+                    "توصيتنا",
+                    "التفاصيل",
+                    "عرض المزيد",
+                    "مواصفات المركبة"
+                ],
+                "menu": [
+                    "المحرك",
+                    "الإطار",
+                    "الأبعاد والوزن",
+                    "الكهرباء"
+                ]
+            },
+            "vi": {
+                "label": [
+                    "Phiên bản màu",
+                    "Tồn kho",
+                    "Gợi ý của chúng tôi",
+                    "Chi tiết",
+                    "Xem thêm",
+                    "Thông số xe"
+                ],
+                "menu": [
+                    "Động cơ",
+                    "Khung xe",
+                    "Kích thước & Trọng lượng",
+                    "Hệ thống điện"
+                ]
+            },
+            "zh": {
+                "label": [
+                    "颜色款式",
+                    "库存",
+                    "我们的推荐",
+                    "详情",
+                    "查看更多",
+                    "车辆规格"
+                ],
+                "menu": [
+                    "发动机",
+                    "车架",
+                    "尺寸与重量",
+                    "电气系统"
+                ]
+            },
+            "hi": {
+                "label": [
+                    "रंग विकल्प",
+                    "स्टॉक",
+                    "हमारी सिफारिश",
+                    "विवरण",
+                    "और देखें",
+                    "वाहन विनिर्देश"
+                ],
+                "menu": [
+                    "इंजन",
+                    "फ्रेम",
+                    "आकार और वजन",
+                    "विद्युत प्रणाली"
+                ]
+            }
+        }
+    },
+    {
+        "name": "breadcrumb",
+        "lang": {
+            "en": {
+                "home": "Home",
+                "product": "Product",
+                "motorcycle": "Motorcycle",
+                "commodity": "Commodity",
+                "detail": "Detail" 
+            },
+            "id": {
+                "home": "Beranda",
+                "product": "Produk",
+                "motorcycle": "Sepeda Motor",
+                "commodity": "Komoditas"
+            },
+            "fr": {
+                "home": "Accueil",
+                "product": "Produit",
+                "motorcycle": "Moto",
+                "commodity": "Marchandise"
+            },
+            "ar": {
+                "home": "الرئيسية",
+                "product": "المنتج",
+                "motorcycle": "دراجة نارية",
+                "commodity": "سلعة"
+            },
+            "vi": {
+                "home": "Trang chủ",
+                "product": "Sản phẩm",
+                "motorcycle": "Xe máy",
+                "commodity": "Hàng hóa"
+            },
+            "zh": {
+                "home": "首页",
+                "product": "产品",
+                "motorcycle": "摩托车",
+                "commodity": "商品"
+            },
+            "hi": {
+                "home": "मुखपृष्ठ",
+                "product": "उत्पाद",
+                "motorcycle": "मोटरसाइकिल",
+                "commodity": "वस्तु"
+            }
+        }
     }
 ]

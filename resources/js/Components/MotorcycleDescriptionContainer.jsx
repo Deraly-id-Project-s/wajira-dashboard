@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MainLoading from "@/Components/ui/MainLoading";
 
-const MotorcycleDescriptionContainer = ({ motorcycle }) => {
+const MotorcycleDescriptionContainer = ({ motorcycle, lang }) => {
   const [activeTab, setActiveTab] = useState("Engine");
 
   if (!motorcycle || motorcycle.length === 0) {

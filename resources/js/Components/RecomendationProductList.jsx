@@ -14,7 +14,7 @@ const products = [
   { id: 3, slug: "honda-adv", name: "Honda ADV 160", category: "Motorcycle", image: "/assets/products/motorcycles/adv.png" },
 ];
 
-const RecomendationProductList = () => {
+const RecomendationProductList = ({ lang }) => {
   const [selectedCategory, setSelectedCategory] = useState("Motorcycle");
   const { data, loading, error } = useFetchData("/api/motorcycle-recomendation");
 
@@ -62,7 +62,7 @@ const RecomendationProductList = () => {
                     {product.name}
                     </h3>
                     <a href={`/products/motorcycles/${product.slug}`} className="flex items-center gap-2 text-white bg-blue-900 w-full py-2 hover:bg-blue-800 transition align-middle justify-center">
-                    Details <ArrowRight />
+                    {(lang?.label?.[3]) ?? "Details"} <ArrowRight />
                     </a>
                 </div>
                 </motion.div>

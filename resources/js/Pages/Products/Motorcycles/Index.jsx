@@ -22,9 +22,9 @@ const ProductsPage = () => {
     } = useFetchData("/assets/lang/language.json");
 
     const breadcrumbItems = [
-        { name: 'Home', href: '/' },
-        { name: 'Products', href: '/products' },
-        { name: 'Motorcycles', href: '/products/motorcycles' },
+        { name: langData?.[16]?.lang?.[currentLang]?.home ?? 'Home', href: '/' },
+        { name: langData?.[16]?.lang?.[currentLang]?.product ?? 'Products', href: '/#product-list' },
+        { name: langData?.[16]?.lang?.[currentLang]?.motorcycle ?? 'Motorcycles', href: '/products/motorcycles' },
     ];
 
     const handleCategoryChange = (category) => {
