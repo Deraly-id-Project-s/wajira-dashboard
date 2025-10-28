@@ -16,11 +16,20 @@ import HelperButton from "@/Components/HelperButton";
 import SponsorList from "@/Components/SponsorList";
 import GetInTouch from "@/Components/GetInTouch";
 
+import { usePage } from '@inertiajs/react';
+
 import useFetchData from "@/Hooks/useFetchData";
 
 const HomePage = () => {
   const [activeCategory, setActiveCategory] = useState("/");
   const { data, loading, error } = useFetchData("/api/public");
+  const { props } = usePage();
+  const currentLang = props.lang;
+  const {
+    data: langData,
+    loading: langLoading,
+    error: langError
+  } = useFetchData("/assets/lang/language.json");
 
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
@@ -44,40 +53,40 @@ const HomePage = () => {
 
       {/* Hero Section */}
       <section id="hero_section">
-        <HeroSection activeCategory={activeCategory} onScrollDown={scrollToViewer} data={data?.data?.banners} />
+        <HeroSection activeCategory={activeCategory} onScrollDown={scrollToViewer} data={data?.data?.banners} lang={langData?.[0]?.lang?.[currentLang] || []} />
       </section>
 
       <section id="product-and-service" className="flex flex-col justify-center align-middle items-center py-16 px-1 mx-auto">
-        <ProductAndService />
+        <ProductAndService lang={langData?.[1]?.lang?.[currentLang] || []} />
       </section>
 
       <section id="sponsor-list" className="max-w-7xl mx-auto px-4 py-16">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-14">
           <div>
             <h2 className="text-[32px] md:text-3xl font-bold text-gray-800">
-              Search by Brands
+              {langData?.[2]?.lang?.[currentLang]?.title ?? 'Search by Brands'}
             </h2>
             <p className="text-gray-500 text-[14px] mt-2">
-              This is text field, you could write everything you want to talk
+              {langData?.[2]?.lang?.[currentLang]?.desc ?? 'This is text field, you could write everything you want to talk'}
             </p>
           </div>
 
           <RippleButton className="mt-4 md:mt-0 flex items-center bg-[#A6160A] text-white px-5 py-4 text-sm hover:bg-[#8f1208] transition-all">
-            More Brands <ArrowRight size={16} className="ml-2" />
+            {langData?.[2]?.lang?.[currentLang]?.btn ?? 'More Brands'} <ArrowRight size={16} className="ml-2" />
           </RippleButton>
         </div>
         <SponsorList data={data?.data?.brands} />
       </section>
 
       <section id="helper-button" className="md:max-w-7xl max-w-full mx-auto px-0 py-16">
-        <HelperButton data={data?.data?.links} />
+        <HelperButton data={data?.data?.links} lang={langData?.[3]?.lang?.[currentLang] || []} />
       </section>
 
       <section id="product-list" className="flex max-w-7xl mx-auto flex-col justify-center align-middle items-center">
         <h2 className="text-[57px] p-[100px] font-bold mb-2 text-center">
-          Featured Listing
+          {langData?.[4]?.lang?.[currentLang]?.title ?? 'Featured Listing'}
         </h2>
-        <ProductList />
+        <ProductList lang={langData?.[3]?.lang?.[currentLang] || []} />
       </section>
 
       <section id="reason-choose">

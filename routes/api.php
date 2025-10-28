@@ -10,4 +10,3 @@ Route::get('/test', function() {
 });
 
 Route::post('/page-visitor', [PublicController::class, 'pageVisitor']);
-

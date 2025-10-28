@@ -19,28 +19,36 @@ const Header = ({ activeCategory, onCategoryChange }) => {
     { code: "id", name: "Indonesian", flag: "🇮🇩" },
     { code: "en", name: "English", flag: "🇬🇧" },
     { code: "fr", name: "French", flag: "🇫🇷" },
-    { code: "de", name: "German", flag: "🇩🇪" },
-    { code: "es", name: "Spanish", flag: "🇪🇸" },
-    { code: "ja", name: "Japanese", flag: "🇯🇵" },
-    { code: "ko", name: "Korean", flag: "🇰🇷" },
-    { code: "zh-CN", name: "Chinese", flag: "🇨🇳" },
+    { code: "vi", name: "Vietnamese", flag: "🇻🇳" },
     { code: "ar", name: "Arabic", flag: "🇸🇦" },
-    { code: "ru", name: "Russian", flag: "🇷🇺" },
+    { code: "zh", name: "Chinese", flag: "🇨🇳" },
+    { code: "hi", name: "India", flag: "🇮🇳" },
   ];
 
-  const [selectedLang, setSelectedLang] = useState("en");
+  const { props } = usePage();
+  const currentLang = props.lang;
+
+  const [selectedLang, setSelectedLang] = useState(currentLang || "en");
   const [showLangDropdown, setShowLangDropdown] = useState(false);
 
   const [showSearch, setShowSearch] = useState(false);
 
   const handleLanguageChange = (langCode) => {
-    const select = document.querySelector(".goog-te-combo");
-    if (select) {
-      select.value = langCode;
-      select.dispatchEvent(new Event("change"));
-    }
-    setSelectedLang(langCode);
-    setShowLangDropdown(false);
+    console.log('consol')
+    fetch('/set-language', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+      },
+      body: JSON.stringify({ lang: langCode }),
+    })
+      .then(() => {
+        setSelectedLang(langCode);
+        setShowLangDropdown(false);
+        window.location.reload();
+      })
+      .catch(err => console.error('Language change failed:', err));
   };
 
   const menuItems = [
@@ -190,7 +198,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
                 className={`flex items-center text-[24px] gap-1 px-3 py-2 rounded-md duration-150 transition-colors
                     ${url === "/" || url === "/about-us"
                     ? isScrolled
-                      ? "text-white hover:bg-white/20" 
+                      ? "text-white hover:bg-white/20"
                       : "text-white hover:bg-white/10"
                     : "text-white" // di luar route "/" tetap tanpa hover effect
                   }`}
@@ -283,8 +291,6 @@ const Header = ({ activeCategory, onCategoryChange }) => {
                   </motion.div>
                 )}
               </div>
-
-              <div id="google_translate_element" className="hidden"></div>
 
               <input
                 type="text"

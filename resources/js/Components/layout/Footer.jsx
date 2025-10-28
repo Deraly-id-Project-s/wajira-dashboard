@@ -5,6 +5,7 @@ import FacebookIcon from "@/Components/ui/FacebookIcon";
 import InstagramIcon from "@/Components/ui/InstagramIcon";
 import TiktokIcon from "@/Components/ui/TiktokIcon";
 import YoutubeIcon from "@/Components/ui/YoutubeIcon";
+import useFetchData from "@/Hooks/useFetchData";
 
 export default function Footer({ data }) {
   if (!data || data.length === 0) {
@@ -136,7 +137,7 @@ export default function Footer({ data }) {
             )}
           </div>
         </div>
-      </div>
+      </div>  
     </footer>
   );
 }

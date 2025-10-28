@@ -1,37 +1,38 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "@inertiajs/react";
 
-export default function ProductAndService() {
+export default function ProductAndService({ lang }) {
+  console.log();
   const items = [
     {
-      title: "Motorcycle",
-      description: "Authorized dealership and distribution for motorcycles",
+      title: lang[0]?.title ?? "Motorcycle",
+      description: lang[0]?.desc ?? "Authorized dealership and distribution for motorcycles",
       color: "bg-[#A6160A]",
       font_color: "text-white",
       image: "/assets/product_and_service/motor.png",
       route: "/products/motorcycles",
     },
     {
-      title: "Expedition",
+      title: lang[1]?.title ?? "Expedition",
       description:
-        "Comprehensive freight forwarding, fleet leasing, and passenger transport services across Indonesia.",
+        lang[1]?.desc ?? "Comprehensive freight forwarding, fleet leasing, and passenger transport services across Indonesia.",
       color: "bg-[#E3A73F]",
       font_color: "text-black",
       image: "/assets/product_and_service/expedition.png",
       route: "/products/expeditions",
     },
     {
-      title: "Commodity",
-      description: "Trade and distribution of various goods",
+      title: lang[2]?.title ?? "Commodity",
+      description: lang[2]?.desc ?? "Trade and distribution of various goods",
       color: "bg-[#E3A73F]",
       font_color: "text-black",
       image: "/assets/product_and_service/comodity.png",
       route: "/commodity",
     },
     {
-      title: "Vehicle Documentation",
+      title: lang[3]?.title ?? "Vehicle Documentation",
       description:
-        "Services for vehicle registration certificates (STNK), titles (BPKB)",
+        lang[3]?.desc ?? "Services for vehicle registration certificates (STNK), titles (BPKB)",
       color: "bg-[#A6160A]",
       font_color: "text-white",
       image: "/assets/product_and_service/document.png",
@@ -64,7 +65,7 @@ export default function ProductAndService() {
                   href={item.route}
                   className="mt-3 inline-flex items-center bg-white text-gray-800 px-3 py-1.5 text-xs sm:text-sm rounded hover:bg-gray-100 transition-all"
                 >
-                  Learn More <ArrowRight size={14} className="ml-2" />
+                  {lang[4]?.desc ?? 'Learn More'} <ArrowRight size={14} className="ml-2" />
                 </Link>
               </div>
             </div>

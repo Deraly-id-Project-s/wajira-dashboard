@@ -6,7 +6,7 @@ import RippleButton from "@/Components/ui/rippleButton";
 import WhatsAppIcon from "@/Components/ui/WhatsAppIcon";
 import Modal from "react-modal";
 
-const HeroSection = ({ onScrollDown, data }) => {
+const HeroSection = ({ onScrollDown, data, lang }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentBanner, setCurrentBanner] = useState(0);
 
@@ -124,7 +124,7 @@ const HeroSection = ({ onScrollDown, data }) => {
               transition={{ duration: 0.8 }}
               className="text-[45px] md:text-5xl max-w-[678px] font-light text-white mt-2"
             >
-              SMART TRADE, SHIPPING & EXPORT SERVICES
+              {lang[0] ?? 'SMART TRADE, SHIPPING & EXPORT SERVICES' }
             </motion.h1>
 
             <motion.p
@@ -133,8 +133,7 @@ const HeroSection = ({ onScrollDown, data }) => {
               transition={{ duration: 1 }}
               className="mt-4 text-white max-w-[700px] text-[22px] max-sm:text-lg"
             >
-              Wajira Jagrata Corps delivers smart solutions in exports,
-              logistics, and vehicle services.
+              {lang[1] ?? "Wajira Jagrata Corps delivers smart solutions in exports, logistics, and vehicle services."}
             </motion.p>
 
             <motion.p
@@ -143,8 +142,7 @@ const HeroSection = ({ onScrollDown, data }) => {
               transition={{ duration: 1 }}
               className="text-white max-w-[700px] text-[22px] max-sm:text-lg"
             >
-              From motorcycles to key commodities, we connect Indonesia to
-              global markets with trusted shipping and end-to-end support.
+              {lang[2] ?? "From motorcycles to key commodities, we connect Indonesia to global markets with trusted shipping and end-to-end support."}
             </motion.p>
 
             <motion.div

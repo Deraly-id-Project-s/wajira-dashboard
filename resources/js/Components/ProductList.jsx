@@ -8,11 +8,11 @@ import MainLoading from "@/Components/ui/MainLoading";
 import EmptyState from "@/Components/ui/EmptyState";
 import useFetchData from "@/Hooks/useFetchData";
 
-const categories = ["Motorcycle", "Expedition", "Commodity", "Vehicle Document"];
 
-export default function ProductList() {
+export default function ProductList({ lang }) {
   const { data: motorcycleData, loading: motorcycleLoading } = useFetchData("/api/motorcycles");
   const { data: commodityData, loading: commodityLoading } = useFetchData("/api/commodities");
+  const categories = lang?.menu ?? ["Motorcycle", "Expedition", "Commodity", "Vehicle Document"];
 
   const [selectedCategory, setSelectedCategory] = useState("Motorcycle");
 
