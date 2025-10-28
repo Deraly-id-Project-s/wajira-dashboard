@@ -6,7 +6,7 @@ import MainLoading from "@/Components/ui/MainLoading";
 import EmptyState from "@/Components/ui/EmptyState";
 import useFetchData from "@/Hooks/useFetchData";
 
-const MotorcycleData = () => {
+const MotorcycleData = ({ lang }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState(""); // untuk debounce
   const [sortBy, setSortBy] = useState("popular");
@@ -19,7 +19,6 @@ const MotorcycleData = () => {
     return () => clearTimeout(handler);
   }, [searchQuery]);
 
-  // 🔹 Ambil data dari API
   const {
     data: motorcycleData,
     loading,
@@ -63,7 +62,7 @@ const MotorcycleData = () => {
     <div className="w-full">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-0 md:gap-[64px] mb-8 px-7 md:px-4">
         <div className="flex flex-col text-sm text-gray-600 bg-[#F7F7F7] py-[13px] px-3 w-full md:w-[288px] border-b border-[#A7A8AE] mb-4 md:mb-[64px]">
-          <span className="text-[12px] px-3">Sort by</span>
+          <span className="text-[12px] px-3">{(lang?.filter?.[0]?.title) ?? "Sort by"}</span>
           <select
             value={sortBy}
             onChange={(e) => {
@@ -72,9 +71,9 @@ const MotorcycleData = () => {
             }}
             className="py-2 border-none bg-[#F7F7F7] text-[14px]"
           >
-            <option value="popular">Most Popular</option>
-            <option value="latest">Latest</option>
-            <option value="az">A - Z</option>
+            <option value="popular">{(lang?.filter?.[0]?.items?.[0]) ?? "Most Popular"}</option>
+            <option value="latest">{(lang?.filter?.[0]?.items?.[1]) ?? "Latest"}</option>
+            <option value="az">{(lang?.filter?.[0]?.items?.[2]) ?? "A - Z"}</option>
           </select>
         </div>
 
@@ -82,7 +81,7 @@ const MotorcycleData = () => {
           <Search size={16} className="text-gray-400 mr-2" />
           <input
             type="text"
-            placeholder="Search motorcycle..."
+            placeholder={(lang?.filter?.[1]?.title) ?? "Search motorcycle" + "..."}
             className="bg-transparent outline-none w-full text-sm border-none"
             value={searchQuery}
             onChange={(e) => {
@@ -129,7 +128,7 @@ const MotorcycleData = () => {
                 </h3>
                 <a href={`/products/motorcycles/${product.slug}`}>
                   <RippleButton className="flex items-center gap-2 text-white bg-blue-900 w-full py-2 hover:bg-blue-800 transition justify-center">
-                    Details <ArrowRight size={18} />
+                    {lang?.btn ?? "Details"} <ArrowRight size={18} />
                   </RippleButton>
                 </a>
               </div>
@@ -145,7 +144,7 @@ const MotorcycleData = () => {
             className="px-3 py-1 rounded-md border text-sm bg-white hover:bg-gray-100 text-gray-700"
             disabled={currentPage === 1}
           >
-            Prev
+            {(lang?.paginate?.[0]) ?? "Prev"}
           </button>
 
           <div className="flex items-center space-x-1">
@@ -183,7 +182,7 @@ const MotorcycleData = () => {
             className="px-3 py-1 rounded-md border text-sm bg-white hover:bg-gray-100 text-gray-700"
             disabled={currentPage === totalPages}
           >
-            Next
+            {(lang?.paginate?.[1]) ?? "Next"}
           </button>
         </div>
       )}

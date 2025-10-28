@@ -86,17 +86,17 @@ const HomePage = () => {
         <h2 className="text-[57px] p-[100px] font-bold mb-2 text-center">
           {langData?.[4]?.lang?.[currentLang]?.title ?? 'Featured Listing'}
         </h2>
-        <ProductList lang={langData?.[3]?.lang?.[currentLang] || []} />
+        <ProductList lang={langData?.[4]?.lang?.[currentLang] || []} />
       </section>
 
       <section id="reason-choose">
-        <ReasonChoose />
+        <ReasonChoose lang={langData?.[5]?.lang?.[currentLang] || []} />
       </section>
 
-      <GetInTouch data={data?.data?.links} />
+      <GetInTouch data={data?.data?.links} lang={langData?.[6]?.lang?.[currentLang] || []} />
       {/* <UserAnalytics /> */}
 
-      <Footer data={data?.data?.links} />
+      <Footer data={data?.data?.links} lang={langData?.[7]?.lang?.[currentLang] || []} />
     </div>
   );
 };

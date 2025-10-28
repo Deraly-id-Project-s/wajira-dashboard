@@ -5,7 +5,7 @@ import EmptyState from "@/Components/ui/EmptyState";
 
 import useFetchData from "@/Hooks/useFetchData";
 
-const Commodities = ({ links }) => {
+const Commodities = ({ links, lang }) => {
     const appUrl = import.meta.env.VITE_APP_URL;
     const { data, loading, error } = useFetchData("/api/commodities");
     const commodities = data?.data;
@@ -71,7 +71,7 @@ const Commodities = ({ links }) => {
                             >
 
                                 <RippleButton className="text-[14px] w-[150px] items-center gap-2 bg-[#1D3B56] text-white px-5 py-2.5 hover:bg-[#284c6e] flex justify-between transition-all shadow-md">
-                                    Contact Us
+                                    {lang?.btn ?? "Contact Us"}
                                     <ArrowRight size={18} />
                                 </RippleButton>
                             </a>

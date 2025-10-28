@@ -5,12 +5,20 @@ import HeroSection from "@/Components/HeroSection";
 import AboutUs from "@/Components/AboutUs";
 import VisionMission from '@/Components/VisionMission';
 import GetInTouch from "@/Components/GetInTouch";
+import { usePage } from '@inertiajs/react';
 
 import useFetchData from "@/Hooks/useFetchData";
 
 const AboutUsPage = () => {
   const [activeCategory, setActiveCategory] = useState("/");
   const { data, loading, error } = useFetchData("/api/public");
+  const { props } = usePage();
+  const currentLang = props.lang;
+  const {
+    data: langData,
+    loading: langLoading,
+    error: langError
+  } = useFetchData("/assets/lang/language.json");
 
   // Function to handle category change
   const handleCategoryChange = (category) => {
@@ -34,20 +42,19 @@ const AboutUsPage = () => {
       />
 
       {/* Hero Section */}
-      <HeroSection activeCategory={activeCategory} onScrollDown={scrollToViewer} />
+      <HeroSection activeCategory={activeCategory} onScrollDown={scrollToViewer} lang={langData?.[0]?.lang?.[currentLang] || []} />
 
       <section id="about-us">
-        <AboutUs />
+        <AboutUs lang={langData?.[10]?.lang?.[currentLang] || []} />
       </section>
 
       <section id="visiton-mission">
-        <VisionMission />
+        <VisionMission lang={langData?.[11]?.lang?.[currentLang] || []} />
       </section>
 
-      <GetInTouch data={data?.data?.links} />
-      {/* <UserAnalytics /> */}
+      <GetInTouch data={data?.data?.links} lang={langData?.[6]?.lang?.[currentLang] || []} />
 
-      <Footer data={data?.data?.links} />
+      <Footer data={data?.data?.links} lang={langData?.[7]?.lang?.[currentLang] || []} />
     </div>
   );
 };

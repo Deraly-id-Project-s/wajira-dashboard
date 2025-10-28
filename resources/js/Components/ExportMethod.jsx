@@ -1,17 +1,17 @@
-export default function ExportMethod() {
+export default function ExportMethod({ lang }) {
   const methods = [
     {
-      title: "PT Wajira Jagratara Inter Nasional (Export)",
-      label: "For International",
-      desc: "Distribution and trading of motorcycles and spare parts for automotive products",
+      title: (lang?.[0]?.title) ?? "PT Wajira Jagratara Inter Nasional (Export)",
+      label: (lang?.[0]?.span) ?? "For International",
+      desc: (lang?.[0]?.desc) ?? "Distribution and trading of motorcycles and spare parts for automotive products",
       bg: "bg-[#1D3B56]",
       textColor: "text-white",
       shadow: "shadow-[0_8px_20px_rgba(0,0,0,0.3)]",
     },
     {
-      title: "PT Wajira Jagratara Morindo (Local)",
-      label: "For Local",
-      desc: "Distribution and trading of motorcycles and spare parts for automotive products",
+      title: (lang?.[1]?.title) ?? "PT Wajira Jagratara Morindo (Local)",
+      label: (lang?.[1]?.span) ?? "For Local",
+      desc: (lang?.[1]?.span) ?? "Distribution and trading of motorcycles and spare parts for automotive products",
       bg: "bg-[#EAF0FA]",
       textColor: "text-[#1D3B56]",
       shadow: "shadow-[0_8px_20px_rgba(0,0,0,0.15)]",

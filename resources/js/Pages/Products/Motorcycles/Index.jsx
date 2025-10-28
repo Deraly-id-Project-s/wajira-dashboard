@@ -6,21 +6,27 @@ import MotorcycleData from '@/Components/MotorcycleData';
 import HelperButton from "@/Components/HelperButton";
 import SponsorList from "@/Components/SponsorList";
 import BreadCrumbs from "@/Components/BreadCrumbs";
+import { usePage } from '@inertiajs/react';
 
 import useFetchData from "@/Hooks/useFetchData";
 
 const ProductsPage = () => {
     const [activeCategory, setActiveCategory] = useState("/");
     const { data, loading, error } = useFetchData("/api/public");
+    const { props } = usePage();
+    const currentLang = props.lang;
+    const {
+        data: langData,
+        loading: langLoading,
+        error: langError
+    } = useFetchData("/assets/lang/language.json");
 
     const breadcrumbItems = [
         { name: 'Home', href: '/' },
         { name: 'Products', href: '/products' },
         { name: 'Motorcycles', href: '/products/motorcycles' },
-        // { name: 'Detail', href: null },
     ];
 
-    // Function to handle category change
     const handleCategoryChange = (category) => {
         setActiveCategory(category);
     };
@@ -45,7 +51,7 @@ const ProductsPage = () => {
             </section>
 
             <section id="export-method">
-                <ExportMethod />
+                <ExportMethod lang={langData?.[12]?.lang?.[currentLang] || []} />
             </section>
 
             <section id="sponsor-list" className="max-w-7xl mx-auto px-4 py-16">
@@ -53,14 +59,14 @@ const ProductsPage = () => {
             </section>
 
             <section id="product-list" className="flex max-w-7xl mx-auto flex-col justify-center align-middle items-center">
-                <MotorcycleData />
+                <MotorcycleData lang={langData?.[13]?.lang?.[currentLang] || []} />
             </section>
 
             <section id="helper-button" className="md:max-w-7xl max-w-full mx-auto px-0 py-16">
-                <HelperButton data={data?.data?.links} />
+                <HelperButton data={data?.data?.links} lang={langData?.[6]?.lang?.[currentLang] || []} />
             </section>
 
-            <Footer data={data?.data?.links} />
+            <Footer data={data?.data?.links} lang={langData?.[7]?.lang?.[currentLang] || []} />
         </div>
     );
 };

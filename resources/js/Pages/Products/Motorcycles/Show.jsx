@@ -10,6 +10,7 @@ import MotorcycleColor from "@/Components/MotorcycleColor";
 import MotorcycleViewer from "@/Components/MotorcycleViewer";
 import RecomendationProductList from "@/Components/RecomendationProductList";
 import MotorcycleDescriptionContainer from "@/Components/MotorcycleDescriptionContainer";
+import { usePage } from '@inertiajs/react';
 
 import useFetchData from "@/Hooks/useFetchData";
 
@@ -17,6 +18,13 @@ const MotocyclesDetail = (slug) => {
     const [activeCategory, setActiveCategory] = useState("/");
     const { data, loading, error } = useFetchData("/api/public");
     const { motorcycle } = usePage().props;
+    const { props } = usePage();
+        const currentLang = props.lang;
+        const {
+            data: langData,
+            loading: langLoading,
+            error: langError
+        } = useFetchData("/assets/lang/language.json");
 
     if (loading) {
         return (
@@ -104,7 +112,7 @@ const MotocyclesDetail = (slug) => {
                 </a>
             </div>
 
-            <Footer data={data?.data?.links} />
+            <Footer data={data?.data?.links} lang={langData?.[7]?.lang?.[currentLang] || []} />
         </section>
     );
 };

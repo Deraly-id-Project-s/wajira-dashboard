@@ -1,22 +1,22 @@
 import { motion } from "framer-motion";
 
-export default function ReasonChoose() {
+export default function ReasonChoose({ lang }) {
   const reasons = [
     {
-      title: "Unmatched expertise",
-      desc: "Our team combines years of industry experience with innovative problem-solving, ensuring outstanding results each time.",
+      title: (lang?.content?.[0]?.title) ?? "Unmatched expertise",
+      desc: (lang?.content?.[0]?.desc) ?? "Our team combines years of industry experience with innovative problem-solving, ensuring outstanding results each time.",
       img: "/assets/reason_illustrations/a.png",
       reverse: false,
     },
     {
-      title: "Trusted by clients",
-      desc: "We build lasting relationships and our clients trust us for consistency, transparency, and integrity in everything we do.",
+      title: (lang?.content?.[1]?.title) ?? "Trusted by clients",
+      desc: (lang?.content?.[1]?.desc) ?? "We build lasting relationships and our clients trust us for consistency, transparency, and integrity in everything we do.",
       img: "/assets/reason_illustrations/b.png",
       reverse: true,
     },
     {
-      title: "Proven results",
-      desc: "Our projects deliver measurable impact, helping businesses thrive with reliable, real-world outcomes.",
+      title: (lang?.content?.[2]?.title) ?? "Proven results",
+      desc: (lang?.content?.[2]?.desc) ?? "Our projects deliver measurable impact, helping businesses thrive with reliable, real-world outcomes.",
       img: "/assets/reason_illustrations/c.png",
       reverse: false,
     },
@@ -27,10 +27,10 @@ export default function ReasonChoose() {
       {/* Heading */}
       <div className="text-center max-w-3xl mx-auto mb-16 text-[32px]">
         <h2 className="text-black font-semibold mb-2">
-          Why Choose Us
+          {lang?.title ?? "Why Choose Us"}
         </h2>
         <p className="font-bold text-[#858585] leading-snug">
-          Discover what sets us apart and why we're your best choice.
+          {lang?.desc ?? "Discover what sets us apart and why we're your best choice."}
         </p>
       </div>
 
