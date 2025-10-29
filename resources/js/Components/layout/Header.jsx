@@ -7,16 +7,28 @@ import { router, usePage } from "@inertiajs/react";
 import useFetchData from "@/Hooks/useFetchData";
 
 const Header = ({ activeCategory, onCategoryChange }) => {
-  const { url } = usePage(); // 🔹 Dapatkan route aktif dari Inertia
-  const [isScrolled, setIsScrolled] = useState(false);
+  // Inertia get route params
+  const { url } = usePage();
+
+  // Flex navbar state
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [visible, setVisible] = useState(true);
   const [openSubmenu, setOpenSubmenu] = useState(null);
+
+  // Search state
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [showSearchModal, setShowSearchModal] = useState(false);
+  const [triggerSearch, setTriggerSearch] = useState(false);
+
+  // Scroll state
+  const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
   const headerRef = useRef(null);
   const submenuRef = useRef(null);
 
+  // Language Config
   const languages = [
     { code: "id", name: "Indonesian", flag: "🇮🇩" },
     { code: "en", name: "English", flag: "🇬🇧" },
@@ -27,20 +39,22 @@ const Header = ({ activeCategory, onCategoryChange }) => {
     { code: "hi", name: "India", flag: "🇮🇳" },
   ];
 
+  const [showSearch, setShowSearch] = useState(false);
+
+  // Language state
   const { props } = usePage();
   const currentLang = props.lang;
-
   const [selectedLang, setSelectedLang] = useState(currentLang || "en");
   const [showLangDropdown, setShowLangDropdown] = useState(false);
 
-  const [showSearch, setShowSearch] = useState(false);
-
+  // Language Data
   const {
     data: langData,
     loading: langLoading,
     error: langError
   } = useFetchData("/assets/lang/language.json");
 
+  // Language Change Handler
   const handleLanguageChange = (langCode) => {
     console.log('consol')
     fetch('/set-language', {
@@ -59,6 +73,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
       .catch(err => console.error('Language change failed:', err));
   };
 
+  // Navbar Menu Items
   const menuItems = [
     { id: "home", label: (langData?.[17]?.lang?.[currentLang]?.[0]?.title) ?? "Home", href: "/" },
     { id: "product", label: (langData?.[17]?.lang?.[currentLang]?.[1]?.title) ?? "Product", href: "/#product-list" },
@@ -66,6 +81,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
     { id: "about-us", label: (langData?.[17]?.lang?.[currentLang]?.[3]?.title) ?? "About Us", href: "/about-us" },
   ];
 
+  // Navbar special page config
   useEffect(() => {
     if (url !== "/" && url !== "/about-us") {
       setIsScrolled(true);
@@ -74,6 +90,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
     }
   }, [url]);
 
+  // Scroll Effect
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -111,7 +128,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY, isMenuOpen, url]);
 
-  // Tutup menu ketika klik di luar area header
+  // modal Menu Close hander
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (headerRef.current && !headerRef.current.contains(event.target)) {
@@ -123,6 +140,32 @@ const Header = ({ activeCategory, onCategoryChange }) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // Search Handler
+  const handleSearch = (e) => {
+    if (e.key === "Enter" && searchQuery.trim() !== "") {
+      setTriggerSearch(true);
+      setShowSearchModal(true);
+    }
+  };
+
+  const searchUrl =
+    triggerSearch && searchQuery.trim() !== ""
+      ? `/api/search-data?search=${encodeURIComponent(searchQuery)}`
+      : null;
+
+  const { data: searchData, loading: isSearching, error: searchError } = useFetchData(
+    searchUrl,
+    {},
+    [searchUrl]
+  );
+
+  useEffect(() => {
+    if (searchData && searchData.success) {
+      setSearchResults(searchData.data);
+    }
+  }, [searchData]);
+
 
   const toggleSubmenu = (menuId) => {
     setOpenSubmenu(openSubmenu === menuId ? null : menuId);
@@ -300,11 +343,16 @@ const Header = ({ activeCategory, onCategoryChange }) => {
                 )}
               </div>
 
+              {/* Search Bar */}
               <input
                 type="text"
                 placeholder={(langData?.[17]?.lang?.[currentLang]?.[4]?.title) ?? "Search Here"}
                 className="bg-white text-slate-500 px-3 py-2 outline-none"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={handleSearch}
               />
+
             </div>
           </div>
         </div>
@@ -508,6 +556,70 @@ const Header = ({ activeCategory, onCategoryChange }) => {
                 {item.label}
               </button>
             ))}
+          </div>
+        </motion.div>
+      )}
+
+      {/* Search Modal */}
+      {showSearchModal && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] mt-[10rem]"
+        >
+          <div className="bg-white w-[90%] md:w-[600px] rounded-xl shadow-lg overflow-hidden">
+            <div className="flex justify-between items-center border-b px-4 py-3">
+              <h2 className="text-lg font-semibold text-gray-700">
+                Search Results for "{searchQuery}"
+              </h2>
+              <button
+                onClick={() => {
+                  setShowSearchModal(false);
+                  setTriggerSearch(false);
+                }}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="max-h-[60vh] overflow-y-auto p-4">
+              {isSearching ? (
+                <p className="text-center text-gray-500">Searching...</p>
+              ) : searchError ? (
+                <p className="text-center text-red-500">Error fetching results.</p>
+              ) : searchResults?.length > 0 ? (
+                searchResults.map((item, index) => (
+                  <div
+                    key={index}
+                    onClick={() => {
+                      router.visit(
+                        item.type === "motorcycle"
+                          ? `/motorcycle/${item.slug}`
+                          : `/commodity/${item.slug}`
+                      );
+                      setShowSearchModal(false);
+                      setTriggerSearch(false);
+                    }}
+                    className="flex items-center gap-3 p-2 hover:bg-gray-100 cursor-pointer rounded-md"
+                  >
+                    <img
+                      src={item.product_image || item.image || "/assets/no-image.jpg"}
+                      alt={item.name}
+                      className="w-16 h-16 object-cover rounded-md"
+                    />
+                    <div>
+                      <h3 className="font-semibold text-gray-800">{item.name}</h3>
+                      <p className="text-sm text-gray-500 capitalize">{item.type}</p>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-center text-gray-500">No results found.</p>
+              )}
+            </div>
           </div>
         </motion.div>
       )}

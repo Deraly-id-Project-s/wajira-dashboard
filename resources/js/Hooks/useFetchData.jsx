@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 /**
- * Custom hook universal untuk fetch data (support params, deps, dan error-safe)
+ * Custom hook universal for data fetch (support params, deps, dan error-safe)
  *
  * @param {string} url - endpoint API
  * @param {object} [options={}] - fetch config opsional

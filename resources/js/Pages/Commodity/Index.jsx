@@ -22,8 +22,6 @@ const CommodityPage = () => {
     const breadcrumbItems = [
         { name: langData?.[16]?.lang?.[currentLang]?.home ?? 'Home', href: '/' },
         { name: langData?.[16]?.lang?.[currentLang]?.commodity ?? 'Commodity', href: '/commodity' },
-        // { name: 'Motorcycles', href: '/products/motorcycles' },
-        // { name: 'Detail', href: null },
     ];
 
     const handleCategoryChange = (category) => {

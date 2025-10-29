@@ -129,7 +129,7 @@ class PublicController extends Controller
             $url_visited     = $request->input('url_visited', url()->current());
             $referrer        = $request->input('referrer');
             $country         = $request->input('country') ?? 'Unknown';
-            
+
             if (function_exists('pageVisitor')) {
                 storePageVisitor($session_id, $ip_address, $user_agent, $platform, $country, $url_visited, $referrer);
             }
@@ -137,6 +137,46 @@ class PublicController extends Controller
             return response()->json(['message' => 'Page Visitor Data Saved Successfully'], 200);
         } catch (\Exception $err) {
             Log::info('Page Visitor Error: ' . $err->getMessage());
+            return response()->json(['message' => $err->getMessage()], 500);
+        }
+    }
+
+    public function searchBox(Request $request)
+    {
+        $search = trim($request->input('search'));
+
+        try {
+            if (empty($search)) {
+                return $this->responseSuccess([], 'No search query provided');
+            }
+
+            // Cari di Motorcycle
+            $motorcycles = Motorcycle::select($this->motorcycleSimpleColumn)
+                ->where('name', 'like', '%' . $search . '%')
+                ->orWhere('slug', 'like', '%' . $search . '%')
+                ->limit(5)
+                ->get()
+                ->map(function ($item) {
+                    $item->type = 'motorcycle';
+                    return $item;
+                });
+
+            // Cari di Commodity
+            $commodities = Commodity::select($this->commoditySimpleColumn)
+                ->where('name', 'like', '%' . $search . '%')
+                ->orWhere('slug', 'like', '%' . $search . '%')
+                ->limit(5)
+                ->get()
+                ->map(function ($item) {
+                    $item->type = 'commodity';
+                    return $item;
+                });
+
+            $results = $motorcycles->concat($commodities)->values();
+
+            return $this->responseSuccess($results, 'Search results fetched successfully');
+        } catch (\Exception $err) {
+            Log::error('Search Box Error: ' . $err->getMessage());
             return response()->json(['message' => $err->getMessage()], 500);
         }
     }
