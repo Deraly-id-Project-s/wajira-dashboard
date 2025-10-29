@@ -4,6 +4,8 @@ import { Button } from "@/Components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { router, usePage } from "@inertiajs/react";
 
+import useFetchData from "@/Hooks/useFetchData";
+
 const Header = ({ activeCategory, onCategoryChange }) => {
   const { url } = usePage(); // 🔹 Dapatkan route aktif dari Inertia
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,6 +35,12 @@ const Header = ({ activeCategory, onCategoryChange }) => {
 
   const [showSearch, setShowSearch] = useState(false);
 
+  const {
+    data: langData,
+    loading: langLoading,
+    error: langError
+  } = useFetchData("/assets/lang/language.json");
+
   const handleLanguageChange = (langCode) => {
     console.log('consol')
     fetch('/set-language', {
@@ -52,10 +60,10 @@ const Header = ({ activeCategory, onCategoryChange }) => {
   };
 
   const menuItems = [
-    { id: "home", label: "Home", href: "/" },
-    { id: "product", label: "Product", href: "/#product-list" },
-    { id: "gallery", label: "Gallery", href: '/gallery' },
-    { id: "about-us", label: "About Us", href: "/about-us" },
+    { id: "home", label: (langData?.[17]?.lang?.[currentLang]?.[0]?.title) ?? "Home", href: "/" },
+    { id: "product", label: (langData?.[17]?.lang?.[currentLang]?.[1]?.title) ?? "Product", href: "/#product-list" },
+    { id: "gallery", label: (langData?.[17]?.lang?.[currentLang]?.[2]?.title) ?? "Gallery", href: '/gallery' },
+    { id: "about-us", label: (langData?.[17]?.lang?.[currentLang]?.[3]?.title) ?? "About Us", href: "/about-us" },
   ];
 
   useEffect(() => {
@@ -294,7 +302,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
 
               <input
                 type="text"
-                placeholder="Search Here"
+                placeholder={(langData?.[17]?.lang?.[currentLang]?.[4]?.title) ?? "Search Here"}
                 className="bg-white text-slate-500 px-3 py-2 outline-none"
               />
             </div>

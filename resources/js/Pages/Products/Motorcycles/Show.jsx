@@ -18,12 +18,12 @@ const MotocyclesDetail = (slug) => {
     const { data, loading, error } = useFetchData("/api/public");
     const { motorcycle } = usePage().props;
     const { props } = usePage();
-        const currentLang = props.lang;
-        const {
-            data: langData,
-            loading: langLoading,
-            error: langError
-        } = useFetchData("/assets/lang/language.json");
+    const currentLang = props.lang;
+    const {
+        data: langData,
+        loading: langLoading,
+        error: langError
+    } = useFetchData("/assets/lang/language.json");
 
     if (loading) {
         return (
@@ -96,7 +96,7 @@ const MotocyclesDetail = (slug) => {
 
             <div className="flex max-w-7xl mx-auto flex-col justify-center align-middle items-center">
                 <h2 className="text-[32px] p-[100px] mb-2 text-center">
-                    {(langData?.[15]?.lang?.[currentLang]?.label?.[2]) ?? "Our Recommendation" }
+                    {(langData?.[15]?.lang?.[currentLang]?.label?.[2]) ?? "Our Recommendation"}
                 </h2>
                 <RecomendationProductList lang={(langData?.[15]?.lang?.[currentLang])} />
             </div>
@@ -106,7 +106,7 @@ const MotocyclesDetail = (slug) => {
                     href="/products/motorcycles"
                     className="flex flex-row justify-center align-middle items-center w-[143px] h-[48px] gap-2 p-5 bg-[#B0160D] text-white text-[14px]"
                 >
-                    {(langData?.[15]?.lang?.[currentLang]?.label?.[4]) ?? "View More"} 
+                    {(langData?.[15]?.lang?.[currentLang]?.label?.[4]) ?? "View More"}
                     <ArrowRight />
                 </a>
             </div>

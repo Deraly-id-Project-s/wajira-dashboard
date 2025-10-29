@@ -1461,44 +1461,209 @@
                 "product": "Product",
                 "motorcycle": "Motorcycle",
                 "commodity": "Commodity",
-                "detail": "Detail" 
+                "detail": "Detail"
             },
             "id": {
                 "home": "Beranda",
                 "product": "Produk",
                 "motorcycle": "Sepeda Motor",
-                "commodity": "Komoditas"
+                "commodity": "Komoditas",
+                "detail": "Detail"
             },
             "fr": {
                 "home": "Accueil",
                 "product": "Produit",
                 "motorcycle": "Moto",
-                "commodity": "Marchandise"
+                "commodity": "Marchandise",
+                "detail": "Détail"
             },
             "ar": {
                 "home": "الرئيسية",
                 "product": "المنتج",
                 "motorcycle": "دراجة نارية",
-                "commodity": "سلعة"
+                "commodity": "سلعة",
+                "detail": "تفاصيل"
             },
             "vi": {
                 "home": "Trang chủ",
                 "product": "Sản phẩm",
                 "motorcycle": "Xe máy",
-                "commodity": "Hàng hóa"
+                "commodity": "Hàng hóa",
+                "detail": "Chi tiết"
             },
             "zh": {
                 "home": "首页",
                 "product": "产品",
                 "motorcycle": "摩托车",
-                "commodity": "商品"
+                "commodity": "商品",
+                "detail": "详情"
             },
             "hi": {
                 "home": "मुखपृष्ठ",
                 "product": "उत्पाद",
                 "motorcycle": "मोटरसाइकिल",
-                "commodity": "वस्तु"
+                "commodity": "वस्तु",
+                "detail": "विवरण"
             }
+        }
+    },
+    {
+        "name": "nav-menu",
+        "lang": {
+            "en": [
+                {
+                    "label": "home",
+                    "title": "Home"
+                },
+                {
+                    "label": "product",
+                    "title": "Product"
+                },
+                {
+                    "label": "gallery",
+                    "title": "Gallery"
+                },
+                {
+                    "label": "about-us",
+                    "title": "About Us"
+                },
+                {
+                    "label": "search",
+                    "title": "Search Here"
+                }
+            ],
+            "id": [
+                {
+                    "label": "home",
+                    "title": "Beranda"
+                },
+                {
+                    "label": "product",
+                    "title": "Produk"
+                },
+                {
+                    "label": "gallery",
+                    "title": "Galeri"
+                },
+                {
+                    "label": "about-us",
+                    "title": "Tentang Kami"
+                },
+                {
+                    "label": "search",
+                    "title": "Cari di sini"
+                }
+            ],
+            "fr": [
+                {
+                    "label": "home",
+                    "title": "Accueil"
+                },
+                {
+                    "label": "product",
+                    "title": "Produit"
+                },
+                {
+                    "label": "gallery",
+                    "title": "Galerie"
+                },
+                {
+                    "label": "about-us",
+                    "title": "À propos de nous"
+                },
+                {
+                    "label": "search",
+                    "title": "Rechercher ici"
+                }
+            ],
+            "ar": [
+                {
+                    "label": "home",
+                    "title": "الرئيسية"
+                },
+                {
+                    "label": "product",
+                    "title": "المنتجات"
+                },
+                {
+                    "label": "gallery",
+                    "title": "المعرض"
+                },
+                {
+                    "label": "about-us",
+                    "title": "معلومات عنا"
+                },
+                {
+                    "label": "search",
+                    "title": "ابحث هنا"
+                }
+            ],
+            "vi": [
+                {
+                    "label": "home",
+                    "title": "Trang chủ"
+                },
+                {
+                    "label": "product",
+                    "title": "Sản phẩm"
+                },
+                {
+                    "label": "gallery",
+                    "title": "Thư viện ảnh"
+                },
+                {
+                    "label": "about-us",
+                    "title": "Về chúng tôi"
+                },
+                {
+                    "label": "search",
+                    "title": "Tìm kiếm tại đây"
+                }
+            ],
+            "zh": [
+                {
+                    "label": "home",
+                    "title": "首页"
+                },
+                {
+                    "label": "product",
+                    "title": "产品"
+                },
+                {
+                    "label": "gallery",
+                    "title": "图库"
+                },
+                {
+                    "label": "about-us",
+                    "title": "关于我们"
+                },
+                {
+                    "label": "search",
+                    "title": "在此搜索"
+                }
+            ],
+            "hi": [
+                {
+                    "label": "home",
+                    "title": "मुखपृष्ठ"
+                },
+                {
+                    "label": "product",
+                    "title": "उत्पाद"
+                },
+                {
+                    "label": "gallery",
+                    "title": "गैलरी"
+                },
+                {
+                    "label": "about-us",
+                    "title": "हमारे बारे में"
+                },
+                {
+                    "label": "search",
+                    "title": "यहाँ खोजें"
+                }
+            ]
         }
     }
 ]

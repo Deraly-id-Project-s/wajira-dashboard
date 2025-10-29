@@ -20,8 +20,8 @@ const CommodityPage = () => {
     } = useFetchData("/assets/lang/language.json");
 
     const breadcrumbItems = [
-        { name: 'Home', href: '/' },
-        { name: 'Commodity', href: '/commodity' },
+        { name: langData?.[16]?.lang?.[currentLang]?.home ?? 'Home', href: '/' },
+        { name: langData?.[16]?.lang?.[currentLang]?.commodity ?? 'Commodity', href: '/commodity' },
         // { name: 'Motorcycles', href: '/products/motorcycles' },
         // { name: 'Detail', href: null },
     ];
