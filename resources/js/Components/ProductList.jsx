@@ -8,7 +8,7 @@ import MainLoading from "@/Components/ui/MainLoading";
 import EmptyState from "@/Components/ui/EmptyState";
 import useFetchData from "@/Hooks/useFetchData";
 
-export default function ProductList({ lang }) {
+export default function ProductList({ lang, productLang }) {
   const { data: motorcycleData, loading: motorcycleLoading } = useFetchData("/api/motorcycles");
   const { data: commodityData, loading: commodityLoading } = useFetchData("/api/commodities");
 
@@ -97,7 +97,7 @@ export default function ProductList({ lang }) {
           transition={{ duration: 0.3 }}
         >
           {selectedCategory === "vehicle-documentation" ? (
-            <VehicleDocumentCard key="vehicle-document" />
+            <VehicleDocumentCard key="vehicle-document" lang={productLang} />
           ) : selectedCategory === "expedition" ? (
             <ExpeditionCard key="expedition" />
           ) : filteredData.length === 0 ? (

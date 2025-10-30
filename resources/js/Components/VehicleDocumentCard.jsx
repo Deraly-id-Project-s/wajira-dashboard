@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 
-const VehicleDocumentCard = () => {
+const VehicleDocumentCard = ({ lang }) => {
+  console.log(lang)
   return (
     <section className="max-w-7xl mx-auto flex flex-col md:flex-row gap-10 md:gap-16 py-12 md:px-0 px-[10px]">
       {/* Left - Image */}
@@ -11,7 +12,7 @@ const VehicleDocumentCard = () => {
           className="w-full h-full object-cover"
         />
         <div className="absolute bottom-6 left-6">
-          <p className="text-white text-sm">Operated by</p>
+          <p className="text-white text-sm">{lang?.[0]}</p>
           <h2 className="text-xl md:text-2xl font-semibold text-white">
             PT. WAJIRA JAGRATARA YANOTAMA
           </h2>

@@ -1665,5 +1665,178 @@
                 }
             ]
         }
+    },
+    {
+        "name": "product",
+        "lang": {
+            "en": [
+                {
+                    "label": "expedition-service",
+                    "title": "Expedition Service",
+                    "desc": "Shipping documents and vehicles becomes more efficient. We ensure your important documents and vehicles arrive safely and on time.",
+                    "items": [
+                        "Safe and reliable service",
+                        "Professional handling",
+                        "On-time delivery to destination"
+                    ],
+                    "span": "Operated by"
+                },
+                {
+                    "label": "vehicle-document",
+                    "title": "BPKB & STNK Registration",
+                    "desc": "Handling vehicle documents becomes easier. We help with the registration process, change of ownership, and extension of both BPKB and STNK quickly, safely, and reliably.",
+                    "items": [
+                        "Practical process without hassle",
+                        "Official and guaranteed service",
+                        "Saves time without long queues"
+                    ],
+                    "span": "Operated by"
+                }
+            ],
+            "id": [
+                {
+                    "label": "expedition-service",
+                    "title": "Layanan Ekspedisi",
+                    "desc": "Pengiriman dokumen dan kendaraan kini lebih efisien. Kami memastikan dokumen dan kendaraan penting Anda tiba dengan aman dan tepat waktu.",
+                    "items": [
+                        "Layanan aman dan terpercaya",
+                        "Penanganan profesional",
+                        "Pengiriman tepat waktu ke tujuan"
+                    ],
+                    "span": "Dioperasikan oleh"
+                },
+                {
+                    "label": "vehicle-document",
+                    "title": "Registrasi BPKB & STNK",
+                    "desc": "Urus dokumen kendaraan jadi lebih mudah. Kami membantu proses registrasi, balik nama, dan perpanjangan BPKB maupun STNK secara cepat, aman, dan terpercaya.",
+                    "items": [
+                        "Proses praktis tanpa repot",
+                        "Layanan resmi dan bergaransi",
+                        "Hemat waktu tanpa antre panjang"
+                    ],
+                    "span": "Dioperasikan oleh"
+                }
+            ],
+            "fr": [
+                {
+                    "label": "expedition-service",
+                    "title": "Service d'expédition",
+                    "desc": "L'expédition de documents et de véhicules devient plus efficace. Nous garantissons que vos documents et véhicules importants arrivent en toute sécurité et à temps.",
+                    "items": [
+                        "Service sûr et fiable",
+                        "Manipulation professionnelle",
+                        "Livraison ponctuelle à destination"
+                    ],
+                    "span": "Opéré par"
+                },
+                {
+                    "label": "vehicle-document",
+                    "title": "Enregistrement BPKB et STNK",
+                    "desc": "La gestion des documents de véhicule devient plus simple. Nous aidons au processus d'enregistrement, de transfert de propriété et de renouvellement du BPKB et du STNK rapidement et en toute sécurité.",
+                    "items": [
+                        "Processus pratique et simple",
+                        "Service officiel et garanti",
+                        "Gain de temps sans longues files d’attente"
+                    ],
+                    "span": "Opéré par"
+                }
+            ],
+            "ar": [
+                {
+                    "label": "expedition-service",
+                    "title": "خدمة الشحن",
+                    "desc": "أصبح شحن المستندات والمركبات أكثر كفاءة. نضمن وصول مستنداتك ومركباتك المهمة بأمان وفي الوقت المحدد.",
+                    "items": [
+                        "خدمة آمنة وموثوقة",
+                        "تعامل احترافي",
+                        "تسليم في الوقت المحدد"
+                    ],
+                    "span": "تُدار بواسطة"
+                },
+                {
+                    "label": "vehicle-document",
+                    "title": "تسجيل BPKB وSTNK",
+                    "desc": "أصبح التعامل مع وثائق المركبات أسهل. نساعدك في عملية التسجيل ونقل الملكية وتجديد كل من BPKB وSTNK بسرعة وأمان وموثوقية.",
+                    "items": [
+                        "عملية مريحة دون متاعب",
+                        "خدمة رسمية ومضمونة",
+                        "توفير الوقت دون طوابير طويلة"
+                    ],
+                    "span": "تُدار بواسطة"
+                }
+            ],
+            "vi": [
+                {
+                    "label": "expedition-service",
+                    "title": "Dịch vụ vận chuyển",
+                    "desc": "Việc vận chuyển tài liệu và phương tiện trở nên hiệu quả hơn. Chúng tôi đảm bảo tài liệu và phương tiện quan trọng của bạn đến nơi an toàn và đúng giờ.",
+                    "items": [
+                        "Dịch vụ an toàn và đáng tin cậy",
+                        "Xử lý chuyên nghiệp",
+                        "Giao hàng đúng thời hạn"
+                    ],
+                    "span": "Được vận hành bởi"
+                },
+                {
+                    "label": "vehicle-document",
+                    "title": "Đăng ký BPKB & STNK",
+                    "desc": "Việc xử lý giấy tờ xe trở nên dễ dàng hơn. Chúng tôi hỗ trợ đăng ký, chuyển quyền sở hữu và gia hạn BPKB, STNK một cách nhanh chóng, an toàn và đáng tin cậy.",
+                    "items": [
+                        "Quy trình thuận tiện, không rườm rà",
+                        "Dịch vụ chính thức và được đảm bảo",
+                        "Tiết kiệm thời gian, không cần xếp hàng lâu"
+                    ],
+                    "span": "Được vận hành bởi"
+                }
+            ],
+            "zh": [
+                {
+                    "label": "expedition-service",
+                    "title": "运输服务",
+                    "desc": "文件和车辆运输更加高效。我们确保您的重要文件和车辆安全、准时送达。",
+                    "items": [
+                        "安全可靠的服务",
+                        "专业的操作",
+                        "准时送达目的地"
+                    ],
+                    "span": "由以下运营"
+                },
+                {
+                    "label": "vehicle-document",
+                    "title": "BPKB 与 STNK 注册",
+                    "desc": "处理车辆文件更加轻松。我们协助注册、过户及续期 BPKB 与 STNK，快速、安全、可靠。",
+                    "items": [
+                        "流程便捷无烦恼",
+                        "官方服务有保障",
+                        "节省时间无需排长队"
+                    ],
+                    "span": "由以下运营"
+                }
+            ],
+            "hi": [
+                {
+                    "label": "expedition-service",
+                    "title": "एक्सपेडिशन सेवा",
+                    "desc": "दस्तावेज़ों और वाहनों की शिपिंग अब अधिक कुशल है। हम सुनिश्चित करते हैं कि आपके महत्वपूर्ण दस्तावेज़ और वाहन सुरक्षित और समय पर पहुँचे।",
+                    "items": [
+                        "सुरक्षित और विश्वसनीय सेवा",
+                        "पेशेवर हैंडलिंग",
+                        "गंतव्य पर समय पर डिलीवरी"
+                    ],
+                    "span": "द्वारा संचालित"
+                },
+                {
+                    "label": "vehicle-document",
+                    "title": "बीपीकेबी और एसटीएनके पंजीकरण",
+                    "desc": "वाहन दस्तावेजों का प्रबंधन अब आसान है। हम पंजीकरण, स्वामित्व परिवर्तन और BPKB और STNK दोनों के नवीनीकरण की प्रक्रिया में आपकी सहायता करते हैं।",
+                    "items": [
+                        "बिना झंझट की व्यावहारिक प्रक्रिया",
+                        "आधिकारिक और गारंटीकृत सेवा",
+                        "लंबी कतारों के बिना समय की बचत"
+                    ],
+                    "span": "द्वारा संचालित"
+                }
+            ]
+        }
     }
 ]

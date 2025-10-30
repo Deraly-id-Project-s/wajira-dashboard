@@ -86,7 +86,7 @@ const HomePage = () => {
         <h2 className="text-[57px] p-[100px] font-bold mb-2 text-center">
           {langData?.[4]?.lang?.[currentLang]?.title ?? 'Featured Listing'}
         </h2>
-        <ProductList lang={langData?.[4]?.lang?.[currentLang] || []} />
+        <ProductList lang={langData?.[4]?.lang?.[currentLang] || []} productLang={langData?.[18]?.lang?.[currentLang] || []} />
       </section>
 
       <section id="reason-choose">
