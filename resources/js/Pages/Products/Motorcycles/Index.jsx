@@ -8,6 +8,8 @@ import SponsorList from "@/Components/SponsorList";
 import BreadCrumbs from "@/Components/BreadCrumbs";
 import { usePage } from '@inertiajs/react';
 
+import SeoHead from "@/Components/SeoHead";
+
 import useFetchData from "@/Hooks/useFetchData";
 
 const ProductsPage = () => {
@@ -41,6 +43,9 @@ const ProductsPage = () => {
 
     return (
         <div className="min-h-screen bg-white max-sm:overflow-x-hidden">
+            {/* SEO Fig */}
+            <SeoHead />
+
             {/* Navigation Bar */}
             <Header activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
 

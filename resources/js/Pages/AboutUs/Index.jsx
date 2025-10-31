@@ -7,6 +7,8 @@ import VisionMission from '@/Components/VisionMission';
 import GetInTouch from "@/Components/GetInTouch";
 import { usePage } from '@inertiajs/react';
 
+import SeoHead from "@/Components/SeoHead";
+
 import useFetchData from "@/Hooks/useFetchData";
 
 const AboutUsPage = () => {
@@ -35,6 +37,9 @@ const AboutUsPage = () => {
 
   return (
     <div className="min-h-screen bg-white max-sm:overflow-x-hidden">
+      {/* SEO Fig */}
+      <SeoHead />
+      
       {/* Navigation Bar */}
       <Header
         activeCategory={activeCategory}

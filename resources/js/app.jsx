@@ -19,11 +19,11 @@ createInertiaApp({
         const root = createRoot(el);
 
         root.render(
-        <>
-            <PageVisitorTracker />
-            <App {...props} />
-        </>
-    );
+            <>
+                <PageVisitorTracker />
+                <App {...props} />
+            </>
+        );
     },
     progress: {
         color: '#4B5563',

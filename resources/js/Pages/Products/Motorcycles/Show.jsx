@@ -49,6 +49,9 @@ const MotocyclesDetail = (slug) => {
             id="motocycle-detail"
             className="min-h-screen bg-white max-sm:overflow-x-hidden"
         >
+            {/* SEO Fig */}
+            <SeoHead />
+            
             <Header activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
 
             <section className="max-w-7xl mx-auto px-4 pt-16 pb-8 mt-12">

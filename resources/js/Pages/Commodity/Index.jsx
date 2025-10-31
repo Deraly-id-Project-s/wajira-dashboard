@@ -6,6 +6,8 @@ import Commodities from "@/Components/Commodities";
 import HelperButton from "@/Components/HelperButton";
 import { usePage } from '@inertiajs/react';
 
+import SeoHead from "@/Components/SeoHead";
+
 import useFetchData from "@/Hooks/useFetchData";
 
 const CommodityPage = () => {
@@ -30,6 +32,9 @@ const CommodityPage = () => {
 
     return (
         <div className="min-h-screen bg-white max-sm:overflow-x-hidden">
+            {/* SEO Fig */}
+            <SeoHead />
+            
             {/* Navigation Bar */}
             <Header
                 activeCategory={activeCategory}

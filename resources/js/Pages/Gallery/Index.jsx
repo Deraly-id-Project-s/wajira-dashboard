@@ -6,6 +6,8 @@ import GetInTouch from "@/Components/GetInTouch";
 import MainLoading from "@/Components/ui/MainLoading";
 import { usePage } from '@inertiajs/react';
 
+import SeoHead from "@/Components/SeoHead";
+
 import useFetchData from "@/Hooks/useFetchData";
 
 const GalleryPage = () => {
@@ -34,6 +36,9 @@ const GalleryPage = () => {
 
     return (
         <div className="min-h-screen bg-white max-sm:overflow-x-hidden">
+            {/* SEO Fig */}
+            <SeoHead />
+            
             {/* Navigation Bar */}
             <Header activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
 
