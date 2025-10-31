@@ -1,47 +1,34 @@
 import { useEffect, useState } from "react";
 import useFetchData from "@/Hooks/useFetchData";
-import getSessionId from '@/utils/session';
+import getSessionId from "@/utils/session";
 
 const PageVisitorTracker = () => {
-  const [ipAddress, setIpAddress] = useState(null);
+  const [ipInfo, setIpInfo] = useState(null);
   const [shouldSend, setShouldSend] = useState(false);
 
   const session_id = getSessionId();
 
   useEffect(() => {
-    const fetchIP = async () => {
-      const apis = [
-        "https://api.ipify.org?format=json",
-        "https://ipapi.co/json/",
-        "https://ifconfig.me/all.json",
-        "https://ipwho.is/",
-      ];
+    const fetchIPandCountry = async () => {
+      try {
+        const res = await fetch("https://ipapi.co/json/");
+        const data = await res.json();
 
-      for (const url of apis) {
-        try {
-          const res = await fetch(url, { mode: "cors" });
-          const text = await res.text();
-          let ip = null;
-
-          if (text.includes("{")) {
-            const data = JSON.parse(text);
-            ip = data.ip || data.query || data.ip_address || data.ipv4;
-          } else {
-            ip = text.match(/(\d{1,3}\.){3}\d{1,3}/)?.[0];
-          }
-
-          if (ip && /^(\d{1,3}\.){3}\d{1,3}$/.test(ip)) {
-            setIpAddress(ip);
-            setShouldSend(true);
-            break;
-          }
-        } catch (err) {
-          console.warn("Failed fetching IP from", url, err);
+        if (data && data.ip) {
+          setIpInfo({
+            ip: data.ip,
+            country: data.country_name || "Unknown",
+            region: data.region || "",
+            city: data.city || "",
+          });
+          setShouldSend(true);
         }
+      } catch (err) {
+        console.warn("Failed fetching IP and country info", err);
       }
     };
 
-    fetchIP();
+    fetchIPandCountry();
   }, []);
 
   const { data, loading, error } = useFetchData(
@@ -54,11 +41,12 @@ const PageVisitorTracker = () => {
           },
           body: JSON.stringify({
             session_id: session_id,
-            ip_address: ipAddress,
+            ip_address: ipInfo?.ip,
             url_visited: window.location.href,
             referrer: document.referrer || null,
-            country:
-              Intl.DateTimeFormat().resolvedOptions().timeZone || "Unknown",
+            country: ipInfo?.country || "Unknown",
+            region: ipInfo?.region || null,
+            city: ipInfo?.city || null,
             user_agent: navigator.userAgent,
             platform: navigator.platform,
           }),

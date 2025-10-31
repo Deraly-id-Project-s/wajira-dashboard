@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 
-
 class PublicController extends Controller
 {
     use ResponseTrait;
@@ -100,13 +99,10 @@ class PublicController extends Controller
         return $this->responseSuccess($data, 'success');
     }
 
-
     public function motorcycleRecomendation()
     {
         $data = Cache::remember('public_motorcycle_recommendation', now()->addHours(6), function () {
-            return Motorcycle::select($this->motorcycleSimpleColumn)
-                ->where('is_recomended', 1)
-                ->get();
+            return Motorcycle::select($this->motorcycleSimpleColumn)->where('is_recomended', 1)->get();
         });
 
         return $this->responseSuccess($data, 'success');
@@ -122,15 +118,15 @@ class PublicController extends Controller
     public function pageVisitor(Request $request)
     {
         try {
-            $session_id      = $request->input('session_id');
-            $ip_address      = $request->input('ip_address');
-            $user_agent      = $request->userAgent();
-            $platform        = php_uname('s') ?? 'kontol';
-            $url_visited     = $request->input('url_visited', url()->current());
-            $referrer        = $request->input('referrer');
-            $country         = $request->input('country') ?? 'Unknown';
+            $session_id = $request->input('session_id');
+            $ip_address = $request->input('ip_address');
+            $user_agent = $request->userAgent();
+            $platform = php_uname('s') ?? 'kontol';
+            $url_visited = $request->input('url_visited', url()->current());
+            $referrer = $request->input('referrer');
+            $country = $request->input('country') ?? 'Unknown';
 
-            if (function_exists('pageVisitor')) {
+            if (function_exists('storePageVisitor')) {
                 storePageVisitor($session_id, $ip_address, $user_agent, $platform, $country, $url_visited, $referrer);
             }
 
