@@ -99,7 +99,7 @@ export default function ProductList({ lang, productLang }) {
           {selectedCategory === "vehicle-documentation" ? (
             <VehicleDocumentCard key="vehicle-document" lang={productLang} />
           ) : selectedCategory === "expedition" ? (
-            <ExpeditionCard key="expedition" />
+            <ExpeditionCard key="expedition" lang={productLang} />
           ) : filteredData.length === 0 ? (
             <div className="flex flex-col items-center py-12">
               <EmptyState message={`No ${selectedCategory} data available.`} />

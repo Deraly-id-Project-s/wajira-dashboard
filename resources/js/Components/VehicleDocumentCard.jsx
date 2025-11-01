@@ -1,7 +1,12 @@
 import { Check } from "lucide-react";
 
 const VehicleDocumentCard = ({ lang }) => {
-  console.log(lang)
+  const items = (lang?.[1].items) ?? [
+    "Practical process without hassle",
+    "Official and guaranteed service",
+    "Saves time without long queues",
+  ];
+
   return (
     <section className="max-w-7xl mx-auto flex flex-col md:flex-row gap-10 md:gap-16 py-12 md:px-0 px-[10px]">
       {/* Left - Image */}
@@ -12,7 +17,7 @@ const VehicleDocumentCard = ({ lang }) => {
           className="w-full h-full object-cover"
         />
         <div className="absolute bottom-6 left-6">
-          <p className="text-white text-sm">{lang?.[0]}</p>
+          <p className="text-white text-sm">{(lang?.[1]?.span) ?? "Operated By"}</p>
           <h2 className="text-xl md:text-2xl font-semibold text-white">
             PT. WAJIRA JAGRATARA YANOTAMA
           </h2>
@@ -22,20 +27,18 @@ const VehicleDocumentCard = ({ lang }) => {
       {/* Right - Description */}
       <div className="md:w-1/2 text-gray-800 space-y-4">
         <h2 className="text-[28px] md:text-[28px] font-bold text-[#1E3A5F]">
-          BPKB & STNK Registration
+          {(lang?.[1]?.title) ?? "BPKB & STNK Registration"}
         </h2>
         <p className="text-[16px] md:text-base opacity-80">
+          {(lang?.[1]?.desc) ?? `
           Handling vehicle documents becomes easier. We help with the
           registration process, change of ownership, and extension of both BPKB
           and STNK quickly, safely, and reliably.
+          `}
         </p>
 
         <ul className="space-y-3 mt-6">
-          {[
-            "Practical process without hassle",
-            "Official and guaranteed service",
-            "Saves time without long queues",
-          ].map((item, i) => (
+          {items.map((item, i) => (
             <li key={i} className="flex items-center gap-3 text-gray-700">
               <Check className="text-green-500" size={18} />
               <span>{item}</span>
