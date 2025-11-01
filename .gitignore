@@ -31,6 +31,3 @@ Homestead.json
 .env.production
 .phpactor.json
 auth.json
-
-# github action workflow
-.github
