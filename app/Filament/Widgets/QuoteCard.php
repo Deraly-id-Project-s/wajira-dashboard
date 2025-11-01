@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 class QuoteCard extends Widget
 {
     protected static string $view = 'filament.widgets.quote-card';
+    protected static ?int $sort = 2;
 
     public ?array $quoteData = null;
 

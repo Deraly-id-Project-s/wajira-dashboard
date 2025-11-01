@@ -11,7 +11,7 @@ class PageVisitorCountryChart extends ChartWidget
 {
     protected static ?string $heading = 'Visitors by Country';
 
-    // protected static ?int $sort = 4;
+    protected static ?int $sort = 4;
     protected int|string|array $columnSpan = 'full';
 
     protected function getData(): array
