@@ -11,9 +11,6 @@ app/storage/
 public/storage
 public/hot
 
-public/assets/products
-public/assets/product_and_service
-
 # Laravel 5 & Lumen specific with changed public path
 public_html/storage
 public_html/hot
