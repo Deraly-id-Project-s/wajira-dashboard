@@ -15,6 +15,7 @@ import ReasonChoose from "@/Components/ReasonChoose";
 import HelperButton from "@/Components/HelperButton";
 import SponsorList from "@/Components/SponsorList";
 import GetInTouch from "@/Components/GetInTouch";
+
 import SeoHead from "@/Components/SeoHead";
 
 import { usePage } from '@inertiajs/react';

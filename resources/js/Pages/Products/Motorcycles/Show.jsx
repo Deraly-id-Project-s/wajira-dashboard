@@ -11,6 +11,8 @@ import MotorcycleViewer from "@/Components/MotorcycleViewer";
 import RecomendationProductList from "@/Components/RecomendationProductList";
 import MotorcycleDescriptionContainer from "@/Components/MotorcycleDescriptionContainer";
 
+import SeoHead from "@/Components/SeoHead";
+
 import useFetchData from "@/Hooks/useFetchData";
 
 const MotocyclesDetail = (slug) => {
@@ -51,7 +53,7 @@ const MotocyclesDetail = (slug) => {
         >
             {/* SEO Fig */}
             <SeoHead />
-            
+
             <Header activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
 
             <section className="max-w-7xl mx-auto px-4 pt-16 pb-8 mt-12">

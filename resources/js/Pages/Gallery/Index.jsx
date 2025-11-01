@@ -38,7 +38,7 @@ const GalleryPage = () => {
         <div className="min-h-screen bg-white max-sm:overflow-x-hidden">
             {/* SEO Fig */}
             <SeoHead />
-            
+
             {/* Navigation Bar */}
             <Header activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
 

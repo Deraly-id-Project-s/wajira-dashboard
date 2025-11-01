@@ -20,8 +20,6 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\PrerenderIfCrawler::class,
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
         ]);
-
-        //
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->render(function (NotFoundHttpException $e, $request) {
@@ -30,7 +28,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 'message' => 'Halaman yang kamu cari tidak ditemukan.',
             ])->toResponse($request)->setStatusCode(404);
         });
-        
+
         $exceptions->render(function (HttpExceptionInterface $e, $request) {
             $status = $e->getStatusCode();
             $message = match ($status) {

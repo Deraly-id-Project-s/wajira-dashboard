@@ -9,6 +9,7 @@ use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use App\Filament\Widgets\QuoteCard;
 use App\Filament\Widgets\PageVisitorChart;
+use App\Filament\Widgets\PageVisitorCountryChart;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -46,6 +47,7 @@ class AdminPanelProvider extends PanelProvider
                 Widgets\AccountWidget::class,
                 QuoteCard::class,
                 PageVisitorChart::class,
+                PageVisitorCountryChart::class,
             ])
             ->middleware([
                 EncryptCookies::class,

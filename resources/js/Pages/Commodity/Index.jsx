@@ -34,7 +34,7 @@ const CommodityPage = () => {
         <div className="min-h-screen bg-white max-sm:overflow-x-hidden">
             {/* SEO Fig */}
             <SeoHead />
-            
+
             {/* Navigation Bar */}
             <Header
                 activeCategory={activeCategory}
@@ -60,7 +60,7 @@ const CommodityPage = () => {
                     Enhance your life with these authentic and beautifully made products—where tradition meets quality and style.
                 </span>
             </section>
-            
+
             <section id="helper-button" className="md:max-w-7xl max-w-full mx-auto px-0 py-16">
                 <HelperButton data={data?.data?.links} lang={langData?.[6]?.lang?.[currentLang] || []} />
             </section>
