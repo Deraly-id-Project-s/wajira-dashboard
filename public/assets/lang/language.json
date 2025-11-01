@@ -1,0 +1,1842 @@
+[
+    {
+        "name": "hero",
+        "lang": {
+            "en": [
+                "SMART TRADE, SHIPPING & EXPORT SERVICES",
+                "Wajira Jagrata Corps delivers smart solutions in exports, logistics, and vehicle services.",
+                "From motorcycles to key commodities, we connect Indonesia to global markets with trusted shipping and end-to-end support."
+            ],
+            "id": [
+                "TRADING, PENGIRIMAN & SERVIS EKSPOR SMART",
+                "PT Wajira Jagratara Corps memberikan solusi smart dalam ekspor, logistik, dan layanan kendaraan.",
+                "Dari motor hingga bahan baku, kami menghubungkan Indonesia ke pasar global dengan pengiriman dan dukungan menyeluruh yang terpercaya."
+            ],
+            "fr": [
+                "COMMERCE, EXPÉDITION ET SERVICES D'EXPORTATION INTELLIGENTS",
+                "Wajira Jagrata Corps propose des solutions intelligentes dans l’exportation, la logistique et les services automobiles.",
+                "Des motos aux matières premières, nous connectons l’Indonésie aux marchés mondiaux avec une expédition fiable et un support complet."
+            ],
+            "ar": [
+                "خدمات التجارة والشحن والتصدير الذكية",
+                "توفر شركة واجيرا جاجراتا حلولًا ذكية في مجال التصدير والخدمات اللوجستية وخدمات المركبات.",
+                "من الدراجات النارية إلى السلع الأساسية، نربط إندونيسيا بالأسواق العالمية بشحن موثوق ودعم شامل."
+            ],
+            "vi": [
+                "DỊCH VỤ THƯƠNG MẠI, VẬN CHUYỂN & XUẤT KHẨU THÔNG MINH",
+                "Wajira Jagrata Corps cung cấp các giải pháp thông minh trong lĩnh vực xuất khẩu, hậu cần và dịch vụ xe cơ giới.",
+                "Từ xe máy đến hàng hóa chủ lực, chúng tôi kết nối Indonesia với thị trường toàn cầu bằng vận chuyển đáng tin cậy và hỗ trợ trọn gói."
+            ],
+            "zh": [
+                "智能贸易、航运与出口服务",
+                "Wajira Jagrata Corps 提供出口、物流和车辆服务方面的智能解决方案。",
+                "从摩托车到关键商品，我们将印度尼西亚与全球市场连接起来，提供可靠的运输和端到端支持。"
+            ],
+            "hi": [
+                "स्मार्ट ट्रेड, शिपिंग और एक्सपोर्ट सेवाएं",
+                "Wajira Jagrata Corps निर्यात, लॉजिस्टिक्स और वाहन सेवाओं में स्मार्ट समाधान प्रदान करता है।",
+                "मोटरसाइकिल से लेकर प्रमुख वस्तुओं तक, हम इंडोनेशिया को वैश्विक बाजारों से विश्वसनीय परिवहन और संपूर्ण समर्थन के साथ जोड़ते हैं।"
+            ]
+        }
+    },
+    {
+        "name": "product-and-service",
+        "lang": {
+            "en": [
+                {
+                    "label": "motorcycle",
+                    "title": "Motorcycle",
+                    "desc": "Authorized dealership and distribution for motorcycles"
+                },
+                {
+                    "label": "expedition",
+                    "title": "Expedition",
+                    "desc": "Comprehensive freight forwarding, fleet leasing, and passenger transport services across Indonesia."
+                },
+                {
+                    "label": "commodity",
+                    "title": "Commodity",
+                    "desc": "Trade and distribution of various goods"
+                },
+                {
+                    "label": "vehicle-documentation",
+                    "title": "Vehicle Documentation",
+                    "desc": "Services for vehicle registration certificates (STNK), titles (BPKB)"
+                },
+                {
+                    "label": "learn-more",
+                    "title": "Learn More",
+                    "desc": "Learn More"
+                }
+            ],
+            "id": [
+                {
+                    "label": "motorcycle",
+                    "title": "Sepeda Motor",
+                    "desc": "Dealer resmi dan distribusi sepeda motor"
+                },
+                {
+                    "label": "expedition",
+                    "title": "Ekspedisi",
+                    "desc": "Layanan ekspedisi, sewa armada, dan transportasi penumpang di seluruh Indonesia."
+                },
+                {
+                    "label": "commodity",
+                    "title": "Komoditas",
+                    "desc": "Perdagangan dan distribusi berbagai barang"
+                },
+                {
+                    "label": "vehicle-documentation",
+                    "title": "Dokumentasi Kendaraan",
+                    "desc": "Layanan untuk pembuatan STNK dan BPKB"
+                },
+                {
+                    "label": "learn-more",
+                    "title": "Pelajari Selengkapnya",
+                    "desc": "Pelajari Selengkapnya"
+                }
+            ],
+            "fr": [
+                {
+                    "label": "motorcycle",
+                    "title": "Moto",
+                    "desc": "Concession et distribution agréées pour les motos"
+                },
+                {
+                    "label": "expedition",
+                    "title": "Expédition",
+                    "desc": "Services complets de fret, de location de flotte et de transport de passagers à travers l’Indonésie."
+                },
+                {
+                    "label": "commodity",
+                    "title": "Marchandise",
+                    "desc": "Commerce et distribution de divers produits"
+                },
+                {
+                    "label": "vehicle-documentation",
+                    "title": "Documents du véhicule",
+                    "desc": "Services pour certificats d’immatriculation et titres de véhicule"
+                },
+                {
+                    "label": "learn-more",
+                    "title": "En savoir plus",
+                    "desc": "En savoir plus"
+                }
+            ],
+            "ar": [
+                {
+                    "label": "motorcycle",
+                    "title": "دراجة نارية",
+                    "desc": "وكالة معتمدة وتوزيع للدراجات النارية"
+                },
+                {
+                    "label": "expedition",
+                    "title": "شحن",
+                    "desc": "خدمات شحن شاملة وتأجير أسطول ونقل الركاب عبر إندونيسيا."
+                },
+                {
+                    "label": "commodity",
+                    "title": "السلع",
+                    "desc": "تجارة وتوزيع السلع المختلفة"
+                },
+                {
+                    "label": "vehicle-documentation",
+                    "title": "توثيق المركبات",
+                    "desc": "خدمات تسجيل المركبات وإصدار الوثائق"
+                },
+                {
+                    "label": "learn-more",
+                    "title": "اعرف المزيد",
+                    "desc": "اعرف المزيد"
+                }
+            ],
+            "vi": [
+                {
+                    "label": "motorcycle",
+                    "title": "Xe máy",
+                    "desc": "Đại lý ủy quyền và phân phối xe máy"
+                },
+                {
+                    "label": "expedition",
+                    "title": "Vận chuyển",
+                    "desc": "Dịch vụ giao nhận, cho thuê đội xe và vận chuyển hành khách trên khắp Indonesia."
+                },
+                {
+                    "label": "commodity",
+                    "title": "Hàng hóa",
+                    "desc": "Thương mại và phân phối nhiều loại hàng hóa"
+                },
+                {
+                    "label": "vehicle-documentation",
+                    "title": "Giấy tờ xe",
+                    "desc": "Dịch vụ đăng ký và giấy tờ xe"
+                },
+                {
+                    "label": "learn-more",
+                    "title": "Tìm hiểu thêm",
+                    "desc": "Tìm hiểu thêm"
+                }
+            ],
+            "zh": [
+                {
+                    "label": "motorcycle",
+                    "title": "摩托车",
+                    "desc": "摩托车授权经销与分销服务"
+                },
+                {
+                    "label": "expedition",
+                    "title": "运输",
+                    "desc": "全方位货运代理、车队租赁和客运服务，覆盖整个印度尼西亚。"
+                },
+                {
+                    "label": "commodity",
+                    "title": "商品",
+                    "desc": "各类商品的贸易与分销"
+                },
+                {
+                    "label": "vehicle-documentation",
+                    "title": "车辆文件",
+                    "desc": "车辆注册证（STNK）与产权证（BPKB）服务"
+                },
+                {
+                    "label": "learn-more",
+                    "title": "了解更多",
+                    "desc": "了解更多"
+                }
+            ],
+            "hi": [
+                {
+                    "label": "motorcycle",
+                    "title": "मोटरसाइकिल",
+                    "desc": "मोटरसाइकिल के लिए अधिकृत डीलरशिप और वितरण"
+                },
+                {
+                    "label": "expedition",
+                    "title": "परिवहन",
+                    "desc": "पूरे इंडोनेशिया में माल अग्रेषण, बेड़ा किराया और यात्री परिवहन सेवाएं।"
+                },
+                {
+                    "label": "commodity",
+                    "title": "वस्तु",
+                    "desc": "विभिन्न वस्तुओं का व्यापार और वितरण"
+                },
+                {
+                    "label": "vehicle-documentation",
+                    "title": "वाहन दस्तावेज़",
+                    "desc": "वाहन पंजीकरण प्रमाणपत्र (STNK), शीर्षक (BPKB) सेवाएं"
+                },
+                {
+                    "label": "learn-more",
+                    "title": "अधिक जानें",
+                    "desc": "अधिक जानें"
+                }
+            ]
+        }
+    },
+    {
+        "name": "brand",
+        "lang": {
+            "en": {
+                "title": "Search by Brands",
+                "desc": "This is a text field, you can write anything you want to say.",
+                "btn": "More Brands"
+            },
+            "id": {
+                "title": "Cari Berdasarkan Merek",
+                "desc": "Kolom teks ini bisa kamu gunakan untuk menulis apa saja yang ingin disampaikan.",
+                "btn": "Merek Lainnya"
+            },
+            "fr": {
+                "title": "Rechercher par marques",
+                "desc": "Ceci est un champ de texte où vous pouvez écrire ce que vous voulez dire.",
+                "btn": "Plus de marques"
+            },
+            "ar": {
+                "title": "ابحث حسب العلامات التجارية",
+                "desc": "هذا حقل نص يمكنك كتابة ما تريد قوله فيه.",
+                "btn": "المزيد من العلامات التجارية"
+            },
+            "vi": {
+                "title": "Tìm kiếm theo thương hiệu",
+                "desc": "Đây là trường văn bản, bạn có thể viết bất cứ điều gì bạn muốn nói.",
+                "btn": "Thêm thương hiệu"
+            },
+            "zh": {
+                "title": "按品牌搜索",
+                "desc": "这是一个文本字段，你可以写下你想说的任何内容。",
+                "btn": "更多品牌"
+            },
+            "hi": {
+                "title": "ब्रांड के अनुसार खोजें",
+                "desc": "यह एक टेक्स्ट फ़ील्ड है, आप यहाँ जो चाहें लिख सकते हैं।",
+                "btn": "अधिक ब्रांड"
+            }
+        }
+    },
+    {
+        "name": "helper-button",
+        "lang": {
+            "en": {
+                "title": "Need Help",
+                "btn": "Get In Touch"
+            },
+            "id": {
+                "title": "Butuh Bantuan",
+                "btn": "Hubungi Kami"
+            },
+            "fr": {
+                "title": "Besoin d'aide",
+                "btn": "Contactez-nous"
+            },
+            "ar": {
+                "title": "تحتاج مساعدة؟",
+                "btn": "اتصل بنا"
+            },
+            "vi": {
+                "title": "Cần giúp đỡ",
+                "btn": "Liên hệ"
+            },
+            "zh": {
+                "title": "需要帮助？",
+                "btn": "联系我们"
+            },
+            "hi": {
+                "title": "मदद चाहिए",
+                "btn": "संपर्क करें"
+            }
+        }
+    },
+    {
+        "name": "product-list",
+        "lang": {
+            "en": {
+                "title": "Featured Listing",
+                "menu": [
+                    {
+                        "label": "motorcycle",
+                        "title": "Motorcycle"
+                    },
+                    {
+                        "label": "expedition",
+                        "title": "Expedition"
+                    },
+                    {
+                        "label": "commodity",
+                        "title": "Commodity"
+                    },
+                    {
+                        "label": "vehicle-documentation",
+                        "title": "Vehicle Document"
+                    }
+                ],
+                "detailButton": "Details",
+                "btn": "View More"
+            },
+            "id": {
+                "title": "Daftar Unggulan",
+                "menu": [
+                    {
+                        "label": "motorcycle",
+                        "title": "Sepeda Motor"
+                    },
+                    {
+                        "label": "expedition",
+                        "title": "Ekspedisi"
+                    },
+                    {
+                        "label": "commodity",
+                        "title": "Komoditas"
+                    },
+                    {
+                        "label": "vehicle-documentation",
+                        "title": "Dokumen Kendaraan"
+                    }
+                ],
+                "detailButton": "Detail",
+                "btn": "Lihat Selengkapnya"
+            },
+            "fr": {
+                "title": "Liste en vedette",
+                "menu": [
+                    {
+                        "label": "motorcycle",
+                        "title": "Moto"
+                    },
+                    {
+                        "label": "expedition",
+                        "title": "Expédition"
+                    },
+                    {
+                        "label": "commodity",
+                        "title": "Produit"
+                    },
+                    {
+                        "label": "vehicle-documentation",
+                        "title": "Document de véhicule"
+                    }
+                ],
+                "detailButton": "Détails",
+                "btn": "Voir plus"
+            },
+            "ar": {
+                "title": "قائمة مميزة",
+                "menu": [
+                    {
+                        "label": "motorcycle",
+                        "title": "دراجة نارية"
+                    },
+                    {
+                        "label": "expedition",
+                        "title": "بعثة"
+                    },
+                    {
+                        "label": "commodity",
+                        "title": "سلعة"
+                    },
+                    {
+                        "label": "vehicle-documentation",
+                        "title": "وثائق المركبة"
+                    }
+                ],
+                "detailButton": "تفاصيل",
+                "btn": "عرض المزيد"
+            },
+            "vi": {
+                "title": "Danh sách nổi bật",
+                "menu": [
+                    {
+                        "label": "motorcycle",
+                        "title": "Xe máy"
+                    },
+                    {
+                        "label": "expedition",
+                        "title": "Chuyến đi"
+                    },
+                    {
+                        "label": "commodity",
+                        "title": "Hàng hóa"
+                    },
+                    {
+                        "label": "vehicle-documentation",
+                        "title": "Giấy tờ xe"
+                    }
+                ],
+                "detailButton": "Chi tiết",
+                "btn": "Xem thêm"
+            },
+            "zh": {
+                "title": "精选列表",
+                "menu": [
+                    {
+                        "label": "motorcycle",
+                        "title": "摩托车"
+                    },
+                    {
+                        "label": "expedition",
+                        "title": "远征"
+                    },
+                    {
+                        "label": "commodity",
+                        "title": "商品"
+                    },
+                    {
+                        "label": "vehicle-documentation",
+                        "title": "车辆文件"
+                    }
+                ],
+                "detailButton": "详情",
+                "btn": "查看更多"
+            },
+            "hi": {
+                "title": "विशेष सूची",
+                "menu": [
+                    {
+                        "label": "motorcycle",
+                        "title": "मोटरसाइकिल"
+                    },
+                    {
+                        "label": "expedition",
+                        "title": "अभियान"
+                    },
+                    {
+                        "label": "commodity",
+                        "title": "वस्तु"
+                    },
+                    {
+                        "label": "vehicle-documentation",
+                        "title": "वाहन दस्तावेज़"
+                    }
+                ],
+                "detailButton": "विवरण",
+                "btn": "और देखें"
+            }
+        }
+    },
+    {
+        "name": "reason-choose-us",
+        "lang": {
+            "en": {
+                "title": "Why Choose Us",
+                "desc": "Discover what sets us apart and why we're your best choice.",
+                "content": [
+                    {
+                        "label": "unmatched-expertise",
+                        "title": "Unmatched expertise",
+                        "desc": "Our team combines years of industry experience with innovative problem-solving, ensuring outstanding results each time."
+                    },
+                    {
+                        "label": "trusted-by-clients",
+                        "title": "Trusted by clients",
+                        "desc": "We build lasting relationships and our clients trust us for consistency, transparency, and integrity in everything we do."
+                    },
+                    {
+                        "label": "proven-results",
+                        "title": "Proven results",
+                        "desc": "Our projects deliver measurable impact, helping businesses thrive with reliable, real-world outcomes."
+                    }
+                ]
+            },
+            "id": {
+                "title": "Mengapa Memilih Kami",
+                "desc": "Temukan apa yang membuat kami berbeda dan mengapa kami pilihan terbaik Anda.",
+                "content": [
+                    {
+                        "label": "unmatched-expertise",
+                        "title": "Keahlian Tak Tertandingi",
+                        "desc": "Tim kami menggabungkan pengalaman industri bertahun-tahun dengan inovasi pemecahan masalah yang memastikan hasil luar biasa setiap saat."
+                    },
+                    {
+                        "label": "trusted-by-clients",
+                        "title": "Dipercaya Klien",
+                        "desc": "Kami membangun hubungan jangka panjang dan dipercaya atas konsistensi, transparansi, serta integritas dalam setiap tindakan."
+                    },
+                    {
+                        "label": "proven-results",
+                        "title": "Hasil Terbukti",
+                        "desc": "Proyek kami memberikan dampak nyata yang membantu bisnis tumbuh dengan hasil yang dapat diandalkan."
+                    }
+                ]
+            },
+            "fr": {
+                "title": "Pourquoi nous choisir",
+                "desc": "Découvrez ce qui nous distingue et pourquoi nous sommes votre meilleur choix.",
+                "content": [
+                    {
+                        "label": "unmatched-expertise",
+                        "title": "Expertise inégalée",
+                        "desc": "Notre équipe allie des années d’expérience dans le secteur à une résolution de problèmes innovante, garantissant des résultats exceptionnels à chaque fois."
+                    },
+                    {
+                        "label": "trusted-by-clients",
+                        "title": "Fiabilité éprouvée",
+                        "desc": "Nous construisons des relations durables basées sur la cohérence, la transparence et l’intégrité dans tout ce que nous faisons."
+                    },
+                    {
+                        "label": "proven-results",
+                        "title": "Résultats prouvés",
+                        "desc": "Nos projets produisent un impact mesurable, aidant les entreprises à prospérer grâce à des résultats concrets et fiables."
+                    }
+                ]
+            },
+            "ar": {
+                "title": "لماذا تختارنا",
+                "desc": "اكتشف ما يميزنا ولماذا نحن خيارك الأفضل.",
+                "content": [
+                    {
+                        "label": "unmatched-expertise",
+                        "title": "خبرة لا مثيل لها",
+                        "desc": "يجمع فريقنا بين سنوات من الخبرة في الصناعة والابتكار في حل المشكلات لضمان نتائج متميزة في كل مرة."
+                    },
+                    {
+                        "label": "trusted-by-clients",
+                        "title": "موثوق به من قبل العملاء",
+                        "desc": "نحن نبني علاقات طويلة الأمد يقوم عملاؤنا على الثقة في الاتساق والشفافية والنزاهة في كل ما نقوم به."
+                    },
+                    {
+                        "label": "proven-results",
+                        "title": "نتائج مثبتة",
+                        "desc": "تقدم مشاريعنا تأثيرًا ملموسًا يساعد الشركات على الازدهار بنتائج موثوقة وواقعية."
+                    }
+                ]
+            },
+            "vi": {
+                "title": "Tại sao chọn chúng tôi",
+                "desc": "Khám phá điều khiến chúng tôi khác biệt và là lựa chọn tốt nhất cho bạn.",
+                "content": [
+                    {
+                        "label": "unmatched-expertise",
+                        "title": "Chuyên môn vượt trội",
+                        "desc": "Đội ngũ của chúng tôi kết hợp nhiều năm kinh nghiệm trong ngành với tư duy sáng tạo, đảm bảo kết quả xuất sắc mỗi lần."
+                    },
+                    {
+                        "label": "trusted-by-clients",
+                        "title": "Được khách hàng tin tưởng",
+                        "desc": "Chúng tôi xây dựng mối quan hệ bền vững, được khách hàng tin tưởng nhờ tính nhất quán, minh bạch và chính trực."
+                    },
+                    {
+                        "label": "proven-results",
+                        "title": "Kết quả đã được chứng minh",
+                        "desc": "Dự án của chúng tôi mang lại hiệu quả rõ ràng, giúp doanh nghiệp phát triển với kết quả thực tế và đáng tin cậy."
+                    }
+                ]
+            },
+            "zh": {
+                "title": "为什么选择我们",
+                "desc": "了解我们的独特之处，以及为什么我们是您的最佳选择。",
+                "content": [
+                    {
+                        "label": "unmatched-expertise",
+                        "title": "无与伦比的专业知识",
+                        "desc": "我们的团队结合多年行业经验与创新思维，确保每次都能取得卓越成果。"
+                    },
+                    {
+                        "label": "trusted-by-clients",
+                        "title": "客户信任",
+                        "desc": "我们建立持久的合作关系，客户信任我们的稳定性、透明度和诚信。"
+                    },
+                    {
+                        "label": "proven-results",
+                        "title": "验证成果",
+                        "desc": "我们的项目带来可衡量的影响，帮助企业以可靠的成果蓬勃发展。"
+                    }
+                ]
+            },
+            "hi": {
+                "title": "हमें क्यों चुनें",
+                "desc": "जानिए क्या हमें अलग बनाता है और क्यों हम आपके लिए सबसे अच्छा विकल्प हैं।",
+                "content": [
+                    {
+                        "label": "unmatched-expertise",
+                        "title": "अद्वितीय विशेषज्ञता",
+                        "desc": "हमारी टीम वर्षों के उद्योग अनुभव और नवीन समस्या समाधान को जोड़ती है, जो हर बार उत्कृष्ट परिणाम सुनिश्चित करती है।"
+                    },
+                    {
+                        "label": "trusted-by-clients",
+                        "title": "ग्राहकों द्वारा विश्वसनीय",
+                        "desc": "हम दीर्घकालिक संबंध बनाते हैं और हमारे ग्राहक हमें स्थिरता, पारदर्शिता और ईमानदारी के लिए भरोसा करते हैं।"
+                    },
+                    {
+                        "label": "proven-results",
+                        "title": "सिद्ध परिणाम",
+                        "desc": "हमारे प्रोजेक्ट वास्तविक और भरोसेमंद परिणामों के साथ व्यवसायों को आगे बढ़ाने में मदद करते हैं।"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "get-it-started",
+        "lang": {
+            "en": {
+                "title": "Ready to get started?",
+                "btn": "Get In Touch"
+            },
+            "id": {
+                "title": "Siap untuk memulai?",
+                "btn": "Hubungi Kami"
+            },
+            "fr": {
+                "title": "Prêt à commencer ?",
+                "btn": "Contactez-nous"
+            },
+            "ar": {
+                "title": "هل أنت مستعد للبدء؟",
+                "btn": "اتصل بنا"
+            },
+            "vi": {
+                "title": "Sẵn sàng bắt đầu?",
+                "btn": "Liên hệ ngay"
+            },
+            "zh": {
+                "title": "准备好开始了吗？",
+                "btn": "联系我们"
+            },
+            "hi": {
+                "title": "शुरू करने के लिए तैयार हैं?",
+                "btn": "हमसे संपर्क करें"
+            }
+        }
+    },
+    {
+        "name": "footer",
+        "lang": {
+            "en": {
+                "left_panel": [
+                    "Subscribe to our newsletter",
+                    "Email address"
+                ],
+                "right_panel": [
+                    {
+                        "label": "Services",
+                        "content": [
+                            "Motorcycle",
+                            "Expedition",
+                            "Commodity",
+                            "Vehicle Documentation"
+                        ]
+                    },
+                    {
+                        "label": "About",
+                        "content": [
+                            "Our Story",
+                            "Gallery"
+                        ]
+                    },
+                    {
+                        "label": "Help",
+                        "content": [
+                            "Contact Us"
+                        ]
+                    }
+                ],
+                "bottom_panel": [
+                    "Terms and Conditions",
+                    "Privacy Policy"
+                ]
+            },
+            "id": {
+                "left_panel": [
+                    "Berlangganan buletin kami",
+                    "Alamat email"
+                ],
+                "right_panel": [
+                    {
+                        "label": "Layanan",
+                        "content": [
+                            "Sepeda Motor",
+                            "Ekspedisi",
+                            "Komoditas",
+                            "Dokumentasi Kendaraan"
+                        ]
+                    },
+                    {
+                        "label": "Tentang",
+                        "content": [
+                            "Tentang Kami",
+                            "Galeri"
+                        ]
+                    },
+                    {
+                        "label": "Bantuan",
+                        "content": [
+                            "Hubungi Kami"
+                        ]
+                    }
+                ],
+                "bottom_panel": [
+                    "Syarat dan Ketentuan",
+                    "Kebijakan Privasi"
+                ]
+            },
+            "fr": {
+                "left_panel": [
+                    "Abonnez-vous à notre newsletter",
+                    "Adresse e-mail"
+                ],
+                "right_panel": [
+                    {
+                        "label": "Services",
+                        "content": [
+                            "Moto",
+                            "Expédition",
+                            "Marchandise",
+                            "Documents Véhicule"
+                        ]
+                    },
+                    {
+                        "label": "À propos",
+                        "content": [
+                            "Notre Histoire",
+                            "Galerie"
+                        ]
+                    },
+                    {
+                        "label": "Aide",
+                        "content": [
+                            "Contactez-nous"
+                        ]
+                    }
+                ],
+                "bottom_panel": [
+                    "Conditions Générales",
+                    "Politique de Confidentialité"
+                ]
+            },
+            "ar": {
+                "left_panel": [
+                    "اشترك في النشرة الإخبارية",
+                    "عنوان البريد الإلكتروني"
+                ],
+                "right_panel": [
+                    {
+                        "label": "خدمات",
+                        "content": [
+                            "دراجة نارية",
+                            "شحن",
+                            "سلع",
+                            "توثيق المركبات"
+                        ]
+                    },
+                    {
+                        "label": "حول",
+                        "content": [
+                            "قصتنا",
+                            "معرض الصور"
+                        ]
+                    },
+                    {
+                        "label": "مساعدة",
+                        "content": [
+                            "اتصل بنا"
+                        ]
+                    }
+                ],
+                "bottom_panel": [
+                    "الشروط والأحكام",
+                    "سياسة الخصوصية"
+                ]
+            },
+            "vi": {
+                "left_panel": [
+                    "Đăng ký nhận bản tin",
+                    "Địa chỉ email"
+                ],
+                "right_panel": [
+                    {
+                        "label": "Dịch vụ",
+                        "content": [
+                            "Xe máy",
+                            "Vận chuyển",
+                            "Hàng hóa",
+                            "Giấy tờ xe"
+                        ]
+                    },
+                    {
+                        "label": "Giới thiệu",
+                        "content": [
+                            "Câu chuyện của chúng tôi",
+                            "Bộ sưu tập"
+                        ]
+                    },
+                    {
+                        "label": "Trợ giúp",
+                        "content": [
+                            "Liên hệ"
+                        ]
+                    }
+                ],
+                "bottom_panel": [
+                    "Điều khoản & Điều kiện",
+                    "Chính sách Bảo mật"
+                ]
+            },
+            "zh": {
+                "left_panel": [
+                    "订阅我们的新闻通讯",
+                    "电子邮件地址"
+                ],
+                "right_panel": [
+                    {
+                        "label": "服务",
+                        "content": [
+                            "摩托车",
+                            "运输",
+                            "商品",
+                            "车辆文件"
+                        ]
+                    },
+                    {
+                        "label": "关于",
+                        "content": [
+                            "我们的故事",
+                            "画廊"
+                        ]
+                    },
+                    {
+                        "label": "帮助",
+                        "content": [
+                            "联系我们"
+                        ]
+                    }
+                ],
+                "bottom_panel": [
+                    "条款和条件",
+                    "隐私政策"
+                ]
+            },
+            "hi": {
+                "left_panel": [
+                    "हमारे न्यूज़लेटर की सदस्यता लें",
+                    "ईमेल पता"
+                ],
+                "right_panel": [
+                    {
+                        "label": "सेवाएं",
+                        "content": [
+                            "मोटरसाइकिल",
+                            "अभियान",
+                            "वस्तु",
+                            "वाहन दस्तावेज़"
+                        ]
+                    },
+                    {
+                        "label": "के बारे में",
+                        "content": [
+                            "हमारी कहानी",
+                            "गैलरी"
+                        ]
+                    },
+                    {
+                        "label": "सहायता",
+                        "content": [
+                            "संपर्क करें"
+                        ]
+                    }
+                ],
+                "bottom_panel": [
+                    "नियम और शर्तें",
+                    "गोपनीयता नीति"
+                ]
+            }
+        }
+    },
+    {
+        "name": "motorcycle-color-title",
+        "lang": {
+            "en": "Color Variant",
+            "id": "Varian Warna",
+            "fr": "Variante de couleur",
+            "ar": "متغير اللون",
+            "vi": "Phiên bản màu sắc",
+            "zh": "颜色款式",
+            "hi": "रंग प्रकार"
+        }
+    },
+    {
+        "name": "gallery-title",
+        "lang": {
+            "en": "Our Latest Post",
+            "id": "Postingan Terbaru Kami",
+            "fr": "Notre Dernière Publication",
+            "ar": "أحدث منشوراتنا",
+            "vi": "Bài Đăng Mới Nhất",
+            "zh": "我们的最新帖子",
+            "hi": "हमारी नवीनतम पोस्ट"
+        }
+    },
+    {
+        "name": "about-us",
+        "lang": {
+            "en": {
+                "label": "about-us",
+                "title": "About Us",
+                "desc": "Wajira Jagratara Corps is a company established on June 8, 2019 by Mr. Zaifudin Yukhri, focusing on automotive trading and transportation services. The company establishes partnerships with motor vehicle ATPMs across Indonesia, providing new car and motorcycle sales services, as well as vehicle document management. In addition, Wajira Jagratara Corps also offers freight and passenger transportation services, including the rental of various types of vehicles. With a fleet of trucks that support the delivery of goods throughout Indonesia, the company is committed to improving mobility and economic growth. Wajira Jagratara Corps has several subsidiaries, including:"
+            },
+            "id": {
+                "label": "tentang-kami",
+                "title": "Tentang Kami",
+                "desc": "Wajira Jagratara Corps adalah perusahaan yang didirikan pada 8 Juni 2019 oleh Bapak Zaifudin Yukhri, yang berfokus pada perdagangan otomotif dan layanan transportasi. Perusahaan ini menjalin kemitraan dengan ATPM kendaraan bermotor di seluruh Indonesia, menyediakan layanan penjualan mobil dan sepeda motor baru, serta pengurusan dokumen kendaraan. Selain itu, Wajira Jagratara Corps juga menawarkan layanan transportasi barang dan penumpang, termasuk penyewaan berbagai jenis kendaraan. Dengan armada truk yang mendukung pengiriman barang ke seluruh Indonesia, perusahaan ini berkomitmen untuk meningkatkan mobilitas dan pertumbuhan ekonomi. Wajira Jagratara Corps memiliki beberapa anak perusahaan, antara lain:"
+            },
+            "fr": {
+                "label": "a-propos",
+                "title": "À Propos de Nous",
+                "desc": "Wajira Jagratara Corps est une entreprise créée le 8 juin 2019 par M. Zaifudin Yukhri, spécialisée dans le commerce automobile et les services de transport. L'entreprise établit des partenariats avec les ATPM de véhicules à moteur à travers l'Indonésie, offrant des services de vente de voitures et motos neuves, ainsi que la gestion des documents de véhicules. De plus, Wajira Jagratara Corps propose également des services de transport de marchandises et de passagers, y compris la location de différents types de véhicules. Avec une flotte de camions qui soutient la livraison de marchandises dans toute l'Indonésie, l'entreprise s'engage à améliorer la mobilité et la croissance économique. Wajira Jagratara Corps possède plusieurs filiales, notamment:"
+            },
+            "ar": {
+                "label": "من-نحن",
+                "title": "من نحن",
+                "desc": "واجيرا جاغراتارا كوربس هي شركة تأسست في 8 يونيو 2019 من قبل السيد زيف الدين يوخري، وتركز على تجارة السيارات وخدمات النقل. تقيم الشركة شراكات مع موزعي المركبات الآلية في جميع أنحاء إندونيسيا، وتوفر خدمات بيع السيارات والدراجات النارية الجديدة، بالإضافة إلى إدارة وثائق المركبات. بالإضافة إلى ذلك، تقدم واجيرا جاغراتارا كوربس أيضًا خدمات نقل البضائع والركاب، بما في ذلك تأجير أنواع مختلفة من المركبات. مع أسطول من الشاحنات التي تدعم توصيل البضائع في جميع أنحاء إندونيسيا، تلتزم الشركة بتحسين التنقل والنمو الاقتصادي. تمتلك واجيرا جاغراتارا كوربس العديد من الشركات التابعة، بما في ذلك:"
+            },
+            "vi": {
+                "label": "gioi-thieu",
+                "title": "Giới Thiệu Về Chúng Tôi",
+                "desc": "Wajira Jagratara Corps là một công ty được thành lập vào ngày 8 tháng 6 năm 2019 bởi ông Zaifudin Yukhri, tập trung vào kinh doanh ô tô và dịch vụ vận tải. Công ty thiết lập quan hệ đối tác với các ATPM xe cơ giới trên khắp Indonesia, cung cấp dịch vụ bán xe ô tô và xe máy mới, cũng như quản lý giấy tờ xe. Ngoài ra, Wajira Jagratara Corps còn cung cấp dịch vụ vận chuyển hàng hóa và hành khách, bao gồm cho thuê các loại xe khác nhau. Với đội xe tải hỗ trợ giao hàng trên toàn Indonesia, công ty cam kết cải thiện khả năng di chuyển và tăng trưởng kinh tế. Wajira Jagratara Corps có một số công ty con, bao gồm:"
+            },
+            "zh": {
+                "label": "关于我们",
+                "title": "关于我们",
+                "desc": "瓦吉拉·贾格拉塔拉集团是一家由扎伊夫丁·尤赫里先生于2019年6月8日创立的公司，专注于汽车贸易和运输服务。该公司与印度尼西亚各地的机动车ATPM建立合作伙伴关系，提供新车和摩托车销售服务，以及车辆文件管理。此外，瓦吉拉·贾格拉塔拉集团还提供货运和客运服务，包括各类车辆租赁。凭借支持印度尼西亚全国货物配送的卡车车队，公司致力于改善流动性和经济增长。瓦吉拉·贾格拉塔拉集团拥有多家子公司，包括:"
+            },
+            "hi": {
+                "label": "हमारे-बारे-में",
+                "title": "हमारे बारे में",
+                "desc": "वजीरा जगराटारा कोर्प्स एक कंपनी है जिसे 8 जून 2019 को श्री ज़ैफुद्दीन युखरी द्वारा स्थापित किया गया था, जो ऑटोमोटिव व्यापार और परिवहन सेवाओं पर केंद्रित है। कंपनी पूरे इंडोनेशिया में मोटर वाहन ATPM के साथ साझेदारी स्थापित करती है, नई कार और मोटरसाइकिल बिक्री सेवाएं प्रदान करती है, साथ ही वाहन दस्तावेज़ प्रबंधन भी करती है। इसके अलावा, वजीरा जगराटारा कोर्प्स माल और यात्री परिवहन सेवाएं भी प्रदान करता है, जिसमें विभिन्न प्रकार के वाहनों का किराया शामिल है। पूरे इंडोनेशिया में माल की डिलीवरी का समर्थन करने वाले ट्रकों के बेड़े के साथ, कंपनी गतिशीलता और आर्थिक विकास में सुधार के लिए प्रतिबद्ध है। वजीरा जगराटारा कोर्प्स की कई सहायक कंपनियां हैं, जिनमें शामिल हैं:"
+            }
+        }
+    },
+    {
+        "name": "vision-mission",
+        "lang": {
+            "en": {
+                "label": "vision-mission",
+                "title": "Vision & Mission",
+                "desc": [
+                    "Increase economic growth and welfare of the Indonesian people by establishing partnerships and expanding networking with entrepreneurs, MSMEs as well as SMEs and private companies in Indonesia in the fields of trade, industry, tourism, and transportation.",
+                    "Wajira Jagratara Corps is committed to running entrepreneurial activities in a professional, modern, accountable, and reliable manner, as well as providing high-quality services to ensure partner and consumer satisfaction. The company also focuses on developing Indonesian entrepreneurs to be ready to compete in the global market and play an active role in increasing economic growth, especially in Yogyakarta and Indonesia in general."
+                ]
+            },
+            "id": {
+                "label": "visi-misi",
+                "title": "Visi & Misi",
+                "desc": [
+                    "Meningkatkan pertumbuhan ekonomi dan kesejahteraan masyarakat Indonesia dengan menjalin kemitraan dan memperluas jaringan dengan para pengusaha, UMKM serta UKM dan perusahaan swasta di Indonesia di bidang perdagangan, industri, pariwisata, dan transportasi.",
+                    "Wajira Jagratara Corps berkomitmen untuk menjalankan kegiatan kewirausahaan secara profesional, modern, akuntabel, dan terpercaya, serta memberikan layanan berkualitas tinggi untuk memastikan kepuasan mitra dan konsumen. Perusahaan juga berfokus pada pengembangan pengusaha Indonesia agar siap bersaing di pasar global dan berperan aktif dalam meningkatkan pertumbuhan ekonomi, khususnya di Yogyakarta dan Indonesia pada umumnya."
+                ]
+            },
+            "fr": {
+                "label": "vision-mission",
+                "title": "Vision & Mission",
+                "desc": [
+                    "Accroître la croissance économique et le bien-être du peuple indonésien en établissant des partenariats et en élargissant le réseau avec les entrepreneurs, les MPME ainsi que les PME et les entreprises privées en Indonésie dans les domaines du commerce, de l'industrie, du tourisme et des transports.",
+                    "Wajira Jagratara Corps s'engage à mener des activités entrepreneuriales de manière professionnelle, moderne, responsable et fiable, ainsi qu'à fournir des services de haute qualité pour garantir la satisfaction des partenaires et des consommateurs. L'entreprise se concentre également sur le développement des entrepreneurs indonésiens pour qu'ils soient prêts à concourir sur le marché mondial et à jouer un rôle actif dans l'augmentation de la croissance économique, en particulier à Yogyakarta et en Indonésie en général."
+                ]
+            },
+            "ar": {
+                "label": "الرؤية-والرسالة",
+                "title": "الرؤية والرسالة",
+                "desc": [
+                    "زيادة النمو الاقتصادي ورفاهية الشعب الإندونيسي من خلال إقامة شراكات وتوسيع الشبكات مع رواد الأعمال والمشاريع الصغيرة والمتوسطة والشركات الخاصة في إندونيسيا في مجالات التجارة والصناعة والسياحة والنقل.",
+                    "تلتزم واجيرا جاغراتارا كوربس بإدارة الأنشطة الريادية بطريقة مهنية وحديثة وخاضعة للمساءلة وموثوقة، بالإضافة إلى تقديم خدمات عالية الجودة لضمان رضا الشركاء والمستهلكين. تركز الشركة أيضًا على تطوير رواد الأعمال الإندونيسيين ليكونوا مستعدين للمنافسة في السوق العالمية ولعب دور نشط في زيادة النمو الاقتصادي، خاصة في يوجياكارتا وإندونيسيا بشكل عام."
+                ]
+            },
+            "vi": {
+                "label": "tam-nhin-su-menh",
+                "title": "Tầm Nhìn & Sứ Mệnh",
+                "desc": [
+                    "Tăng trưởng kinh tế và phúc lợi của người dân Indonesia bằng cách thiết lập quan hệ đối tác và mở rộng mạng lưới với các doanh nhân, DNNVV cũng như các doanh nghiệp vừa và nhỏ và công ty tư nhân tại Indonesia trong các lĩnh vực thương mại, công nghiệp, du lịch và vận tải.",
+                    "Wajira Jagratara Corps cam kết thực hiện các hoạt động kinh doanh một cách chuyên nghiệp, hiện đại, có trách nhiệm và đáng tin cậy, cũng như cung cấp dịch vụ chất lượng cao để đảm bảo sự hài lòng của đối tác và người tiêu dùng. Công ty cũng tập trung vào việc phát triển các doanh nhân Indonesia để sẵn sàng cạnh tranh trên thị trường toàn cầu và đóng vai trò tích cực trong việc tăng trưởng kinh tế, đặc biệt là ở Yogyakarta và Indonesia nói chung."
+                ]
+            },
+            "zh": {
+                "label": "愿景-使命",
+                "title": "愿景与使命",
+                "desc": [
+                    "通过与印度尼西亚的企业家、微型、小型和中型企业以及私营公司在贸易、工业、旅游和运输领域建立伙伴关系和扩大网络，提高印度尼西亚人民的经济增长和福祉。",
+                    "瓦吉拉·贾格拉塔拉集团致力于以专业、现代、负责任和可靠的方式开展创业活动，并提供高质量的服务以确保合作伙伴和消费者的满意度。公司还专注于培养印度尼西亚企业家，使其准备好在全球市场上竞争，并在促进经济增长方面发挥积极作用，特别是在日惹和印度尼西亚。"
+                ]
+            },
+            "hi": {
+                "label": "दृष्टि-मिशन",
+                "title": "दृष्टि और मिशन",
+                "desc": [
+                    "व्यापार, उद्योग, पर्यटन और परिवहन के क्षेत्रों में इंडोनेशिया में उद्यमियों, MSME के साथ-साथ SME और निजी कंपनियों के साथ साझेदारी स्थापित करके और नेटवर्किंग का विस्तार करके इंडोनेशियाई लोगों की आर्थिक वृद्धि और कल्याण बढ़ाना।",
+                    "वजीरा जगराटारा कोर्प्स पेशेवर, आधुनिक, जवाबदेह और विश्वसनीय तरीके से उद्यमशीलता गतिविधियों को चलाने के लिए प्रतिबद्ध है, साथ ही साझेदार और उपभोक्ता संतुष्टि सुनिश्चित करने के लिए उच्च गुणवत्ता वाली सेवाएं प्रदान करता है। कंपनी इंडोनेशियाई उद्यमियों को वैश्विक बाजार में प्रतिस्पर्धा करने के लिए तैयार करने और आर्थिक विकास बढ़ाने में सक्रिय भूमिका निभाने पर भी ध्यान केंद्रित करती है, विशेष रूप से योग्याकार्ता और सामान्य रूप से इंडोनेशिया में।"
+                ]
+            }
+        }
+    },
+    {
+        "name": "export-method",
+        "lang": {
+            "en": [
+                {
+                    "label": "international",
+                    "span": "For International",
+                    "title": "PT Wajira Jagratara Inter Nasional (Export)",
+                    "desc": "Distribution and trading of motorcycles and spare parts for automotive products"
+                },
+                {
+                    "label": "local",
+                    "span": "For Local",
+                    "title": "PT Wajira Jagratara Morindo (Local)",
+                    "desc": "Distribution and trading of motorcycles and spare parts for automotive products"
+                }
+            ],
+            "id": [
+                {
+                    "label": "internasional",
+                    "span": "Untuk Internasional",
+                    "title": "PT Wajira Jagratara Inter Nasional (Ekspor)",
+                    "desc": "Distribusi dan perdagangan sepeda motor dan suku cadang untuk produk otomotif"
+                },
+                {
+                    "label": "lokal",
+                    "span": "Untuk Lokal",
+                    "title": "PT Wajira Jagratara Morindo (Lokal)",
+                    "desc": "Distribusi dan perdagangan sepeda motor dan suku cadang untuk produk otomotif"
+                }
+            ],
+            "fr": [
+                {
+                    "label": "international",
+                    "span": "Pour l'International",
+                    "title": "PT Wajira Jagratara Inter Nasional (Export)",
+                    "desc": "Distribution et commerce de motos et de pièces détachées pour produits automobiles"
+                },
+                {
+                    "label": "local",
+                    "span": "Pour le Local",
+                    "title": "PT Wajira Jagratara Morindo (Local)",
+                    "desc": "Distribution et commerce de motos et de pièces détachées pour produits automobiles"
+                }
+            ],
+            "ar": [
+                {
+                    "label": "دولي",
+                    "span": "للاستخدام الدولي",
+                    "title": "PT Wajira Jagratara Inter Nasional (تصدير)",
+                    "desc": "توزيع وتجارة الدراجات النارية وقطع الغيار للمنتجات السيارات"
+                },
+                {
+                    "label": "محلي",
+                    "span": "للاستخدام المحلي",
+                    "title": "PT Wajira Jagratara Morindo (محلي)",
+                    "desc": "توزيع وتجارة الدراجات النارية وقطع الغيار للمنتجات السيارات"
+                }
+            ],
+            "vi": [
+                {
+                    "label": "quoc-te",
+                    "span": "Cho Quốc Tế",
+                    "title": "PT Wajira Jagratara Inter Nasional (Xuất Khẩu)",
+                    "desc": "Phân phối và kinh doanh xe máy và phụ tùng cho sản phẩm ô tô"
+                },
+                {
+                    "label": "dia-phuong",
+                    "span": "Cho Địa Phương",
+                    "title": "PT Wajira Jagratara Morindo (Địa Phương)",
+                    "desc": "Phân phối và kinh doanh xe máy và phụ tùng cho sản phẩm ô tô"
+                }
+            ],
+            "zh": [
+                {
+                    "label": "国际",
+                    "span": "国际业务",
+                    "title": "PT Wajira Jagratara Inter Nasional (出口)",
+                    "desc": "摩托车及汽车产品零部件的分销和贸易"
+                },
+                {
+                    "label": "本地",
+                    "span": "本地业务",
+                    "title": "PT Wajira Jagratara Morindo (本地)",
+                    "desc": "摩托车及汽车产品零部件的分销和贸易"
+                }
+            ],
+            "hi": [
+                {
+                    "label": "अंतर्राष्ट्रीय",
+                    "span": "अंतर्राष्ट्रीय के लिए",
+                    "title": "PT Wajira Jagratara Inter Nasional (निर्यात)",
+                    "desc": "मोटरसाइकिल और ऑटोमोटिव उत्पादों के लिए पुर्जों का वितरण और व्यापार"
+                },
+                {
+                    "label": "स्थानीय",
+                    "span": "स्थानीय के लिए",
+                    "title": "PT Wajira Jagratara Morindo (स्थानीय)",
+                    "desc": "मोटरसाइकिल और ऑटोमोटिव उत्पादों के लिए पुर्जों का वितरण और व्यापार"
+                }
+            ]
+        }
+    },
+    {
+        "name": "motorcycle-filter",
+        "lang": {
+            "en": {
+                "filter": [
+                    {
+                        "label": "sort",
+                        "title": "Sort By",
+                        "items": [
+                            {
+                                "label": "popular",
+                                "title": "Most Popular"
+                            },
+                            {
+                                "label": "latest",
+                                "title": "Latest"
+                            },
+                            {
+                                "label": "az",
+                                "title": "A - Z"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "search",
+                        "title": "Search Motorcycle"
+                    }
+                ],
+                "paginate": [
+                    "Prev",
+                    "Next"
+                ],
+                "btn": "Details"
+            },
+            "id": {
+                "filter": [
+                    {
+                        "label": "urutkan",
+                        "title": "Urutkan Berdasarkan",
+                        "items": [
+                            "Paling Populer",
+                            "Terbaru",
+                            "A - Z"
+                        ]
+                    },
+                    {
+                        "label": "cari",
+                        "title": "Cari Sepeda Motor"
+                    }
+                ],
+                "paginate": [
+                    "Sebelumnya",
+                    "Selanjutnya"
+                ],
+                "btn": "Detail"
+            },
+            "fr": {
+                "filter": [
+                    {
+                        "label": "trier",
+                        "title": "Trier Par",
+                        "items": [
+                            "Plus Populaire",
+                            "Plus Récent",
+                            "A - Z"
+                        ]
+                    },
+                    {
+                        "label": "recherche",
+                        "title": "Rechercher une Moto"
+                    }
+                ],
+                "paginate": [
+                    "Précédent",
+                    "Suivant"
+                ],
+                "btn": "Détails"
+            },
+            "ar": {
+                "filter": [
+                    {
+                        "label": "ترتيب",
+                        "title": "ترتيب حسب",
+                        "items": [
+                            "الأكثر شعبية",
+                            "الأحدث",
+                            "أ - ي"
+                        ]
+                    },
+                    {
+                        "label": "بحث",
+                        "title": "البحث عن دراجة نارية"
+                    }
+                ],
+                "paginate": [
+                    "السابق",
+                    "التالي"
+                ],
+                "btn": "تفاصيل"
+            },
+            "vi": {
+                "filter": [
+                    {
+                        "label": "sap-xep",
+                        "title": "Sắp Xếp Theo",
+                        "items": [
+                            "Phổ Biến Nhất",
+                            "Mới Nhất",
+                            "A - Z"
+                        ]
+                    },
+                    {
+                        "label": "tim-kiem",
+                        "title": "Tìm Kiếm Xe Máy"
+                    }
+                ],
+                "paginate": [
+                    "Trước",
+                    "Tiếp"
+                ],
+                "btn": "Chi Tiết"
+            },
+            "zh": {
+                "filter": [
+                    {
+                        "label": "排序",
+                        "title": "排序方式",
+                        "items": [
+                            "最受欢迎",
+                            "最新",
+                            "A - Z"
+                        ]
+                    },
+                    {
+                        "label": "搜索",
+                        "title": "搜索摩托车"
+                    }
+                ],
+                "paginate": [
+                    "上一页",
+                    "下一页"
+                ],
+                "btn": "详情"
+            },
+            "hi": {
+                "filter": [
+                    {
+                        "label": "क्रमबद्ध",
+                        "title": "इसके आधार पर क्रमबद्ध करें",
+                        "items": [
+                            "सबसे लोकप्रिय",
+                            "नवीनतम",
+                            "A - Z"
+                        ]
+                    },
+                    {
+                        "label": "खोज",
+                        "title": "मोटरसाइकिल खोजें"
+                    }
+                ],
+                "paginate": [
+                    "पिछला",
+                    "अगला"
+                ],
+                "btn": "विवरण"
+            }
+        }
+    },
+    {
+        "name": "commodity",
+        "lang": {
+            "en": {
+                "span": "Operated by",
+                "desc": "Expansion of international business network including overseas cooperation and global market development",
+                "btn": "Contact Us"
+            },
+            "id": {
+                "span": "Dioperasikan oleh",
+                "desc": "Perluasan jaringan bisnis internasional termasuk kerja sama luar negeri dan pengembangan pasar global",
+                "btn": "Hubungi Kami"
+            },
+            "fr": {
+                "span": "Exploité par",
+                "desc": "Expansion du réseau commercial international, y compris la coopération à l'étranger et le développement du marché mondial",
+                "btn": "Contactez-nous"
+            },
+            "ar": {
+                "span": "تديره",
+                "desc": "توسيع شبكة الأعمال الدولية بما في ذلك التعاون في الخارج وتطوير السوق العالمية",
+                "btn": "اتصل بنا"
+            },
+            "vi": {
+                "span": "Vận hành bởi",
+                "desc": "Mở rộng mạng lưới kinh doanh quốc tế bao gồm hợp tác nước ngoài và phát triển thị trường toàn cầu",
+                "btn": "Liên hệ"
+            },
+            "zh": {
+                "span": "运营方",
+                "desc": "扩展国际业务网络，包括海外合作和全球市场开发",
+                "btn": "联系我们"
+            },
+            "hi": {
+                "span": "संचालित",
+                "desc": "अंतर्राष्ट्रीय व्यापार नेटवर्क का विस्तार जिसमें विदेशी सहयोग और वैश्विक बाजार विकास शामिल है",
+                "btn": "संपर्क करें"
+            }
+        }
+    },
+    {
+        "name": "motorcycle-detail",
+        "lang": {
+            "en": {
+                "label": [
+                    "Color Variant",
+                    "Stock",
+                    "Our Recommendation",
+                    "Details",
+                    "View More",
+                    "Vehicle Specification"
+                ],
+                "menu": [
+                    "Engine",
+                    "Frame",
+                    "Dimension & Weight",
+                    "Electricity"
+                ]
+            },
+            "id": {
+                "label": [
+                    "Varian Warna",
+                    "Stok",
+                    "Rekomendasi Kami",
+                    "Detail",
+                    "Lihat Selengkapnya",
+                    "Spesifikasi Kendaraan"
+                ],
+                "menu": [
+                    "Mesin",
+                    "Rangka",
+                    "Dimensi & Berat",
+                    "Kelistrikan"
+                ]
+            },
+            "fr": {
+                "label": [
+                    "Variante de couleur",
+                    "Stock",
+                    "Notre recommandation",
+                    "Détails",
+                    "Voir plus",
+                    "Spécifications du véhicule"
+                ],
+                "menu": [
+                    "Moteur",
+                    "Châssis",
+                    "Dimensions et poids",
+                    "Électricité"
+                ]
+            },
+            "ar": {
+                "label": [
+                    "متغير اللون",
+                    "المخزون",
+                    "توصيتنا",
+                    "التفاصيل",
+                    "عرض المزيد",
+                    "مواصفات المركبة"
+                ],
+                "menu": [
+                    "المحرك",
+                    "الإطار",
+                    "الأبعاد والوزن",
+                    "الكهرباء"
+                ]
+            },
+            "vi": {
+                "label": [
+                    "Phiên bản màu",
+                    "Tồn kho",
+                    "Gợi ý của chúng tôi",
+                    "Chi tiết",
+                    "Xem thêm",
+                    "Thông số xe"
+                ],
+                "menu": [
+                    "Động cơ",
+                    "Khung xe",
+                    "Kích thước & Trọng lượng",
+                    "Hệ thống điện"
+                ]
+            },
+            "zh": {
+                "label": [
+                    "颜色款式",
+                    "库存",
+                    "我们的推荐",
+                    "详情",
+                    "查看更多",
+                    "车辆规格"
+                ],
+                "menu": [
+                    "发动机",
+                    "车架",
+                    "尺寸与重量",
+                    "电气系统"
+                ]
+            },
+            "hi": {
+                "label": [
+                    "रंग विकल्प",
+                    "स्टॉक",
+                    "हमारी सिफारिश",
+                    "विवरण",
+                    "और देखें",
+                    "वाहन विनिर्देश"
+                ],
+                "menu": [
+                    "इंजन",
+                    "फ्रेम",
+                    "आकार और वजन",
+                    "विद्युत प्रणाली"
+                ]
+            }
+        }
+    },
+    {
+        "name": "breadcrumb",
+        "lang": {
+            "en": {
+                "home": "Home",
+                "product": "Product",
+                "motorcycle": "Motorcycle",
+                "commodity": "Commodity",
+                "detail": "Detail"
+            },
+            "id": {
+                "home": "Beranda",
+                "product": "Produk",
+                "motorcycle": "Sepeda Motor",
+                "commodity": "Komoditas",
+                "detail": "Detail"
+            },
+            "fr": {
+                "home": "Accueil",
+                "product": "Produit",
+                "motorcycle": "Moto",
+                "commodity": "Marchandise",
+                "detail": "Détail"
+            },
+            "ar": {
+                "home": "الرئيسية",
+                "product": "المنتج",
+                "motorcycle": "دراجة نارية",
+                "commodity": "سلعة",
+                "detail": "تفاصيل"
+            },
+            "vi": {
+                "home": "Trang chủ",
+                "product": "Sản phẩm",
+                "motorcycle": "Xe máy",
+                "commodity": "Hàng hóa",
+                "detail": "Chi tiết"
+            },
+            "zh": {
+                "home": "首页",
+                "product": "产品",
+                "motorcycle": "摩托车",
+                "commodity": "商品",
+                "detail": "详情"
+            },
+            "hi": {
+                "home": "मुखपृष्ठ",
+                "product": "उत्पाद",
+                "motorcycle": "मोटरसाइकिल",
+                "commodity": "वस्तु",
+                "detail": "विवरण"
+            }
+        }
+    },
+    {
+        "name": "nav-menu",
+        "lang": {
+            "en": [
+                {
+                    "label": "home",
+                    "title": "Home"
+                },
+                {
+                    "label": "product",
+                    "title": "Product"
+                },
+                {
+                    "label": "gallery",
+                    "title": "Gallery"
+                },
+                {
+                    "label": "about-us",
+                    "title": "About Us"
+                },
+                {
+                    "label": "search",
+                    "title": "Search Here"
+                }
+            ],
+            "id": [
+                {
+                    "label": "home",
+                    "title": "Beranda"
+                },
+                {
+                    "label": "product",
+                    "title": "Produk"
+                },
+                {
+                    "label": "gallery",
+                    "title": "Galeri"
+                },
+                {
+                    "label": "about-us",
+                    "title": "Tentang Kami"
+                },
+                {
+                    "label": "search",
+                    "title": "Cari di sini"
+                }
+            ],
+            "fr": [
+                {
+                    "label": "home",
+                    "title": "Accueil"
+                },
+                {
+                    "label": "product",
+                    "title": "Produit"
+                },
+                {
+                    "label": "gallery",
+                    "title": "Galerie"
+                },
+                {
+                    "label": "about-us",
+                    "title": "À propos de nous"
+                },
+                {
+                    "label": "search",
+                    "title": "Rechercher ici"
+                }
+            ],
+            "ar": [
+                {
+                    "label": "home",
+                    "title": "الرئيسية"
+                },
+                {
+                    "label": "product",
+                    "title": "المنتجات"
+                },
+                {
+                    "label": "gallery",
+                    "title": "المعرض"
+                },
+                {
+                    "label": "about-us",
+                    "title": "معلومات عنا"
+                },
+                {
+                    "label": "search",
+                    "title": "ابحث هنا"
+                }
+            ],
+            "vi": [
+                {
+                    "label": "home",
+                    "title": "Trang chủ"
+                },
+                {
+                    "label": "product",
+                    "title": "Sản phẩm"
+                },
+                {
+                    "label": "gallery",
+                    "title": "Thư viện ảnh"
+                },
+                {
+                    "label": "about-us",
+                    "title": "Về chúng tôi"
+                },
+                {
+                    "label": "search",
+                    "title": "Tìm kiếm tại đây"
+                }
+            ],
+            "zh": [
+                {
+                    "label": "home",
+                    "title": "首页"
+                },
+                {
+                    "label": "product",
+                    "title": "产品"
+                },
+                {
+                    "label": "gallery",
+                    "title": "图库"
+                },
+                {
+                    "label": "about-us",
+                    "title": "关于我们"
+                },
+                {
+                    "label": "search",
+                    "title": "在此搜索"
+                }
+            ],
+            "hi": [
+                {
+                    "label": "home",
+                    "title": "मुखपृष्ठ"
+                },
+                {
+                    "label": "product",
+                    "title": "उत्पाद"
+                },
+                {
+                    "label": "gallery",
+                    "title": "गैलरी"
+                },
+                {
+                    "label": "about-us",
+                    "title": "हमारे बारे में"
+                },
+                {
+                    "label": "search",
+                    "title": "यहाँ खोजें"
+                }
+            ]
+        }
+    },
+    {
+        "name": "product",
+        "lang": {
+            "en": [
+                {
+                    "label": "expedition-service",
+                    "title": "Expedition Service",
+                    "desc": "Shipping documents and vehicles becomes more efficient. We ensure your important documents and vehicles arrive safely and on time.",
+                    "items": [
+                        "Safe and reliable service",
+                        "Professional handling",
+                        "On-time delivery to destination"
+                    ],
+                    "span": "Operated by"
+                },
+                {
+                    "label": "vehicle-document",
+                    "title": "BPKB & STNK Registration",
+                    "desc": "Handling vehicle documents becomes easier. We help with the registration process, change of ownership, and extension of both BPKB and STNK quickly, safely, and reliably.",
+                    "items": [
+                        "Practical process without hassle",
+                        "Official and guaranteed service",
+                        "Saves time without long queues"
+                    ],
+                    "span": "Operated by"
+                }
+            ],
+            "id": [
+                {
+                    "label": "expedition-service",
+                    "title": "Layanan Ekspedisi",
+                    "desc": "Pengiriman dokumen dan kendaraan kini lebih efisien. Kami memastikan dokumen dan kendaraan penting Anda tiba dengan aman dan tepat waktu.",
+                    "items": [
+                        "Layanan aman dan terpercaya",
+                        "Penanganan profesional",
+                        "Pengiriman tepat waktu ke tujuan"
+                    ],
+                    "span": "Dioperasikan oleh"
+                },
+                {
+                    "label": "vehicle-document",
+                    "title": "Registrasi BPKB & STNK",
+                    "desc": "Urus dokumen kendaraan jadi lebih mudah. Kami membantu proses registrasi, balik nama, dan perpanjangan BPKB maupun STNK secara cepat, aman, dan terpercaya.",
+                    "items": [
+                        "Proses praktis tanpa repot",
+                        "Layanan resmi dan bergaransi",
+                        "Hemat waktu tanpa antre panjang"
+                    ],
+                    "span": "Dioperasikan oleh"
+                }
+            ],
+            "fr": [
+                {
+                    "label": "expedition-service",
+                    "title": "Service d'expédition",
+                    "desc": "L'expédition de documents et de véhicules devient plus efficace. Nous garantissons que vos documents et véhicules importants arrivent en toute sécurité et à temps.",
+                    "items": [
+                        "Service sûr et fiable",
+                        "Manipulation professionnelle",
+                        "Livraison ponctuelle à destination"
+                    ],
+                    "span": "Opéré par"
+                },
+                {
+                    "label": "vehicle-document",
+                    "title": "Enregistrement BPKB et STNK",
+                    "desc": "La gestion des documents de véhicule devient plus simple. Nous aidons au processus d'enregistrement, de transfert de propriété et de renouvellement du BPKB et du STNK rapidement et en toute sécurité.",
+                    "items": [
+                        "Processus pratique et simple",
+                        "Service officiel et garanti",
+                        "Gain de temps sans longues files d’attente"
+                    ],
+                    "span": "Opéré par"
+                }
+            ],
+            "ar": [
+                {
+                    "label": "expedition-service",
+                    "title": "خدمة الشحن",
+                    "desc": "أصبح شحن المستندات والمركبات أكثر كفاءة. نضمن وصول مستنداتك ومركباتك المهمة بأمان وفي الوقت المحدد.",
+                    "items": [
+                        "خدمة آمنة وموثوقة",
+                        "تعامل احترافي",
+                        "تسليم في الوقت المحدد"
+                    ],
+                    "span": "تُدار بواسطة"
+                },
+                {
+                    "label": "vehicle-document",
+                    "title": "تسجيل BPKB وSTNK",
+                    "desc": "أصبح التعامل مع وثائق المركبات أسهل. نساعدك في عملية التسجيل ونقل الملكية وتجديد كل من BPKB وSTNK بسرعة وأمان وموثوقية.",
+                    "items": [
+                        "عملية مريحة دون متاعب",
+                        "خدمة رسمية ومضمونة",
+                        "توفير الوقت دون طوابير طويلة"
+                    ],
+                    "span": "تُدار بواسطة"
+                }
+            ],
+            "vi": [
+                {
+                    "label": "expedition-service",
+                    "title": "Dịch vụ vận chuyển",
+                    "desc": "Việc vận chuyển tài liệu và phương tiện trở nên hiệu quả hơn. Chúng tôi đảm bảo tài liệu và phương tiện quan trọng của bạn đến nơi an toàn và đúng giờ.",
+                    "items": [
+                        "Dịch vụ an toàn và đáng tin cậy",
+                        "Xử lý chuyên nghiệp",
+                        "Giao hàng đúng thời hạn"
+                    ],
+                    "span": "Được vận hành bởi"
+                },
+                {
+                    "label": "vehicle-document",
+                    "title": "Đăng ký BPKB & STNK",
+                    "desc": "Việc xử lý giấy tờ xe trở nên dễ dàng hơn. Chúng tôi hỗ trợ đăng ký, chuyển quyền sở hữu và gia hạn BPKB, STNK một cách nhanh chóng, an toàn và đáng tin cậy.",
+                    "items": [
+                        "Quy trình thuận tiện, không rườm rà",
+                        "Dịch vụ chính thức và được đảm bảo",
+                        "Tiết kiệm thời gian, không cần xếp hàng lâu"
+                    ],
+                    "span": "Được vận hành bởi"
+                }
+            ],
+            "zh": [
+                {
+                    "label": "expedition-service",
+                    "title": "运输服务",
+                    "desc": "文件和车辆运输更加高效。我们确保您的重要文件和车辆安全、准时送达。",
+                    "items": [
+                        "安全可靠的服务",
+                        "专业的操作",
+                        "准时送达目的地"
+                    ],
+                    "span": "由以下运营"
+                },
+                {
+                    "label": "vehicle-document",
+                    "title": "BPKB 与 STNK 注册",
+                    "desc": "处理车辆文件更加轻松。我们协助注册、过户及续期 BPKB 与 STNK，快速、安全、可靠。",
+                    "items": [
+                        "流程便捷无烦恼",
+                        "官方服务有保障",
+                        "节省时间无需排长队"
+                    ],
+                    "span": "由以下运营"
+                }
+            ],
+            "hi": [
+                {
+                    "label": "expedition-service",
+                    "title": "एक्सपेडिशन सेवा",
+                    "desc": "दस्तावेज़ों और वाहनों की शिपिंग अब अधिक कुशल है। हम सुनिश्चित करते हैं कि आपके महत्वपूर्ण दस्तावेज़ और वाहन सुरक्षित और समय पर पहुँचे।",
+                    "items": [
+                        "सुरक्षित और विश्वसनीय सेवा",
+                        "पेशेवर हैंडलिंग",
+                        "गंतव्य पर समय पर डिलीवरी"
+                    ],
+                    "span": "द्वारा संचालित"
+                },
+                {
+                    "label": "vehicle-document",
+                    "title": "बीपीकेबी और एसटीएनके पंजीकरण",
+                    "desc": "वाहन दस्तावेजों का प्रबंधन अब आसान है। हम पंजीकरण, स्वामित्व परिवर्तन और BPKB और STNK दोनों के नवीनीकरण की प्रक्रिया में आपकी सहायता करते हैं।",
+                    "items": [
+                        "बिना झंझट की व्यावहारिक प्रक्रिया",
+                        "आधिकारिक और गारंटीकृत सेवा",
+                        "लंबी कतारों के बिना समय की बचत"
+                    ],
+                    "span": "द्वारा संचालित"
+                }
+            ]
+        }
+    }
+]
