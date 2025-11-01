@@ -7,6 +7,8 @@ import VisionMission from '@/Components/VisionMission';
 import GetInTouch from "@/Components/GetInTouch";
 import { usePage } from '@inertiajs/react';
 
+import EmbedMaps from "@/Components/EmbedMaps";
+
 import SeoHead from "@/Components/SeoHead";
 
 import useFetchData from "@/Hooks/useFetchData";
@@ -59,6 +61,8 @@ const AboutUsPage = () => {
 
       <GetInTouch data={data?.data?.links} lang={langData?.[6]?.lang?.[currentLang] || []} />
 
+      <EmbedMaps />
+      
       <Footer data={data?.data?.links} lang={langData?.[7]?.lang?.[currentLang] || []} />
     </div>
   );

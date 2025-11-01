@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import Header from "@/Components/layout/Header";
 import Footer from "@/Components/layout/Footer";

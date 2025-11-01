@@ -15,6 +15,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\BadgeColumn;
 use App\Filament\Resources\LinkResource\Pages;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 
 class LinkResource extends Resource
 {
@@ -45,13 +47,62 @@ class LinkResource extends Resource
                             ->required()
                             ->maxLength(100),
 
+                        TextInput::make('additional_parameter')
+                            ->hidden()
+                            ->dehydrated(),
+
                         TextInput::make('url')
                             ->label('URL')
                             ->placeholder('https://www.instagram.com/...')
-                            ->required()
-                            ->url(),
+                            ->required(fn(?Link $record) => $record?->special_code !== 'gmap')
+                            ->columnSpanFull()
+                            ->visible(fn(?Link $record) => $record === null || $record->special_code !== 'gmap'),
 
-                        Toggle::make('is_show')
+                        Section::make('Google Maps Coordinates')
+                            ->visible(fn(?Link $record) => $record?->special_code === 'gmap')
+                            ->columnSpanFull()
+                            ->columns(2)
+                            ->schema([
+                                TextInput::make('latitude')
+                                    ->label('Latitude')
+                                    ->numeric()
+                                    ->live(onBlur: true)
+                                    ->required(fn(?Link $record) => $record?->special_code === 'gmap')
+                                    ->afterStateUpdated(function (Set $set, Get $get) {
+                                        $lat = $get('latitude');
+                                        $lon = $get('longitude');
+                                        if (filled($lat) && filled($lon)) {
+                                            $set('additional_parameter', "{$lat},{$lon}");
+                                        }
+                                    })
+                                    ->dehydrated(false),
+
+                                TextInput::make('longitude')
+                                    ->label('Longitude')
+                                    ->numeric()
+                                    ->live(onBlur: true)
+                                    ->required(fn(?Link $record) => $record?->special_code === 'gmap')
+                                    ->afterStateUpdated(function (Set $set, Get $get) {
+                                        $lat = $get('latitude');
+                                        $lon = $get('longitude');
+                                        if (filled($lat) && filled($lon)) {
+                                            $set('additional_parameter', "{$lat},{$lon}");
+                                        }
+                                    })
+                                    ->dehydrated(false),
+                            ])
+                            ->afterStateHydrated(function ($component, ?Link $record) {
+                                if ($record?->special_code === 'gmap' && filled($record->additional_parameter)) {
+                                    [$lat, $lon] = array_map('trim', explode(',', $record->additional_parameter));
+                                    $component->getChildComponentContainer()->fill([
+                                        'latitude' => $lat,
+                                        'longitude' => $lon,
+                                    ]);
+                                }
+                            }),
+
+                        
+                            Toggle::make('is_show')
                             ->label('Show on website')
                             ->default(true),
                     ])
@@ -71,7 +122,7 @@ class LinkResource extends Resource
                 TextColumn::make('url')
                     ->label('URL')
                     ->formatStateUsing(fn($state) => e($state))
-                    ->url(fn($record) => $record->url, true) 
+                    ->url(fn($record) => $record->url, true)
                     ->copyable()
                     ->copyMessage('URL successfully copied!')
                     ->limit(50),
@@ -88,7 +139,7 @@ class LinkResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make()->after(fn () => LinkResource::clearCache()),
+                Tables\Actions\EditAction::make()->after(fn() => LinkResource::clearCache()),
             ])
             ->bulkActions([
                 // Tables\Actions\BulkActionGroup::make([

@@ -1,5 +1,3 @@
-import EmbedMaps from "@/Components/EmbedMaps";
-
 export default function AboutUs({ lang }) {
   return (
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between p-6 md:p-12">
