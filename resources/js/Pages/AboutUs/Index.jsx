@@ -6,7 +6,7 @@ import AboutUs from "@/Components/AboutUs";
 import VisionMission from '@/Components/VisionMission';
 import GetInTouch from "@/Components/GetInTouch";
 import { usePage } from '@inertiajs/react';
-
+import MainLoading from "@/Components/ui/MainLoading";
 import EmbedMaps from "@/Components/EmbedMaps";
 
 import SeoHead from "@/Components/SeoHead";
@@ -24,6 +24,8 @@ const AboutUsPage = () => {
     error: langError
   } = useFetchData("/assets/lang/language.json");
 
+  const additionalParameter = data?.data?.links?.find(item => item.id === 6).additional_parameter.split(',').map(param => param.trim());
+
   // Function to handle category change
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
@@ -36,6 +38,14 @@ const AboutUsPage = () => {
       viewerSection.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  if (langLoading) {
+    return (
+      <div className="flex h-screen justify-center items-center py-12">
+        <MainLoading text="Load About Us Data..." />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white max-sm:overflow-x-hidden">
@@ -61,7 +71,9 @@ const AboutUsPage = () => {
 
       <GetInTouch data={data?.data?.links} lang={langData?.[6]?.lang?.[currentLang] || []} />
 
-      <EmbedMaps />
+      {additionalParameter !== undefined ? (
+        <EmbedMaps lat={additionalParameter[0]} lng={additionalParameter[1]} />
+      ) : ''}
       
       <Footer data={data?.data?.links} lang={langData?.[7]?.lang?.[currentLang] || []} />
     </div>

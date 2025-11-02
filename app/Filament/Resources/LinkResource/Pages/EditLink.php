@@ -5,6 +5,7 @@ namespace App\Filament\Resources\LinkResource\Pages;
 use App\Filament\Resources\LinkResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Arr;
 
 class EditLink extends EditRecord
@@ -33,7 +34,7 @@ class EditLink extends EditRecord
         if (($record->special_code ?? null) === 'gmap') {
             $lat = $data['latitude'] ?? null;
             $lng = $data['longitude'] ?? null;
-
+            
             if ($lat && $lng) {
                 $data['additional_parameter'] = "{$lat}, {$lng}";
             } else {
@@ -47,7 +48,7 @@ class EditLink extends EditRecord
             }
         }
 
-        $data = Arr::except($data, ['latitude', 'longitude']);
+        Cache::forget('public_links');
 
         $record->update($data);
 

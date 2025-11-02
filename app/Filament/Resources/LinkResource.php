@@ -68,6 +68,13 @@ class LinkResource extends Resource
                                     ->numeric()
                                     ->live(onBlur: true)
                                     ->required(fn(?Link $record) => $record?->special_code === 'gmap')
+                                    ->afterStateHydrated(function (Set $set, ?string $state, ?Link $record) {
+                                        if ($record && filled($record->additional_parameter)) {
+                                            [$lat, $lon] = array_pad(explode(',', $record->additional_parameter), 2, null);
+                                            $set('latitude', trim($lat));
+                                            $set('longitude', trim($lon));
+                                        }
+                                    })
                                     ->afterStateUpdated(function (Set $set, Get $get) {
                                         $lat = $get('latitude');
                                         $lon = $get('longitude');
@@ -75,13 +82,20 @@ class LinkResource extends Resource
                                             $set('additional_parameter', "{$lat},{$lon}");
                                         }
                                     })
-                                    ->dehydrated(false),
+                                    ->dehydrated(fn($state) => filled($state)),
 
                                 TextInput::make('longitude')
                                     ->label('Longitude')
                                     ->numeric()
                                     ->live(onBlur: true)
                                     ->required(fn(?Link $record) => $record?->special_code === 'gmap')
+                                    ->afterStateHydrated(function (Set $set, ?string $state, ?Link $record) {
+                                        if ($record && filled($record->additional_parameter)) {
+                                            [$lat, $lon] = array_pad(explode(',', $record->additional_parameter), 2, null);
+                                            $set('latitude', trim($lat));
+                                            $set('longitude', trim($lon));
+                                        }
+                                    })
                                     ->afterStateUpdated(function (Set $set, Get $get) {
                                         $lat = $get('latitude');
                                         $lon = $get('longitude');
@@ -89,20 +103,10 @@ class LinkResource extends Resource
                                             $set('additional_parameter', "{$lat},{$lon}");
                                         }
                                     })
-                                    ->dehydrated(false),
-                            ])
-                            ->afterStateHydrated(function ($component, ?Link $record) {
-                                if ($record?->special_code === 'gmap' && filled($record->additional_parameter)) {
-                                    [$lat, $lon] = array_map('trim', explode(',', $record->additional_parameter));
-                                    $component->getChildComponentContainer()->fill([
-                                        'latitude' => $lat,
-                                        'longitude' => $lon,
-                                    ]);
-                                }
-                            }),
+                                    ->dehydrated(fn($state) => filled($state)),
+                            ]),
 
-                        
-                            Toggle::make('is_show')
+                        Toggle::make('is_show')
                             ->label('Show on website')
                             ->default(true),
                     ])

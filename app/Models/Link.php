@@ -11,6 +11,8 @@ class Link extends Model
     protected $fillable = [
         'platform_name',
         'url',
-        'is_show'
+        'is_show',
+        'additional_parameter',
+        'special_code'
     ];
 }
