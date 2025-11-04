@@ -9,7 +9,7 @@ class MotorcycleColor extends Model
     protected $table = 'motorcycle_colors';
 
     protected $fillable = [
-        'motorcycle_id',
+        'motorcycle_variant_id',
         'image',
         'color_code',
         'color_name',
@@ -18,8 +18,8 @@ class MotorcycleColor extends Model
     ];
 
     // Relationships
-    public function motorcycle()
+    public function variant()
     {
-        return $this->belongsTo(Motorcycle::class);
+        return $this->belongsTo(MotorcycleVariant::class, 'motorcycle_variant_id');
     }
 }

@@ -68,8 +68,8 @@ class Motorcycle extends Model
         return $this->belongsTo(Brand::class);
     }
 
-    public function colors()
+    public function variants()
     {
-        return $this->hasMany(MotorcycleColor::class);
+        return $this->hasMany(MotorcycleVariant::class, 'motorcycle_id');
     }
 }
