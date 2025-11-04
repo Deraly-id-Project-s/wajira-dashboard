@@ -84,43 +84,50 @@ const MotocyclesDetail = (slug) => {
             {/* SEO Fig */}
             <SeoHead />
 
+
             <Header
                 activeCategory={activeCategory}
                 onCategoryChange={handleCategoryChange}
             />
 
-            <section className="max-w-7xl mx-auto px-4 pt-16 pb-8 mt-12">
+            <section id="breadcrumb-items" className="max-w-7xl mx-auto px-4 pt-16 pb-8 mt-12">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
                     <BreadCrumbs items={breadcrumbItems} />
                 </div>
+            </section>
+
+            <section id="product-name" className="max-w-7xl mx-auto px-4 mt-12 mb-12 flex justify-center align-middle items-center">
+                <h1 className="text-2xl md:text-4xl font-semibold">{motorcycle?.name}</h1>
             </section>
 
             {/* === Motorcycle Variants Section === */}
             {motorcycle?.variants && motorcycle.variants.length > 1 && (
                 <section
                     id="variant-selector"
-                    className="max-w-7xl mx-auto flex flex-col"
+                    className="max-w-7xl mx-auto flex flex-col justify-center align-middle items-center"
                 >
-                    <h2 className="text-[32px] py-[20px] md:px-0 px-4 mb-4">
-                        Variant {motorcycle.name}
-                    </h2>
-                    <div className="flex flex-wrap gap-4 px-4 md:px-0">
-                        {motorcycle.variants.map((variant) => (
-                            <button
-                                key={variant.id}
-                                onClick={() => handleVariantChange(variant)}
-                                className={`py-2 px-4 rounded-lg border-2 font-bold ${
-                                    selectedVariant?.id === variant.id
-                                        ? "border-red-500 bg-red-100 text-red-600"
-                                        : "border-gray-300 bg-white text-gray-700"
-                                } transition-all duration-300`}
-                            >
-                                {formatVariantName(variant.variant_slug)}
-                            </button>
-                        ))}
+                    <div className="flex flex-wrap gap-2 px-4 md:px-0">
+                        {motorcycle.variants.map((variant) => {
+                            const isActive = selectedVariant?.id === variant.id;
+                            return (
+                                <button
+                                    key={variant.id}
+                                    onClick={() => handleVariantChange(variant)}
+                                    className={`relative font-semibold text-sm md:text-base px-8 py-2 text-center text-white transition-all duration-300 skew-x-[-20deg] ${isActive
+                                            ? "bg-[#173958]" // warna biru tua seperti contoh
+                                            : "bg-[#E7ECF6] text-[#173958]" // abu-abu muda untuk non aktif
+                                        }`}
+                                >
+                                    <span className="block skew-x-[20deg]">
+                                        {formatVariantName(variant.variant_slug)}
+                                    </span>
+                                </button>
+                            );
+                        })}
                     </div>
                 </section>
             )}
+
 
             {/* === Motorcycle Colors Section === */}
             {selectedVariant?.colors && selectedVariant.colors.length > 0 && (
