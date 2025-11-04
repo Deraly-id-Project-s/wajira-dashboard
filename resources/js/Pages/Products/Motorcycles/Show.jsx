@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MainLoading from "@/Components/ui/MainLoading";
 import { ArrowRight } from "lucide-react";
 import Header from "@/Components/layout/Header";
@@ -24,8 +24,15 @@ const MotocyclesDetail = (slug) => {
     const {
         data: langData,
         loading: langLoading,
-        error: langError
+        error: langError,
     } = useFetchData("/assets/lang/language.json");
+    const [selectedVariant, setSelectedVariant] = useState(null);
+
+    useEffect(() => {
+        if (motorcycle?.variants?.length > 0) {
+            setSelectedVariant(motorcycle.variants[0]);
+        }
+    }, [motorcycle]);
 
     if (loading) {
         return (
@@ -39,12 +46,35 @@ const MotocyclesDetail = (slug) => {
         setActiveCategory(category);
     };
 
+    const handleVariantChange = (variant) => {
+        setSelectedVariant(variant);
+    };
+
     const breadcrumbItems = [
         { name: langData?.[16]?.lang?.[currentLang]?.home ?? "Home", href: "/" },
-        { name: langData?.[16]?.lang?.[currentLang]?.product ?? "Products", href: "/#product-list" },
-        { name: langData?.[16]?.lang?.[currentLang]?.motorcycle ?? "Motorcycles", href: "/products/motorcycles" },
-        { name: langData?.[16]?.lang?.[currentLang]?.detail ?? "Detail", href: null },
+        {
+            name: langData?.[16]?.lang?.[currentLang]?.product ?? "Products",
+            href: "/#product-list",
+        },
+        {
+            name:
+                langData?.[16]?.lang?.[currentLang]?.motorcycle ??
+                "Motorcycles",
+            href: "/products/motorcycles",
+        },
+        {
+            name: langData?.[16]?.lang?.[currentLang]?.detail ?? "Detail",
+            href: null,
+        },
     ];
+
+    const formatVariantName = (slug) => {
+        if (!slug) return "";
+        return slug
+            .split("-")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
+    };
 
     return (
         <section
@@ -54,7 +84,10 @@ const MotocyclesDetail = (slug) => {
             {/* SEO Fig */}
             <SeoHead />
 
-            <Header activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
+            <Header
+                activeCategory={activeCategory}
+                onCategoryChange={handleCategoryChange}
+            />
 
             <section className="max-w-7xl mx-auto px-4 pt-16 pb-8 mt-12">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
@@ -62,13 +95,45 @@ const MotocyclesDetail = (slug) => {
                 </div>
             </section>
 
-            {/* === Motorcycle Colors Section === */}
-            {motorcycle?.colors && motorcycle.colors.length > 0 && (
-                <section id="color-selector" className="max-w-7xl mx-auto flex flex-col">
-                    <h2 className="text-[32px] py-[20px] md:px-0 px-4 mb-12">
-                        {(langData?.[15]?.lang?.[currentLang]?.label?.[0]) ?? "Color Variant"} {motorcycle.name}
+            {/* === Motorcycle Variants Section === */}
+            {motorcycle?.variants && motorcycle.variants.length > 1 && (
+                <section
+                    id="variant-selector"
+                    className="max-w-7xl mx-auto flex flex-col"
+                >
+                    <h2 className="text-[32px] py-[20px] md:px-0 px-4 mb-4">
+                        Variant {motorcycle.name}
                     </h2>
-                    <MotorcycleColor data={motorcycle.colors} />
+                    <div className="flex flex-wrap gap-4 px-4 md:px-0">
+                        {motorcycle.variants.map((variant) => (
+                            <button
+                                key={variant.id}
+                                onClick={() => handleVariantChange(variant)}
+                                className={`py-2 px-4 rounded-lg border-2 font-bold ${
+                                    selectedVariant?.id === variant.id
+                                        ? "border-red-500 bg-red-100 text-red-600"
+                                        : "border-gray-300 bg-white text-gray-700"
+                                } transition-all duration-300`}
+                            >
+                                {formatVariantName(variant.variant_slug)}
+                            </button>
+                        ))}
+                    </div>
+                </section>
+            )}
+
+            {/* === Motorcycle Colors Section === */}
+            {selectedVariant?.colors && selectedVariant.colors.length > 0 && (
+                <section
+                    id="color-selector"
+                    className="max-w-7xl mx-auto flex flex-col mt-12"
+                >
+                    <h2 className="text-[32px] py-[20px] md:px-0 px-4 mb-12">
+                        {(langData?.[15]?.lang?.[currentLang]?.label?.[0]) ??
+                            "Color Variant"}{" "}
+                        {motorcycle.name}
+                    </h2>
+                    <MotorcycleColor data={selectedVariant.colors} />
                 </section>
             )}
 

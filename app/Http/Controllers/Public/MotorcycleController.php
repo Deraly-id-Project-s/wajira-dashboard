@@ -22,7 +22,7 @@ class MotorcycleController extends Controller
      */
     public function show(string $slug)
     {
-        $motorcycle = Motorcycle::with('colors')->where('slug', $slug)->first();
+        $motorcycle = Motorcycle::with('variants.colors')->where('slug', $slug)->first();
 
         if ($motorcycle) {
             $motorcycle->click_count = $motorcycle->click_count + 1;
