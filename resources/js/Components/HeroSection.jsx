@@ -122,9 +122,9 @@ const HeroSection = ({ onScrollDown, data, lang }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-[45px] md:text-5xl max-w-[678px] font-light text-white mt-2"
+              className="text-[35px] md:text-5xl max-w-[678px] font-light text-white mt-2"
             >
-              {lang[0] ?? 'SMART TRADE, SHIPPING & EXPORT SERVICES' }
+              {lang[0] ?? 'Wajira Jagratara Corps : Indonesia Motorcycle Exporter, Transportation Service Company & Vehicle Agency' }
             </motion.h1>
 
             <motion.p
