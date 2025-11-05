@@ -75,7 +75,19 @@ class PublicController extends Controller
 
     public function allMotorcycle(Request $request)
     {
-        $query = Motorcycle::select($this->motorcycleSimpleColumn);
+        $perPage = $request->get('per_page', 6);
+
+        if ($request->has('brand') && !empty($request->brand)) {
+            $brand = Brand::where('slug', $request->brand)->first();
+
+            if (!$brand) {
+                return $this->responseError('Brand not found', 404);
+            }
+
+            $query = $brand->motorcycles()->select($this->motorcycleSimpleColumn);
+        } else {
+            $query = Motorcycle::select($this->motorcycleSimpleColumn);
+        }
 
         if ($request->has('search') && !empty($request->search)) {
             $query->where('name', 'like', '%' . $request->search . '%');
@@ -89,11 +101,10 @@ class PublicController extends Controller
                 $query->orderBy('name', 'asc');
                 break;
             default:
-                $query->orderBy('click_count', 'asc');
+                $query->orderBy('click_count', 'desc');
                 break;
         }
 
-        $perPage = $request->get('per_page', 6);
         $data = $query->paginate($perPage);
 
         return $this->responseSuccess($data, 'success');

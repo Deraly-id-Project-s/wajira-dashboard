@@ -56,7 +56,6 @@ const Header = ({ activeCategory, onCategoryChange }) => {
 
   // Language Change Handler
   const handleLanguageChange = (langCode) => {
-    console.log('consol')
     fetch('/set-language', {
       method: 'POST',
       headers: {

@@ -1461,49 +1461,56 @@
                 "product": "Product",
                 "motorcycle": "Motorcycle",
                 "commodity": "Commodity",
-                "detail": "Detail"
+                "detail": "Detail",
+                "brand": "Brand"
             },
             "id": {
                 "home": "Beranda",
                 "product": "Produk",
                 "motorcycle": "Sepeda Motor",
                 "commodity": "Komoditas",
-                "detail": "Detail"
+                "detail": "Detail",
+                "brand": "Merek"
             },
             "fr": {
                 "home": "Accueil",
                 "product": "Produit",
                 "motorcycle": "Moto",
                 "commodity": "Marchandise",
-                "detail": "Détail"
+                "detail": "Détail",
+                "brand": "Marque"
             },
             "ar": {
                 "home": "الرئيسية",
                 "product": "المنتج",
                 "motorcycle": "دراجة نارية",
                 "commodity": "سلعة",
-                "detail": "تفاصيل"
+                "detail": "تفاصيل",
+                "brand": "علامة تجارية"
             },
             "vi": {
                 "home": "Trang chủ",
                 "product": "Sản phẩm",
                 "motorcycle": "Xe máy",
                 "commodity": "Hàng hóa",
-                "detail": "Chi tiết"
+                "detail": "Chi tiết",
+                "brand": "Thuật hành"
             },
             "zh": {
                 "home": "首页",
                 "product": "产品",
                 "motorcycle": "摩托车",
                 "commodity": "商品",
-                "detail": "详情"
+                "detail": "详情",
+                "brand": "品牌"
             },
             "hi": {
                 "home": "मुखपृष्ठ",
                 "product": "उत्पाद",
                 "motorcycle": "मोटरसाइकिल",
                 "commodity": "वस्तु",
-                "detail": "विवरण"
+                "detail": "विवरण",
+                "brand": "ब्रांड"
             }
         }
     },

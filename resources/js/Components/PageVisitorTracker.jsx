@@ -55,8 +55,8 @@ const PageVisitorTracker = () => {
     [shouldSend]
   );
 
-  if (error) console.warn("PageVisitorTracker Error:", error);
-  if (data) console.log("Visitor logged ✅", data);
+  // if (error) console.warn("PageVisitorTracker Error:", error);
+  // if (data) console.log("Visitor logged ✅", data);
 
   return null;
 };

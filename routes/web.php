@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Public\HomeController;
+use App\Http\Controllers\Public\BrandController;
 use App\Http\Controllers\Public\PublicController;
 use App\Http\Controllers\Public\AboutUsController;
 use App\Http\Controllers\Public\GalleryController;
@@ -24,6 +25,8 @@ Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 
 // Gallery
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
+
+Route::get('/brand/{slug}', [BrandController::class, 'show'])->name('brand.show');
 
 // General API Resource
 Route::group(['prefix' => 'api'], function () {

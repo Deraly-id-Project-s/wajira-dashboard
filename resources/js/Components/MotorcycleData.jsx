@@ -6,13 +6,11 @@ import MainLoading from "@/Components/ui/MainLoading";
 import EmptyState from "@/Components/ui/EmptyState";
 import useFetchData from "@/Hooks/useFetchData";
 
-const MotorcycleData = ({ lang }) => {
+const MotorcycleData = ({ lang, brand }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState(""); // for debounce purpose
   const [sortBy, setSortBy] = useState("popular");
   const [currentPage, setCurrentPage] = useState(1);
-
-  console.log("Lang data received:", lang);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -26,12 +24,15 @@ const MotorcycleData = ({ lang }) => {
     loading,
     error,
   } = useFetchData(
-    `/api/motorcycles?search=${encodeURIComponent(debouncedSearch)}&sort=${sortBy}&page=${currentPage}`,
+    `/api/all-motorcycles?search=${encodeURIComponent(debouncedSearch)}&sort=${sortBy}&page=${currentPage}&brand=${brand}`,
     {},
     [debouncedSearch, sortBy, currentPage]
   );
 
-  const motorcycles = motorcycleData?.data ?? [];
+  const motorcycles = Array.isArray(motorcycleData?.data)
+  ? motorcycleData.data
+  : motorcycleData?.data?.data ?? [];
+
   const itemsPerPage = 6;
 
   const filteredData = useMemo(() => {

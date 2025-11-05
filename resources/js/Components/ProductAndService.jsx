@@ -2,7 +2,6 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "@inertiajs/react";
 
 export default function ProductAndService({ lang }) {
-  console.log();
   const items = [
     {
       title: lang[0]?.title ?? "Motorcycle",
