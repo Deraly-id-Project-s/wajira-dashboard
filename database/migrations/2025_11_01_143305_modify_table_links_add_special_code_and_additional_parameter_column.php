@@ -12,6 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('links', function (Blueprint $table) {
+            if (Schema::hasColumn('links', 'special_code')) {
+                return;
+            }
+            
             $table->string('special_code')->nullable(true)->after('is_show');
             $table->string('additional_parameter')->nullable(true)->after('special_code');
         });
