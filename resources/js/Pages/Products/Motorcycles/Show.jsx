@@ -113,8 +113,8 @@ const MotocyclesDetail = (slug) => {
                                 <button
                                     key={variant.id}
                                     onClick={() => handleVariantChange(variant)}
-                                    className={`relative font-semibold text-sm md:text-base px-8 py-2 text-center text-white transition-all duration-300 skew-x-[-20deg] ${isActive
-                                            ? "bg-[#173958]" // warna biru tua seperti contoh
+                                    className={`relative font-semibold text-sm md:text-base px-8 py-2 text-center transition-all duration-300 skew-x-[-20deg] ${isActive
+                                            ? "bg-[#173958] text-white" // warna biru tua seperti contoh
                                             : "bg-[#E7ECF6] text-[#173958]" // abu-abu muda untuk non aktif
                                         }`}
                                 >
