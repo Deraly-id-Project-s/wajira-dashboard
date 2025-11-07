@@ -19,6 +19,7 @@ import SeoHead from "@/Components/SeoHead";
 import { usePage } from '@inertiajs/react';
 
 import useFetchData from "@/Hooks/useFetchData";
+import PartneredInfo from "../PartneredInfo";
 
 const HomePage = () => {
   const [activeCategory, setActiveCategory] = useState("/");
@@ -90,6 +91,10 @@ const HomePage = () => {
           {langData?.[4]?.lang?.[currentLang]?.title ?? 'Featured Listing'}
         </h2>
         <ProductList lang={langData?.[4]?.lang?.[currentLang] || []} productLang={langData?.[18]?.lang?.[currentLang] || []} />
+      </section>
+
+      <section id="partner-info" className="flex max-w-7xl mx-auto flex-col justify-center align-middle items-center">
+        <PartneredInfo lang={langData?.[19]?.lang?.[currentLang] || []} />
       </section>
 
       <section id="reason-choose">

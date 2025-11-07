@@ -141,10 +141,10 @@ export default function ProductList({ lang, productLang }) {
         </motion.div>
       </AnimatePresence>
 
-      <div className="w-full justify-center items-center flex py-[32px]">
-        <a href={actionUrl}>
-          <RippleButton className="flex px-[16px] py-[15px] w-[134px] gap-[8px] text-white bg-[#B0160D] font-light text-[14px] cursor-pointer">
-            {lang?.btn ?? "View More"} <ArrowRight />
+      <div className="w-full justify-center items-center flex py-[32px] md:mt-20">
+        <a href={actionUrl} className="block">
+          <RippleButton className="flex flex-row justify-center items-center px-[16px] py-[15px] max-w-[272px] gap-[8px] text-white bg-[#B0160D] font-light text-[14px] cursor-pointer">
+            <span>{lang?.btn ?? "View More"}</span> <ArrowRight />
           </RippleButton>
         </a>
       </div>

@@ -16,7 +16,7 @@ const HelperButton = ({ data, lang }) => {
 
     return (
         <div className="p-[12px] bg-[#1C3A58] flex flex-row justify-between align-middle items-center text-white">
-            <h3 className="text-[32px] font-semibold">
+            <h3 className="text-[22px] md:text-[32px] font-semibold">
                 {lang?.title ?? 'Need Help?'}
             </h3>
             <a

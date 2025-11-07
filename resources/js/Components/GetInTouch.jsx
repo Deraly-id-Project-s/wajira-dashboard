@@ -14,7 +14,7 @@ const GetInTouch = ({ data, lang }) => {
     const whatsappNumber = whatsappData ? whatsappData.url.replace(/^0/, "62") : "";
     const whatsappLink = `https://wa.me/${whatsappNumber}`;
     return (
-        <section id="get-it-touch-section" className="max-w-7xl mx-auto p-[56px] mb-[10px]">
+        <section id="get-it-touch-section" className="max-w-7xl mx-auto px-[16px] py-[16px] md:px-[56px] md:py-[56px] mb-[10px]">
             <div className="w-full flex flex-row gap-3 justify-center align-middle items-center">
                 <h3 className="text-[22px]">{lang?.title ?? "Ready to get started?"}</h3>
                 {whatsappData && (

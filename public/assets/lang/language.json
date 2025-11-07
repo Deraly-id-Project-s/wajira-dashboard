@@ -1845,5 +1845,17 @@
                 }
             ]
         }
+    },
+    {
+        "name": "",
+        "lang": {
+            "en": "We Have Partnered with",
+            "id": "Kita Berpartner Dengan",
+            "fr": "Nous avons parten avec",
+            "ar": "نحن نشارك مع",
+            "vi": "Chúng tôi đào tài sử dụng",
+            "zh": "我们与",
+            "hi": "हमें संबंधित हैं"
+        }
     }
 ]
