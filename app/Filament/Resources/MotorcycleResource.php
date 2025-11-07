@@ -208,7 +208,6 @@ class MotorcycleResource extends Resource
                 ->collapsible(true),
             TextInput::make('price')
                 ->label('Price')
-                ->required()
                 ->numeric()
                 ->default(0)
                 ->prefix('Rp')

@@ -58,7 +58,7 @@ const MotorcycleDescriptionContainer = ({ motorcycle, lang }) => {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 bg-gray-50 shadow-md">
       {/* Tabs */}
-      <div className="flex justify-start border-b border-gray-300 mb-8 flex-wrap">
+      <div className="flex justify-start border-b border-gray-300 mb-8 overflow-x-scroll">
         {Object.keys(specs).map((tab) => (
           <button
             key={tab}

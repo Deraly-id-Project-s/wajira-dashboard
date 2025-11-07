@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
-import MainLoading from "@/Components/ui/MainLoading";
 import { ArrowRight } from "lucide-react";
 import Header from "@/Components/layout/Header";
 import Footer from "@/Components/layout/Footer";
 import { Head, usePage } from "@inertiajs/react";
+import React, { useState, useEffect } from "react";
 import BreadCrumbs from "@/Components/BreadCrumbs";
 import HelperButton from "@/Components/HelperButton";
+import MainLoading from "@/Components/ui/MainLoading";
+import RippleButton from "@/Components/ui/rippleButton";
 import MotorcycleColor from "@/Components/MotorcycleColor";
 import MotorcycleViewer from "@/Components/MotorcycleViewer";
 import RecomendationProductList from "@/Components/RecomendationProductList";
@@ -26,6 +27,7 @@ const MotocyclesDetail = (slug) => {
         loading: langLoading,
         error: langError,
     } = useFetchData("/assets/lang/language.json");
+
     const [selectedVariant, setSelectedVariant] = useState(null);
 
     useEffect(() => {
@@ -96,15 +98,15 @@ const MotocyclesDetail = (slug) => {
                 </div>
             </section>
 
-            <section id="product-name" className="max-w-7xl mx-auto px-4 mt-12 mb-12 flex justify-center align-middle items-center">
-                <h1 className="text-2xl md:text-4xl font-semibold">{motorcycle?.name}</h1>
+            <section id="product-name" className="max-w-7xl mx-auto px-4 mt-12 flex justify-center align-middle items-center">
+                <h1 className="text-[32px] font-semibold">{motorcycle?.name}</h1>
             </section>
 
             {/* === Motorcycle Variants Section === */}
             {motorcycle?.variants && motorcycle.variants.length > 1 && (
                 <section
                     id="variant-selector"
-                    className="max-w-7xl mx-auto flex flex-col justify-center align-middle items-center"
+                    className="max-w-7xl mx-auto mt-12 flex flex-col justify-center align-middle items-center"
                 >
                     <div className="flex flex-wrap gap-2 px-4 md:px-0">
                         {motorcycle.variants.map((variant) => {
@@ -114,8 +116,8 @@ const MotocyclesDetail = (slug) => {
                                     key={variant.id}
                                     onClick={() => handleVariantChange(variant)}
                                     className={`relative font-semibold text-sm md:text-base px-8 py-2 text-center transition-all duration-300 skew-x-[-20deg] ${isActive
-                                            ? "bg-[#173958] text-white" // warna biru tua seperti contoh
-                                            : "bg-[#E7ECF6] text-[#173958]" // abu-abu muda untuk non aktif
+                                            ? "bg-[#173958] text-white"
+                                            : "bg-[#E7ECF6] text-[#173958]"
                                         }`}
                                 >
                                     <span className="block skew-x-[20deg]">
@@ -157,7 +159,7 @@ const MotocyclesDetail = (slug) => {
 
             <section
                 id="page_title"
-                className="max-w-7xl mx-auto p-4 md:p-8 mt-32 flex justify-center align-middle items-center"
+                className="max-w-7xl mx-auto p-4 md:p-8 flex justify-center align-middle items-center"
             >
                 <h3 className="text-[32px]">{(langData?.[15]?.lang?.[currentLang]?.label?.[5]) ?? "Vehicle Spesification"}</h3>
             </section>
@@ -178,15 +180,13 @@ const MotocyclesDetail = (slug) => {
                 <RecomendationProductList lang={(langData?.[15]?.lang?.[currentLang])} />
             </div>
 
-            <div className="md:max-w-7xl max-w-full mx-auto px-0 py-16 justify-center align-middle items-center flex">
-                <a
-                    href="/products/motorcycles"
-                    className="flex flex-row justify-center align-middle items-center w-[143px] h-[48px] gap-2 p-5 bg-[#B0160D] text-white text-[14px]"
-                >
-                    {(langData?.[15]?.lang?.[currentLang]?.label?.[4]) ?? "View More"}
-                    <ArrowRight />
-                </a>
-            </div>
+            <div className="w-full justify-center items-center flex py-[32px] md:mt-20">
+                    <a href="/products/motorcycles" className="block">
+                      <RippleButton className="flex flex-row justify-center items-center px-[16px] py-[15px] max-w-[272px] gap-[8px] text-white bg-[#B0160D] font-light text-[14px] cursor-pointer">
+                        <span>{langData?.[4]?.lang?.[currentLang]?.btn ?? "View More"}</span> <ArrowRight />
+                      </RippleButton>
+                    </a>
+                  </div>
 
             <Footer data={data?.data?.links} lang={langData?.[7]?.lang?.[currentLang] || []} />
         </section>

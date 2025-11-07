@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
 
-const VehicleDocumentCard = ({ lang }) => {
+const VehicleDocumentCard = ({ lang, link }) => {
   const items = (lang?.[1].items) ?? [
     "Practical process without hassle",
     "Official and guaranteed service",

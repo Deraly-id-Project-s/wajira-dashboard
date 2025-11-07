@@ -75,9 +75,11 @@ const HomePage = () => {
             </p>
           </div>
 
-          <RippleButton className="mt-4 md:mt-0 flex items-center bg-[#A6160A] text-white px-5 py-4 text-sm hover:bg-[#8f1208] transition-all">
-            {langData?.[2]?.lang?.[currentLang]?.btn ?? 'More Brands'} <ArrowRight size={16} className="ml-2" />
-          </RippleButton>
+          <a href="/products/motorcycles">
+            <RippleButton className="mt-4 md:mt-0 flex items-center bg-[#A6160A] text-white px-5 py-4 text-sm hover:bg-[#8f1208] transition-all">
+              {langData?.[2]?.lang?.[currentLang]?.btn ?? 'More Brands'} <ArrowRight size={16} className="ml-2" />
+            </RippleButton>
+          </a>
         </div>
         <SponsorList data={data?.data?.brands} />
       </section>

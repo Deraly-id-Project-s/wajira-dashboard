@@ -11,6 +11,7 @@ import useFetchData from "@/Hooks/useFetchData";
 export default function ProductList({ lang, productLang }) {
   const { data: motorcycleData, loading: motorcycleLoading } = useFetchData("/api/motorcycles");
   const { data: commodityData, loading: commodityLoading } = useFetchData("/api/commodities");
+  const { data: linkData, loading: linkLoading } = useFetchData("/api/public");
 
   const categories = lang?.menu ?? [];
 
@@ -51,12 +52,12 @@ export default function ProductList({ lang, productLang }) {
     case "vehicle-documentation":
       filteredData = [];
       basePath = "/vehicle/";
-      actionUrl = "/vehicle";
+      actionUrl = "https://wa.me/" + linkData?.data?.links?.[0]?.url;
       break;
     case "expedition":
       filteredData = [];
       basePath = "/expedition/";
-      actionUrl = "/expedition";
+      actionUrl = "https://wa.me/" + linkData?.data?.links?.[0]?.url;
       break;
     default:
       filteredData = [];
