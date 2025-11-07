@@ -55,8 +55,8 @@ const CommodityPage = () => {
 
             <Commodities links={data?.data?.links} lang={langData?.[14]?.lang?.[currentLang]} />
 
-            <section id="word" className="max-w-7xl mx-auto flex flex-col items-center justify-center px-[168px] py-[96px] space-y-16">
-                <span className="font-times" style={{ fontFamily: "Times New Roman" }}>
+            <section id="word" className="max-w-7xl mx-auto flex flex-col items-center justify-center px-[16px] md:px-[168px] py-[96px] space-y-16">
+                <span className="font-times text-center" style={{ fontFamily: "Times New Roman" }}>
                     Enhance your life with these authentic and beautifully made products—where tradition meets quality and style.
                 </span>
             </section>
