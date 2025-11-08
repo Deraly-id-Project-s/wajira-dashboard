@@ -121,7 +121,7 @@ const MotocyclesDetail = (slug) => {
                                         }`}
                                 >
                                     <span className="block skew-x-[20deg]">
-                                        {formatVariantName(variant.variant_slug)}
+                                        {variant?.name}
                                     </span>
                                 </button>
                             );
