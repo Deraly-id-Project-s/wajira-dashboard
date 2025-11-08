@@ -28,6 +28,7 @@ use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Tables\Filters\TrashedFilter;
+use Filament\Tables\Actions\ReplicateAction;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\MotorcycleResource\Pages;
 use App\Filament\Resources\MotorcycleResource\RelationManagers;
@@ -264,15 +265,22 @@ class MotorcycleResource extends Resource
                 Tables\Columns\TextColumn::make('deleted_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([Tables\Filters\TrashedFilter::make()])
-            ->actions([Tables\Actions\EditAction::make()->after(fn() => static::clearCache())])
+            ->actions([
+                Tables\Actions\EditAction::make()->after(fn() => static::clearCache()),
+                ReplicateAction::make()
+                    ->excludeAttributes(['slug'])
+                    ->beforeReplicaSaved(function ($record, $replica): void {
+                        $replica->slug = Str::slug($replica->name) . '-' . Str::random(5);
+                    }),
+            ])
             ->bulkActions([Tables\Actions\BulkActionGroup::make([Tables\Actions\DeleteBulkAction::make()->after(fn() => static::clearCache()), Tables\Actions\ForceDeleteBulkAction::make()->after(fn() => static::clearCache()), Tables\Actions\RestoreBulkAction::make()->after(fn() => static::clearCache())])]);
     }
 
     public static function getRelations(): array
     {
         return [
-                //
-            ];
+            //
+        ];
     }
 
     public static function getPages(): array
