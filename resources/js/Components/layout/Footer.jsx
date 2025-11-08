@@ -5,7 +5,6 @@ import FacebookIcon from "@/Components/ui/FacebookIcon";
 import InstagramIcon from "@/Components/ui/InstagramIcon";
 import TiktokIcon from "@/Components/ui/TiktokIcon";
 import YoutubeIcon from "@/Components/ui/YoutubeIcon";
-import useFetchData from "@/Hooks/useFetchData";
 
 export default function Footer({ data, lang }) {
   if (!data || data.length === 0) {
@@ -17,6 +16,8 @@ export default function Footer({ data, lang }) {
   }
 
   const socialLinks = data.filter((item) => item.is_show === 1);
+
+  const mail = socialLinks.find((item) => item.id === 7)?.url;
 
   const getUrl = (name) => {
     const found = socialLinks.find(
@@ -64,7 +65,9 @@ export default function Footer({ data, lang }) {
               </a>
             </li>
             <li className="hover:underline cursor-pointer">
-              {(lang?.right_panel?.[0]?.content[1]) ?? "Expedition"}
+              <a href="/#product-list">
+                {(lang?.right_panel?.[0]?.content[1]) ?? "Expedition"}
+              </a>
             </li>
             <li className="hover:underline cursor-pointer">
               <a href="/commodity">
@@ -72,7 +75,9 @@ export default function Footer({ data, lang }) {
               </a>
             </li>
             <li className="hover:underline cursor-pointer">
-              {(lang?.right_panel?.[0]?.content[3]) ?? "Vehicle Documentation"}
+              <a href="/#product-list">
+                {(lang?.right_panel?.[0]?.content[3]) ?? "Vehicle Documentation"}
+              </a>
             </li>
           </ul>
         </div>
@@ -85,7 +90,9 @@ export default function Footer({ data, lang }) {
             </a>
           </h4>
           <ul className="space-y-2">
-            <li className="hover:underline cursor-pointer">{(lang?.right_panel?.[1]?.content[0]) ?? "Our Story"}</li>
+            <a href="/about-us">
+              <li className="hover:underline cursor-pointer">{(lang?.right_panel?.[1]?.content[0]) ?? "Our Story"}</li>
+            </a>
             <li>
               <a href="/gallery" className="hover:underline cursor-pointer">
                 {(lang?.right_panel?.[1]?.content[1]) ?? "Gallery"}
@@ -101,7 +108,9 @@ export default function Footer({ data, lang }) {
           </h4>
           <ul className="space-y-2">
             <li className="hover:underline cursor-pointer">
-              {(lang?.right_panel?.[2]?.content[0]) ?? "Contact Us"}
+              <a href={formatWhatsapp(getUrl("whatsapp"))}>
+                {(lang?.right_panel?.[2]?.content[0]) ?? "Contact Us"}
+              </a>
             </li>
           </ul>
         </div>
@@ -148,6 +157,11 @@ export default function Footer({ data, lang }) {
             {getUrl("youtube") && (
               <a href={getUrl("youtube")} target="_blank" rel="noopener noreferrer">
                 <YoutubeIcon className="w-6 h-6 text-white" />
+              </a>
+            )}
+            {getUrl("gmail") && (
+              <a href={"mailto:" + mail} target="_blank" rel="noopener noreferrer">
+                <Mail className="w-6 h-6 text-white" />
               </a>
             )}
           </div>
