@@ -16,4 +16,9 @@ class EditGallery extends EditRecord
             Actions\DeleteAction::make()->after(fn () => GalleryResource::clearCache()),
         ];
     }
+
+    protected function afterSave(): void
+    {
+        GalleryResource::clearCache();
+    }
 }

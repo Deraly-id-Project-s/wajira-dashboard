@@ -16,4 +16,9 @@ class EditBanner extends EditRecord
             Actions\DeleteAction::make()->after(fn () => BannerResource::clearCache()),
         ];
     }
+
+    protected function afterSave(): void
+    {
+        BannerResource::clearCache();
+    }
 }

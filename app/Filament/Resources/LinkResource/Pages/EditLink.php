@@ -54,4 +54,9 @@ class EditLink extends EditRecord
 
         return $record;
     }
+
+    protected function afterSave(): void
+    {
+        LinkResource::clearCache();
+    }
 }

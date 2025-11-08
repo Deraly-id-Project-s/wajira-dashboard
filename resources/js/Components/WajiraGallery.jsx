@@ -25,7 +25,7 @@ const WajiraGallery = ({ data }) => {
           >
             <img
               id={'img-' + index}
-              src={`${appUrl}/storage/` + gallery.image}
+              src={`/storage/` + gallery.image}
               alt={`Wajira ${gallery.alt}`}
               className="w-full object-cover hover:scale-105 transition-transform duration-500 my-3"
             />

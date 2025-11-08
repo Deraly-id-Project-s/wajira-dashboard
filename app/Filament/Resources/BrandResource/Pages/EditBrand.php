@@ -16,4 +16,9 @@ class EditBrand extends EditRecord
             Actions\DeleteAction::make()->after(fn () => BrandResource::clearCache()),
         ];
     }
+
+    protected function afterSave(): void
+    {
+        BrandResource::clearCache();
+    }
 }

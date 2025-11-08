@@ -18,4 +18,9 @@ class EditCommodity extends EditRecord
             Actions\RestoreAction::make()->after(fn () => CommodityResource::clearCache()),
         ];
     }
+
+    protected function afterSave(): void
+    {
+        CommodityResource::clearCache();
+    }
 }

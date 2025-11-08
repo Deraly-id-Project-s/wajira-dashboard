@@ -18,4 +18,9 @@ class EditMotorcycle extends EditRecord
             Actions\RestoreAction::make()->after(fn () => MotorcycleResource::clearCache()),
         ];
     }
+
+    protected function afterSave(): void
+    {
+        MotorcycleResource::clearCache();
+    }
 }
