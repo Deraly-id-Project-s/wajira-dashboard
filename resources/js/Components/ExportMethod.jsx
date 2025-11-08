@@ -1,7 +1,7 @@
 export default function ExportMethod({ lang }) {
   const methods = [
     {
-      title: (lang?.[0]?.title) ?? "PT Wajira Jagratara Inter Nasional (Export)",
+      title: (lang?.[0]?.title) ?? "PT WAJIRA INTER NASIONAL (Export)",
       label: (lang?.[0]?.span) ?? "For International",
       desc: (lang?.[0]?.desc) ?? "Distribution and trading of motorcycles and spare parts for automotive products",
       bg: "bg-[#1D3B56]",
