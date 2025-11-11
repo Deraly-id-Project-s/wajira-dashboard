@@ -10,7 +10,7 @@ export default function SponsorList({ data }) {
   return (
     <div className="flex flex-row flex-wrap justify-center md:gap-[24px] gap-[10px] place-items-center">
       {data.map((brand, index) => (
-        <a href={"/brand/" + brand.slug}>
+        <a key={index} href={"brand/" + brand.slug}>
           <div
             key={index}
             className="bg-[#F1F4F9] md:w-[170px] w-[100px] aspect-square rounded-full flex items-center justify-center hover:scale-105 transition-transform cursor-pointer shadow-sm"

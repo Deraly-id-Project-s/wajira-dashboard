@@ -160,8 +160,10 @@ const Header = ({ activeCategory, onCategoryChange }) => {
   );
 
   useEffect(() => {
-    if (searchData && searchData.success) {
-      setSearchResults(searchData.data);
+    if (searchData && (searchData.status || searchData.success)) {
+      setSearchResults(searchData.data ?? []);
+    } else if (searchData?.data === null) {
+      setSearchResults([]);
     }
   }, [searchData]);
 
@@ -596,7 +598,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
                     onClick={() => {
                       router.visit(
                         item.type === "motorcycle"
-                          ? `/motorcycle/${item.slug}`
+                          ? `/products/motorcycles/${item.slug}`
                           : `/commodity/${item.slug}`
                       );
                       setShowSearchModal(false);
@@ -605,7 +607,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
                     className="flex items-center gap-3 p-2 hover:bg-gray-100 cursor-pointer rounded-md"
                   >
                     <img
-                      src={item.product_image || item.image || "/assets/no-image.jpg"}
+                      src={'/storage/' + item.product_image || item.image || "/assets/no-image.jpg"}
                       alt={item.name}
                       className="w-16 h-16 object-cover rounded-md"
                     />
