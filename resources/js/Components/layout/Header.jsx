@@ -449,6 +449,15 @@ const Header = ({ activeCategory, onCategoryChange }) => {
               placeholder="Search here"
               autoFocus
               className="flex-1 mx-3 bg-gray-100 px-4 py-2 rounded outline-none text-gray-800 placeholder-gray-500"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && searchQuery.trim() !== "") {
+                  setTriggerSearch(true);
+                  setShowSearchModal(true);
+                  setShowSearch(false);
+                }
+              }}
             />
 
             {/* Tombol Tutup Search */}
@@ -568,7 +577,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] mt-[10rem]"
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] mt-[12rem]"
         >
           <div className="bg-white w-[90%] md:w-[600px] rounded-xl shadow-lg overflow-hidden">
             <div className="flex justify-between items-center border-b px-4 py-3">
@@ -607,10 +616,11 @@ const Header = ({ activeCategory, onCategoryChange }) => {
                     className="flex items-center gap-3 p-2 hover:bg-gray-100 cursor-pointer rounded-md"
                   >
                     <img
-                      src={'/storage/' + item.product_image || item.image || "/assets/no-image.jpg"}
+                      src={`/storage/${item.product_image && item.product_image !== 'undefined' ? item.product_image : item.image}`}
                       alt={item.name}
                       className="w-16 h-16 object-cover rounded-md"
                     />
+
                     <div>
                       <h3 className="font-semibold text-gray-800">{item.name}</h3>
                       <p className="text-sm text-gray-500 capitalize">{item.type}</p>
