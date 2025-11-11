@@ -1168,9 +1168,18 @@
                         "label": "urutkan",
                         "title": "Urutkan Berdasarkan",
                         "items": [
-                            "Paling Populer",
-                            "Terbaru",
-                            "A - Z"
+                            {
+                                "label": "popular",
+                                "title": "Paling Populer"
+                            },
+                            {
+                                "label": "latest",
+                                "title": "Terbaru"
+                            },
+                            {
+                                "label": "az",
+                                "title": "A - Z"
+                            }
                         ]
                     },
                     {
@@ -1190,9 +1199,18 @@
                         "label": "trier",
                         "title": "Trier Par",
                         "items": [
-                            "Plus Populaire",
-                            "Plus Récent",
-                            "A - Z"
+                            {
+                                "label": "popular",
+                                "title": "Plus Populaire"
+                            },
+                            {
+                                "label": "latest",
+                                "title": "Plus Récent"
+                            },
+                            {
+                                "label": "az",
+                                "title": "A - Z"
+                            }
                         ]
                     },
                     {
@@ -1212,9 +1230,18 @@
                         "label": "ترتيب",
                         "title": "ترتيب حسب",
                         "items": [
-                            "الأكثر شعبية",
-                            "الأحدث",
-                            "أ - ي"
+                            {
+                                "label": "popular",
+                                "title": "الأكثر شعبية"
+                            },
+                            {
+                                "label": "latest",
+                                "title": "الأحدث"
+                            },
+                            {
+                                "label": "az",
+                                "title": "أ - ي"
+                            }
                         ]
                     },
                     {
@@ -1234,9 +1261,18 @@
                         "label": "sap-xep",
                         "title": "Sắp Xếp Theo",
                         "items": [
-                            "Phổ Biến Nhất",
-                            "Mới Nhất",
-                            "A - Z"
+                            {
+                                "label": "popular",
+                                "title": "Phổ Biến Nhất"
+                            },
+                            {
+                                "label": "latest",
+                                "title": "Mới Nhất"
+                            },
+                            {
+                                "label": "az",
+                                "title": "A - Z"
+                            }
                         ]
                     },
                     {
@@ -1256,9 +1292,18 @@
                         "label": "排序",
                         "title": "排序方式",
                         "items": [
-                            "最受欢迎",
-                            "最新",
-                            "A - Z"
+                            {
+                                "label": "popular",
+                                "title": "最受欢迎"
+                            },
+                            {
+                                "label": "latest",
+                                "title": "最新"
+                            },
+                            {
+                                "label": "az",
+                                "title": "A - Z"
+                            }
                         ]
                     },
                     {
@@ -1278,9 +1323,18 @@
                         "label": "क्रमबद्ध",
                         "title": "इसके आधार पर क्रमबद्ध करें",
                         "items": [
-                            "सबसे लोकप्रिय",
-                            "नवीनतम",
-                            "A - Z"
+                            {
+                                "label": "popular",
+                                "title": "सबसे लोकप्रिय"
+                            },
+                            {
+                                "label": "latest",
+                                "title": "नवीनतम"
+                            },
+                            {
+                                "label": "az",
+                                "title": "A - Z"
+                            }
                         ]
                     },
                     {
