@@ -379,7 +379,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
         {/* Mobile Navbar */}
         <div className="flex items-center justify-between w-full md:hidden px-3 py-2 relative">
           {/* Kiri: Hamburger + Logo */}
-          <div className="flex items-center gap-2">
+          <div id="left-navbar-content" className="flex items-center gap-2">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="bg-[#1E3A5F] p-2 rounded"
@@ -388,8 +388,8 @@ const Header = ({ activeCategory, onCategoryChange }) => {
             </button>
           </div>
 
-          <div className="flex items-center gap-2">
-            <img src="/assets/logo.png" alt="Logo" className="w-[36px]" />
+          <div id="right-navbar-content" className="flex items-center gap-2">
+            <img src="/assets/logo.png" alt="Wajira Logo" className="w-[42px]" />
             {/* Language Selector */}
             <div className="relative">
               <button
