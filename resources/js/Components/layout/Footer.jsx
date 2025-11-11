@@ -40,8 +40,10 @@ export default function Footer({ data, lang }) {
       <div className="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Subscribe Section */}
         <div>
-          <h3 className="text-lg font-semibold mb-4">{(lang?.left_panel?.[0]) ?? "Subscribe to Our Newsletter"}</h3>
-          <div className="flex w-full max-w-sm">
+          <img src="/assets/logo.png" alt="Logo Wajira" className="w-[72px]" />
+          {/* <h3 className="text-lg font-semibold mb-4">{(lang?.left_panel?.[0]) ?? "Subscribe to Our Newsletter"}</h3> */}
+          <h3 className="text-xl font-semibold mb-4">PT. Wajira Jagratara Corps</h3>
+          {/* <div className="flex w-full max-w-sm">
             <input
               type="email"
               placeholder={(lang?.left_panel?.[1]) ?? "Email address"}
@@ -50,7 +52,7 @@ export default function Footer({ data, lang }) {
             <RippleButton className="bg-red-600 px-4 rounded-r hover:bg-red-700 transition-colors flex items-center justify-center">
               <Mail size={18} />
             </RippleButton>
-          </div>
+          </div> */}
         </div>
 
         {/* Services */}
