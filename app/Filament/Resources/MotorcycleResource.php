@@ -60,6 +60,7 @@ class MotorcycleResource extends Resource
                     FileUpload::make('product_image')
                         ->label('Product Image')
                         ->disk('public')
+                        ->temporaryDirectory('temp/motorcycles')
                         ->directory('motorcycles')
                         ->getUploadedFileNameForStorageUsing(function ($file) {
                             return md5($file->getClientOriginalName() . microtime()) . '.' . $file->getClientOriginalExtension();
@@ -177,7 +178,24 @@ class MotorcycleResource extends Resource
                                 ->relationship('colors')
                                 ->label('Variant Colors')
                                 ->collapsible()
-                                ->schema([FileUpload::make('image')->image()->disk('public')->directory('motorcycles/colors')->required()->label('Image'), TextInput::make('color_name')->required()->placeholder('Color Name'), Grid::make(2)->schema([ColorPicker::make('color_code')->required()->placeholder('Color Code')->columns(1), TextInput::make('stock')->numeric()->default(1)->columns(1)])])
+                                ->schema([
+                                    FileUpload::make('image')
+                                    ->image()
+                                    ->disk('public')
+                                    ->temporaryDirectory('temp/motorcycles/colors')
+                                    ->directory('motorcycles/colors')
+                                    ->required()
+                                    ->label('Image'), TextInput::make('color_name')
+                                    ->required()
+                                    ->placeholder('Color Name'), Grid::make(2)
+                                    ->schema([ColorPicker::make('color_code')
+                                    ->required()
+                                    ->placeholder('Color Code')
+                                    ->columns(1), TextInput::make('stock')
+                                    ->numeric()
+                                    ->default(1)
+                                    ->columns(1)])
+                                ])
                                 ->columnSpanFull()
                                 ->addActionLabel('Add Color'),
                         ])
@@ -197,6 +215,11 @@ class MotorcycleResource extends Resource
                         ->preserveFilenames()
                         ->panelLayout('grid')
                         ->disk('public')
+                        ->temporaryDirectory(function (callable $get, $record) {
+                            $slug = $record->slug ?? Str::slug($get('name') ?? 'unnamed');
+
+                            return "temp/motorcycles/{$slug}/360";
+                        })
                         ->directory(function (callable $get, $record) {
                             $slug = $record->slug ?? Str::slug($get('name') ?? 'unnamed');
 
