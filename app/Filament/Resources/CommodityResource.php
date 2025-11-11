@@ -38,13 +38,13 @@ class CommodityResource extends Resource
         Cache::forget('public_all_commodity');
     }
 
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 FileUpload::make('image')
                     ->disk('public')
+                    ->preserveFilenames(false)
                     ->directory('commodities')
                     ->getUploadedFileNameForStorageUsing(function ($file) {
                         return md5($file->getClientOriginalName() . microtime()) . '.' . $file->getClientOriginalExtension();

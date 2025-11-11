@@ -60,7 +60,7 @@ class MotorcycleResource extends Resource
                     FileUpload::make('product_image')
                         ->label('Product Image')
                         ->disk('public')
-                        ->temporaryDirectory('temp/motorcycles')
+                        ->preserveFilenames(false)
                         ->directory('motorcycles')
                         ->getUploadedFileNameForStorageUsing(function ($file) {
                             return md5($file->getClientOriginalName() . microtime()) . '.' . $file->getClientOriginalExtension();
@@ -182,7 +182,7 @@ class MotorcycleResource extends Resource
                                     FileUpload::make('image')
                                     ->image()
                                     ->disk('public')
-                                    ->temporaryDirectory('temp/motorcycles/colors')
+                                    ->preserveFilenames(false)
                                     ->directory('motorcycles/colors')
                                     ->required()
                                     ->label('Image'), TextInput::make('color_name')
@@ -215,11 +215,7 @@ class MotorcycleResource extends Resource
                         ->preserveFilenames()
                         ->panelLayout('grid')
                         ->disk('public')
-                        ->temporaryDirectory(function (callable $get, $record) {
-                            $slug = $record->slug ?? Str::slug($get('name') ?? 'unnamed');
-
-                            return "temp/motorcycles/{$slug}/360";
-                        })
+                        ->preserveFilenames(false)
                         ->directory(function (callable $get, $record) {
                             $slug = $record->slug ?? Str::slug($get('name') ?? 'unnamed');
 
