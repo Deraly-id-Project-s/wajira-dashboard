@@ -18,7 +18,7 @@ export default function ProductAndService({ lang }) {
       color: "bg-[#E3A73F]",
       font_color: "text-black",
       image: "/assets/product_and_service/expedition.png",
-      route: "/products/expeditions",
+      route: "#product-lists",
     },
     {
       title: lang[2]?.title ?? "Commodity",
@@ -35,16 +35,12 @@ export default function ProductAndService({ lang }) {
       color: "bg-[#A6160A]",
       font_color: "text-white",
       image: "/assets/product_and_service/document.png",
-      route: "/products/vehicle-documents",
+      route: "#product-lists",
     },
   ];
 
   return (
     <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6">
-      {/* 
-      grid-cols-2 untuk mobile (2 kolom)
-      md:grid-cols-2 biar tetap 2 di desktop
-    */}
       <div className="grid grid-cols-2 md:grid-cols-2 gap-6">
         {items.map((item, index) => (
           <div

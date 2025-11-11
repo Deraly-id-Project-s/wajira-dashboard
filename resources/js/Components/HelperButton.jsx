@@ -24,7 +24,7 @@ const HelperButton = ({ data, lang }) => {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <RippleButton className="flex gap-2 p-5 bg-[#B0160D]">
+                <RippleButton className="flex gap-2 p-5 bg-[#198038]">
                     {lang?.btn ?? 'Get In Touch'}
                     <ArrowRight />
                 </RippleButton>

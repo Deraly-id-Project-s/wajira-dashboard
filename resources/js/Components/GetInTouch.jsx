@@ -24,7 +24,7 @@ const GetInTouch = ({ data, lang }) => {
                         rel="noopener noreferrer"
                     >
 
-                        <RippleButton className="text-[14px] py-[15px] px-[16px] text-white bg-[#B0160D] flex flex-row justify-center align-middle items-center">
+                        <RippleButton className="text-[14px] py-[15px] px-[16px] text-white bg-[#198038] flex flex-row justify-center align-middle items-center">
                             <span className="flex flex-row gap-3 justify-center align-middle items-center">
                                 {lang?.btn ?? "Get In Touch"} <WhatsAppIcon className="w-6 h-6 text-white" />
                             </span>

@@ -64,7 +64,7 @@ export default function ProductList({ lang, productLang }) {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full" id="product-lists">
       {/* === Tabs / Menu === */}
       <div className="flex justify-center px-2">
         <div className="bg-[#1E3A5F] p-2 sm:p-3 rounded-md mb-10 w-full sm:w-auto overflow-x-auto">
@@ -74,10 +74,9 @@ export default function ProductList({ lang, productLang }) {
                 key={cat.label}
                 onClick={() => setSelectedCategory(cat.label)}
                 className={`px-3 sm:px-6 py-2 text-xs sm:text-sm font-medium transition-colors duration-200 whitespace-nowrap
-                  ${
-                    selectedCategory === cat.label
-                      ? "bg-[#F4B75E] text-[#1E3A5F] rounded-md"
-                      : "bg-transparent text-gray-300 hover:text-white"
+                  ${selectedCategory === cat.label
+                    ? "bg-[#F4B75E] text-[#1E3A5F] rounded-md"
+                    : "bg-transparent text-gray-300 hover:text-white"
                   }`}
               >
                 {cat.title}
@@ -144,7 +143,14 @@ export default function ProductList({ lang, productLang }) {
 
       <div className="w-full justify-center items-center flex py-[32px] md:mt-20">
         <a href={actionUrl} className="block">
-          <RippleButton className="flex flex-row justify-center items-center px-[16px] py-[15px] max-w-[272px] gap-[8px] text-white bg-[#B0160D] font-light text-[14px] cursor-pointer">
+          <RippleButton
+            className={
+              `flex flex-row justify-center items-center px-[16px] py-[15px] max-w-[272px] gap-[8px] text-white font-light text-[14px] cursor-pointer ` +
+              ((selectedCategory === "expedition" || selectedCategory === "vehicle-documentation")
+                ? "bg-[#198038]"
+                : "bg-[#B0160D]")
+            }
+          >
             <span>{lang?.btn ?? "View More"}</span> <ArrowRight />
           </RippleButton>
         </a>
