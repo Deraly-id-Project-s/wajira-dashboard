@@ -108,7 +108,7 @@ const MotocyclesDetail = (slug) => {
                     id="variant-selector"
                     className="max-w-7xl mx-auto mt-12 flex flex-col justify-center align-middle items-center"
                 >
-                    <div className="flex flex-wrap gap-2 px-4 md:px-0">
+                    <div className="flex flex-wrap gap-2 px-4 md:px-0 w-full justify-center align-middle items-center">
                         {motorcycle.variants.map((variant) => {
                             const isActive = selectedVariant?.id === variant.id;
                             return (
