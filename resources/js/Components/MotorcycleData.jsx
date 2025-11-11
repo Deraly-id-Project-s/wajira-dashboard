@@ -24,42 +24,29 @@ const MotorcycleData = ({ lang, brand }) => {
     loading,
     error,
   } = useFetchData(
-    `/api/all-motorcycles?search=${encodeURIComponent(debouncedSearch)}&sort=${sortBy}&page=${currentPage}&brand=${brand}`,
+    `/api/all-motorcycles?search=${encodeURIComponent(debouncedSearch)}&sort=${sortBy}&page=${currentPage}` + (brand ? `&brand=${brand}` : ''),
     {},
     [debouncedSearch, sortBy, currentPage]
   );
 
-  const motorcycles = Array.isArray(motorcycleData?.data)
-  ? motorcycleData.data
-  : motorcycleData?.data?.data ?? [];
-
-  const itemsPerPage = 6;
+  const motorcycles = motorcycleData?.data?.data ?? [];
+  const totalPages = motorcycleData?.data?.last_page ?? 1;
 
   const filteredData = useMemo(() => {
-    const q = (debouncedSearch || "").trim().toLowerCase();
-
-    let list = motorcycles.filter((item) => {
-      if (!item) return false;
-      const name = (item.name || "").toString().toLowerCase();
-      return name.includes(q);
-    });
-
-    if (sortBy === "latest") {
-      list = list.slice().sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-    } else if (sortBy === "az") {
-      list = list.slice().sort((a, b) => (a.name || "").localeCompare(b.name || ""));
-    } else {
-      list = list.slice().sort((a, b) => (b.views || 0) - (a.views || 0));
+    let list = motorcycles;
+    if (debouncedSearch) {
+      const q = debouncedSearch.toLowerCase();
+      list = list.filter(item => item.name.toLowerCase().includes(q));
     }
-
+    if (sortBy === "az") {
+      list = list.slice().sort((a, b) => a.name.localeCompare(b.name));
+    }
     return list;
   }, [motorcycles, debouncedSearch, sortBy]);
 
-  const totalPages = Math.max(1, Math.ceil(filteredData.length / itemsPerPage));
-  const paginatedData = filteredData.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  const itemsPerPage = 6;
+
+  const paginatedData = filteredData;
 
   return (
     <div className="w-full">

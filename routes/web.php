@@ -28,17 +28,6 @@ Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
 
 Route::get('/brand/{slug}', [BrandController::class, 'show'])->name('brand.show');
 
-// General API Resource
-Route::group(['prefix' => 'api'], function () {
-    Route::get('/public', [PublicController::class, 'index'])->name('public');
-    Route::get('/commodities', [PublicController::class, 'commodity'])->name('public.commodity');
-    Route::get('/all-commodities', [PublicController::class, 'allCommodity'])->name('public.all-commodity');
-    Route::get('/motorcycles', [PublicController::class, 'motorcycle'])->name('public.motorcycle');
-    Route::get('/all-motorcycles', [PublicController::class, 'allMotorcycle'])->name('public.all-motorcycle');
-
-    Route::get('/motorcycle-recomendation', [PublicController::class, 'motorcycleRecomendation'])->name('public.motorcycle-recomendation');
-});
-
 Route::post('/set-language', [LanguageController::class, 'setLanguage'])->name('set.language');
 
 require __DIR__.'/auth.php';
