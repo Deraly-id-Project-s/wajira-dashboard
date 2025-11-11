@@ -377,7 +377,7 @@ const Header = ({ activeCategory, onCategoryChange }) => {
         </div>
 
         {/* Mobile Navbar */}
-        <div className="flex items-center justify-between w-full md:hidden px-3 py-2 relative">
+        <div className="flex items-center justify-between w-full md:hidden py-2 relative">
           {/* Kiri: Hamburger + Logo */}
           <div id="left-navbar-content" className="flex items-center gap-2">
             <button
