@@ -4,7 +4,7 @@ export default function VisionMission({ lang }) {
       {/* Left - Image */}
       <div className="md:w-1/5 w-full flex justify-center">
         <img
-          src="/assets/yanotama.png"
+          src="/assets/yanotama.webp"
           alt="Vision and Mission"
           className="rounded-lg shadow-lg w-full md:w-[400px] object-cover"
         />
