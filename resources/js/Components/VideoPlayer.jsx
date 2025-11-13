@@ -14,15 +14,15 @@ const VideoPlayer = () => {
         <LightGallery speed={500} plugins={[lgVideo]}>
           <a
             data-lg-size="1280-720"
-            data-video='{"source": [{"src":"https://www.youtube.com/shorts/uB-4y6H-uGA","type":"youtube"}], "attributes": {"preload": false, "controls": true}}'
+            data-video='{"source": [{"src":"/assets/videos/2.mp4", "type":"video/mp4"}], "attributes": {"preload": false, "controls": true}}'
             data-poster="/assets/products/expeditions/truck_1.png"
             className="inline w-full"
-          >
+            >
             <img
               src="/assets/products/expeditions/truck_1.png"
               alt="Video 1"
               className="h-full w-full object-cover rounded-2xl shadow-md hover:opacity-90 transition"
-            />
+              />
           </a>
         </LightGallery>
 
@@ -30,7 +30,7 @@ const VideoPlayer = () => {
         <LightGallery speed={500} plugins={[lgVideo]}>
           <a
             data-lg-size="1280-720"
-            data-video='{"source": [{"src":"https://www.youtube.com/shorts/jiFgLjF9I4E","type":"youtube"}], "attributes": {"preload": false, "controls": true}}'
+            data-video='{"source": [{"src":"/assets/videos/1.mp4", "type":"video/mp4"}], "attributes": {"preload": false, "controls": true}}'
             data-poster="/assets/products/expeditions/truck_2.png"
             className="inline w-full"
           >
@@ -45,10 +45,10 @@ const VideoPlayer = () => {
 
       {/* Kanan - 1 video panjang */}
       <div className="w-full md:w-1/2">
-        <LightGallery speed={500} plugins={[lgVideo]}>
+        <LightGallery speed={500} plugins={[lgVideo]}>  
           <a
             data-lg-size="1280-720"
-            data-video='{"source": [{"src":"https://www.youtube.com/watch?v=52xQAOKN_7Y","type":"youtube"}], "attributes": {"preload": false, "controls": true}}'
+            data-video='{"source": [{"src":"/assets/videos/4.mp4", "type":"video/mp4"}], "attributes": {"preload": false, "controls": true}}'
             data-poster="/assets/products/expeditions/truck_3.png"
             className="block h-full"
           >
