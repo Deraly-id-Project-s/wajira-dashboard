@@ -7,55 +7,51 @@ import "lightgallery/css/lg-video.css";
 
 const VideoPlayer = () => {
   return (
-    <div className="w-full flex flex-col md:flex-row gap-6 justify-between">
-      {/* Kiri - 2 video vertikal */}
-      <div className="flex flex-row gap-6 w-full md:w-1/2">
-        {/* Video 1 */}
+    <div className="flex flex-col md:flex-row gap-6 w-full md:max-w-7xl px-0">
+      <div className="flex flex-row min-w-[40%] gap-6 px-[10px]">
         <LightGallery speed={500} plugins={[lgVideo]}>
           <a
             data-lg-size="1280-720"
-            data-video='{"source": [{"src":"/assets/videos/2.mp4", "type":"video/mp4"}], "attributes": {"preload": false, "controls": true}}'
+            data-video='{"source":[{"src":"/assets/videos/2.mp4","type":"video/mp4"}],"attributes":{"preload":false,"controls":true}}'
             data-poster="/assets/products/expeditions/truck_1.png"
-            className="inline w-full"
-            >
+            className="block h-[27rem]"
+          >
             <img
               src="/assets/products/expeditions/truck_1.png"
-              alt="Video 1"
-              className="h-full w-full object-cover rounded-2xl shadow-md hover:opacity-90 transition"
-              />
+              alt="Wajira Truck - Heavy Duty Cargo Transport"
+              className="w-full h-full object-cover rounded-2xl shadow-md hover:opacity-90 transition"
+            />
           </a>
         </LightGallery>
 
-        {/* Video 2 */}
         <LightGallery speed={500} plugins={[lgVideo]}>
           <a
             data-lg-size="1280-720"
-            data-video='{"source": [{"src":"/assets/videos/1.mp4", "type":"video/mp4"}], "attributes": {"preload": false, "controls": true}}'
+            data-video='{"source":[{"src":"/assets/videos/1.mp4","type":"video/mp4"}],"attributes":{"preload":false,"controls":true}}'
             data-poster="/assets/products/expeditions/truck_2.png"
-            className="inline w-full"
+            className="block h-[27rem]"
           >
             <img
               src="/assets/products/expeditions/truck_2.png"
-              alt="Video 2"
-              className="h-full w-full object-cover rounded-2xl shadow-md hover:opacity-90 transition"
+              alt="Wajira Truck - view"
+              className="w-full h-full object-cover rounded-2xl shadow-md hover:opacity-90 transition"
             />
           </a>
         </LightGallery>
       </div>
 
-      {/* Kanan - 1 video panjang */}
-      <div className="w-full md:w-1/2">
-        <LightGallery speed={500} plugins={[lgVideo]}>  
+      <div className="flex w-full px-[10px]">
+        <LightGallery speed={500} plugins={[lgVideo]}>
           <a
             data-lg-size="1280-720"
-            data-video='{"source": [{"src":"/assets/videos/4.mp4", "type":"video/mp4"}], "attributes": {"preload": false, "controls": true}}'
+            data-video='{"source":[{"src":"/assets/videos/4.mp4","type":"video/mp4"}],"attributes":{"preload":false,"controls":true}}'
             data-poster="/assets/products/expeditions/truck_3.png"
-            className="block h-full"
+            className="block h-[27rem]"
           >
             <img
               src="/assets/products/expeditions/truck_3.png"
-              alt="Video 3"
-              className="w-full object-cover rounded-2xl shadow-md hover:opacity-90 transition"
+              alt="Wajira Truck - Extended View"
+              className="w-full h-full object-cover rounded-2xl shadow-md hover:opacity-90 transition"
             />
           </a>
         </LightGallery>
